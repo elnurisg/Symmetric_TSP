@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <string.h> 
 #include <stdio.h>  
+#include <time.h>
+
 
 // #include <cplex.h>  
 #include <pthread.h>  
@@ -36,9 +38,8 @@ typedef struct {
 	double timelimit;
 
 	//global data
-	double *uncovered_nodes;
 	double best_val;
-	// double	tstart;								
+	double	tstart;								
 	// double zbest;							// best sol. available  
 	// double tbest;							// time for the best sol. available  
 	double *best_sol;						// best sol. available    
@@ -53,5 +54,8 @@ inline int imax(int i1, int i2) { return ( i1 > i2 ) ? i1 : i2; }
 inline double dmin(double d1, double d2) { return ( d1 < d2 ) ? d1 : d2; } 
 inline double dmax(double d1, double d2) { return ( d1 > d2 ) ? d1 : d2; } 
 int dist(int i, int j, instance *inst);
-int greedy_heuristic(instance *inst);
+int greedy_heuristic(instance *inst, int starting_node_pos, int grasp);
+void calculate_greedy_steps(instance *inst, int starting_node_pos, int grasp);
+int random_node(int length);
+int greedy_step(instance *inst, int current_node, int *uncovered_nodes, int current_length, int grasp);
 #endif   /* TSP_H_ */ 

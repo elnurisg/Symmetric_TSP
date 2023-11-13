@@ -45,7 +45,9 @@ int main(int argc, char **argv)
 	if (inst.nnodes == 0) read_input(&inst); 
 	else generate_random_instances(&inst);
 	compute_distance(&inst);
+	if ( greedy_heuristic(&inst, 2, 1) ) print_error(" error within greedy_heuristic()");
 
+	printf(" best_val is %f", inst.best_val);
 	free_instance(&inst);
 	return 0; 
 }         
