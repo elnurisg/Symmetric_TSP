@@ -1,0 +1,9 @@
+## file
+.DS_Store
+*.pdf
+
+## object files
+*.o
+
+## folder
+gnu.dSYM/
