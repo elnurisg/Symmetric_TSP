@@ -1,8 +1,8 @@
 CC=gcc
 CFFLAGS = -Wall -Wextra -g3 #-Wall -O3
-OBJS = main.o tsp.o chrono.o
+OBJS = main.o tsp.o chrono.o utilities.o convex_hull.o
 DEPS = tsp.h
-OBJ = tsp.o chrono.o 
+OBJ = tsp.o chrono.o utilities.o convex_hull.o
 RM = rm -rf
 EXE = tsp
 

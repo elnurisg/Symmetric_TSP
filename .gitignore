@@ -7,3 +7,7 @@
 
 ## folder
 gnu.dSYM/
+
+## executable files
+gnu
+main

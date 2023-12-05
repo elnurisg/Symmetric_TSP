@@ -27,6 +27,7 @@ void free_instance(instance *inst)
 {     
 	free(inst->xcoord);
 	free(inst->ycoord);
+	free(inst->best_sol);
 	// free(inst->load_min);
 	// free(inst->load_max);
 }
@@ -41,13 +42,33 @@ int main(int argc, char **argv)
 
 	parse_command_line(argc,argv, &inst);     
 	
-	//printf(" file %s has %d non-empty lines\n", inst.input_file, number_of_nonempty_lines(inst.input_file)); exit(1);
 	if (inst.nnodes == 0) read_input(&inst); 
 	else generate_random_instances(&inst);
 	compute_distance(&inst);
 	if ( greedy_heuristic(&inst, 2, 1) ) print_error(" error within greedy_heuristic()");
 
+
+/*  //
+	double average=0;
+	for (size_t i = 0; i < 1000; i++) // average best_val for 1000 instances
+	{								// trying to optimize with using GRASP
+		if ( greedy_heuristic(&inst, 0, 0) ) print_error(" error within greedy_heuristic()");
+		// printf(" best_val is %f\n", inst.best_val);
+		average += inst.best_val;
+	}
+
+	average = average / 1000;
+	printf("Average best_val: %f\n", average);
+*/
+
+	// if ( extra_mileage_heuristic(&inst, 2) ) print_error(" error within greedy_heuristic()");
+
+	// fscanf(stdin, "c"); // in order to debug with command line "leaks"
+
 	printf(" best_val is %f", inst.best_val);
+	// calculate_best_val(&inst);
+	// printf(" best_val is %f", inst.best_val);
+
 	free_instance(&inst);
 	return 0; 
 }         
@@ -55,13 +76,13 @@ int main(int argc, char **argv)
 void compute_distance(instance *inst)
 {
 	inst->cost = (double *) calloc(inst->nnodes*inst->nnodes, sizeof(double));
-	for (size_t i = 0; i <= inst->nnodes-1; i++) // compute distance for every node
+	for (int i = 0; i < inst->nnodes; i++) // compute distance for every node
 	{
-		for (size_t j = 0; j <= inst->nnodes-1; j++) // with all other nodes
+		for (int j = 0; j < inst->nnodes; j++) // with all other nodes
 		{
-			inst->cost[i*(inst->nnodes-1) + j] = dist(i, j, inst);
+			inst->cost[i*inst->nnodes + j] = dist(i, j, inst);
 			if (VERBOSE > 1000)
-				printf("cost between %zu and %zu is %f \n", i, j, inst->cost[i*(inst->nnodes-1) + j]);
+				printf("cost between %d and %d is %f\n", i, j, inst->cost[i*inst->nnodes + j]);
 
 		}
 		
@@ -85,12 +106,12 @@ void generate_random_instances(instance *inst)
 	}
 	
 }
-void read_input(instance *inst) // simplified CVRP parser, not all SECTIONs detected  
+void read_input(instance *inst) // simplified TSP parser, not all SECTIONs detected  
 {
                             
 	FILE *fin = fopen(inst->input_file, "r");  // enter the full path
 	if ( fin == NULL ) print_error(" input file not found!");
-	
+
 	inst->nnodes = -1;
 
 	char line[180];

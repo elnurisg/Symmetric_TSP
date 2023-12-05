@@ -2,13 +2,13 @@
 
 #define TSP_H_
 
-#include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <string.h> 
 #include <stdio.h>  
 #include <time.h>
-
+#include "utilities.h"
+// #include "convex_hull.h"
 
 // #include <cplex.h>  
 #include <pthread.h>  
@@ -42,7 +42,7 @@ typedef struct {
 	double	tstart;								
 	// double zbest;							// best sol. available  
 	// double tbest;							// time for the best sol. available  
-	double *best_sol;						// best sol. available    
+	int *best_sol;						// best sol. available    
 	// double	best_lb;						// best lower bound available  
 	// double *load_min;						// minimum load when leaving a node
 	// double *load_max;						// maximum load when leaving a node
@@ -53,9 +53,19 @@ typedef struct {
 inline int imax(int i1, int i2) { return ( i1 > i2 ) ? i1 : i2; } 
 inline double dmin(double d1, double d2) { return ( d1 < d2 ) ? d1 : d2; } 
 inline double dmax(double d1, double d2) { return ( d1 > d2 ) ? d1 : d2; } 
+static inline double cost(int i, int j, instance *inst);
+
 int dist(int i, int j, instance *inst);
-int greedy_heuristic(instance *inst, int starting_node_pos, int grasp);
-void calculate_greedy_steps(instance *inst, int starting_node_pos, int grasp);
 int random_node(int length);
+
+int greedy_heuristic(instance *inst, int starting_mode, int grasp);
+void calculate_greedy_steps(instance *inst, int starting_node_pos, int grasp);
 int greedy_step(instance *inst, int current_node, int *uncovered_nodes, int current_length, int grasp);
+
+int extra_mileage_heuristic(instance *inst, int starting_mode);
+void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy);
+int * extra_mileage_step(instance *inst, int *uncovered_nodes, int current_length, int *nodes_hierarchy);
+double calc_delta_cost(instance *inst, int i, int j, int h);
+void calculate_best_val(instance *inst);
+
 #endif   /* TSP_H_ */ 
