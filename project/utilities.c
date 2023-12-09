@@ -42,5 +42,5 @@ void print_array(int *arr, int size){
     {
         printf("index %d: %d || ", i, arr[i]);
     }
-    
+    printf("\n\n");
 }

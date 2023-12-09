@@ -45,8 +45,11 @@ int main(int argc, char **argv)
 	if (inst.nnodes == 0) read_input(&inst); 
 	else generate_random_instances(&inst);
 	compute_distance(&inst);
-	if ( greedy_heuristic(&inst, 2, 1) ) print_error(" error within greedy_heuristic()");
+	// if ( greedy_heuristic(&inst, 0, 1) ) print_error(" error within greedy_heuristic()");
+	if ( extra_mileage_heuristic(&inst, 2) ) print_error(" error within greedy_heuristic()");
+	printf("\n \tbest_val is %f\n", inst.best_val);
 
+	if ( two_opt_refining_heuristic(&inst) ) print_error(" error within two_opt_refining_heuristic()");
 
 /*  //
 	double average=0;
@@ -65,7 +68,7 @@ int main(int argc, char **argv)
 
 	// fscanf(stdin, "c"); // in order to debug with command line "leaks"
 
-	printf(" best_val is %f", inst.best_val);
+	printf("\n \tbest_val is %f\n", inst.best_val);
 	// calculate_best_val(&inst);
 	// printf(" best_val is %f", inst.best_val);
 

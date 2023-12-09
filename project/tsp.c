@@ -238,7 +238,7 @@ int maximum_cost_pos(instance *inst){
 	int max = inst->cost[1];
 	int max_pos = 1;
 
-	for (int i = 0; i < inst->nnodes; i++) 
+	for (int i = 0; i < inst->nnodes*inst->nnodes; i++) 
 	{ 
 		if (max < inst->cost[i])
 		{
@@ -255,8 +255,8 @@ int maximum_cost_pos(instance *inst){
 int * find_nodes(instance *inst, int pos){
 	int *nodes_hierarchy = (int *) calloc(inst->nnodes, sizeof(int));;
 
-	int first_node = pos / (inst->nnodes-1);
-	int second_node = pos % (inst->nnodes-1);
+	int first_node = pos / inst->nnodes;
+	int second_node = pos % inst->nnodes;
 	nodes_hierarchy[0] = first_node;
 	nodes_hierarchy[1] = second_node;
 
@@ -301,7 +301,7 @@ int * extra_mileage_step(instance *inst, int *uncovered_nodes, int current_lengt
 
 void calculate_best_val(instance *inst){
 	double total_cost = 0;
-	for (int i = 0; i < inst->nnodes-1; i++)
+	for (int i = 0; i < inst->nnodes; i++)
 	{
 		total_cost += cost(inst->best_sol[i], inst->best_sol[i+1], inst);
 	}
@@ -380,7 +380,7 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 
 	case 2: // try all A, B but A!=B in the convexHull
 		// because trying literally all takes more than 10 times slower
-		// however, with convexHull we get best_value 2778.0 instead of 2758
+		// however, with convexHull we get best_value close to the other one
 		convexHull = grahamScan(inst, &hullSize);
 		
 		nodes_hierarchy[0] = convexHull[0].id;
@@ -417,4 +417,88 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 
 	return 0;
 
+}
+
+double delta_cost_two_opt(int a, int b, instance *inst){
+	if (a == b || a-b == 1 || b-a == 1 ) return 0;
+
+	int a_node = inst->best_sol[a]; int b_node = inst->best_sol[b];
+	int a_succ = inst->best_sol[a+1]; int b_succ = inst->best_sol[b+1];
+
+	double old_cost = (cost(a_node,a_succ,inst) + cost(b_node,b_succ,inst));
+	double new_cost = (cost(a_node,b_node,inst) + cost(a_succ,b_succ,inst));
+	double delta_cost = new_cost - old_cost;
+
+	return delta_cost;
+}
+
+int update_tour(int a, int b, instance *inst){
+
+	int succ_a = a + 1;int succ_b = b+1;int counter = 1;int tmp;
+	if (a < b)
+	{	
+		while( (a+counter) < (succ_b-counter) )
+		{
+			tmp = inst->best_sol[a+counter];
+			inst->best_sol[a+counter] = inst->best_sol[succ_b-counter];
+			inst->best_sol[succ_b-counter] = tmp;
+			counter++;
+		}
+	}
+	else if (a > b)
+	{
+		while( (b+counter) < (succ_a-counter) )
+		{
+			tmp = inst->best_sol[b+counter];
+			inst->best_sol[b+counter] = inst->best_sol[succ_a-counter];
+			inst->best_sol[succ_a-counter] = tmp;
+			counter++;
+		}
+	}
+	
+	// printf("Improved the tour from %f", inst->best_val);
+	calculate_best_val(inst);
+	// printf(" to %f\n\n", inst->best_val);
+
+	return 0;	
+}
+
+// we consider node a and node b
+// and then the edge will be a, its successor(a+1), b and its successor(b+1)
+int two_opt_refining_heuristic(instance *inst){
+	printf("\n2-OPT Refining Heuristic:\n_________________________________________________________\n");
+
+	double delta_cost;
+	int a_with_min_delta_cost; int b_with_min_delta_cost;
+	int update_switch = 0;
+	double min_delta_cost;
+	do
+	{
+		min_delta_cost = 0;
+		update_switch = 0;
+		for (int i = 0; i < inst->nnodes; i++) // nodes in 0 and 280 would have been be the same
+		{
+			for (int j = 0; j < inst->nnodes; j++)
+			{
+				delta_cost = delta_cost_two_opt(i, j, inst);
+				if (delta_cost < min_delta_cost)
+				{
+					min_delta_cost = delta_cost;
+					a_with_min_delta_cost = i;
+					b_with_min_delta_cost = j;
+					update_switch = 1;
+				}
+				
+			}
+			
+		}
+		if (update_switch == 1)
+		{
+			// printf("Possible update detected, delta_cost: %f\n",min_delta_cost);
+			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, inst);
+		}
+		
+	} while (update_switch == 1);
+
+	return 0;
 }

@@ -8,7 +8,6 @@
 #include <stdio.h>  
 #include <time.h>
 #include "utilities.h"
-// #include "convex_hull.h"
 
 // #include <cplex.h>  
 #include <pthread.h>  
@@ -67,5 +66,9 @@ void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy);
 int * extra_mileage_step(instance *inst, int *uncovered_nodes, int current_length, int *nodes_hierarchy);
 double calc_delta_cost(instance *inst, int i, int j, int h);
 void calculate_best_val(instance *inst);
+
+int two_opt_refining_heuristic(instance *inst);
+double delta_cost_two_opt(int i, int j, instance *inst);
+int update_tour(int i, int j, instance *inst);
 
 #endif   /* TSP_H_ */ 
