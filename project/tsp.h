@@ -42,6 +42,7 @@ typedef struct {
 	// double zbest;							// best sol. available  
 	// double tbest;							// time for the best sol. available  
 	int *best_sol;						// best sol. available    
+	int *tabu_list;						// if instance has a tabu list   
 	// double	best_lb;						// best lower bound available  
 	// double *load_min;						// minimum load when leaving a node
 	// double *load_max;						// maximum load when leaving a node
@@ -55,7 +56,8 @@ inline double dmax(double d1, double d2) { return ( d1 > d2 ) ? d1 : d2; }
 static inline double cost(int i, int j, instance *inst);
 
 int dist(int i, int j, instance *inst);
-int random_node(int length);
+int random_node_with_time_seed(int length);
+int random_0_to_length(instance *inst, int length);
 
 int greedy_heuristic(instance *inst, int starting_mode, int grasp);
 void calculate_greedy_steps(instance *inst, int starting_node_pos, int grasp);
@@ -71,4 +73,7 @@ int two_opt_refining_heuristic(instance *inst);
 double delta_cost_two_opt(int i, int j, instance *inst);
 int update_tour(int i, int j, instance *inst);
 
+int tabu_search(instance *inst, int tenure_mode);
+int tenure_length_update(instance *inst, int current_tenure, int iteration, int upper_bound_tenure, int tenure_mode);
+int update_tour_and_tabu_list(int a, int b, instance *inst);
 #endif   /* TSP_H_ */ 

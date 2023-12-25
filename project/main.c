@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 	if ( argc < 2 ) { printf("Usage: %s -help for help\n", argv[0]); exit(1); }       
 	if ( VERBOSE >= 2 ) { for (int a = 0; a < argc; a++) printf("%s ", argv[a]); printf("\n"); }
 
-	// double t1 = second(); 
+	double t1 = second(); 
 	instance inst;
 
 	parse_command_line(argc,argv, &inst);     
@@ -45,11 +45,12 @@ int main(int argc, char **argv)
 	if (inst.nnodes == 0) read_input(&inst); 
 	else generate_random_instances(&inst);
 	compute_distance(&inst);
-	// if ( greedy_heuristic(&inst, 0, 1) ) print_error(" error within greedy_heuristic()");
-	if ( extra_mileage_heuristic(&inst, 2) ) print_error(" error within greedy_heuristic()");
+	if ( greedy_heuristic(&inst, 2, 0) ) print_error(" error within greedy_heuristic()");
+	// if ( extra_mileage_heuristic(&inst, 2) ) print_error(" error within greedy_heuristic()");
 	printf("\n \tbest_val is %f\n", inst.best_val);
-
-	if ( two_opt_refining_heuristic(&inst) ) print_error(" error within two_opt_refining_heuristic()");
+	if ( tabu_search(&inst, 1) ) print_error(" error within tabu_search()");
+	// if ( two_opt_refining_heuristic(&inst) ) print_error(" error within two_opt_refining_heuristic()");
+	double t2 = second();
 
 /*  //
 	double average=0;
@@ -71,7 +72,9 @@ int main(int argc, char **argv)
 	printf("\n \tbest_val is %f\n", inst.best_val);
 	// calculate_best_val(&inst);
 	// printf(" best_val is %f", inst.best_val);
-
+	
+	printf("\n----------------------------------------------------------------------------------------------");
+	printf("\nTook %f seconds \n\n", t2 - t1);
 	free_instance(&inst);
 	return 0; 
 }         

@@ -48,10 +48,27 @@ int time_limit_expired(instance *inst)
 	return 0;
 }
 
-int random_node(int length){
+int random_node_with_time_seed(int length){
 	srand((unsigned int)time(NULL));
 	int random_position = rand() % length;
 
+	if (random_position<0 && random_position>=length)
+	{
+		printf("\n Error! Position exceeds the size of array");
+		return -1;
+	}
+	
+	return random_position;
+}
+
+int random_0_to_length(instance *inst, int length){
+
+	if (inst->random_seed !=0){
+		srand(2635623+abs(inst->random_seed));
+		for (size_t i = 0; i < 1000; i++) random();
+	}
+
+	int random_position = rand() % length;
 	if (random_position<0 && random_position>=length)
 	{
 		printf("\n Error! Position exceeds the size of array");
@@ -190,9 +207,9 @@ int greedy_step(instance *inst, int current_node, int *uncovered_nodes, int curr
 // and then call calculate_greedy_steps algorithm
 int greedy_heuristic(instance *inst, int starting_mode, int grasp)
 {
-	printf("Greedy Heuristic:\n_________________________________________________________\n");
+	printf("\n_________________________________________________________\nGreedy Heuristic:\n");
 	int starting_pos;
-	int random_node_pos;
+	int random_node_with_time_seed_pos;
 	int min_cost;
 	int best_starting_node;
 
@@ -203,9 +220,9 @@ int greedy_heuristic(instance *inst, int starting_mode, int grasp)
 		calculate_greedy_steps(inst, starting_pos, grasp);
 		break;
 	case 1:  // random
-		random_node_pos = random_node(inst->nnodes);
-		printf("\n random_nod_pos is %d \n", random_node_pos);
-		calculate_greedy_steps(inst, random_node_pos, grasp);
+		random_node_with_time_seed_pos = random_node_with_time_seed(inst->nnodes);
+		printf("\n random_nod_pos is %d \n", random_node_with_time_seed_pos);
+		calculate_greedy_steps(inst, random_node_with_time_seed_pos, grasp);
 		break;
 	case 2: // try all
 		calculate_greedy_steps(inst, 0, grasp);
@@ -350,10 +367,10 @@ void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy){
 }
 
 int extra_mileage_heuristic(instance *inst, int starting_mode){
-	printf("Insertion Heuristic:\n_________________________________________________________\n");
+	printf("\n_________________________________________________________\nInsertion Heuristic:\n");
 
 	int *nodes_hierarchy = (int *) calloc(inst->nnodes, sizeof(int));
-	double min_cost; int random_node_pos;
+	double min_cost; int random_node_with_time_seed_pos;
 	int *nodes_hierarchy_with_best_starting_couple = (int *) calloc(inst->nnodes, sizeof(int));
 	int length_of_cost = inst->nnodes*inst->nnodes;
 	int hullSize; Point* convexHull;
@@ -365,14 +382,14 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 		calculate_extra_mileage_heuristics(inst, nodes_hierarchy);
 		break;
 	case 1:  // A, B is random (A!=B)
-		random_node_pos = random_node(length_of_cost);
-		nodes_hierarchy = find_nodes(inst, random_node_pos);
-		// printf("\n random_nod_pos is %d \n", random_node_pos);
+		random_node_with_time_seed_pos = random_node_with_time_seed(length_of_cost);
+		nodes_hierarchy = find_nodes(inst, random_node_with_time_seed_pos);
+		// printf("\n random_nod_pos is %d \n", random_node_with_time_seed_pos);
 
-		while (random_node_pos % inst->nnodes == random_node_pos / inst->nnodes) // A must be different from B
+		while (random_node_with_time_seed_pos % inst->nnodes == random_node_with_time_seed_pos / inst->nnodes) // A must be different from B
 		{
-			random_node_pos = random_node(length_of_cost);
-			nodes_hierarchy = find_nodes(inst, random_node_pos);
+			random_node_with_time_seed_pos = random_node_with_time_seed(length_of_cost);
+			nodes_hierarchy = find_nodes(inst, random_node_with_time_seed_pos);
 		}
 		
 		calculate_extra_mileage_heuristics(inst, nodes_hierarchy);
@@ -420,7 +437,7 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 }
 
 double delta_cost_two_opt(int a, int b, instance *inst){
-	if (a == b || a-b == 1 || b-a == 1 ) return 0;
+	// if (a == b || a-b == 1 || b-a == 1 ) return 0;
 
 	int a_node = inst->best_sol[a]; int b_node = inst->best_sol[b];
 	int a_succ = inst->best_sol[a+1]; int b_succ = inst->best_sol[b+1];
@@ -466,7 +483,7 @@ int update_tour(int a, int b, instance *inst){
 // we consider node a and node b
 // and then the edge will be a, its successor(a+1), b and its successor(b+1)
 int two_opt_refining_heuristic(instance *inst){
-	printf("\n2-OPT Refining Heuristic:\n_________________________________________________________\n");
+	printf("\n_________________________________________________________\n2-OPT Refining Heuristic:\n");
 
 	double delta_cost;
 	int a_with_min_delta_cost; int b_with_min_delta_cost;
@@ -478,7 +495,7 @@ int two_opt_refining_heuristic(instance *inst){
 		update_switch = 0;
 		for (int i = 0; i < inst->nnodes; i++) // nodes in 0 and 280 would have been be the same
 		{
-			for (int j = 0; j < inst->nnodes; j++)
+			for (int j = i+2; j < inst->nnodes; j++)
 			{
 				delta_cost = delta_cost_two_opt(i, j, inst);
 				if (delta_cost < min_delta_cost)
@@ -499,6 +516,112 @@ int two_opt_refining_heuristic(instance *inst){
 		}
 		
 	} while (update_switch == 1);
+
+	return 0;
+}
+
+int tenure_length_update(instance *inst, int current_tenure, int iteration, int upper_bound_tenure, int tenure_mode){
+	int lower_bound_tenure = upper_bound_tenure/5;
+	int iteration_period = upper_bound_tenure - lower_bound_tenure;
+	//it is hyperparameter, tenure shows the increase or decrease
+			// becomes lower_bound or upper bound for subsequent period. 
+	//f.e (upper_bound_tenure - lower_bound_tenure) iterations has been chosen 
+	//so that both mode 0 and 1 has the same upper bounds
+	int tenure;
+	
+	switch (tenure_mode)
+		{
+		case 0: // Tabu search with reactive step tenure
+			// like _-_
+			tenure = (iteration/iteration_period)%2 ? lower_bound_tenure : upper_bound_tenure;
+			break;
+		case 1:// Tabu search with reactive line tenure
+			// tenure is steadily increasing and decreasing. like /\/
+			tenure = (iteration/iteration_period)%2 ? --current_tenure : ++current_tenure;
+			break;
+		case 2: //random tenure length between upper and lower bound
+			tenure = random_0_to_length(inst, upper_bound_tenure+1-lower_bound_tenure) + lower_bound_tenure;
+			break;
+		default:
+			break;
+		}
+	
+	return tenure;
+}
+
+int tabu_search(instance *inst, int tenure_mode){
+	printf("\n_________________________________________________________\nTabu Search:\n");
+
+	double t1 = second();
+
+	int tenure; int upper_bound_tenure=100; tenure = upper_bound_tenure/5;//initialization
+
+	double delta_cost; double min_delta_cost;
+	int a_with_min_delta_cost; int b_with_min_delta_cost;
+  
+	int iteration = 0;
+	int update_switch = 0;
+
+	int* optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
+	double optimal_value = inst->best_val;
+	inst->tabu_list = (int *) calloc(inst->nnodes, sizeof(int));
+
+	do
+	{
+		min_delta_cost = INFINITY;
+		update_switch = 0;
+		tenure = tenure_length_update(inst, tenure, iteration, upper_bound_tenure, tenure_mode);
+		
+		for (int i = 0; i < inst->nnodes; i++) // nodes in 0 and 280 would have been be the same
+		{
+			for (int j = i+2; j < inst->nnodes; j++)
+			{
+				delta_cost = delta_cost_two_opt(i, j, inst);
+
+				if (iteration - inst->tabu_list[inst->best_sol[i]] <= tenure || 
+								iteration - inst->tabu_list[inst->best_sol[j]] <= tenure)
+				{  // do not consider tabu nodes
+					if (delta_cost >= 0) // if it is negative then 
+					{	// having an aspiration criteria that it would improve solution 
+						//even it is in tabu list
+						continue;
+					}
+					
+				}
+				
+				if (delta_cost < min_delta_cost)
+				{
+					min_delta_cost = delta_cost;
+					a_with_min_delta_cost = i;
+					b_with_min_delta_cost = j;
+					update_switch = 1;
+				}
+				
+			}
+			
+		}
+		if (update_switch == 1)
+		{
+			inst->tabu_list[inst->best_sol[a_with_min_delta_cost]] = iteration;
+			inst->tabu_list[inst->best_sol[b_with_min_delta_cost]] = iteration;
+
+			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, inst);
+
+			if (optimal_value > inst->best_val)
+			{
+				optimal_solution = copy_array(inst->best_sol, inst->nnodes);
+				optimal_value = inst->best_val;
+			}
+			
+		}
+		iteration++;
+	} while (second() - t1 < inst->timelimit);
+	
+	inst->best_sol = copy_array(optimal_solution, inst->nnodes);
+	inst->best_val = optimal_value;
+
+	free(optimal_solution);
+	free(inst->tabu_list);
 
 	return 0;
 }
