@@ -1,7 +1,7 @@
 #include "convex_hull.h"
 
-// function to swap two points
-void swap(Point* a, Point* b) {
+// function to swap_Pointers two points
+void swap_Pointers(Point* a, Point* b) {
     Point temp = *a;
     *a = *b;
     *b = temp;
@@ -38,7 +38,7 @@ Point* grahamScan(instance *inst, int* hullSize) {
     }
 
     // place the pivot at the beginning of the array
-    swap(&points[0], &points[pivot]);
+    swap_Pointers(&points[0], &points[pivot]);
 
     // sort the rest of the array based on polar angle from pivot
     qsort(&points[1], inst->nnodes - 1, sizeof(Point), 

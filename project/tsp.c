@@ -280,7 +280,7 @@ int * find_nodes(instance *inst, int pos){
 	return nodes_hierarchy;
 }
 
-double calc_delta_cost(instance *inst, int i, int j, int h){
+double delta_cost_extra_mileage(instance *inst, int i, int j, int h){
 	double delta_cost = cost(i,h,inst) + cost(h,j,inst) - cost(i,j,inst);
 	return delta_cost;
 }
@@ -298,7 +298,7 @@ int * extra_mileage_step(instance *inst, int *uncovered_nodes, int current_lengt
 		
 		for (int j = 0; j < current_length; j++) // for each uncovered_node
 		{
-			delta_cost = calc_delta_cost(inst, nodes_hierarchy[i], nodes_hierarchy[i+1], uncovered_nodes[j]);
+			delta_cost = delta_cost_extra_mileage(inst, nodes_hierarchy[i], nodes_hierarchy[i+1], uncovered_nodes[j]);
 			if (min_cost > delta_cost) // choose the delta cost which is the minimumum
 			{
 				min_cost = delta_cost;
@@ -516,6 +516,7 @@ int two_opt_refining_heuristic(instance *inst){
 		}
 		
 	} while (update_switch == 1);
+	printf("\n \tupdate in best_val after 2-OPT refining is %f\n", inst->best_val);
 
 	return 0;
 }
@@ -623,5 +624,148 @@ int tabu_search(instance *inst, int tenure_mode){
 	free(optimal_solution);
 	free(inst->tabu_list);
 
+	return 0;
+}
+int copy_segment(instance *inst, int *old_solution, int starting_pos, int ending_pos, int into_pos){
+
+	for (int i = starting_pos; i <= ending_pos; i++)
+	{
+		inst->best_sol[into_pos] = old_solution[i];
+		into_pos++;
+	}
+
+	return into_pos;
+}
+int copy_segment_in_reverse_order(instance *inst, int *old_solution, int starting_pos, int ending_pos, int into_pos){
+
+	for (int i = ending_pos; i >= starting_pos; i--)
+	{
+		inst->best_sol[into_pos] = old_solution[i];
+		into_pos++;
+	}
+
+	return into_pos;
+
+}
+
+int new_tour_from_break_positions(instance *inst, int *break_positions, int arr_size){
+	
+	int* optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
+	int into_pos = 0;
+
+	for (int i = 0; i < arr_size; i+=2)
+	{
+		if(break_positions[i] > break_positions[i+1]) 
+		{
+			into_pos = copy_segment_in_reverse_order(inst, optimal_solution, break_positions[i+1], break_positions[i], into_pos);
+			// into_pos += (break_positions[i] - break_positions[i+1]);
+		}
+		else 
+		{
+			into_pos = copy_segment(inst, optimal_solution, break_positions[i], break_positions[i+1], into_pos);
+			// into_pos += (break_positions[i+1] - break_positions[i]);
+		}
+		// printf("\n%d hereeeeee %d\n", inst->best_sol[into_pos], into_pos);
+		// print_array(break_positions,arr_size);
+	}
+	
+	inst->best_sol[inst->nnodes] = inst->best_sol[0]; //close the tour
+
+	calculate_best_val(inst);
+	return 0;
+}
+
+int n_opt_kick(instance *inst, int n){
+	printf("\n_________________________________________________________\n%d-OPT kick:\n", n);
+	// we divide the tour into 5 pieces and then reconnect them randomly and
+	int arr_size = n*2;
+	int *break_positions = (int *) calloc(arr_size, sizeof(int));
+	break_positions[0] = 0;
+	int n_candidates = 1;
+	while (n_candidates < arr_size -1) // bcz the last one is always known
+	{
+		break_positions[n_candidates] = random_0_to_length(inst, inst->nnodes-2) + 1;
+		for (int j = 0; j < n_candidates; j++) // checking that they are different
+		{									// and not neighbour
+			if((break_positions[n_candidates] == break_positions[j]) ||
+			 (break_positions[n_candidates] == (break_positions[j]+1)) || 
+			 (break_positions[n_candidates]+1 == (break_positions[j]))) continue;
+		}
+		                                                                          
+		n_candidates++;
+
+		// successor in the previous solution
+		break_positions[n_candidates] = break_positions[n_candidates-1] + 1; 
+		n_candidates++;
+	}
+	break_positions[arr_size-1] = 279;
+// ordering the elements of array bcz the random numbers we found were the positions
+// in the tour, not the nodes. We consider ordered version as of original sol and then
+// change the order in random way. We do like this bcz we divide the tour into n parts.
+// if we use kick_positions elements as nodes then we would have to find initial nodes
+// of those parts 
+//but like this, it will be like from zero to a, from a to b, b to c, c to d, d to e, e to 0
+
+	qsort(break_positions, arr_size, sizeof(int), compare);  
+	shuffleArray(break_positions, arr_size);
+
+	new_tour_from_break_positions(inst, break_positions, arr_size);
+	// if(verify_tour(inst)==0) printf("\tIt is a tour!\n");
+
+	printf("\n \tupdate in best_val after kick is %f\n", inst->best_val);
+	return 0;
+	//// verify if it's tour
+}
+
+int verify_tour(instance *inst){
+	for (int i = 0; i < inst->nnodes; i++)
+	{
+		for (int j = 0; j < inst->nnodes; j++)
+		{
+			if(i!=j && inst->best_sol[i]==inst->best_sol[j]) {
+				printf("indexes %d and %d are the same nodes: %d\n", i,j, inst->best_sol[i]);
+				return 1;
+			}
+
+		}
+
+	}
+	if (inst->best_sol[0] != inst->best_sol[inst->nnodes]){
+		printf("first and the last nodes are not the same\n");
+		return 1;
+	}
+	
+	return 0;
+}
+
+int variable_neighborhood_search(instance *inst, int kick_neighborhood){
+	printf("\n_________________________________________________________\nVariable Neighborhood Search:\n");
+
+	double t1 = second();
+
+	two_opt_refining_heuristic(inst);
+	int* optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
+	double optimal_value = inst->best_val;
+	
+	do
+	{
+		n_opt_kick(inst, kick_neighborhood);
+		two_opt_refining_heuristic(inst);
+
+		if (optimal_value > inst->best_val)
+		{
+			optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
+			optimal_value = inst->best_val;
+			printf("\n \tupdate in best_val %f\n", inst->best_val);
+		}
+		
+	} while (second() - t1 < inst->timelimit);
+	
+	inst->best_sol = copy_array(optimal_solution, inst->nnodes+1);
+	inst->best_val = optimal_value;
+
+	free(optimal_solution);
+
+	if(verify_tour(inst)==0) printf("\tIt is a tour!\n");
 	return 0;
 }

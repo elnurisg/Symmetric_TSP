@@ -58,6 +58,7 @@ static inline double cost(int i, int j, instance *inst);
 int dist(int i, int j, instance *inst);
 int random_node_with_time_seed(int length);
 int random_0_to_length(instance *inst, int length);
+int verify_tour(instance *inst);
 
 int greedy_heuristic(instance *inst, int starting_mode, int grasp);
 void calculate_greedy_steps(instance *inst, int starting_node_pos, int grasp);
@@ -66,7 +67,7 @@ int greedy_step(instance *inst, int current_node, int *uncovered_nodes, int curr
 int extra_mileage_heuristic(instance *inst, int starting_mode);
 void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy);
 int * extra_mileage_step(instance *inst, int *uncovered_nodes, int current_length, int *nodes_hierarchy);
-double calc_delta_cost(instance *inst, int i, int j, int h);
+double delta_cost_extra_mileage(instance *inst, int i, int j, int h);
 void calculate_best_val(instance *inst);
 
 int two_opt_refining_heuristic(instance *inst);
@@ -76,4 +77,11 @@ int update_tour(int i, int j, instance *inst);
 int tabu_search(instance *inst, int tenure_mode);
 int tenure_length_update(instance *inst, int current_tenure, int iteration, int upper_bound_tenure, int tenure_mode);
 int update_tour_and_tabu_list(int a, int b, instance *inst);
+
+int variable_neighborhood_search(instance *inst, int kick_neighborhood);
+int n_opt_kick(instance *inst, int n);
+int new_tour_from_break_positions(instance *inst, int *break_positions, int arr_size);
+int copy_segment(instance *inst, int *old_solution, int starting_pos, int ending_pos, int into_pos);
+int copy_segment_in_reverse_order(instance *inst, int *old_solution, int starting_pos, int ending_pos, int into_pos);
+
 #endif   /* TSP_H_ */ 

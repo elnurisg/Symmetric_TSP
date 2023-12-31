@@ -8,6 +8,6 @@ typedef struct {
 } Point;
 
 
-void swap(Point* a, Point* b);
+void swap_Pointers(Point* a, Point* b);
 int orientation(Point p, Point q, Point r);
 Point* grahamScan(instance *inst, int* hullSize);

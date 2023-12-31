@@ -48,7 +48,9 @@ int main(int argc, char **argv)
 	if ( greedy_heuristic(&inst, 2, 0) ) print_error(" error within greedy_heuristic()");
 	// if ( extra_mileage_heuristic(&inst, 2) ) print_error(" error within greedy_heuristic()");
 	printf("\n \tbest_val is %f\n", inst.best_val);
-	if ( tabu_search(&inst, 1) ) print_error(" error within tabu_search()");
+	if ( variable_neighborhood_search(&inst, 5) ) print_error(" error within variable_neighborhood_search()");
+
+	// if ( tabu_search(&inst, 1) ) print_error(" error within tabu_search()");
 	// if ( two_opt_refining_heuristic(&inst) ) print_error(" error within two_opt_refining_heuristic()");
 	double t2 = second();
 
