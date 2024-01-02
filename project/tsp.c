@@ -769,3 +769,84 @@ int variable_neighborhood_search(instance *inst, int kick_neighborhood){
 	if(verify_tour(inst)==0) printf("\tIt is a tour!\n");
 	return 0;
 }
+
+double metropolis_formula(double delta_cost, double Temprature, int scaler){
+	return exp(-(delta_cost / scaler) / Temprature);
+}
+
+int annealing_process(instance *inst, int scaler){
+	
+	// choosing random nodes for 2-OPT
+	int a; int b; double delta_cost;
+	int T_max = inst->best_val; //we use the proxy of initial sol
+
+	for (int T = T_max; T > 1; T--)
+	{
+		do  //be sure b is after a and not successor of a
+		{
+			a = random_0_to_length(inst, inst->nnodes);
+			b = random_0_to_length(inst, inst->nnodes);
+		} while ( a+1 > b );
+		delta_cost = delta_cost_two_opt(a, b, inst);
+
+		if (random01() <= metropolis_formula(delta_cost, T, scaler))
+			update_tour(a, b, inst);
+
+	}
+
+	// two_opt_refining_heuristic(inst); //it is 0 degree now and so,
+	// all negative costs should be applied
+	return 0;
+}
+
+double average_delta_cost_between_two_edges(instance *inst){
+
+	double sum_delta_cost = 0; double numbers = 0;
+	for (int i = 0; i < inst->nnodes; i++) // nodes in 0 and 280 would have been be the same
+	{
+		for (int j = i+2; j < inst->nnodes; j++)
+		{
+			sum_delta_cost += delta_cost_two_opt(i, j, inst);
+			numbers++;
+		}
+	}
+	double average_delta_cost = sum_delta_cost/numbers;
+
+	return average_delta_cost;
+	
+}
+int simulated_annealing(instance *inst){
+	printf("\n_________________________________________________________\nSimulated Annealing:\n");
+
+	double t1 = second();
+
+
+	int scaler = average_delta_cost_between_two_edges(inst);
+	double optimal_value = inst->best_val;
+	int* optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
+	
+	do
+	{
+		//apply annealing twice (heat up right after cooling)
+		annealing_process(inst, scaler);annealing_process(inst, scaler);
+		two_opt_refining_heuristic(inst); //it is 0 degree now and so,
+								// all negative costs should be applied
+
+		if (optimal_value > inst->best_val)
+		{
+			optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
+			optimal_value = inst->best_val;
+			printf("\n \tupdate in best_val %f\n", inst->best_val);
+		}
+		
+	} while (second() - t1 < inst->timelimit);
+
+	inst->best_sol = copy_array(optimal_solution, inst->nnodes+1);
+	inst->best_val = optimal_value;
+
+	free(optimal_solution);
+
+	// if(verify_tour(inst)==0) printf("\tIt is a tour!\n");
+	return 0;
+
+}

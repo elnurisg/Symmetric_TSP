@@ -84,4 +84,8 @@ int new_tour_from_break_positions(instance *inst, int *break_positions, int arr_
 int copy_segment(instance *inst, int *old_solution, int starting_pos, int ending_pos, int into_pos);
 int copy_segment_in_reverse_order(instance *inst, int *old_solution, int starting_pos, int ending_pos, int into_pos);
 
+int simulated_annealing(instance *inst);
+double metropolis_formula(double delta_cost, double Temprature, int scaler);
+int annealing_process(instance *inst, int scaler);
+double average_delta_cost_between_two_edges(instance *inst);
 #endif   /* TSP_H_ */ 
