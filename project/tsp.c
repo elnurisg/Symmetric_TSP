@@ -78,15 +78,23 @@ int random_0_to_length(instance *inst, int length){
 	return random_position;
 }
 
+int random_0_to_length_but_different_than_previous(instance *inst, int length, int previous_random_value){
+
+	int random_value = random_0_to_length(inst, length);
+
+	while (random_value == previous_random_value)
+	{
+		random_value = random_0_to_length(inst, length);
+	}
+	
+	return random_value;
+}
 
 // when the starting_node is known, it applies the nearest neighbor algorithm
 void calculate_greedy_steps(instance *inst, int starting_node_pos, int grasp){
 	int *uncovered_nodes = (int *) calloc(inst->nnodes, sizeof(int));//[inst->nnodes];
 	int current_length = inst->nnodes;
 
-	inst->best_sol = (int *) calloc(inst->nnodes+1, sizeof(int)); 
-	// last one to close the tour
-	inst->best_val = 0;
 	for (int i = 0; i < inst->nnodes; i++)
 	{
 		uncovered_nodes[i] = i; 
@@ -113,8 +121,7 @@ void calculate_greedy_steps(instance *inst, int starting_node_pos, int grasp){
 		best_node = uncovered_nodes[best_node_pos];
 		
 
-		inst->best_val += inst->cost[current_node*inst->nnodes + best_node];
-		inst->best_sol[(inst->nnodes) - current_length]= best_node;
+		inst->best_sol[(inst->nnodes) - current_length] = best_node;
 		current_node = best_node;
 
 		current_length--;
@@ -122,9 +129,9 @@ void calculate_greedy_steps(instance *inst, int starting_node_pos, int grasp){
 
 	}
 		// close the tour
-	inst->best_val += inst->cost[current_node*inst->nnodes + starting_node_pos];
 	inst->best_sol[inst->nnodes]= starting_node_pos;
 
+	calculate_best_val(inst);
 }
 
 int greedy_step(instance *inst, int current_node, int *uncovered_nodes, int current_length, int grasp) {
@@ -329,7 +336,7 @@ void calculate_best_val(instance *inst){
 void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy){
 	int *uncovered_nodes = (int *) calloc(inst->nnodes, sizeof(int));
 	int current_length = inst->nnodes;
-	inst->best_sol = (int *) calloc(inst->nnodes+1, sizeof(int));
+	// inst->best_sol = (int *) calloc(inst->nnodes+1, sizeof(int));
 		// in order to close the tour +1 node in best_sol
 	inst->best_val = (inst->cost[nodes_hierarchy[0]*inst->nnodes + nodes_hierarchy[1]]);
 
@@ -337,7 +344,7 @@ void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy){
 	{
 		uncovered_nodes[i] = i; 
 	}
-	int best_node_pos; int best_edge_pos; int *best_values_index; int node_to_new_successor;
+	int best_node_pos; int best_edge_pos; int *best_values_index;
 
 	current_length --;
 	uncovered_nodes[nodes_hierarchy[0]] = uncovered_nodes[current_length];
@@ -436,11 +443,11 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 
 }
 
-double delta_cost_two_opt(int a, int b, instance *inst){
+double delta_cost_two_opt(int a, int b, instance *inst, int *tsp_sol){
 	// if (a == b || a-b == 1 || b-a == 1 ) return 0;
 
-	int a_node = inst->best_sol[a]; int b_node = inst->best_sol[b];
-	int a_succ = inst->best_sol[a+1]; int b_succ = inst->best_sol[b+1];
+	int a_node = tsp_sol[a]; int b_node = tsp_sol[b];
+	int a_succ = tsp_sol[a+1]; int b_succ = tsp_sol[b+1];
 
 	double old_cost = (cost(a_node,a_succ,inst) + cost(b_node,b_succ,inst));
 	double new_cost = (cost(a_node,b_node,inst) + cost(a_succ,b_succ,inst));
@@ -449,16 +456,16 @@ double delta_cost_two_opt(int a, int b, instance *inst){
 	return delta_cost;
 }
 
-int update_tour(int a, int b, instance *inst){
+int update_tour(int a, int b, instance *inst, int *tsp_sol, int is_instance){
 
 	int succ_a = a + 1;int succ_b = b+1;int counter = 1;int tmp;
 	if (a < b)
 	{	
 		while( (a+counter) < (succ_b-counter) )
 		{
-			tmp = inst->best_sol[a+counter];
-			inst->best_sol[a+counter] = inst->best_sol[succ_b-counter];
-			inst->best_sol[succ_b-counter] = tmp;
+			tmp = tsp_sol[a+counter];
+			tsp_sol[a+counter] = tsp_sol[succ_b-counter];
+			tsp_sol[succ_b-counter] = tmp;
 			counter++;
 		}
 	}
@@ -466,24 +473,29 @@ int update_tour(int a, int b, instance *inst){
 	{
 		while( (b+counter) < (succ_a-counter) )
 		{
-			tmp = inst->best_sol[b+counter];
-			inst->best_sol[b+counter] = inst->best_sol[succ_a-counter];
-			inst->best_sol[succ_a-counter] = tmp;
+			tmp = tsp_sol[b+counter];
+			tsp_sol[b+counter] = tsp_sol[succ_a-counter];
+			tsp_sol[succ_a-counter] = tmp;
 			counter++;
 		}
 	}
 	
-	// printf("Improved the tour from %f", inst->best_val);
-	calculate_best_val(inst);
-	// printf(" to %f\n\n", inst->best_val);
+	if (is_instance == 0) // it is on
+	{
+		// printf("Improved the tour from %f", inst->best_val);
+		calculate_best_val(inst);
+		// printf(" to %f\n\n", inst->best_val);
+	}
+	
 
 	return 0;	
 }
 
 // we consider node a and node b
 // and then the edge will be a, its successor(a+1), b and its successor(b+1)
-int two_opt_refining_heuristic(instance *inst){
-	printf("\n_________________________________________________________\n2-OPT Refining Heuristic:\n");
+int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance){
+	if (is_instance == 0)	
+		printf("\n_________________________________________________________\n2-OPT Refining Heuristic:\n");
 
 	double delta_cost;
 	int a_with_min_delta_cost; int b_with_min_delta_cost;
@@ -497,7 +509,7 @@ int two_opt_refining_heuristic(instance *inst){
 		{
 			for (int j = i+2; j < inst->nnodes; j++)
 			{
-				delta_cost = delta_cost_two_opt(i, j, inst);
+				delta_cost = delta_cost_two_opt(i, j, inst, tsp_sol);
 				if (delta_cost < min_delta_cost)
 				{
 					min_delta_cost = delta_cost;
@@ -512,11 +524,12 @@ int two_opt_refining_heuristic(instance *inst){
 		if (update_switch == 1)
 		{
 			// printf("Possible update detected, delta_cost: %f\n",min_delta_cost);
-			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, inst);
+			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, inst, tsp_sol, is_instance);
 		}
 		
 	} while (update_switch == 1);
-	printf("\n \tupdate in best_val after 2-OPT refining is %f\n", inst->best_val);
+	if (is_instance == 0)
+		printf("\n \tupdate in best_val after 2-OPT refining is %f\n", inst->best_val);
 
 	return 0;
 }
@@ -577,7 +590,7 @@ int tabu_search(instance *inst, int tenure_mode){
 		{
 			for (int j = i+2; j < inst->nnodes; j++)
 			{
-				delta_cost = delta_cost_two_opt(i, j, inst);
+				delta_cost = delta_cost_two_opt(i, j, inst, inst->best_sol);
 
 				if (iteration - inst->tabu_list[inst->best_sol[i]] <= tenure || 
 								iteration - inst->tabu_list[inst->best_sol[j]] <= tenure)
@@ -606,7 +619,7 @@ int tabu_search(instance *inst, int tenure_mode){
 			inst->tabu_list[inst->best_sol[a_with_min_delta_cost]] = iteration;
 			inst->tabu_list[inst->best_sol[b_with_min_delta_cost]] = iteration;
 
-			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, inst);
+			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, inst, inst->best_sol, 0);
 
 			if (optimal_value > inst->best_val)
 			{
@@ -707,7 +720,7 @@ int n_opt_kick(instance *inst, int n){
 //but like this, it will be like from zero to a, from a to b, b to c, c to d, d to e, e to 0
 
 	qsort(break_positions, arr_size, sizeof(int), compare);  
-	shuffleArray(break_positions, arr_size);
+	shuffle_array_for_kick(break_positions, arr_size);
 
 	new_tour_from_break_positions(inst, break_positions, arr_size);
 	// if(verify_tour(inst)==0) printf("\tIt is a tour!\n");
@@ -743,14 +756,14 @@ int variable_neighborhood_search(instance *inst, int kick_neighborhood){
 
 	double t1 = second();
 
-	two_opt_refining_heuristic(inst);
+	two_opt_refining_heuristic(inst, inst->best_sol, 0);
 	int* optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
 	double optimal_value = inst->best_val;
 	
 	do
 	{
 		n_opt_kick(inst, kick_neighborhood);
-		two_opt_refining_heuristic(inst);
+		two_opt_refining_heuristic(inst, inst->best_sol, 0);
 
 		if (optimal_value > inst->best_val)
 		{
@@ -787,14 +800,14 @@ int annealing_process(instance *inst, int scaler){
 			a = random_0_to_length(inst, inst->nnodes);
 			b = random_0_to_length(inst, inst->nnodes);
 		} while ( a+1 > b );
-		delta_cost = delta_cost_two_opt(a, b, inst);
+		delta_cost = delta_cost_two_opt(a, b, inst, inst->best_sol);
 
 		if (random01() <= metropolis_formula(delta_cost, T, scaler))
-			update_tour(a, b, inst);
+			update_tour(a, b, inst, inst->best_sol, 0);
 
 	}
 
-	// two_opt_refining_heuristic(inst); //it is 0 degree now and so,
+	// two_opt_refining_heuristic(inst, inst->best_sol, 0); //it is 0 degree now and so,
 	// all negative costs should be applied
 	return 0;
 }
@@ -806,7 +819,7 @@ double average_delta_cost_between_two_edges(instance *inst){
 	{
 		for (int j = i+2; j < inst->nnodes; j++)
 		{
-			sum_delta_cost += delta_cost_two_opt(i, j, inst);
+			sum_delta_cost += delta_cost_two_opt(i, j, inst, inst->best_sol);
 			numbers++;
 		}
 	}
@@ -829,7 +842,7 @@ int simulated_annealing(instance *inst){
 	{
 		//apply annealing twice (heat up right after cooling)
 		annealing_process(inst, scaler);annealing_process(inst, scaler);
-		two_opt_refining_heuristic(inst); //it is 0 degree now and so,
+		two_opt_refining_heuristic(inst, inst->best_sol, 0); //it is 0 degree now and so,
 								// all negative costs should be applied
 
 		if (optimal_value > inst->best_val)
@@ -849,4 +862,442 @@ int simulated_annealing(instance *inst){
 	// if(verify_tour(inst)==0) printf("\tIt is a tour!\n");
 	return 0;
 
+}
+void initialize_individual(instance *inst, Individual *individual){
+
+	individual->genes = (int *) calloc((inst->nnodes+1), sizeof(int));
+
+	for (int j = 0; j < inst->nnodes; j++) {
+		individual->genes[j] = j;
+	}
+
+	// tour is closed inside of this function
+	shuffle_tsp_sol(individual->genes, inst->nnodes); 
+
+}
+int initialize_population_randomly(instance *inst, int population_size, Individual *population){
+	
+	for (int i = 0; i < population_size; i++) 
+	{
+		initialize_individual(inst, &population[i]);
+
+    }
+
+	calculate_population_fitness(inst, population, population_size);
+
+	return 0;
+}
+
+void print_population(instance *inst, int population_size, Individual *population){
+	for (int i = 0; i < population_size; i++)
+	{
+		print_array(population[i].genes, inst->nnodes+1);
+		printf("\n");
+	}
+	
+}
+void free_population(Individual *population, int population_size) {
+    for (int i = 0; i < population_size; i++) {
+        free_Individual(&population[i]);
+    }
+}
+
+void free_Individual(Individual *individual) {
+	if (individual->genes == NULL) // to avoid double free
+	{
+    	free(individual->genes);
+		individual->genes = NULL;
+	}
+}
+
+
+// calculate fitness values of all population and return to the ondex with best fitness value
+Individual * find_champion_individual(instance *inst, Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size){
+	
+	Individual *champion_individual = (Individual *)malloc(sizeof(Individual));
+	champion_individual->fitness = INFINITY;
+
+	for (int i = 0; i < population_size; i++)
+	{
+		if (population[i].fitness < champion_individual->fitness)
+		{
+			champion_individual = &population[i];
+		}	
+	}
+	for (int i = 0; i < children_size; i++)
+	{
+		if (children[i].fitness < champion_individual->fitness)
+		{
+			champion_individual = &children[i];
+		}	
+	}
+	for (int i = 0; i < mutants_size; i++)
+	{
+		if (mutations[i].fitness < champion_individual->fitness)
+		{
+			champion_individual = &mutations[i];
+		}	
+	}
+
+	return champion_individual;
+}
+
+void calculate_individual_fitness(instance *inst, Individual *individual){
+
+	double fitness = 0;
+	for (int j = 0; j < (inst->nnodes+1); j++)
+	{
+		fitness += cost(individual->genes[j], individual->genes[j+1], inst);			
+	}
+
+	individual->fitness = fitness;
+
+}
+
+void calculate_population_fitness(instance *inst, Individual *population, int population_size){
+
+
+	for (int i = 0; i < population_size; i++)
+	{
+		calculate_individual_fitness(inst, &population[i]);
+	}
+
+}
+void crossover(instance *inst, Individual *population, int population_size, Individual *children, int children_size, int cutting_type ){
+	
+	int parent1; int parent2; int cutting_position;
+
+	switch (cutting_type)
+	{
+	case 0: // close to middle
+		cutting_position = inst->nnodes / 2;
+		break;
+	case 1: // random
+		cutting_position = random_0_to_length(inst, inst->nnodes);
+		break;
+	case 2: // inst->nnodes/4
+		cutting_position = inst->nnodes / 4;
+		break;
+	default:
+		break;
+	}
+
+	for (int i = 0; i < children_size; i++)
+	{
+		parent1 = random_0_to_length(inst, inst->nnodes);
+		parent2 = random_0_to_length_but_different_than_previous(inst, inst->nnodes, parent1);
+		children[i].genes = combine_two_tours_from_pos(population[parent1].genes,
+					 population[parent2].genes, inst->nnodes, cutting_position);
+	}
+	calculate_population_fitness(inst, children, children_size);
+	
+}
+
+void print_parents_and_child(instance *inst, Individual *parent1, Individual *parent2, Individual *child){
+	print_array(parent1->genes, inst->nnodes+1);
+	print_array(parent2->genes, inst->nnodes+1);
+	print_array(child->genes, inst->nnodes+1);
+}
+
+// detect deffects in genes, punish wrong genes with penalty and increase cost(fitness)
+// in case of deffects, increase cost with the power of deffects
+// and if there are more than 1 occurence of node means at least one missing node,
+// so value for deffects is >=2 if not 0
+void avoid_bad_genes(instance *inst, Individual *children, int children_size){
+	
+	int deffects; int count_of_node;
+
+	for (int z = 0; z < children_size; z++)
+	{
+		deffects = 0;
+
+		for (int i = 0; i < inst->nnodes; i++)
+		{
+			count_of_node = 0;
+			for (int j = 0; j < inst->nnodes; j++)
+			{
+				if (children[z].genes[i] == children[z].genes[j]) // there are subtours or missing elements
+				{
+					count_of_node++;
+				}
+			}
+
+			if (count_of_node != 1)
+			{
+				deffects++;
+			}
+		}
+
+		if (deffects != 0)
+				children[z].fitness = pow(children[z].fitness, deffects);
+
+	}
+	
+}
+
+void alteration_of_genes(instance *inst, int *genes){
+// 10% of mutation_rate has been decided
+	int alternation_upper_bound = inst->nnodes / 10; // max amount of nodes can be alternated
+	int alternation_size = random_0_to_length(inst, alternation_upper_bound);
+	int swap_pos1; int swap_pos2; int temp;
+
+	for (int i = 0; i < alternation_size; i++)
+	{
+		swap_pos1 = random_0_to_length(inst, inst->nnodes);
+		swap_pos2 = random_0_to_length_but_different_than_previous(inst, inst->nnodes, swap_pos1);
+		
+		temp = genes[swap_pos1];
+        genes[swap_pos1] = genes[swap_pos2];
+        genes[swap_pos2] = temp;
+
+	}
+    // close the tour
+    genes[inst->nnodes] = genes[0];
+}
+
+void mutate_population(instance *inst, Individual *population, int population_size, Individual *mutations, int mutants_size){
+
+	int mutant;
+
+	for (int i = 0; i < mutants_size; i++)
+	{
+		mutant = random_0_to_length(inst, population_size);
+		mutations[i].genes = copy_array(population[mutant].genes, inst->nnodes+1);
+		alteration_of_genes(inst, mutations[i].genes);
+	}
+	calculate_population_fitness(inst, mutations, mutants_size);
+	
+}
+
+double probability_of_individual(Individual *individual, Individual *champion){
+	return (champion->fitness / individual->fitness);
+}
+
+// Function to compare individuals based on their probabilities (for sorting)
+int compare_individuals(const void *a, const void *b) {
+    const Individual *individualA = (const Individual *)a;
+    const Individual *individualB = (const Individual *)b;
+
+    if (individualA->probability < individualB->probability) {
+        return 1;  // sorting in descending order
+    } else if (individualA->probability > individualB->probability) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+
+// calculate survival_probabilities with respect to its fitness and add into its structure
+// gather all generation and sort them in the descending order of their survival rate
+Individual * survival_probabilities_of_generation(Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion){
+	
+	int generation_size = population_size + children_size + mutants_size;
+    Individual *Generation = (Individual *)malloc(generation_size * sizeof(Individual));
+	int index = 0;
+
+	for (int j = 0; j < children_size; j++)
+	{
+		children[j].probability = probability_of_individual(&children[j], champion);
+		Generation[index++] = children[j];
+	}
+
+	for (int z = 0; z < population_size; z++)
+	{
+		population[z].probability = probability_of_individual(&population[z], champion);
+		Generation[index++] = population[z];
+	}
+
+	for (int h = 0; h < mutants_size; h++)
+	{
+		mutations[h].probability = probability_of_individual(&mutations[h], champion);
+		Generation[index++] = mutations[h];
+	}
+
+    // sort the combined array based on probabilities
+    qsort(Generation, generation_size, sizeof(Individual), compare_individuals);
+
+    return Generation;
+}
+
+// kill population with bad genes and choose the fittest population for the next generation
+// return champion
+Individual * elitism(instance *inst, Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion){
+	
+	// Individual *new_population = (Individual *) calloc(population_size, sizeof(Individual));
+	// int new_population_count = 0;
+	// // survival_probabilities_of_generation(population, population_size, children, children_size, mutations, mutants_size, champion);
+	// new_population[new_population_count++] = *champion;
+	
+	// while (new_population_count < population_size)
+	// {
+	// 	for (int j = 0; j < children_size; j++) // first priority is for children
+	// 	{
+	// 		if (random01() <= probability_of_individual(&children[j], champion)){
+	// 			new_population[new_population_count] = children[j];
+	// 			new_population_count++;
+	// 		}
+	// 	}
+	// 	for (int z = 0; z < population_size; z++) // then for old population
+	// 	{
+	// 		if (random01() <= probability_of_individual(&population[z], champion)){
+	// 			new_population[new_population_count] = population[z];
+	// 			new_population_count++;
+	// 		}
+	// 	}
+	// 	for (int h = 0; h < mutants_size; h++) // and then for mutants
+	// 	{
+	// 		if (random01() <= probability_of_individual(&mutations[h], champion)){
+	// 			new_population[new_population_count] = children[h];
+	// 			new_population_count++;
+	// 		}
+	// 	}
+		
+	// }
+	
+	Individual *new_population = (Individual *) calloc(population_size, sizeof(Individual));
+	Individual *Generation;// = (Individual *) calloc(population_size, sizeof(Individual));
+
+	int new_population_count = 0;
+	Generation = survival_probabilities_of_generation(population, population_size, children, children_size, mutations, mutants_size, champion);
+
+	while (new_population_count < population_size)
+	{
+		for (int i = 0; i < children_size + population_size + mutants_size; i++)
+		{
+			if (random01() <= Generation[i].probability){
+				new_population[new_population_count] = Generation[i];
+				new_population_count++;
+			}
+
+		}
+				
+	}
+
+	return new_population;
+}
+
+void eliminate_multiple_visits(instance *inst, Individual *individual){
+
+	for (int i = 0; i < inst->nnodes; i++)
+	{
+		for (int j = i+1; j < inst->nnodes; j++)
+		{
+				if ((individual->genes[i] == individual->genes[j]) && (individual->genes[i] != -1)) 
+				{
+					individual->genes = remove_from_array(j, individual->genes, inst->nnodes+1);
+					j--; // bcz new pos j is different node now
+					
+				}
+		}
+	}
+}
+
+void repair_bad_genes(instance *inst, Individual *children, int children_size){
+		
+	for (int z = 0; z < children_size; z++)
+	{
+		eliminate_multiple_visits(inst, &children[z]);
+		repair_extra_mileage(inst, &children[z]);
+		// two_opt_refining_heuristic(inst, children[z].genes, 1);
+		calculate_individual_fitness(inst, &children[z]);
+	}
+}
+
+void repair_extra_mileage(instance *inst, Individual *individual){
+
+	int *uncovered_nodes = (int *) calloc(inst->nnodes, sizeof(int));
+	int uncovered_length = 0; int missing_node = 0;
+	
+	// finding uncovered nodes
+	for (int i = 0; i < inst->nnodes; i++)
+	{
+		for (int j = 0; j < inst->nnodes; j++)
+		{
+			if (i == individual->genes[j] ) {
+				missing_node = 1;
+				break;
+			}  
+		}		
+		if (missing_node == 0)
+		{
+			uncovered_nodes[uncovered_length] = i;
+			uncovered_length++;		
+		}
+		missing_node = 0;
+	}
+
+	// and applying extra-mileage
+	int best_node_pos; int best_edge_pos; int *best_values_index;
+	while (uncovered_length != 0) 
+	{ 
+		best_values_index = extra_mileage_step(inst, uncovered_nodes, uncovered_length, individual->genes);
+		best_edge_pos = best_values_index[0]; 
+		best_node_pos = best_values_index[1];
+
+		// update individual->genes
+		individual->genes = add_to_array(best_edge_pos, uncovered_nodes[best_node_pos], individual->genes, inst->nnodes);
+		
+		uncovered_length--; // one node is already covered
+		// update the uncovered_nodes
+		uncovered_nodes[best_node_pos] = uncovered_nodes[uncovered_length];
+	}
+
+	// close the tour
+	individual->genes[inst->nnodes] = individual->genes[0];
+
+	// free the uncovered_nodes as it is not going to be used later
+	free(uncovered_nodes);
+}
+
+
+int genetic_algorithm(instance *inst, int repair, int cutting_type){ // if repair == 0 then use it 
+	printf("\n_________________________________________________________\nGenetic Alghorithm:\n");
+	double t1 = second();
+
+	int population_size = 1000;
+	int children_size = population_size/2;
+	int mutants_size = population_size/10;
+	Individual *champion; int count_generations = 0;
+
+	Individual *population = (Individual *) calloc(population_size, sizeof(Individual));
+	Individual *children = (Individual *) calloc(children_size, sizeof(Individual));
+	Individual *mutations = (Individual *) calloc(mutants_size, sizeof(Individual));
+	
+	initialize_population_randomly(inst, population_size, population);
+	count_generations++;
+
+	do
+	{
+		crossover(inst, population, population_size, children, children_size, cutting_type);
+		if (repair == 0) // OFF, punish their fitness with penalty
+			avoid_bad_genes(inst, children, children_size);
+		else // (repair == 1) // ON 
+			repair_bad_genes(inst, children, children_size);
+		
+		mutate_population(inst, population, population_size, mutations, mutants_size);
+		champion = find_champion_individual(inst, population, population_size, children, children_size, mutations, mutants_size);
+		printf("Champion fitness of generation%d is:%f\n", count_generations, champion->fitness);
+
+		population = elitism(inst, population, population_size, children, children_size, mutations, mutants_size, champion);
+		
+		count_generations++;
+	} while (second() - t1 < inst->timelimit);
+	
+	// find the champion of the last survived generation of elitism
+	champion = find_champion_individual(inst, population, population_size, children, children_size, mutations, mutants_size);
+
+	// update the best_sol in case it is better
+	if (champion->fitness < inst->best_val)
+	{
+		inst->best_sol = copy_array(champion->genes, inst->nnodes+1);
+		inst->best_val = champion->fitness;
+	}
+ 
+	// free memory
+	free_population(population, population_size);
+	free_population(children, children_size);
+	free_population(mutations, mutants_size);
+	free_Individual(champion);
+
+	return 0;
 }

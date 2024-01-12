@@ -49,6 +49,13 @@ typedef struct {
 
 } instance;        
 
+typedef struct{
+	int *genes; // in our case it is tsp solution
+	double fitness; // in our case it is cost of tsp and therefore smallest is the fittest
+	double probability; // survival probability
+						// its fitness divide by fitness of the champion in its generation
+} Individual;
+
 //inline
 inline int imax(int i1, int i2) { return ( i1 > i2 ) ? i1 : i2; } 
 inline double dmin(double d1, double d2) { return ( d1 < d2 ) ? d1 : d2; } 
@@ -70,9 +77,9 @@ int * extra_mileage_step(instance *inst, int *uncovered_nodes, int current_lengt
 double delta_cost_extra_mileage(instance *inst, int i, int j, int h);
 void calculate_best_val(instance *inst);
 
-int two_opt_refining_heuristic(instance *inst);
-double delta_cost_two_opt(int i, int j, instance *inst);
-int update_tour(int i, int j, instance *inst);
+int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance);
+double delta_cost_two_opt(int a, int b, instance *inst, int *tsp_sol);
+int update_tour(int i, int j, instance *inst, int *tsp_sol, int best_val_update_switch);
 
 int tabu_search(instance *inst, int tenure_mode);
 int tenure_length_update(instance *inst, int current_tenure, int iteration, int upper_bound_tenure, int tenure_mode);
@@ -88,4 +95,26 @@ int simulated_annealing(instance *inst);
 double metropolis_formula(double delta_cost, double Temprature, int scaler);
 int annealing_process(instance *inst, int scaler);
 double average_delta_cost_between_two_edges(instance *inst);
+
+int genetic_algorithm(instance *inst, int repair, int cutting_type);
+int initialize_population_randomly(instance *inst, int population_size, Individual *population);
+void initialize_individual(instance *inst, Individual *individual);
+void print_population(instance *inst, int population_size, Individual *population);
+void free_population(Individual *population, int population_size);
+void free_Individual(Individual *individual);
+Individual * find_champion_individual(instance *inst, Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size);
+void calculate_individual_fitness(instance *inst, Individual *individual);
+void calculate_population_fitness(instance *inst, Individual *population, int population_size);
+void avoid_bad_genes(instance *inst, Individual *children, int children_size);
+void print_parents_and_child(instance *inst, Individual *parent1, Individual *parent2, Individual *child);
+void crossover(instance *inst, Individual *population, int population_size, Individual *children, int children_size, int cutting_type );
+void mutate_population(instance *inst, Individual *population, int population_size, Individual *mutations, int mutants_size);
+void alteration_of_genes(instance *inst, int *genes);
+Individual * survival_probabilities_of_generation(Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion);
+Individual * elitism(instance *inst, Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion);
+int compare_individuals(const void *a, const void *b);
+void repair_bad_genes(instance *inst, Individual *children, int children_size);
+void eliminate_multiple_visits(instance *inst, Individual *indiviual);
+void repair_extra_mileage(instance *inst, Individual *indiviual);
+
 #endif   /* TSP_H_ */ 

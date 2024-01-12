@@ -12,7 +12,6 @@ int * copy_array(int *arr, int size){
     return cpy; 
 }
 
-// her defe yaradanda, artiq qalir o arraylar??
 int * add_to_array(int starting_pos, int new_element, int *arr, int size){
     int *new_arr = (int *)calloc(size, sizeof(int));
 
@@ -36,6 +35,31 @@ int * add_to_array(int starting_pos, int new_element, int *arr, int size){
     return new_arr;
 
 }
+
+int * remove_from_array(int pos, int *arr, int size){
+    int *new_arr = (int *)calloc(size, sizeof(int));
+    int last_pos = 1;
+
+    arr[size-1] = -1;
+
+    for (int i = 0; i < size-1; i++)
+    {
+        if (i < pos)
+        {
+            new_arr[i] = arr[i];
+        }
+        else
+        {
+            new_arr[i] = arr[i+1];
+        }
+        
+    }
+
+    new_arr[size-1] = -1;
+    return new_arr;
+
+}
+
 
 void print_array(int *arr, int size){
     printf("array is: ");
@@ -69,12 +93,12 @@ void swap(int *a, int *b) {
     *b = temp;
 }
 
-void shuffleArray(int arr[], int n) {
-    srand(time(NULL));
+void shuffle_array_for_kick(int arr[], int n) {
+    srand(time(NULL)); int j;
 // shuffle the array with keeping segments together
 // we use pair of numbers in order to indicate the segments (its starting and ending)
     for (int i = n - 1; i > 0; i -= 2) {
-        int j = rand() % (i + 1);
+        j = rand() % (i + 1);
 
         // swap elements i and j
         swap(&arr[i], &arr[j]);
@@ -94,4 +118,39 @@ void shuffleArray(int arr[], int n) {
         
         
     }
+}
+
+// function to shuffle an array of any type using Fisher-Yates shuffle
+void shuffle_tsp_sol(int *arr, int nnodes) {
+    int j; int temp;
+    for (int i = nnodes - 1; i > 0; i--) {
+        j = rand() % (i + 1);
+
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    // close the tour
+    arr[nnodes] = arr[0];
+}
+
+
+int * combine_two_tours_from_pos(int *arr1, int *arr2, int size, int position) {
+
+    int *result_arr = (int *) calloc(size, sizeof(int));
+
+    // copy elements from arr1 before the point
+    for (int i = 0; i < position; i++) {
+        result_arr[i] = arr1[i];
+    }
+
+    // copy elements from arr2 starting from the point
+    for (int i = position; i < size; i++) {
+        result_arr[i] = arr2[i];
+    }
+
+    result_arr[size] = result_arr[0]; // close the tour
+
+    return result_arr;
 }

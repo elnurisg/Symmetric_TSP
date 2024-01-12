@@ -45,13 +45,18 @@ int main(int argc, char **argv)
 	if (inst.nnodes == 0) read_input(&inst); 
 	else generate_random_instances(&inst);
 	compute_distance(&inst);
-	if ( greedy_heuristic(&inst, 2, 0) ) print_error(" error within greedy_heuristic()");
-	// if ( extra_mileage_heuristic(&inst, 2) ) print_error(" error within greedy_heuristic()");
-	printf("\n \tbest_val is %f\n", inst.best_val);
+	// inst.nnodes + 1 is bcz of the closing the tour
+	inst.best_sol = (int *) calloc(inst.nnodes+1, sizeof(int)); 
+
+	// if ( greedy_heuristic(&inst, 2, 0) ) print_error(" error within greedy_heuristic()");
+	// if ( extra_mileage_heuristic(&inst, 1) ) print_error(" error within greedy_heuristic()");
+	// printf("\n \tbest_val is %f\n", inst.best_val);
 	// if ( variable_neighborhood_search(&inst, 5) ) print_error(" error within variable_neighborhood_search()");
-	if ( simulated_annealing(&inst) ) print_error(" error within simulated_annealing()");
+	// if ( simulated_annealing(&inst) ) print_error(" error within simulated_annealing()");
 	// if ( tabu_search(&inst, 1) ) print_error(" error within tabu_search()");
-	// if ( two_opt_refining_heuristic(&inst) ) print_error(" error within two_opt_refining_heuristic()");
+	// if ( two_opt_refining_heuristic(&inst, inst.best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
+	if ( genetic_algorithm(&inst, 1, 0) ) print_error(" error within genetic_algorithm()");
+	
 	double t2 = second();
 
 /*  //
@@ -226,6 +231,7 @@ void parse_command_line(int argc, char** argv, instance *inst)
 	// default   
 	// inst->model_type = 0;
 	inst->nnodes = 0;
+	inst->best_val = INFINITY;
 	strcpy(inst->input_file, "NULL");
 	inst->random_seed = 0; 
 	// inst->num_threads = 0;

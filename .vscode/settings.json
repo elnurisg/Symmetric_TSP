@@ -2,6 +2,7 @@
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "stdio.h": "c",
-        "convex_hull.h": "c"
+        "convex_hull.h": "c",
+        "cstdlib": "c"
     }
 }
