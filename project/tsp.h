@@ -96,7 +96,7 @@ double metropolis_formula(double delta_cost, double Temprature, int scaler);
 int annealing_process(instance *inst, int scaler);
 double average_delta_cost_between_two_edges(instance *inst);
 
-int genetic_algorithm(instance *inst, int repair, int cutting_type);
+int genetic_algorithm(instance *inst, int repair, int cutting_type, int apply_two_opt_with_repair);
 int initialize_population_randomly(instance *inst, int population_size, Individual *population);
 void initialize_individual(instance *inst, Individual *individual);
 void print_population(instance *inst, int population_size, Individual *population);
@@ -113,7 +113,7 @@ void alteration_of_genes(instance *inst, int *genes);
 Individual * survival_probabilities_of_generation(Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion);
 Individual * elitism(instance *inst, Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion);
 int compare_individuals(const void *a, const void *b);
-void repair_bad_genes(instance *inst, Individual *children, int children_size);
+void repair_bad_genes(instance *inst, Individual *children, int children_size, int apply_two_opt);
 void eliminate_multiple_visits(instance *inst, Individual *indiviual);
 void repair_extra_mileage(instance *inst, Individual *indiviual);
 

@@ -1016,7 +1016,7 @@ void avoid_bad_genes(instance *inst, Individual *children, int children_size){
 			count_of_node = 0;
 			for (int j = 0; j < inst->nnodes; j++)
 			{
-				if (children[z].genes[i] == children[z].genes[j]) // there are subtours or missing elements
+				if (i == children[z].genes[j]) // there are subtours or missing elements
 				{
 					count_of_node++;
 				}
@@ -1192,13 +1192,14 @@ void eliminate_multiple_visits(instance *inst, Individual *individual){
 	}
 }
 
-void repair_bad_genes(instance *inst, Individual *children, int children_size){
+void repair_bad_genes(instance *inst, Individual *children, int children_size, int apply_two_opt){
 		
 	for (int z = 0; z < children_size; z++)
 	{
 		eliminate_multiple_visits(inst, &children[z]);
 		repair_extra_mileage(inst, &children[z]);
-		// two_opt_refining_heuristic(inst, children[z].genes, 1);
+		if(apply_two_opt == 0)
+			two_opt_refining_heuristic(inst, children[z].genes, 1);
 		calculate_individual_fitness(inst, &children[z]);
 	}
 }
@@ -1250,7 +1251,7 @@ void repair_extra_mileage(instance *inst, Individual *individual){
 }
 
 
-int genetic_algorithm(instance *inst, int repair, int cutting_type){ // if repair == 0 then use it 
+int genetic_algorithm(instance *inst, int repair, int cutting_type, int apply_two_opt_with_repair){ // if repair == 0 then use it 
 	printf("\n_________________________________________________________\nGenetic Alghorithm:\n");
 	double t1 = second();
 
@@ -1272,7 +1273,7 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){ // if repai
 		if (repair == 0) // OFF, punish their fitness with penalty
 			avoid_bad_genes(inst, children, children_size);
 		else // (repair == 1) // ON 
-			repair_bad_genes(inst, children, children_size);
+			repair_bad_genes(inst, children, children_size, apply_two_opt_with_repair);
 		
 		mutate_population(inst, population, population_size, mutations, mutants_size);
 		champion = find_champion_individual(inst, population, population_size, children, children_size, mutations, mutants_size);

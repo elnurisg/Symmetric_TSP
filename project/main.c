@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 	// if ( simulated_annealing(&inst) ) print_error(" error within simulated_annealing()");
 	// if ( tabu_search(&inst, 1) ) print_error(" error within tabu_search()");
 	// if ( two_opt_refining_heuristic(&inst, inst.best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
-	if ( genetic_algorithm(&inst, 1, 0) ) print_error(" error within genetic_algorithm()");
+	if ( genetic_algorithm(&inst, 1, 0, 0) ) print_error(" error within genetic_algorithm()");
 	
 	double t2 = second();
 
