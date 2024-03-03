@@ -62,6 +62,7 @@ inline double dmin(double d1, double d2) { return ( d1 < d2 ) ? d1 : d2; }
 inline double dmax(double d1, double d2) { return ( d1 > d2 ) ? d1 : d2; } 
 static inline double cost(int i, int j, instance *inst);
 
+void plot_tsp_tour(instance *inst, int writing_to_file);
 int dist(int i, int j, instance *inst);
 int random_node_with_time_seed(int length);
 int random_0_to_length(instance *inst, int length);

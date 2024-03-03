@@ -1,12 +1,14 @@
 ## file
 .DS_Store
-*.pdf
+RO2_GuidaCplexMac.pdf
 
 ## object files
 *.o
 
 ## folder
 gnu.dSYM/
+output/
+RO2_Cplex_TEMPLATE_2020-2/
 
 ## executable files
 gnu

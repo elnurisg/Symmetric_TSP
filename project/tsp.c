@@ -21,6 +21,30 @@ int dist(int i, int j, instance *inst)
 	return dis;
 }        
 
+// plot the solution in commands file 
+//and writes the solution to the file if writing_to_file is true
+void plot_tsp_tour(instance *inst, int writing_to_file){
+
+	if (writing_to_file == 1)
+	{
+		FILE *f = fopen("plot/data.dat", "w");
+		if (f == NULL)
+		{
+			printf("Error opening file!\n");
+			exit(1);
+		}
+		for (int i = 0; i < inst->nnodes+1; i++)
+		{
+			fprintf(f, "%f %f\n", inst->xcoord[inst->best_sol[i]], inst->ycoord[inst->best_sol[i]]);
+		}
+		fclose(f);	
+	}
+	
+
+    system("gnuplot ./plot/commands.txt");
+
+}
+
 int is_fractional(double x) 						// it works for x in [0,1] only
 {
 	return ( (x > XSMALL) && (x < 1-XSMALL) );
@@ -530,6 +554,8 @@ int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance){
 	} while (update_switch == 1);
 	if (is_instance == 0)
 		printf("\n \tupdate in best_val after 2-OPT refining is %f\n", inst->best_val);
+	
+	inst->best_sol[inst->nnodes] = inst->best_sol[0];
 
 	return 0;
 }
@@ -633,6 +659,7 @@ int tabu_search(instance *inst, int tenure_mode){
 	
 	inst->best_sol = copy_array(optimal_solution, inst->nnodes);
 	inst->best_val = optimal_value;
+	inst->best_sol[inst->nnodes] = inst->best_sol[0];
 
 	free(optimal_solution);
 	free(inst->tabu_list);
@@ -1120,42 +1147,11 @@ Individual * survival_probabilities_of_generation(Individual *population, int po
 }
 
 // kill population with bad genes and choose the fittest population for the next generation
-// return champion
+// return new_population
 Individual * elitism(instance *inst, Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion){
 	
-	// Individual *new_population = (Individual *) calloc(population_size, sizeof(Individual));
-	// int new_population_count = 0;
-	// // survival_probabilities_of_generation(population, population_size, children, children_size, mutations, mutants_size, champion);
-	// new_population[new_population_count++] = *champion;
-	
-	// while (new_population_count < population_size)
-	// {
-	// 	for (int j = 0; j < children_size; j++) // first priority is for children
-	// 	{
-	// 		if (random01() <= probability_of_individual(&children[j], champion)){
-	// 			new_population[new_population_count] = children[j];
-	// 			new_population_count++;
-	// 		}
-	// 	}
-	// 	for (int z = 0; z < population_size; z++) // then for old population
-	// 	{
-	// 		if (random01() <= probability_of_individual(&population[z], champion)){
-	// 			new_population[new_population_count] = population[z];
-	// 			new_population_count++;
-	// 		}
-	// 	}
-	// 	for (int h = 0; h < mutants_size; h++) // and then for mutants
-	// 	{
-	// 		if (random01() <= probability_of_individual(&mutations[h], champion)){
-	// 			new_population[new_population_count] = children[h];
-	// 			new_population_count++;
-	// 		}
-	// 	}
-		
-	// }
-	
 	Individual *new_population = (Individual *) calloc(population_size, sizeof(Individual));
-	Individual *Generation;// = (Individual *) calloc(population_size, sizeof(Individual));
+	Individual *Generation;
 
 	int new_population_count = 0;
 	Generation = survival_probabilities_of_generation(population, population_size, children, children_size, mutations, mutants_size, champion);
@@ -1270,12 +1266,14 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type, int apply_tw
 	do
 	{
 		crossover(inst, population, population_size, children, children_size, cutting_type);
+		
 		if (repair == 0) // OFF, punish their fitness with penalty
 			avoid_bad_genes(inst, children, children_size);
 		else // (repair == 1) // ON 
 			repair_bad_genes(inst, children, children_size, apply_two_opt_with_repair);
 		
 		mutate_population(inst, population, population_size, mutations, mutants_size);
+		
 		champion = find_champion_individual(inst, population, population_size, children, children_size, mutations, mutants_size);
 		printf("Champion fitness of generation%d is:%f\n", count_generations, champion->fitness);
 
