@@ -68,10 +68,26 @@ int random_node_with_time_seed(int length);
 int random_0_to_length(instance *inst, int length);
 int verify_tour(instance *inst);
 
+/**
+ * Greeady Heuristic
+ * @param[in, out] inst Input instance of the tsp problem.
+ * @param[in] starting_mode The starting mode of the greedy heuristic, 0 for starting from position zero, 
+ * 1 for starting from the random position, 2 is to try all the starting positions and choose the best one.
+ * @param[in] grasp Switch for the greedy heuristic to use grasp or not. 0 is for standard greedy heuristic, 1 is for grasp.
+ * When grasp is activated, it chooses randomly the minimum 40% of the time, the second minimum 30% of the time and the third minimum 30% of the time.
+ * @return Returns 0 if the greedy heuristic is successfully applied without encountering any errors.
+**/
 int greedy_heuristic(instance *inst, int starting_mode, int grasp);
 void calculate_greedy_steps(instance *inst, int starting_node_pos, int grasp);
 int greedy_step(instance *inst, int current_node, int *uncovered_nodes, int current_length, int grasp);
 
+/**
+ * Extra Mileage Heuristic
+ * @param[in, out] inst Input instance of the tsp problem.
+ * @param[in] starting_mode The starting mode for the extra mileage heuristic, 0 for largest distance nodes, 1 for two different random nodes,
+ * 2 is to try all couple of nodes in the convexHull which are different and choose the best one.
+ * @return Returns 0 if the extra mileage heuristic is successfully applied without encountering any errors.
+**/
 int extra_mileage_heuristic(instance *inst, int starting_mode);
 void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy);
 int * extra_mileage_step(instance *inst, int *uncovered_nodes, int current_length, int *nodes_hierarchy);
@@ -82,22 +98,50 @@ int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance);
 double delta_cost_two_opt(int a, int b, instance *inst, int *tsp_sol);
 int update_tour(int i, int j, instance *inst, int *tsp_sol, int best_val_update_switch);
 
+/**
+ * Tabu Search
+ * @param[in, out] inst Input instance of the tsp problem. 
+ * @param[in] tenure_mode The tenure mode of the tabu search, 0 for reactive step tenure, 1 for reactive line tenure and 2 is for random tenure.
+ * @return Returns 0 if the tabu search is successfully applied without encountering any errors.
+**/
 int tabu_search(instance *inst, int tenure_mode);
 int tenure_length_update(instance *inst, int current_tenure, int iteration, int upper_bound_tenure, int tenure_mode);
 int update_tour_and_tabu_list(int a, int b, instance *inst);
 
+/**
+ * Variable Neighborhood Search
+ * @param[in, out] inst Input instance of the tsp problem. 
+ * @param[in] kick_neighborhood The neighborhood type of the kick, 3 for 3-opt, 5 for 5-opt and etc.
+ * @return Returns 0 if the variable neighborhood search is successfully applied without encountering any errors.
+ * @note The 1-OPT kick doesn't update the tour and also 2-OPT kick as 2-OPT refining is used.
+ * So, try to use 3-OPT kick or more.
+**/
 int variable_neighborhood_search(instance *inst, int kick_neighborhood);
 int n_opt_kick(instance *inst, int n);
 int new_tour_from_break_positions(instance *inst, int *break_positions, int arr_size);
 int copy_segment(instance *inst, int *old_solution, int starting_pos, int ending_pos, int into_pos);
 int copy_segment_in_reverse_order(instance *inst, int *old_solution, int starting_pos, int ending_pos, int into_pos);
 
+/**
+ * Simulated Annealing
+ * @param[in, out] inst Input instance of the tsp problem.
+ * @return Returns 0 if the simulated annealing is successfully applied without encountering any errors.
+**/
 int simulated_annealing(instance *inst);
 double metropolis_formula(double delta_cost, double Temprature, int scaler);
 int annealing_process(instance *inst, int scaler);
 double average_delta_cost_between_two_edges(instance *inst);
 
-int genetic_algorithm(instance *inst, int repair, int cutting_type, int apply_two_opt_with_repair);
+/**
+ * Genetic Algorithm
+ * @param[in, out] inst Input instance of the tsp problem.
+ * @param[in] repair Switch for the genetic algorithm to use repair or not. 0 is to punish their fitness with penalty without repairing,
+ * 1 is to repair the bad genes, 2 is to repair the bad genes but also use two opt refinining while repairing the genes.
+ * @param[in] cutting_type The cutting type of the crossover, 0 for cutting from the middle, 1 for cutting from the random position
+ * and 2 is for cutting from the one forth of the tour.
+ * @return Returns 0 if the genetic algorithm is successfully applied without encountering any errors.
+**/
+int genetic_algorithm(instance *inst, int repair, int cutting_type);
 int initialize_population_randomly(instance *inst, int population_size, Individual *population);
 void initialize_individual(instance *inst, Individual *individual);
 void print_population(instance *inst, int population_size, Individual *population);

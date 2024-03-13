@@ -7,3 +7,4 @@ void shuffle_array_for_kick(int arr[], int n);
 void shuffle_tsp_sol(int *arr, int size);
 int * combine_two_tours_from_pos(int *arr1, int *arr2, int size, int position);
 int * remove_from_array(int pos, int *arr, int size);
+void write_cost_to_file(double cost, const char *filename, int append);

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <sys/stat.h>
 
 int * copy_array(int *arr, int size){
     int *cpy = (int *)calloc(size, sizeof(int));
@@ -153,4 +154,33 @@ int * combine_two_tours_from_pos(int *arr1, int *arr2, int size, int position) {
     result_arr[size] = result_arr[0]; // close the tour
 
     return result_arr;
+}
+
+void write_cost_to_file(double cost, const char *filename, int append) {
+    const char *folder = "cost_plot";
+    struct stat st = {0};
+    // Check if the folder exists
+    if (stat(folder, &st) != 0){
+        //if the folder doesn't exist, create it
+        // For Linux/Unix
+        if (mkdir(folder, 0777) != 0) {
+            printf("Error creating folder: %s\n", folder);
+            return;
+        }
+    }
+
+    FILE *fp;  
+    if (append == 0)
+        fp = fopen(filename, "a");  // Append mode
+    else if (append == 1)
+        fp = fopen(filename, "w");  // Overwrite mode
+    
+    if (fp == NULL) {  
+        printf("Error opening file.\n");
+        return;
+    }
+
+    fprintf(fp, "$$%.2f\n", cost);
+
+    fclose(fp);
 }

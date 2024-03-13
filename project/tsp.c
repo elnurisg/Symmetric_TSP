@@ -21,7 +21,7 @@ int dist(int i, int j, instance *inst)
 	return dis;
 }        
 
-// plot the solution in commands file 
+// plot the solution in commands.txt file 
 //and writes the solution to the file if writing_to_file is true
 void plot_tsp_tour(instance *inst, int writing_to_file){
 
@@ -717,28 +717,32 @@ int new_tour_from_break_positions(instance *inst, int *break_positions, int arr_
 
 int n_opt_kick(instance *inst, int n){
 	printf("\n_________________________________________________________\n%d-OPT kick:\n", n);
-	// we divide the tour into 5 pieces and then reconnect them randomly and
+	// we divide the tour into n pieces and then reconnect them randomly and
 	int arr_size = n*2;
 	int *break_positions = (int *) calloc(arr_size, sizeof(int));
 	break_positions[0] = 0;
 	int n_candidates = 1;
+	int choose_candidate_again = 0;
 	while (n_candidates < arr_size -1) // bcz the last one is always known
 	{
+		choose_candidate_again = 0;
 		break_positions[n_candidates] = random_0_to_length(inst, inst->nnodes-2) + 1;
 		for (int j = 0; j < n_candidates; j++) // checking that they are different
 		{									// and not neighbour
 			if((break_positions[n_candidates] == break_positions[j]) ||
 			 (break_positions[n_candidates] == (break_positions[j]+1)) || 
-			 (break_positions[n_candidates]+1 == (break_positions[j]))) continue;
+			 (break_positions[n_candidates]+1 == (break_positions[j]))) choose_candidate_again = 1;
 		}
-		                                                                          
+
+		if (choose_candidate_again == 1) continue;
+
 		n_candidates++;
 
 		// successor in the previous solution
 		break_positions[n_candidates] = break_positions[n_candidates-1] + 1; 
 		n_candidates++;
 	}
-	break_positions[arr_size-1] = 279;
+	break_positions[arr_size-1] = inst->nnodes-1;
 // ordering the elements of array bcz the random numbers we found were the positions
 // in the tour, not the nodes. We consider ordered version as of original sol and then
 // change the order in random way. We do like this bcz we divide the tour into n parts.
@@ -780,17 +784,28 @@ int verify_tour(instance *inst){
 
 int variable_neighborhood_search(instance *inst, int kick_neighborhood){
 	printf("\n_________________________________________________________\nVariable Neighborhood Search:\n");
+	
+	if (kick_neighborhood == 0 || kick_neighborhood > (inst->nnodes/3)) print_error("Error! Kick neighborhood can not be 0 or more than the one third of the number of nodes\n");
+	// 0-OPT kick is not meaningful
+	
+	// char filename[50];
+    // snprintf(filename, sizeof(filename), "cost_plot/costs_VNS_%d-OPT.txt", kick_neighborhood);
 
 	double t1 = second();
 
 	two_opt_refining_heuristic(inst, inst->best_sol, 0);
+	// write_cost_to_file(inst->best_val, filename, 1);
+
 	int* optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
 	double optimal_value = inst->best_val;
 	
 	do
-	{
+	{	
 		n_opt_kick(inst, kick_neighborhood);
+		// write_cost_to_file(inst->best_val, filename, 0);
+	
 		two_opt_refining_heuristic(inst, inst->best_sol, 0);
+		// write_cost_to_file(inst->best_val, filename, 0);
 
 		if (optimal_value > inst->best_val)
 		{
@@ -1194,7 +1209,7 @@ void repair_bad_genes(instance *inst, Individual *children, int children_size, i
 	{
 		eliminate_multiple_visits(inst, &children[z]);
 		repair_extra_mileage(inst, &children[z]);
-		if(apply_two_opt == 0)
+		if(apply_two_opt == 2)
 			two_opt_refining_heuristic(inst, children[z].genes, 1);
 		calculate_individual_fitness(inst, &children[z]);
 	}
@@ -1247,7 +1262,7 @@ void repair_extra_mileage(instance *inst, Individual *individual){
 }
 
 
-int genetic_algorithm(instance *inst, int repair, int cutting_type, int apply_two_opt_with_repair){ // if repair == 0 then use it 
+int genetic_algorithm(instance *inst, int repair, int cutting_type){
 	printf("\n_________________________________________________________\nGenetic Alghorithm:\n");
 	double t1 = second();
 
@@ -1269,8 +1284,8 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type, int apply_tw
 		
 		if (repair == 0) // OFF, punish their fitness with penalty
 			avoid_bad_genes(inst, children, children_size);
-		else // (repair == 1) // ON 
-			repair_bad_genes(inst, children, children_size, apply_two_opt_with_repair);
+		else  // ON 
+			repair_bad_genes(inst, children, children_size, repair);
 		
 		mutate_population(inst, population, population_size, mutations, mutants_size);
 		
@@ -1300,3 +1315,120 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type, int apply_tw
 
 	return 0;
 }
+
+// int TSPopt(instance *inst)
+// /**************************************************************************************************************************/
+// {  
+
+// 	// open CPLEX model
+// 	int error;
+// 	CPXENVptr env = CPXopenCPLEX(&error);
+// 	if ( error ) print_error("CPXopenCPLEX() error");
+// 	CPXLPptr lp = CPXcreateprob(env, &error, "TSP model version 1"); 
+// 	if ( error ) print_error("CPXcreateprob() error");
+
+// 	build_model(inst, env, lp);
+	
+// 	// Cplex's parameter setting
+// 	// CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_OFF);
+// 	// if ( VERBOSE >= 60 ) CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_ON); // Cplex output on screen
+// 	// CPXsetintparam(env, CPX_PARAM_RANDOMSEED, 123456);	
+// 	// CPXsetdblparam(env, CPX_PARAM_TILIM, 3600.0); 
+
+// 	error = CPXmipopt(env,lp);
+// 	if ( error ) 
+// 	{
+// 		printf("CPX error code %d\n", error);
+// 		print_error("CPXmipopt() error"); 
+// 	}
+
+// 	// use the optimal solution found by CPLEX
+	
+// 	int ncols = CPXgetnumcols(env, lp);
+// 	double *xstar = (double *) calloc(ncols, sizeof(double));
+// 	if ( CPXgetx(env, lp, xstar, 0, ncols-1) ) print_error("CPXgetx() error");	
+// 	for ( int i = 0; i < inst->nnodes; i++ )
+// 	{
+// 		for ( int j = i+1; j < inst->nnodes; j++ )
+// 		{
+// 			if ( xstar[xpos(i,j,inst)] > 0.5 ) printf("  ... x(%3d,%3d) = 1\n", i+1,j+1);
+// 		}
+// 	}
+// 	free(xstar);
+	
+// 	// free and close cplex model   
+// 	CPXfreeprob(env, &lp);
+// 	CPXcloseCPLEX(&env); 
+
+// 	return 0; // or an appropriate nonzero error code
+
+// }
+
+// /***************************************************************************************************************************/
+// int xpos(int i, int j, instance *inst)      // to be verified                                           
+// /***************************************************************************************************************************/
+// { 
+// 	if ( i == j ) print_error(" i == j in xpos" );
+// 	if ( i > j ) return xpos(j,i,inst);
+// 	int pos = i * inst->nnodes + j - (( i + 1 ) * ( i + 2 )) / 2;
+// 	return pos;
+// }
+	
+
+// /***************************************************************************************************************************/
+// void build_model(instance *inst, CPXENVptr env, CPXLPptr lp)
+// /**************************************************************************************************************************/
+// {    
+
+// 	double zero = 0.0;  
+// 	char binary = 'B'; 
+
+// 	char **cname = (char **) calloc(1, sizeof(char *));		// (char **) required by cplex...
+// 	cname[0] = (char *) calloc(100, sizeof(char));
+
+// // add binary var.s x(i,j) for i < j  
+
+// 	for ( int i = 0; i < inst->nnodes; i++ )
+// 	{
+// 		for ( int j = i+1; j < inst->nnodes; j++ )
+// 		{
+// 			sprintf(cname[0], "x(%d,%d)", i+1,j+1);  		// ... x(1,2), x(1,3) ....
+// 			double obj = dist(i,j,inst); // cost == distance   
+// 			double lb = 0.0;
+// 			double ub = 1.0;
+// 			if ( CPXnewcols(env, lp, 1, &obj, &lb, &ub, &binary, cname) ) print_error(" wrong CPXnewcols on x var.s");
+//     		if ( CPXgetnumcols(env,lp)-1 != xpos(i,j, inst) ) print_error(" wrong position for x var.s");
+// 		}
+// 	} 
+
+// // add the degree constraints 
+
+// 	int *index = (int *) calloc(inst->nnodes, sizeof(int));
+// 	double *value = (double *) calloc(inst->nnodes, sizeof(double));
+
+// 	for ( int h = 0; h < inst->nnodes; h++ )  		// add the degree constraint on node h
+// 	{
+// 		double rhs = 2.0;
+// 		char sense = 'E';                            // 'E' for equality constraint 
+// 		sprintf(cname[0], "degree(%d)", h+1);   
+// 		int nnz = 0;
+// 		for ( int i = 0; i < inst->nnodes; i++ )
+// 		{
+// 			if ( i == h ) continue;
+// 			index[nnz] = xpos(i,h, inst);
+// 			value[nnz] = 1.0;
+// 			nnz++;
+// 		}
+// 		int izero = 0;
+// 		if ( CPXaddrows(env, lp, 0, 1, nnz, &rhs, &sense, &izero, index, value, NULL, &cname[0]) ) print_error("CPXaddrows(): error 1");
+// 	} 
+
+// 	free(value);
+// 	free(index);
+
+// 	free(cname[0]);
+// 	free(cname);
+
+// 	if ( VERBOSE >= 100 ) CPXwriteprob(env, lp, "model.lp", NULL);   
+
+// }
