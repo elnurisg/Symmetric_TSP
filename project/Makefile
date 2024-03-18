@@ -1,15 +1,34 @@
-CC=gcc
-CFFLAGS = -Wall -Wextra -g3 #-Wall -O3
-OBJS = main.o tsp.o chrono.o utilities.o convex_hull.o
-DEPS = tsp.h
+CC = gcc
+CFLAGS = -Wall -Wextra -g3 -I/Applications/CPLEX_Studio2211/cplex/include/ilcplex
+LDFLAGS = -L/Applications/CPLEX_Studio2211/cplex/lib/x86-64_osx/static_pic -lcplex -lm -lpthread -ldl
 RM = rm -rf
 EXE = tsp
+
+OBJS = main.o tsp.o chrono.o utilities.o convex_hull.o
+DEPS = tsp.h
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-main: $(OBJS)
-	$(CC) -o $@ $^ $(CFLAGS)
+$(EXE): $(OBJS)
+	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
+
+clean:
+	$(RM) $(EXE) $(OBJS)
+
+# CC=gcc
+# CFFLAGS = -Wall -Wextra -g3 #-Wall -O3
+# OBJS = main.o tsp.o chrono.o utilities.o convex_hull.o
+# DEPS = tsp.h
+# RM = rm -rf
+# EXE = tsp
+
+# %.o: %.c $(DEPS)
+# 	$(CC) -c -o $@ $< $(CFLAGS)
+
+# main: $(OBJS)
+# 	$(CC) -o $@ $^ $(CFLAGS)
+
 
 
 ### gcc -Wall -Wextra -g3 /Users/elnur/Desktop/OR2/project/main.c -o 

@@ -9,7 +9,7 @@
 #include <time.h>
 #include "utilities.h"
 
-// #include <cplex.h>  
+#include <cplex.h>  
 #include <pthread.h>  
 
 #define VERBOSE				    50		// printing level  (=10 only incumbent, =20 little output, =50-60 good, =70 verbose, >=100 cplex log)
@@ -161,5 +161,10 @@ int compare_individuals(const void *a, const void *b);
 void repair_bad_genes(instance *inst, Individual *children, int children_size, int apply_two_opt);
 void eliminate_multiple_visits(instance *inst, Individual *indiviual);
 void repair_extra_mileage(instance *inst, Individual *indiviual);
+
+int TSPopt(instance *inst);
+int xpos(int i, int j, instance *inst);
+void build_model(instance *inst, CPXENVptr env, CPXLPptr lp);
+void fill_best_sol(int *edges, instance *inst);
 
 #endif   /* TSP_H_ */ 

@@ -1316,119 +1316,155 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){
 	return 0;
 }
 
-// int TSPopt(instance *inst)
-// /**************************************************************************************************************************/
-// {  
+void fill_best_sol(int *edges, instance *inst){
+	print_array(edges, inst->nnodes*2);
 
-// 	// open CPLEX model
-// 	int error;
-// 	CPXENVptr env = CPXopenCPLEX(&error);
-// 	if ( error ) print_error("CPXopenCPLEX() error");
-// 	CPXLPptr lp = CPXcreateprob(env, &error, "TSP model version 1"); 
-// 	if ( error ) print_error("CPXcreateprob() error");
-
-// 	build_model(inst, env, lp);
+	int temp1; int temp2;
+	// find another node which is the same as first_node and move it to the end with its pair
+	// in order to have the same node in first and last position
+	// so that it can be a tour
+	move_node_in_edges(edges, inst->nnodes*2, 0, inst->nnodes*2-1);
+	// make every same node to appear next to each other (except first and the last)
+	// move_node_in_edges(edges, inst->nnodes*2, 1, 1+1);
+	// move_node_in_edges(edges, inst->nnodes*2, 3, 3+1);
+	for (int i = 1; i < inst->nnodes*2-5; i+=2)
+	{
+		move_node_in_edges(edges, inst->nnodes*2, edges[i], i+1);
+	}
+	print_array(edges, inst->nnodes*2);
 	
-// 	// Cplex's parameter setting
-// 	// CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_OFF);
-// 	// if ( VERBOSE >= 60 ) CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_ON); // Cplex output on screen
-// 	// CPXsetintparam(env, CPX_PARAM_RANDOMSEED, 123456);	
-// 	// CPXsetdblparam(env, CPX_PARAM_TILIM, 3600.0); 
+}
 
-// 	error = CPXmipopt(env,lp);
-// 	if ( error ) 
-// 	{
-// 		printf("CPX error code %d\n", error);
-// 		print_error("CPXmipopt() error"); 
-// 	}
-
-// 	// use the optimal solution found by CPLEX
+int TSPopt(instance *inst)
+/**************************************************************************************************************************/
+{  
+	// nodes in odd and in even positions are the nodes which are connected. we store them here
+	// int *edges = (int *) calloc(inst->nnodes*2, sizeof(int));
+	// int index_edge=0;
 	
-// 	int ncols = CPXgetnumcols(env, lp);
-// 	double *xstar = (double *) calloc(ncols, sizeof(double));
-// 	if ( CPXgetx(env, lp, xstar, 0, ncols-1) ) print_error("CPXgetx() error");	
-// 	for ( int i = 0; i < inst->nnodes; i++ )
-// 	{
-// 		for ( int j = i+1; j < inst->nnodes; j++ )
-// 		{
-// 			if ( xstar[xpos(i,j,inst)] > 0.5 ) printf("  ... x(%3d,%3d) = 1\n", i+1,j+1);
-// 		}
-// 	}
-// 	free(xstar);
+	// open CPLEX model
+	int error;
+	CPXENVptr env = CPXopenCPLEX(&error);
+	if ( error ) print_error("CPXopenCPLEX() error");
+	CPXLPptr lp = CPXcreateprob(env, &error, "TSP model version 1"); 
+	if ( error ) print_error("CPXcreateprob() error");
+
+	build_model(inst, env, lp);
 	
-// 	// free and close cplex model   
-// 	CPXfreeprob(env, &lp);
-// 	CPXcloseCPLEX(&env); 
+	// Cplex's parameter setting
+	// CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_OFF);
+	// if ( VERBOSE >= 60 ) CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_ON); // Cplex output on screen
+	// CPXsetintparam(env, CPX_PARAM_RANDOMSEED, 123456);	
+	// CPXsetdblparam(env, CPX_PARAM_TILIM, 3600.0); 
 
-// 	return 0; // or an appropriate nonzero error code
+	error = CPXmipopt(env,lp);
+	if ( error ) 
+	{
+		printf("CPX error code %d\n", error);
+		print_error("CPXmipopt() error"); 
+	}
 
-// }
+	// use the optimal solution found by CPLEX
+	
+	int ncols = CPXgetnumcols(env, lp);
+	double *xstar = (double *) calloc(ncols, sizeof(double));
+	if ( CPXgetx(env, lp, xstar, 0, ncols-1) ) print_error("CPXgetx() error");	
+	for ( int i = 0; i < inst->nnodes; i++ )
+	{
+		for ( int j = i+1; j < inst->nnodes; j++ )
+		{
+			if ( xstar[xpos(i,j,inst)] > 0.5 ){
+				printf("  ... x(%3d,%3d) = 1\n", i+1,j+1);
+				// if (index_edge >= inst->nnodes*2)
+				// {
+				// 	print_error("index_edge is out of range: TSPopt");
+				// 	return -1;
+				// }
+				
+				// edges[index_edge] = i;
+				// edges[index_edge+1] = j;
+				// index_edge+=2;
+			}
+		}
+	}
+	free(xstar);
+		
+	// free and close cplex model   
+	CPXfreeprob(env, &lp);
+	CPXcloseCPLEX(&env); 
 
-// /***************************************************************************************************************************/
-// int xpos(int i, int j, instance *inst)      // to be verified                                           
-// /***************************************************************************************************************************/
-// { 
-// 	if ( i == j ) print_error(" i == j in xpos" );
-// 	if ( i > j ) return xpos(j,i,inst);
-// 	int pos = i * inst->nnodes + j - (( i + 1 ) * ( i + 2 )) / 2;
-// 	return pos;
-// }
+
+	// fill_best_sol(edges, inst);
+
+	return 0; // or an appropriate nonzero error code
+
+}
+
+/***************************************************************************************************************************/
+int xpos(int i, int j, instance *inst)      // to be verified                                           
+/***************************************************************************************************************************/
+{ 
+	if ( i == j ) print_error(" i == j in xpos" );
+	if ( i > j ) return xpos(j,i,inst);
+	int pos = i * inst->nnodes + j - (( i + 1 ) * ( i + 2 )) / 2;
+	return pos;
+}
 	
 
-// /***************************************************************************************************************************/
-// void build_model(instance *inst, CPXENVptr env, CPXLPptr lp)
-// /**************************************************************************************************************************/
-// {    
+/***************************************************************************************************************************/
+void build_model(instance *inst, CPXENVptr env, CPXLPptr lp)
+/**************************************************************************************************************************/
+{    
 
-// 	double zero = 0.0;  
-// 	char binary = 'B'; 
+	double zero = 0.0;  
+	char binary = 'B'; 
 
-// 	char **cname = (char **) calloc(1, sizeof(char *));		// (char **) required by cplex...
-// 	cname[0] = (char *) calloc(100, sizeof(char));
+	char **cname = (char **) calloc(1, sizeof(char *));		// (char **) required by cplex...
+	cname[0] = (char *) calloc(100, sizeof(char));
 
-// // add binary var.s x(i,j) for i < j  
+// add binary var.s x(i,j) for i < j  
 
-// 	for ( int i = 0; i < inst->nnodes; i++ )
-// 	{
-// 		for ( int j = i+1; j < inst->nnodes; j++ )
-// 		{
-// 			sprintf(cname[0], "x(%d,%d)", i+1,j+1);  		// ... x(1,2), x(1,3) ....
-// 			double obj = dist(i,j,inst); // cost == distance   
-// 			double lb = 0.0;
-// 			double ub = 1.0;
-// 			if ( CPXnewcols(env, lp, 1, &obj, &lb, &ub, &binary, cname) ) print_error(" wrong CPXnewcols on x var.s");
-//     		if ( CPXgetnumcols(env,lp)-1 != xpos(i,j, inst) ) print_error(" wrong position for x var.s");
-// 		}
-// 	} 
+	for ( int i = 0; i < inst->nnodes; i++ )
+	{
+		for ( int j = i+1; j < inst->nnodes; j++ )
+		{
+			sprintf(cname[0], "x(%d,%d)", i+1,j+1);  		// ... x(1,2), x(1,3) ....
+			double obj = dist(i,j,inst); // cost == distance   
+			double lb = 0.0;
+			double ub = 1.0;
+			if ( CPXnewcols(env, lp, 1, &obj, &lb, &ub, &binary, cname) ) print_error(" wrong CPXnewcols on x var.s");
+    		if ( CPXgetnumcols(env,lp)-1 != xpos(i,j, inst) ) print_error(" wrong position for x var.s");
+		}
+	} 
 
-// // add the degree constraints 
+// add the degree constraints 
 
-// 	int *index = (int *) calloc(inst->nnodes, sizeof(int));
-// 	double *value = (double *) calloc(inst->nnodes, sizeof(double));
+	int *index = (int *) calloc(inst->nnodes, sizeof(int));
+	double *value = (double *) calloc(inst->nnodes, sizeof(double));
 
-// 	for ( int h = 0; h < inst->nnodes; h++ )  		// add the degree constraint on node h
-// 	{
-// 		double rhs = 2.0;
-// 		char sense = 'E';                            // 'E' for equality constraint 
-// 		sprintf(cname[0], "degree(%d)", h+1);   
-// 		int nnz = 0;
-// 		for ( int i = 0; i < inst->nnodes; i++ )
-// 		{
-// 			if ( i == h ) continue;
-// 			index[nnz] = xpos(i,h, inst);
-// 			value[nnz] = 1.0;
-// 			nnz++;
-// 		}
-// 		int izero = 0;
-// 		if ( CPXaddrows(env, lp, 0, 1, nnz, &rhs, &sense, &izero, index, value, NULL, &cname[0]) ) print_error("CPXaddrows(): error 1");
-// 	} 
+	for ( int h = 0; h < inst->nnodes; h++ )  		// add the degree constraint on node h
+	{
+		double rhs = 2.0;
+		char sense = 'E';                            // 'E' for equality constraint 
+		sprintf(cname[0], "degree(%d)", h+1);   
+		int nnz = 0;
+		for ( int i = 0; i < inst->nnodes; i++ )
+		{
+			if ( i == h ) continue;
+			index[nnz] = xpos(i,h, inst);
+			value[nnz] = 1.0;
+			nnz++;
+		}
+		int izero = 0;
+		if ( CPXaddrows(env, lp, 0, 1, nnz, &rhs, &sense, &izero, index, value, NULL, &cname[0]) ) print_error("CPXaddrows(): error 1");
+	} 
 
-// 	free(value);
-// 	free(index);
+	free(value);
+	free(index);
 
-// 	free(cname[0]);
-// 	free(cname);
+	free(cname[0]);
+	free(cname);
 
-// 	if ( VERBOSE >= 100 ) CPXwriteprob(env, lp, "model.lp", NULL);   
+	if ( VERBOSE >= 100 ) CPXwriteprob(env, lp, "model.lp", NULL);   
 
-// }
+}
