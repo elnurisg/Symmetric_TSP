@@ -83,7 +83,8 @@ int main(int argc, char **argv)
 	
 	printf("\n----------------------------------------------------------------------------------------------");
 	printf("\nTook %f seconds \n\n", t2 - t1);
-	// plot_tsp_tour(&inst, 1);
+	if(verify_tour(&inst)==0) printf("\tIt is a tour!\n");
+	plot_tsp_tour(&inst, 1);
 	
 	free_instance(&inst);
 	return 0; 

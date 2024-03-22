@@ -1368,7 +1368,64 @@ int TSPopt(instance *inst)
 	
 	int ncols = CPXgetnumcols(env, lp);
 	double *xstar = (double *) calloc(ncols, sizeof(double));
-	if ( CPXgetx(env, lp, xstar, 0, ncols-1) ) print_error("CPXgetx() error");	
+	int *succ = (int *) calloc(inst->nnodes, sizeof(int));
+	int *comp = (int *) calloc(inst->nnodes, sizeof(int));
+	int *ncomp = (int *) calloc(1, sizeof(int));
+	int stop_switch = 0;
+
+	int *index = (int *) calloc(ncols, sizeof(int));
+	double *value = (double *) calloc(ncols, sizeof(double));
+	double rhs;
+	char sense = 'L';                            // 'L' for less or equal
+	// char *cname = (char *) calloc(100, sizeof(char));
+	int nnz;
+
+	while (stop_switch == 0)
+	{
+		// printf("%d",CPXgetx(env, lp, xstar, 0, ncols-1));
+		error = CPXmipopt(env,lp);
+		if ( error ) 
+		{
+			printf("CPX error code %d\n", error);
+			print_error("CPXmipopt() error"); 
+		}
+		if ( CPXgetx(env, lp, xstar, 0, ncols-1) ) print_error("CPXgetx() error");	
+		build_sol(xstar, inst, succ, comp, ncomp);
+		printf("%d\n",*ncomp);
+		if (*ncomp <= 1) stop_switch = 1;
+		else
+		{
+			for (int k = 1; k < *ncomp; k++)
+			{
+				// add a subtour elimination constraint
+				nnz = 0; rhs = -1;
+				for ( int i = 0; i < inst->nnodes; i++ )
+				{
+					if ( comp[i] == k )
+					{
+						rhs++;
+						for (int j = 0; j < inst->nnodes; j++)
+						{
+							if (j > i && comp[j] == k)
+							{
+								index[nnz] = xpos(i,j, inst);
+								value[nnz] = 1.0;
+								nnz++;
+							}
+						}
+					}
+				}
+				int izero = 0;
+				// sprintf(cname, "SEC(%d)", *ncomp);
+				if ( CPXaddrows(env, lp, 0, 1, nnz, &rhs, &sense, &izero, index, value, NULL, NULL) ) print_error("CPXaddrows(): error 2");
+
+			}		
+		}
+	}
+	free(value);
+	free(index);
+	// free(cname);		
+
 	for ( int i = 0; i < inst->nnodes; i++ )
 	{
 		for ( int j = i+1; j < inst->nnodes; j++ )
@@ -1387,8 +1444,14 @@ int TSPopt(instance *inst)
 			}
 		}
 	}
+	inst->best_sol = copy_array(succ, inst->nnodes+1);
+	inst->best_sol[inst->nnodes] = inst->best_sol[0]; //close the tour
+	calculate_best_val(inst);
+	
 	free(xstar);
-		
+	free(succ);
+	free(comp);
+	free(ncomp);
 	// free and close cplex model   
 	CPXfreeprob(env, &lp);
 	CPXcloseCPLEX(&env); 
@@ -1467,4 +1530,69 @@ void build_model(instance *inst, CPXENVptr env, CPXLPptr lp)
 
 	if ( VERBOSE >= 100 ) CPXwriteprob(env, lp, "model.lp", NULL);   
 
+}
+
+
+
+/*********************************************************************************************************************************/
+void build_sol(const double *xstar, instance *inst, int *succ, int *comp, int *ncomp) // build succ() and comp() wrt xstar()...
+/*********************************************************************************************************************************/
+{   
+
+#ifdef DEBUG
+	int *degree = (int *) calloc(inst->nnodes, sizeof(int));
+	for ( int i = 0; i < inst->nnodes; i++ )
+	{
+		for ( int j = i+1; j < inst->nnodes; j++ )
+		{
+			int k = xpos(i,j,inst);
+			if ( fabs(xstar[k]) > EPS && fabs(xstar[k]-1.0)) > EPS ) print_error(" wrong xstar in build_sol()");
+			if ( xstar[k] > 0.5 ) 
+			{
+				++degree[i];
+				++degree[j];
+			}
+		}
+	}
+	for ( int i = 0; i < inst->nnodes; i++ )
+	{
+		if ( degree[i] != 2 ) print_error("wrong degree in build_sol()");
+	}	
+	free(degree);
+#endif
+
+	*ncomp = 0;
+	for ( int i = 0; i < inst->nnodes; i++ )
+	{
+		succ[i] = -1;
+		comp[i] = -1;
+	}
+	
+	for ( int start = 0; start < inst->nnodes; start++ )
+	{
+		if ( comp[start] >= 0 ) continue;  // node "start" was already visited, just skip it
+
+		// a new component is found
+		(*ncomp)++;
+		int i = start;
+		int done = 0;
+		while ( !done )  // go and visit the current component
+		{
+			comp[i] = *ncomp;
+			done = 1;
+			for ( int j = 0; j < inst->nnodes; j++ )
+			{
+				if ( i != j && xstar[xpos(i,j,inst)] > 0.5 && comp[j] == -1 ) // the edge [i,j] is selected in xstar and j was not visited before 
+				{
+					succ[i] = j;
+					i = j;
+					done = 0;
+					break;
+				}
+			}
+		}	
+		succ[i] = start;  // last arc to close the cycle
+		
+		// go to the next component...
+	}
 }
