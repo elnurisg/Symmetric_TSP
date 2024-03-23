@@ -1335,7 +1335,7 @@ void fill_best_sol(int *edges, instance *inst){
 	
 }
 
-int TSPopt(instance *inst)
+int TSPopt(instance *inst) // enable the timelimit and check if it is optimal solution, mip function? and if not feasible, how to deal with it? mb printerror
 /**************************************************************************************************************************/
 {  
 	// nodes in odd and in even positions are the nodes which are connected. we store them here
@@ -1379,7 +1379,7 @@ int TSPopt(instance *inst)
 		if ( CPXgetx(env, lp, xstar, 0, ncols-1) ) print_error("CPXgetx() error");	
 
 		build_sol(xstar, inst, succ, comp, ncomp);
-		printf("%d\n",*ncomp);
+		// printf("%d\n",*ncomp);
 
 		if (*ncomp <= 1) stop_switch = 1;
 		else
@@ -1410,10 +1410,10 @@ int TSPopt(instance *inst)
 			}
 		}
 	}
-	inst->best_sol = copy_array(succ, inst->nnodes+1);
-	inst->best_sol[inst->nnodes] = inst->best_sol[0]; //close the tour
-	calculate_best_val(inst);
-	
+
+	store_solution(inst, succ);
+	// CPXwriteprob(env, lp, "model.lp", NULL);   
+
 	free(xstar);
 	free(succ);
 	free(comp);
@@ -1427,6 +1427,17 @@ int TSPopt(instance *inst)
 
 	return 0; // or an appropriate nonzero error code
 
+}
+
+void store_solution(instance *inst, int *succ){
+	
+	inst->best_sol[0] = 0;
+	for (int i = 0; i < inst->nnodes; i++)
+	{
+		inst->best_sol[i+1] = succ[inst->best_sol[i]];
+	}
+	
+	calculate_best_val(inst);
 }
 
 void add_subtour_constraint(CPXENVptr env, CPXLPptr lp, instance *inst, int *comp, int component_num, int ncols)
@@ -1443,9 +1454,9 @@ void add_subtour_constraint(CPXENVptr env, CPXLPptr lp, instance *inst, int *com
 		if ( comp[i] == component_num )
 		{
 			rhs++;
-			for (int j = 0; j < inst->nnodes; j++)
+			for (int j = i+1; j < inst->nnodes; j++)
 			{
-				if (j > i && comp[j] == component_num)
+				if (comp[j] == component_num)
 				{
 					index[nnz] = xpos(i,j, inst);
 					value[nnz] = 1.0;
@@ -1526,8 +1537,6 @@ void build_model(instance *inst, CPXENVptr env, CPXLPptr lp)
 
 	free(cname[0]);
 	free(cname);
-
-	if ( VERBOSE >= 100 ) CPXwriteprob(env, lp, "model.lp", NULL);   
 
 }
 
