@@ -1373,58 +1373,24 @@ int TSPopt(instance *inst)
 	int *ncomp = (int *) calloc(1, sizeof(int));
 	int stop_switch = 0;
 
-	int *index = (int *) calloc(ncols, sizeof(int));
-	double *value = (double *) calloc(ncols, sizeof(double));
-	double rhs;
-	char sense = 'L';                            // 'L' for less or equal
-	// char *cname = (char *) calloc(100, sizeof(char));
-	int nnz;
-
 	while (stop_switch == 0)
 	{
-		// printf("%d",CPXgetx(env, lp, xstar, 0, ncols-1));
-		error = CPXmipopt(env,lp);
-		if ( error ) 
-		{
-			printf("CPX error code %d\n", error);
-			print_error("CPXmipopt() error"); 
-		}
+		if (CPXmipopt(env,lp)) print_error("CPXmipopt() error"); 
 		if ( CPXgetx(env, lp, xstar, 0, ncols-1) ) print_error("CPXgetx() error");	
+
 		build_sol(xstar, inst, succ, comp, ncomp);
 		printf("%d\n",*ncomp);
+
 		if (*ncomp <= 1) stop_switch = 1;
 		else
 		{
-			for (int k = 1; k < *ncomp; k++)
+			for (int component_num = 1; component_num < *ncomp; component_num++)
 			{
+				add_subtour_constraint(env, lp, inst, comp, component_num, ncols);
 				// add a subtour elimination constraint
-				nnz = 0; rhs = -1;
-				for ( int i = 0; i < inst->nnodes; i++ )
-				{
-					if ( comp[i] == k )
-					{
-						rhs++;
-						for (int j = 0; j < inst->nnodes; j++)
-						{
-							if (j > i && comp[j] == k)
-							{
-								index[nnz] = xpos(i,j, inst);
-								value[nnz] = 1.0;
-								nnz++;
-							}
-						}
-					}
-				}
-				int izero = 0;
-				// sprintf(cname, "SEC(%d)", *ncomp);
-				if ( CPXaddrows(env, lp, 0, 1, nnz, &rhs, &sense, &izero, index, value, NULL, NULL) ) print_error("CPXaddrows(): error 2");
-
 			}		
 		}
 	}
-	free(value);
-	free(index);
-	// free(cname);		
 
 	for ( int i = 0; i < inst->nnodes; i++ )
 	{
@@ -1463,6 +1429,39 @@ int TSPopt(instance *inst)
 
 }
 
+void add_subtour_constraint(CPXENVptr env, CPXLPptr lp, instance *inst, int *comp, int component_num, int ncols)
+{
+	int *index = (int *) calloc(ncols, sizeof(int));
+	double *value = (double *) calloc(ncols, sizeof(double));
+	double rhs = -1;
+	char sense = 'L';                            // 'L' for less or equal
+	// char *cname = (char *) calloc(100, sizeof(char));
+	int nnz = 0;
+
+	for ( int i = 0; i < inst->nnodes; i++ )
+	{
+		if ( comp[i] == component_num )
+		{
+			rhs++;
+			for (int j = 0; j < inst->nnodes; j++)
+			{
+				if (j > i && comp[j] == component_num)
+				{
+					index[nnz] = xpos(i,j, inst);
+					value[nnz] = 1.0;
+					nnz++;
+				}
+			}
+		}
+	}
+	int izero = 0;
+	// sprintf(cname, "SEC(%d)", *ncomp);
+	if ( CPXaddrows(env, lp, 0, 1, nnz, &rhs, &sense, &izero, index, value, NULL, NULL) ) print_error("CPXaddrows(): error 2");
+
+	free(value);
+	free(index);
+	// free(cname);		
+}
 /***************************************************************************************************************************/
 int xpos(int i, int j, instance *inst)      // to be verified                                           
 /***************************************************************************************************************************/

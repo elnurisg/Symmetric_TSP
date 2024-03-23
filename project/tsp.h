@@ -167,5 +167,5 @@ int xpos(int i, int j, instance *inst);
 void build_model(instance *inst, CPXENVptr env, CPXLPptr lp);
 void fill_best_sol(int *edges, instance *inst);
 void build_sol(const double *xstar, instance *inst, int *succ, int *comp, int *ncomp);
-
+void add_subtour_constraint(CPXENVptr env, CPXLPptr lp, instance *inst, int *comp, int component_num, int ncols);
 #endif   /* TSP_H_ */ 
