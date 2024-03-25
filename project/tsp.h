@@ -16,7 +16,7 @@
 
 //hard-wired parameters
 #define XSMALL		  		  1e-5 		// 1e-4*	// tolerance used to decide ingerality of 0-1 var.s
-#define EPSILON		  		  1e-9		// 1e-9		// very small numerical tolerance 
+#define EPSILON		  		  1e-5		// 1e-5		// very small numerical tolerance 
 // #define TICKS_PER_SECOND 	  1000.0  	// cplex's ticks on Intel Core i7 quadcore @2.3GHZ
                                  
 //data structures  
@@ -168,5 +168,10 @@ void build_model(instance *inst, CPXENVptr env, CPXLPptr lp);
 void fill_best_sol(int *edges, instance *inst);
 void build_sol(const double *xstar, instance *inst, int *succ, int *comp, int *ncomp);
 void add_subtour_constraint(CPXENVptr env, CPXLPptr lp, instance *inst, int *comp, int component_num, int ncols);
-void store_solution(instance *inst, int *succ);
+void store_solution(instance *inst, int *succ, int *sol);
+double calc_incumbent_value(int *succ, instance *inst);
+void patching_heuristic(instance *inst, int *succ, int *comp, int *ncomp);
+double delta_cost_patching(int a, int b, instance *inst, int *succ);
+void update_succ_and_comp(instance *inst, int min_a, int min_b, int *succ, int *comp);
+void store_succ(instance *inst, int *succ, int *sol);
 #endif   /* TSP_H_ */ 

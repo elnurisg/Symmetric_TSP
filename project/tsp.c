@@ -1365,55 +1365,90 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 	}
 
 	// use the optimal solution found by CPLEX
-	
+	int *sol = (int *) calloc(inst->nnodes+1, sizeof(int));
+
 	int ncols = CPXgetnumcols(env, lp);
 	double *xstar = (double *) calloc(ncols, sizeof(double));
 	int *succ = (int *) calloc(inst->nnodes, sizeof(int));
+	int *best_succ = (int *) calloc(inst->nnodes, sizeof(int));
 	int *comp = (int *) calloc(inst->nnodes, sizeof(int));
 	int *ncomp = (int *) calloc(1, sizeof(int));
-	int stop_switch = 0;
 
-	while (stop_switch == 0)
+	double LB = -CPX_INFBOUND; // lower bound
+	if ( greedy_heuristic(inst, 0, 0) ) print_error(" error within greedy_heuristic()");
+	if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
+	calculate_best_val(inst);
+	double UB = inst->best_val; // upper bound
+	double objval; double incumbent_value;
+
+	do
 	{
 		if (CPXmipopt(env,lp)) print_error("CPXmipopt() error"); 
-		if ( CPXgetx(env, lp, xstar, 0, ncols-1) ) print_error("CPXgetx() error");	
+		if ( CPXgetbestobjval(env, lp, &objval) ) print_error("CPXgetbestobjval() error");	
+		if ( CPXgetx(env, lp, xstar, 0, ncols-1) ) print_error("CPXgetx() error");
+		
+		// new LB is assumed to increase as having more constraints
+		LB = (LB > objval) ? LB : objval;
 
 		build_sol(xstar, inst, succ, comp, ncomp);
-		// printf("%d\n",*ncomp);
 
-		if (*ncomp <= 1) stop_switch = 1;
+		if (*ncomp <= 1) incumbent_value = calc_incumbent_value(succ, inst);
 		else
 		{
 			for (int component_num = 1; component_num < *ncomp; component_num++)
 			{
 				add_subtour_constraint(env, lp, inst, comp, component_num, ncols);
 				// add a subtour elimination constraint
-			}		
+			}	
+			patching_heuristic(inst, succ, comp, ncomp);
+			incumbent_value = calc_incumbent_value(succ, inst);
 		}
-	}
 
-	for ( int i = 0; i < inst->nnodes; i++ )
-	{
-		for ( int j = i+1; j < inst->nnodes; j++ )
+		CPXsetdblparam(env, CPX_PARAM_TILIM, (inst->timelimit - second() - inst->tstart)); 
+		
+		if (incumbent_value < UB)
 		{
-			if ( xstar[xpos(i,j,inst)] > 0.5 ){
-				printf("  ... x(%3d,%3d) = 1\n", i+1,j+1);
-				// if (index_edge >= inst->nnodes*2)
-				// {
-				// 	print_error("index_edge is out of range: TSPopt");
-				// 	return -1;
-				// }
-				
-				// edges[index_edge] = i;
-				// edges[index_edge+1] = j;
-				// index_edge+=2;
+			UB = incumbent_value;
+			best_succ = copy_array(succ, inst->nnodes);
+			// store the best succ solution found so far
+		}		
+		printf("LB: %f\t",LB); printf("UB: %f\t",UB); (LB == UB) ? printf("||| Solution is Optimal\n") : printf("||| %f%% gap\n", (UB-LB)/LB*100);
+	
+	} while ((LB < (1-EPSILON) * UB) && (second() - inst->tstart < inst->timelimit));
+
+	free(sol);
+
+
+
+	if (VERBOSE >= 100){
+		for ( int i = 0; i < inst->nnodes; i++ )
+		{
+			for ( int j = i+1; j < inst->nnodes; j++ )
+			{
+				if ( xstar[xpos(i,j,inst)] > 0.5 ){
+					printf("  ... x(%3d,%3d) = 1\n", i+1,j+1);
+					// if (index_edge >= inst->nnodes*2)
+					// {
+					// 	print_error("index_edge is out of range: TSPopt");
+					// 	return -1;
+					// }
+					
+					// edges[index_edge] = i;
+					// edges[index_edge+1] = j;
+					// index_edge+=2;
+				}
 			}
 		}
 	}
 
-	store_solution(inst, succ);
-	// CPXwriteprob(env, lp, "model.lp", NULL);   
+	double initialized_UB = inst->best_val; // Greedy heuristic + 2-OPT is used as intial upper bound
+	store_solution(inst, best_succ, inst->best_sol);
+	calculate_best_val(inst);
+	if (initialized_UB < inst->best_val) printf("ATTENTION:	Initial Upper Bound (using Greedy heuristic + 2-OPT) is better than the best solution found by CPLEX, please increase the time_limit!\n");
 
+	// CPXwriteprob(env, lp, "model.lp", NULL);  
+
+	free(best_succ);
 	free(xstar);
 	free(succ);
 	free(comp);
@@ -1429,15 +1464,108 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 
 }
 
-void store_solution(instance *inst, int *succ){
+double delta_cost_patching(int a, int b, instance *inst, int *succ){
 	
-	inst->best_sol[0] = 0;
+	double delta_cost = 0;
+	double cost_of_old_edges = dist(a, succ[a], inst) + dist(b, succ[b], inst);
+	double cost_of_new_edges = dist(a, succ[b], inst) + dist(b, succ[a], inst);
+
+	delta_cost = cost_of_new_edges - cost_of_old_edges;
+
+	return delta_cost;
+}
+
+void patching_heuristic(instance *inst, int *succ, int *comp, int *ncomp){
+
+	double min_delta_cost; double delta_cost;
+	int min_a; int min_b;
+	int *sol = (int *) calloc(inst->nnodes+1, sizeof(int));
+
+	while (*ncomp != 1)
+	{
+		min_delta_cost = INFINITY;
+		for (int a = 0; a < inst->nnodes; a++)
+		{
+			for (int b = 0; b < inst->nnodes; b++)
+			{
+				if (comp[a] > comp[b]) // if a and b is in different component,
+				{                     //  '>' is trick to not to check the same pairs twice
+					delta_cost = delta_cost_patching(a, b, inst, succ);
+					if (delta_cost < min_delta_cost)
+					{
+						min_delta_cost = delta_cost;
+						min_a = a; min_b = b;
+					}
+					
+				}
+				
+			}
+			
+		}
+		update_succ_and_comp(inst, min_a, min_b, succ, comp);
+		--*ncomp;
+	}
+
+	store_solution(inst, succ, sol);
+	two_opt_refining_heuristic(inst, sol, 1);
+	store_succ(inst, succ, sol);
+
+	free(sol);
+}
+
+void store_succ(instance *inst, int *succ, int *sol){
+	
 	for (int i = 0; i < inst->nnodes; i++)
 	{
-		inst->best_sol[i+1] = succ[inst->best_sol[i]];
+		succ[sol[i]] = sol[i+1];
 	}
 	
-	calculate_best_val(inst);
+}
+
+
+void update_succ_and_comp(instance *inst, int min_a, int min_b, int *succ, int *comp){
+
+	int temp = succ[min_a];
+	succ[min_a] = succ[min_b];
+	succ[min_b] = temp;
+
+	int comp_a = comp[min_a];
+	for (int i = 0; i < inst->nnodes; i++)
+	{
+		if (comp[i] == comp_a) comp[i] = comp[min_b];
+	}
+
+}
+
+double calc_incumbent_value(int *succ, instance *inst){
+
+	int *sol = (int *) calloc(inst->nnodes+1, sizeof(int));
+	double val = 0;
+
+	store_solution(inst, succ, sol);
+	for (int i = 0; i < inst->nnodes; i++)
+	{
+		val += dist(sol[i], sol[i+1], inst);
+	}
+
+	free(sol);
+	return val;
+}
+
+/* Transforms the solution stored in the successor array format into a custom solution format for the Traveling Salesman Problem (TSP).
+   Parameters:
+   - inst: Pointer to the TSP instance structure.
+   - succ: Array storing the successor of each node in the solution.
+   - sol: Array to store the custom solution format.
+*/
+void store_solution(instance *inst, int *succ, int *sol){
+	
+	sol[0] = 0;
+	for (int i = 0; i < inst->nnodes; i++)
+	{
+		sol[i+1] = succ[sol[i]];
+	}
+	
 }
 
 void add_subtour_constraint(CPXENVptr env, CPXLPptr lp, instance *inst, int *comp, int component_num, int ncols)

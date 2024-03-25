@@ -39,6 +39,8 @@ int main(int argc, char **argv)
 
 	double t1 = second(); 
 	instance inst;
+	inst.tstart = t1;
+	inst.timelimit = INFINITY ; // default time limit, infinite
 
 	parse_command_line(argc,argv, &inst);     
 	
