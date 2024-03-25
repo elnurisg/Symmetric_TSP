@@ -552,11 +552,12 @@ int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance){
 		}
 		
 	} while (update_switch == 1);
+	
+	tsp_sol[inst->nnodes] = tsp_sol[0];
+
 	if (is_instance == 0)
 		printf("\n \tupdate in best_val after 2-OPT refining is %f\n", inst->best_val);
 	
-	inst->best_sol[inst->nnodes] = inst->best_sol[0];
-
 	return 0;
 }
 
@@ -1364,8 +1365,6 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 		print_error("CPXmipopt() error"); 
 	}
 
-	// use the optimal solution found by CPLEX
-	int *sol = (int *) calloc(inst->nnodes+1, sizeof(int));
 
 	int ncols = CPXgetnumcols(env, lp);
 	double *xstar = (double *) calloc(ncols, sizeof(double));
@@ -1391,8 +1390,14 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 		LB = (LB > objval) ? LB : objval;
 
 		build_sol(xstar, inst, succ, comp, ncomp);
+		printf("ncomp: %d\n", *ncomp);
 
-		if (*ncomp <= 1) incumbent_value = calc_incumbent_value(succ, inst);
+		if (*ncomp <= 1){ // optimal solution is found by CPLEX so we can break the loop
+			incumbent_value = calc_incumbent_value(succ, inst);
+			LB = incumbent_value; // due to the type of cost(int and happens even using double),
+			//when distance between nodes is very large,
+			// they can be not equal and we ensure that they are equal
+		}	// as solution is optimal
 		else
 		{
 			for (int component_num = 1; component_num < *ncomp; component_num++)
@@ -1413,10 +1418,8 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 			// store the best succ solution found so far
 		}		
 		printf("LB: %f\t",LB); printf("UB: %f\t",UB); (LB == UB) ? printf("||| Solution is Optimal\n") : printf("||| %f%% gap\n", (UB-LB)/LB*100);
-	
 	} while ((LB < (1-EPSILON) * UB) && (second() - inst->tstart < inst->timelimit));
 
-	free(sol);
 
 
 
