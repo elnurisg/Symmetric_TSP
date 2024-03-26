@@ -1317,31 +1317,9 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){
 	return 0;
 }
 
-void fill_best_sol(int *edges, instance *inst){
-	print_array(edges, inst->nnodes*2);
-
-	int temp1; int temp2;
-	// find another node which is the same as first_node and move it to the end with its pair
-	// in order to have the same node in first and last position
-	// so that it can be a tour
-	move_node_in_edges(edges, inst->nnodes*2, 0, inst->nnodes*2-1);
-	// make every same node to appear next to each other (except first and the last)
-	// move_node_in_edges(edges, inst->nnodes*2, 1, 1+1);
-	// move_node_in_edges(edges, inst->nnodes*2, 3, 3+1);
-	for (int i = 1; i < inst->nnodes*2-5; i+=2)
-	{
-		move_node_in_edges(edges, inst->nnodes*2, edges[i], i+1);
-	}
-	print_array(edges, inst->nnodes*2);
-	
-}
-
 int TSPopt(instance *inst) // enable the timelimit and check if it is optimal solution, mip function? and if not feasible, how to deal with it? mb printerror
 /**************************************************************************************************************************/
 {  
-	// nodes in odd and in even positions are the nodes which are connected. we store them here
-	// int *edges = (int *) calloc(inst->nnodes*2, sizeof(int));
-	// int index_edge=0;
 	
 	// open CPLEX model
 	int error;
@@ -1358,12 +1336,12 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 	// CPXsetintparam(env, CPX_PARAM_RANDOMSEED, 123456);	
 	// CPXsetdblparam(env, CPX_PARAM_TILIM, 3600.0); 
 
-	error = CPXmipopt(env,lp);
-	if ( error ) 
-	{
-		printf("CPX error code %d\n", error);
-		print_error("CPXmipopt() error"); 
-	}
+	// error = CPXmipopt(env,lp);
+	// if ( error ) 
+	// {
+	// 	printf("CPX error code %d\n", error);
+	// 	print_error("CPXmipopt() error"); 
+	// }
 
 
 	int ncols = CPXgetnumcols(env, lp);
@@ -1395,9 +1373,9 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 		if (*ncomp <= 1){ // optimal solution is found by CPLEX so we can break the loop
 			incumbent_value = calc_incumbent_value(succ, inst);
 			LB = incumbent_value; // due to the type of cost(int and happens even using double),
-			//when distance between nodes is very large,
+			//when distance between nodes is very large, there can be numerical issues and
 			// they can be not equal and we ensure that they are equal
-		}	// as solution is optimal
+		}	// as solution is already optimal
 		else
 		{
 			for (int component_num = 1; component_num < *ncomp; component_num++)
@@ -1405,7 +1383,7 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 				add_subtour_constraint(env, lp, inst, comp, component_num, ncols);
 				// add a subtour elimination constraint
 			}	
-			patching_heuristic(inst, succ, comp, ncomp);
+			patching_heuristic(env, lp, ncols, inst, succ, comp, ncomp);
 			incumbent_value = calc_incumbent_value(succ, inst);
 		}
 
@@ -1428,18 +1406,7 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 		{
 			for ( int j = i+1; j < inst->nnodes; j++ )
 			{
-				if ( xstar[xpos(i,j,inst)] > 0.5 ){
-					printf("  ... x(%3d,%3d) = 1\n", i+1,j+1);
-					// if (index_edge >= inst->nnodes*2)
-					// {
-					// 	print_error("index_edge is out of range: TSPopt");
-					// 	return -1;
-					// }
-					
-					// edges[index_edge] = i;
-					// edges[index_edge+1] = j;
-					// index_edge+=2;
-				}
+				if ( xstar[xpos(i,j,inst)] > 0.5 ) printf("  ... x(%3d,%3d) = 1\n", i+1,j+1);
 			}
 		}
 	}
@@ -1478,7 +1445,7 @@ double delta_cost_patching(int a, int b, instance *inst, int *succ){
 	return delta_cost;
 }
 
-void patching_heuristic(instance *inst, int *succ, int *comp, int *ncomp){
+void patching_heuristic(CPXENVptr env, CPXLPptr lp, int ncols, instance *inst, int *succ, int *comp, int *ncomp){
 
 	double min_delta_cost; double delta_cost;
 	int min_a; int min_b;
@@ -1507,6 +1474,7 @@ void patching_heuristic(instance *inst, int *succ, int *comp, int *ncomp){
 		}
 		update_succ_and_comp(inst, min_a, min_b, succ, comp);
 		--*ncomp;
+		if(*ncomp != 1) add_subtour_constraint(env, lp, inst, comp, comp[min_b], ncols); // as new component has component number of min_b
 	}
 
 	store_solution(inst, succ, sol);
