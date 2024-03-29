@@ -174,3 +174,4 @@ double delta_cost_patching(int a, int b, instance *inst, int *succ);
 void update_succ_and_comp(instance *inst, int min_a, int min_b, int *succ, int *comp);
 void store_succ(instance *inst, int *succ, int *sol);
 #endif   /* TSP_H_ */ 
+ 

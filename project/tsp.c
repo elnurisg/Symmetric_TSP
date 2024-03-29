@@ -568,7 +568,7 @@ int tenure_length_update(instance *inst, int current_tenure, int iteration, int 
 			// becomes lower_bound or upper bound for subsequent period. 
 	//f.e (upper_bound_tenure - lower_bound_tenure) iterations has been chosen 
 	//so that both mode 0 and 1 has the same upper bounds
-	int tenure;
+	int tenure = 0;
 	
 	switch (tenure_mode)
 		{
@@ -584,6 +584,7 @@ int tenure_length_update(instance *inst, int current_tenure, int iteration, int 
 			tenure = random_0_to_length(inst, upper_bound_tenure+1-lower_bound_tenure) + lower_bound_tenure;
 			break;
 		default:
+			print_error("Wrong tenure_mode\n");
 			break;
 		}
 	
@@ -1336,14 +1337,6 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 	// CPXsetintparam(env, CPX_PARAM_RANDOMSEED, 123456);	
 	// CPXsetdblparam(env, CPX_PARAM_TILIM, 3600.0); 
 
-	// error = CPXmipopt(env,lp);
-	// if ( error ) 
-	// {
-	// 	printf("CPX error code %d\n", error);
-	// 	print_error("CPXmipopt() error"); 
-	// }
-
-
 	int ncols = CPXgetnumcols(env, lp);
 	double *xstar = (double *) calloc(ncols, sizeof(double));
 	int *succ = (int *) calloc(inst->nnodes, sizeof(int));
@@ -1356,19 +1349,20 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 	if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
 	calculate_best_val(inst);
 	double UB = inst->best_val; // upper bound
-	double objval; double incumbent_value;
+	double objval; double incumbent_value; int iteration = 0;
 
 	do
 	{
+		CPXsetdblparam(env, CPX_PARAM_CUTUP, UB);
+		CPXsetintparam(env, CPX_PARAM_NODELIM, 100);
 		if (CPXmipopt(env,lp)) print_error("CPXmipopt() error"); 
 		if ( CPXgetbestobjval(env, lp, &objval) ) print_error("CPXgetbestobjval() error");	
-		if ( CPXgetx(env, lp, xstar, 0, ncols-1) ) print_error("CPXgetx() error");
+		if ( CPXgetx(env, lp, xstar, 0, ncols-1) ) continue;//print_error("CPXgetx() error");
 		
 		// new LB is assumed to increase as having more constraints
 		LB = (LB > objval) ? LB : objval;
 
 		build_sol(xstar, inst, succ, comp, ncomp);
-		printf("ncomp: %d\n", *ncomp);
 
 		if (*ncomp <= 1){ // optimal solution is found by CPLEX so we can break the loop
 			incumbent_value = calc_incumbent_value(succ, inst);
@@ -1385,16 +1379,19 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 			}	
 			patching_heuristic(env, lp, ncols, inst, succ, comp, ncomp);
 			incumbent_value = calc_incumbent_value(succ, inst);
+
 		}
 
 		CPXsetdblparam(env, CPX_PARAM_TILIM, (inst->timelimit - second() - inst->tstart)); 
-		
+
 		if (incumbent_value < UB)
 		{
 			UB = incumbent_value;
 			best_succ = copy_array(succ, inst->nnodes);
 			// store the best succ solution found so far
 		}		
+		iteration++;
+		printf("\nITERATION: %d\t", iteration);
 		printf("LB: %f\t",LB); printf("UB: %f\t",UB); (LB == UB) ? printf("||| Solution is Optimal\n") : printf("||| %f%% gap\n", (UB-LB)/LB*100);
 	} while ((LB < (1-EPSILON) * UB) && (second() - inst->tstart < inst->timelimit));
 
@@ -1426,9 +1423,6 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 	// free and close cplex model   
 	CPXfreeprob(env, &lp);
 	CPXcloseCPLEX(&env); 
-
-
-	// fill_best_sol(edges, inst);
 
 	return 0; // or an appropriate nonzero error code
 
