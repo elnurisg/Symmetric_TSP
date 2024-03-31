@@ -1318,27 +1318,10 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){
 	return 0;
 }
 
-int TSPopt(instance *inst) // enable the timelimit and check if it is optimal solution, mip function? and if not feasible, how to deal with it? mb printerror
-/**************************************************************************************************************************/
-{  
-	
-	// open CPLEX model
-	int error;
-	CPXENVptr env = CPXopenCPLEX(&error);
-	if ( error ) print_error("CPXopenCPLEX() error");
-	CPXLPptr lp = CPXcreateprob(env, &error, "TSP model version 1"); 
-	if ( error ) print_error("CPXcreateprob() error");
+int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
+{
 
-	build_model(inst, env, lp);
-	
-	// Cplex's parameter setting
-	// CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_OFF);
-	// if ( VERBOSE >= 60 ) CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_ON); // Cplex output on screen
-	// CPXsetintparam(env, CPX_PARAM_RANDOMSEED, 123456);	
-	// CPXsetdblparam(env, CPX_PARAM_TILIM, 3600.0); 
-
-	int ncols = CPXgetnumcols(env, lp);
-	double *xstar = (double *) calloc(ncols, sizeof(double));
+	double *xstar = (double *) calloc(inst->ncols, sizeof(double));
 	int *succ = (int *) calloc(inst->nnodes, sizeof(int));
 	int *best_succ = (int *) calloc(inst->nnodes, sizeof(int));
 	int *comp = (int *) calloc(inst->nnodes, sizeof(int));
@@ -1357,7 +1340,7 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 		CPXsetintparam(env, CPX_PARAM_NODELIM, 100);
 		if (CPXmipopt(env,lp)) print_error("CPXmipopt() error"); 
 		if ( CPXgetbestobjval(env, lp, &objval) ) print_error("CPXgetbestobjval() error");	
-		if ( CPXgetx(env, lp, xstar, 0, ncols-1) ) continue;//print_error("CPXgetx() error");
+		if ( CPXgetx(env, lp, xstar, 0, inst->ncols-1) ) continue;//print_error("CPXgetx() error");
 		
 		// new LB is assumed to increase as having more constraints
 		LB = (LB > objval) ? LB : objval;
@@ -1374,15 +1357,15 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 		{
 			for (int component_num = 1; component_num < *ncomp; component_num++)
 			{
-				add_subtour_constraint(env, lp, inst, comp, component_num, ncols);
+				add_subtour_constraint(NULL, env, lp, inst, comp, component_num, inst->ncols);
 				// add a subtour elimination constraint
 			}	
-			patching_heuristic(env, lp, ncols, inst, succ, comp, ncomp);
+			patching_heuristic(env, lp, inst->ncols, inst, succ, comp, ncomp);
 			incumbent_value = calc_incumbent_value(succ, inst);
 
 		}
 
-		CPXsetdblparam(env, CPX_PARAM_TILIM, (inst->timelimit - second() - inst->tstart)); 
+		CPXsetdblparam(env, CPX_PARAM_TILIM, (inst->tstart + inst->timelimit - second())); 
 
 		if (incumbent_value < UB)
 		{
@@ -1394,8 +1377,6 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 		printf("\nITERATION: %d\t", iteration);
 		printf("LB: %f\t",LB); printf("UB: %f\t",UB); (LB == UB) ? printf("||| Solution is Optimal\n") : printf("||| %f%% gap\n", (UB-LB)/LB*100);
 	} while ((LB < (1-EPSILON) * UB) && (second() - inst->tstart < inst->timelimit));
-
-
 
 
 	if (VERBOSE >= 100){
@@ -1420,6 +1401,104 @@ int TSPopt(instance *inst) // enable the timelimit and check if it is optimal so
 	free(succ);
 	free(comp);
 	free(ncomp);
+
+	return 0;
+}
+
+
+int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp)
+{
+
+	double *xstar = (double *) calloc(inst->ncols, sizeof(double));
+	int *succ = (int *) calloc(inst->nnodes, sizeof(int));
+	int *comp = (int *) calloc(inst->nnodes, sizeof(int));
+	int *ncomp = (int *) calloc(1, sizeof(int));
+
+	// installing a lazyconstraint callback to cut infeasible integer solution
+	CPXLONG contextid = CPX_CALLBACKCONTEXT_CANDIDATE; // means lazy constraints
+	if(CPXcallbacksetfunc(env, lp, contextid, my_cut_callback, inst)) print_error("CPXcallbacksetfunc() error");
+	
+	CPXsetdblparam(env, CPX_PARAM_TILIM, (inst->tstart + inst->timelimit - second())); 
+	// CPXsetintparam(env, CPX_PARAM_THREADS, 1); // trying with 1 thread to debug
+
+	if (CPXmipopt(env,lp)) print_error("CPXmipopt() error"); 
+
+	if ( CPXgetx(env, lp, xstar, 0, inst->ncols-1) ) print_error("CPXgetx() error");
+	build_sol(xstar, inst, succ, comp, ncomp);
+	store_solution(inst, succ, inst->best_sol);
+	calculate_best_val(inst);
+
+	free(xstar);
+	free(succ);
+	free(comp);
+	free(ncomp);	
+
+	return 0;
+}
+
+static int CPXPUBLIC my_cut_callback(CPXCALLBACKCONTEXTptr context, CPXLONG contextid, void *userhandle )
+{
+	instance* inst = (instance *) userhandle;
+	double* xstar = (double *) calloc(inst->ncols, sizeof(double));
+	int *succ = (int *) calloc(inst->nnodes, sizeof(int));
+	int *comp = (int *) calloc(inst->nnodes, sizeof(int));
+	int *ncomp = (int *) calloc(1, sizeof(int));
+
+	double objval = CPX_INFBOUND;
+	if (CPXcallbackgetcandidatepoint(context, xstar, 0, inst->ncols-1, &objval)) print_error("CPXcallbackgetcandidatepoint() error");
+
+	int mythread = -1; CPXcallbackgetinfoint(context, CPXCALLBACKINFO_THREADID, &mythread);
+	int mynode = -1; CPXcallbackgetinfoint(context, CPXCALLBACKINFO_NODECOUNT, &mynode);
+	double incumbent = CPX_INFBOUND; CPXcallbackgetinfodbl(context, CPXCALLBACKINFO_BEST_SOL, &incumbent);
+	if(VERBOSE >= 100) printf(".. Thread %2d, Node %5d, Incumbent: %10.2lf, Candidate value: %10.2lf\n", mythread, mynode, incumbent, objval);
+
+	build_sol(xstar, inst, succ, comp, ncomp);
+	
+	for (int component_num = 1; component_num < *ncomp; component_num++)
+	{
+		add_subtour_constraint(context, NULL, NULL, inst, comp, component_num, inst->ncols);
+	}
+
+	free(xstar);
+	free(succ);
+	free(comp);
+	free(ncomp);	
+	return 0;
+}
+
+int TSPopt(instance *inst, int model_type)
+{  
+	
+	// open CPLEX model
+	int error;
+	CPXENVptr env = CPXopenCPLEX(&error);
+	if ( error ) print_error("CPXopenCPLEX() error");
+	CPXLPptr lp = CPXcreateprob(env, &error, "TSP model version 1"); 
+	if ( error ) print_error("CPXcreateprob() error");
+
+	build_model(inst, env, lp);
+	
+	// Cplex's parameter setting
+	// CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_OFF);
+	// if ( VERBOSE >= 60 ) CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_ON); // Cplex output on screen
+	// CPXsetintparam(env, CPX_PARAM_RANDOMSEED, 123456);	
+	// CPXsetdblparam(env, CPX_PARAM_TILIM, 3600.0); 
+
+	inst->ncols = CPXgetnumcols(env, lp);
+
+	if (model_type == 0)
+	{
+		if (benders_loop(inst, env, lp)) print_error("Error in benders_loop()");
+	}
+	else if (model_type == 1)
+	{
+		if (branch_and_cut(inst, env, lp)) print_error("Error in branch_and_cut()");
+	}
+	else
+	{
+		print_error("Error! Model type is not defined correctly. Please choose 0 for [Benders' loop] and 1 for [Branch and Cut]");
+	}	
+
 	// free and close cplex model   
 	CPXfreeprob(env, &lp);
 	CPXcloseCPLEX(&env); 
@@ -1468,7 +1547,7 @@ void patching_heuristic(CPXENVptr env, CPXLPptr lp, int ncols, instance *inst, i
 		}
 		update_succ_and_comp(inst, min_a, min_b, succ, comp);
 		--*ncomp;
-		if(*ncomp != 1) add_subtour_constraint(env, lp, inst, comp, comp[min_b], ncols); // as new component has component number of min_b
+		if(*ncomp != 1) add_subtour_constraint(NULL, env, lp, inst, comp, comp[min_b], ncols); // as new component has component number of min_b
 	}
 
 	store_solution(inst, succ, sol);
@@ -1533,8 +1612,9 @@ void store_solution(instance *inst, int *succ, int *sol){
 	
 }
 
-void add_subtour_constraint(CPXENVptr env, CPXLPptr lp, instance *inst, int *comp, int component_num, int ncols)
+void add_subtour_constraint(void *context_pointer, void *environment, void* linear_program, instance *inst, int *comp, int component_num, int ncols)
 {
+
 	int *index = (int *) calloc(ncols, sizeof(int));
 	double *value = (double *) calloc(ncols, sizeof(double));
 	double rhs = -1;
@@ -1560,8 +1640,19 @@ void add_subtour_constraint(CPXENVptr env, CPXLPptr lp, instance *inst, int *com
 	}
 	int izero = 0;
 	// sprintf(cname, "SEC(%d)", *ncomp);
-	if ( CPXaddrows(env, lp, 0, 1, nnz, &rhs, &sense, &izero, index, value, NULL, NULL) ) print_error("CPXaddrows(): error 2");
 
+	if (context_pointer == NULL)
+	{
+		CPXENVptr env = (CPXENVptr) environment;
+		CPXLPptr lp = (CPXLPptr) linear_program;
+		if ( CPXaddrows(env, lp, 0, 1, nnz, &rhs, &sense, &izero, index, value, NULL, NULL) ) print_error("CPXaddrows(): error");
+	}
+	else
+	{
+		CPXCALLBACKCONTEXTptr context = (CPXCALLBACKCONTEXTptr) context_pointer;
+		if ( CPXcallbackrejectcandidate(context, 1, nnz, &rhs, &sense, &izero, index, value)) print_error("CPXcallbackrejectcandidate() error");
+	}
+	
 	free(value);
 	free(index);
 	// free(cname);		

@@ -43,6 +43,7 @@ typedef struct {
 	// double tbest;							// time for the best sol. available  
 	int *best_sol;						// best sol. available    
 	int *tabu_list;						// if instance has a tabu list   
+	int ncols;
 	// double	best_lb;						// best lower bound available  
 	// double *load_min;						// minimum load when leaving a node
 	// double *load_max;						// maximum load when leaving a node
@@ -162,16 +163,20 @@ void repair_bad_genes(instance *inst, Individual *children, int children_size, i
 void eliminate_multiple_visits(instance *inst, Individual *indiviual);
 void repair_extra_mileage(instance *inst, Individual *indiviual);
 
-int TSPopt(instance *inst);
+int TSPopt(instance *inst, int model_type);
 int xpos(int i, int j, instance *inst);
 void build_model(instance *inst, CPXENVptr env, CPXLPptr lp);
 void build_sol(const double *xstar, instance *inst, int *succ, int *comp, int *ncomp);
-void add_subtour_constraint(CPXENVptr env, CPXLPptr lp, instance *inst, int *comp, int component_num, int ncols);
+void add_subtour_constraint(void *context_pointer, void *environment, void* linear_program, instance *inst, int *comp, int component_num, int ncols);
 void store_solution(instance *inst, int *succ, int *sol);
 double calc_incumbent_value(int *succ, instance *inst);
 void patching_heuristic(CPXENVptr env, CPXLPptr lp, int ncols, instance *inst, int *succ, int *comp, int *ncomp);
 double delta_cost_patching(int a, int b, instance *inst, int *succ);
 void update_succ_and_comp(instance *inst, int min_a, int min_b, int *succ, int *comp);
 void store_succ(instance *inst, int *succ, int *sol);
+int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp);
+int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp);
+static int CPXPUBLIC my_cut_callback(CPXCALLBACKCONTEXTptr context, CPXLONG contextid, void *userhandle);
+
 #endif   /* TSP_H_ */ 
  
