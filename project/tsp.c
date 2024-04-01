@@ -1348,20 +1348,20 @@ int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 		build_sol(xstar, inst, succ, comp, ncomp);
 
 		if (*ncomp <= 1){ // optimal solution is found by CPLEX so we can break the loop
-			incumbent_value = calc_incumbent_value(succ, inst);
+			incumbent_value = calc_succ_value(succ, inst);
 			LB = incumbent_value; // due to the type of cost(int and happens even using double),
 			//when distance between nodes is very large, there can be numerical issues and
 			// they can be not equal and we ensure that they are equal
 		}	// as solution is already optimal
 		else
 		{
-			for (int component_num = 1; component_num < *ncomp; component_num++)
+			for (int component_num = 1; component_num <= *ncomp; component_num++)
 			{
 				add_subtour_constraint(NULL, env, lp, inst, comp, component_num, inst->ncols);
 				// add a subtour elimination constraint
 			}	
 			patching_heuristic(NULL, env, lp, inst->ncols, inst, succ, comp, ncomp);
-			incumbent_value = calc_incumbent_value(succ, inst);
+			incumbent_value = calc_succ_value(succ, inst);
 
 		}
 
@@ -1430,6 +1430,9 @@ int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp)
 	CPXLONG contextid = CPX_CALLBACKCONTEXT_CANDIDATE; // means lazy constraints
 	if(CPXcallbacksetfunc(env, lp, contextid, my_cut_callback, inst)) print_error("CPXcallbacksetfunc() error");
 	
+// adding mipstart solution, this is different than PARAM_CUT, it will make sure that Cplex start from this solution
+	heur_sol_to_mipstart(env, lp, inst);
+
 	if (CPXmipopt(env, lp)) print_error("CPXmipopt() error"); 
 
 	CPXgetbestobjval(env, lp, &LB);
@@ -1473,17 +1476,59 @@ static int CPXPUBLIC my_cut_callback(CPXCALLBACKCONTEXTptr context, CPXLONG cont
 
 	build_sol(xstar, inst, succ, comp, ncomp);
 	
-	for (int component_num = 1; component_num < *ncomp; component_num++)
+	if(*ncomp > 1)
 	{
-		add_subtour_constraint(context, NULL, NULL, inst, comp, component_num, inst->ncols);
+		for (int component_num = 1; component_num <= *ncomp; component_num++)
+			add_subtour_constraint(context, NULL, NULL, inst, comp, component_num, inst->ncols);
+
+		patching_heuristic(context, NULL, NULL, inst->ncols, inst, succ, comp, ncomp);
 	}
-	
-	patching_heuristic(context, NULL, NULL, inst->ncols, inst, succ, comp, ncomp);
+
+	double succ_value = calc_succ_value(succ, inst);
+	if (incumbent > succ_value) //if the succ solution from patching heuristic is better than the incumbent
+		post_heuristic(context, inst, succ, succ_value);
 
 	free(xstar);
 	free(succ);
 	free(comp);
 	free(ncomp);	
+
+	return 0;
+}
+
+void post_heuristic(CPXCALLBACKCONTEXTptr context, instance *inst, int *succ, double succ_value)
+{
+	//convert succ to xstar
+	double *xheu = (double *) calloc(inst->ncols, sizeof(double)); //all zeros initially
+	for (int i=0; i<inst->nnodes; i++)
+		xheu[xpos(i,succ[i],inst)] = 1.0;
+
+	int *indices = (int *) malloc(inst->ncols * sizeof(int));
+	for (int i = 0; i < inst->ncols; i++) indices[i] = i;
+
+	if(CPXcallbackpostheursoln(context, inst->ncols, indices, xheu, succ_value, CPXCALLBACKSOLUTION_NOCHECK)) print_error("CPXcallbackpostheursoln() error");
+	
+	free(xheu);
+	free(indices);
+
+}
+
+int heur_sol_to_mipstart(CPXENVptr env, CPXLPptr lp, instance *inst)
+{
+	//convert best_sol to xstar
+	double *xheu = (double *) calloc(inst->ncols, sizeof(double)); //all zeros initially
+	for (int i=0; i<inst->nnodes; i++)
+		xheu[xpos(inst->best_sol[i],inst->best_sol[i+1],inst)] = 1.0;
+
+	int *indices = (int *) malloc(inst->ncols * sizeof(int));
+	for (int i = 0; i < inst->ncols; i++) indices[i] = i;
+	int effortlevel = CPX_MIPSTART_NOCHECK;
+	int beg = 0;
+	if(CPXaddmipstarts(env, lp, 1, inst->ncols, &beg, indices, xheu, &effortlevel, NULL)) print_error("CPXaddmipstarts() error");
+
+	free(xheu);
+	free(indices);
+	
 	return 0;
 }
 
@@ -1602,7 +1647,7 @@ void update_succ_and_comp(instance *inst, int min_a, int min_b, int *succ, int *
 
 }
 
-double calc_incumbent_value(int *succ, instance *inst){
+double calc_succ_value(int *succ, instance *inst){
 
 	int *sol = (int *) calloc(inst->nnodes+1, sizeof(int));
 	double val = 0;
