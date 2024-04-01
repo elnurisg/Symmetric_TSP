@@ -170,7 +170,7 @@ void build_sol(const double *xstar, instance *inst, int *succ, int *comp, int *n
 void add_subtour_constraint(void *context_pointer, void *environment, void* linear_program, instance *inst, int *comp, int component_num, int ncols);
 void store_solution(instance *inst, int *succ, int *sol);
 double calc_incumbent_value(int *succ, instance *inst);
-void patching_heuristic(CPXENVptr env, CPXLPptr lp, int ncols, instance *inst, int *succ, int *comp, int *ncomp);
+void patching_heuristic(void *context_pointer, void *environment, void* linear_program, int ncols, instance *inst, int *succ, int *comp, int *ncomp);
 double delta_cost_patching(int a, int b, instance *inst, int *succ);
 void update_succ_and_comp(instance *inst, int min_a, int min_b, int *succ, int *comp);
 void store_succ(instance *inst, int *succ, int *sol);

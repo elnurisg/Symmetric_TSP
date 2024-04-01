@@ -58,7 +58,7 @@ int main(int argc, char **argv)
 	// if ( tabu_search(&inst, 1) ) print_error(" error within tabu_search()");
 	// if ( two_opt_refining_heuristic(&inst, inst.best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
 	// if ( genetic_algorithm(&inst, 2, 0) ) print_error(" error within genetic_algorithm()");
-	if ( TSPopt(&inst, 0) ) print_error(" error within TSPopt()");
+	if ( TSPopt(&inst, 1) ) print_error(" error within TSPopt()");
 
 	double t2 = second();
 

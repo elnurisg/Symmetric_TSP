@@ -1360,7 +1360,7 @@ int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 				add_subtour_constraint(NULL, env, lp, inst, comp, component_num, inst->ncols);
 				// add a subtour elimination constraint
 			}	
-			patching_heuristic(env, lp, inst->ncols, inst, succ, comp, ncomp);
+			patching_heuristic(NULL, env, lp, inst->ncols, inst, succ, comp, ncomp);
 			incumbent_value = calc_incumbent_value(succ, inst);
 
 		}
@@ -1414,19 +1414,38 @@ int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp)
 	int *comp = (int *) calloc(inst->nnodes, sizeof(int));
 	int *ncomp = (int *) calloc(1, sizeof(int));
 
+	double LB = -CPX_INFBOUND; // lower bound
+	if ( greedy_heuristic(inst, 0, 0) ) print_error(" error within greedy_heuristic()");
+	if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
+	calculate_best_val(inst);
+	double UB = inst->best_val; // upper bound
+	
+	CPXsetdblparam(env, CPX_PARAM_CUTUP, UB);
+	CPXsetdblparam(env, CPX_PARAM_TILIM, (inst->tstart + inst->timelimit - second())); 
+	// CPXsetintparam(env, CPX_PARAM_THREADS, 1); // trying with 1 thread to debug
+	// CPXsetintparam(env, CPX_PARAM_INTSOLLIM, 1);
+	// CPXsetdblparam(env, CPX_PARAM_EPGAP, 1e-9) //abort Cplex when gap is below the given %
+
 	// installing a lazyconstraint callback to cut infeasible integer solution
 	CPXLONG contextid = CPX_CALLBACKCONTEXT_CANDIDATE; // means lazy constraints
 	if(CPXcallbacksetfunc(env, lp, contextid, my_cut_callback, inst)) print_error("CPXcallbacksetfunc() error");
 	
-	CPXsetdblparam(env, CPX_PARAM_TILIM, (inst->tstart + inst->timelimit - second())); 
-	// CPXsetintparam(env, CPX_PARAM_THREADS, 1); // trying with 1 thread to debug
+	if (CPXmipopt(env, lp)) print_error("CPXmipopt() error"); 
 
-	if (CPXmipopt(env,lp)) print_error("CPXmipopt() error"); 
+	CPXgetbestobjval(env, lp, &LB);
+	CPXgetobjval(env, lp, &UB);
+	if(VERBOSE >= 60) {
+		printf("\nLB: %f\t",LB); 
+		printf("UB: %f\t",UB); 
+		(LB == UB) ? printf("||| Solution is Optimal\n") : printf("||| %f%% gap\n", (UB-LB)/LB*100);
+	}
 
-	if ( CPXgetx(env, lp, xstar, 0, inst->ncols-1) ) print_error("CPXgetx() error");
-	build_sol(xstar, inst, succ, comp, ncomp);
-	store_solution(inst, succ, inst->best_sol);
-	calculate_best_val(inst);
+	if ( CPXgetx(env, lp, xstar, 0, inst->ncols-1) ) printf("\nCplex could not find any better solution than the given Upper Bound (initialized by using Greedy heuristic + 2-OPT) in the given time limit.\n");
+	else{
+		build_sol(xstar, inst, succ, comp, ncomp);
+		store_solution(inst, succ, inst->best_sol);
+		calculate_best_val(inst);
+	}
 
 	free(xstar);
 	free(succ);
@@ -1458,6 +1477,8 @@ static int CPXPUBLIC my_cut_callback(CPXCALLBACKCONTEXTptr context, CPXLONG cont
 	{
 		add_subtour_constraint(context, NULL, NULL, inst, comp, component_num, inst->ncols);
 	}
+	
+	patching_heuristic(context, NULL, NULL, inst->ncols, inst, succ, comp, ncomp);
 
 	free(xstar);
 	free(succ);
@@ -1518,7 +1539,7 @@ double delta_cost_patching(int a, int b, instance *inst, int *succ){
 	return delta_cost;
 }
 
-void patching_heuristic(CPXENVptr env, CPXLPptr lp, int ncols, instance *inst, int *succ, int *comp, int *ncomp){
+void patching_heuristic(void *context_pointer, void *environment, void* linear_program, int ncols, instance *inst, int *succ, int *comp, int *ncomp){
 
 	double min_delta_cost; double delta_cost;
 	int min_a; int min_b;
@@ -1547,7 +1568,7 @@ void patching_heuristic(CPXENVptr env, CPXLPptr lp, int ncols, instance *inst, i
 		}
 		update_succ_and_comp(inst, min_a, min_b, succ, comp);
 		--*ncomp;
-		if(*ncomp != 1) add_subtour_constraint(NULL, env, lp, inst, comp, comp[min_b], ncols); // as new component has component number of min_b
+		if(*ncomp != 1) add_subtour_constraint(context_pointer, environment, linear_program, inst, comp, comp[min_b], ncols); // as new component has component number of min_b
 	}
 
 	store_solution(inst, succ, sol);
