@@ -1,7 +1,7 @@
 #include "tsp.h"           
 
 double second();
-void print_error(const char *err);  
+// void print_error(const char *err);  
 double random01();     
 void read_input(instance *inst);
 void parse_command_line(int argc, char** argv, instance *inst); 
@@ -9,7 +9,7 @@ void compute_distance(instance *inst);
 void generate_random_instances(instance *inst);
 
 void debug(const char *err) { printf("\nDEBUG: %s \n", err); fflush(NULL); }
-void print_error(const char *err) { printf("\n\n ERROR: %s \n\n", err); fflush(NULL); exit(1); }   
+// void print_error(const char *err) { printf("\n\n ERROR: %s \n\n", err); fflush(NULL); exit(1); }   
 
 int number_of_nonempty_lines(const char *file)  // warning: the last line NOT counted if it is does not terminate with \n (as it happens with some editors) 
 {
@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 	// inst.nnodes + 1 is bcz of the closing the tour
 	inst.best_sol = (int *) calloc(inst.nnodes+1, sizeof(int)); 
 
-	// if ( greedy_heuristic(&inst, 2, 0) ) print_error(" error within greedy_heuristic()");
+	if ( greedy_heuristic(&inst, 2, 0) ) print_error(" error within greedy_heuristic()");
 	// if ( extra_mileage_heuristic(&inst, 1) ) print_error(" error within greedy_heuristic()");
 	// printf("\n \tbest_val is %f\n", inst.best_val);
 	// if ( variable_neighborhood_search(&inst, 3) ) print_error(" error within variable_neighborhood_search()");

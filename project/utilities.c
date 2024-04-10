@@ -1,7 +1,112 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <sys/stat.h>
+#include "utilities.h"
+
+void print_error(const char *err) { printf("\n\n ERROR: %s \n\n", err); fflush(NULL); exit(1); }   
+
+double random01() { return ((double) rand() / RAND_MAX); } // return a random value in range 0.0-1.0
+
+double cost(int i, int j, instance *inst)
+{
+	return inst->cost[i*inst->nnodes + j];
+}
+
+
+// plot the solution in commands.txt file 
+//and writes the solution to the file if writing_to_file is true
+void plot_tsp_tour(instance *inst, int writing_to_file){
+
+	if (writing_to_file == 1)
+	{
+		FILE *f = fopen("plot/data.dat", "w");
+		if (f == NULL)
+		{
+			printf("Error opening file!\n");
+			exit(1);
+		}
+		for (int i = 0; i < inst->nnodes+1; i++)
+		{
+			fprintf(f, "%f %f\n", inst->xcoord[inst->best_sol[i]], inst->ycoord[inst->best_sol[i]]);
+		}
+		fclose(f);	
+	}
+	
+
+    system("gnuplot ./plot/commands.txt");
+
+}
+
+int verify_tour(instance *inst){
+	for (int i = 0; i < inst->nnodes; i++)
+	{
+		for (int j = 0; j < inst->nnodes; j++)
+		{
+			if(i!=j && inst->best_sol[i]==inst->best_sol[j]) {
+				printf("indexes %d and %d are the same nodes: %d\n", i,j, inst->best_sol[i]);
+				return 1;
+			}
+
+		}
+
+	}
+	if (inst->best_sol[0] != inst->best_sol[inst->nnodes]){
+		printf("first and the last nodes are not the same\n");
+		return 1;
+	}
+	
+	return 0;
+}
+
+
+int dist(int i, int j, instance *inst)
+{
+	double dx = inst->xcoord[i] - inst->xcoord[j];
+	double dy = inst->ycoord[i] - inst->ycoord[j]; 
+	int dis = sqrt(dx*dx+dy*dy) + 0.5; // nearest integer 
+	return dis;
+}        
+
+int random_0_to_length_but_different_than_previous(instance *inst, int length, int previous_random_value){
+
+	int random_value = random_0_to_length(inst, length);
+
+	while (random_value == previous_random_value)
+	{
+		random_value = random_0_to_length(inst, length);
+	}
+	
+	return random_value;
+}
+
+
+int random_node_with_time_seed(int length){
+	srand((unsigned int)time(NULL));
+	int random_position = rand() % length;
+
+	if (random_position<0 && random_position>=length)
+	{
+		printf("\n Error! Position exceeds the size of array");
+		return -1;
+	}
+	
+	return random_position;
+}
+
+int random_0_to_length(instance *inst, int length){
+
+	if (inst->random_seed !=0){
+		srand(2635623+abs(inst->random_seed));
+		for (size_t i = 0; i < 1000; i++) random();
+	}
+
+	int random_position = rand() % length;
+	if (random_position<0 && random_position>=length)
+	{
+		printf("\n Error! Position exceeds the size of array");
+		return -1;
+	}
+	
+	return random_position;
+}
+
 
 int * copy_array(int *arr, int size){
     int *cpy = (int *)calloc(size, sizeof(int));
