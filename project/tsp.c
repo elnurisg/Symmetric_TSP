@@ -44,9 +44,9 @@ int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 	int *ncomp = (int *) calloc(1, sizeof(int));
 
 	double LB = -CPX_INFBOUND; // lower bound
-	if ( greedy_heuristic(inst, 0, 0) ) print_error(" error within greedy_heuristic()");
-	if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
-	calculate_best_val(inst);
+	// if ( greedy_heuristic(inst, 2, 0) ) print_error(" error within greedy_heuristic()");
+	// if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
+	// calculate_best_val(inst);
 	double UB = inst->best_val; // upper bound
 	double objval; double incumbent_value; int iteration = 0;
 
@@ -131,10 +131,10 @@ int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp)
 	int *ncomp = (int *) calloc(1, sizeof(int));
 
 	double LB = -CPX_INFBOUND; // lower bound
-	if ( greedy_heuristic(inst, 0, 0) ) print_error(" error within greedy_heuristic()");
-	if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
-	calculate_best_val(inst);
-	double UB = inst->best_val; // upper bound
+	// if ( greedy_heuristic(inst, 2, 0) ) print_error(" error within greedy_heuristic()");
+	// if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
+	// calculate_best_val(inst);
+	double UB = inst->best_val;// upper bound
 	
 	CPXsetdblparam(env, CPX_PARAM_CUTUP, UB);
 	CPXsetdblparam(env, CPX_PARAM_TILIM, (inst->tstart + inst->timelimit - second())); 
@@ -266,7 +266,14 @@ int TSPopt(instance *inst, int model_type)
 	// CPXsetintparam(env, CPX_PARAM_RANDOMSEED, 123456);	
 	// CPXsetdblparam(env, CPX_PARAM_TILIM, 3600.0); 
 
+	// Cplex internal methods for primal integral
+	// CPXsetintparam(env, CPXPARAM_Emphasis_MIP, 5); // emphasize on finding good feasible solutions||5 for primal integral
+	// CPXsetintparam(env, CPXPARAM_MIP_Strategy_RINSHeur, 10); // aggressive RINS heuristic(default is 0 and letting Cplex to choose it, -1 to turn it off)
 	inst->ncols = CPXgetnumcols(env, lp);
+	
+	if ( greedy_heuristic(inst, 2, 0) ) print_error(" error within greedy_heuristic()");
+	if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
+	calculate_best_val(inst);
 
 	if (model_type == 0)
 	{

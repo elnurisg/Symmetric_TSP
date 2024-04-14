@@ -1,4 +1,5 @@
 #include "tsp.h"           
+#include "matheuristics.h"
 
 double second();
 // void print_error(const char *err);  
@@ -50,7 +51,7 @@ int main(int argc, char **argv)
 	// inst.nnodes + 1 is bcz of the closing the tour
 	inst.best_sol = (int *) calloc(inst.nnodes+1, sizeof(int)); 
 
-	if ( greedy_heuristic(&inst, 2, 0) ) print_error(" error within greedy_heuristic()");
+	// if ( greedy_heuristic(&inst, 2, 0) ) print_error(" error within greedy_heuristic()");
 	// if ( extra_mileage_heuristic(&inst, 1) ) print_error(" error within greedy_heuristic()");
 	// printf("\n \tbest_val is %f\n", inst.best_val);
 	// if ( variable_neighborhood_search(&inst, 3) ) print_error(" error within variable_neighborhood_search()");
@@ -58,7 +59,8 @@ int main(int argc, char **argv)
 	// if ( tabu_search(&inst, 1) ) print_error(" error within tabu_search()");
 	// if ( two_opt_refining_heuristic(&inst, inst.best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
 	// if ( genetic_algorithm(&inst, 2, 0) ) print_error(" error within genetic_algorithm()");
-	if ( TSPopt(&inst, 1) ) print_error(" error within TSPopt()");
+	// if ( TSPopt(&inst, 1) ) print_error(" error within TSPopt()");
+	if (hard_fixing(&inst, 0)) print_error(" error within hard_fixing()");
 
 	double t2 = second();
 
@@ -241,7 +243,7 @@ void parse_command_line(int argc, char** argv, instance *inst)
 	strcpy(inst->input_file, "NULL");
 	inst->random_seed = 0; 
 	// inst->num_threads = 0;
-	// inst->timelimit = CPX_INFBOUND;
+	inst->timelimit = CPX_INFBOUND;
 	// inst->cutoff = CPX_INFBOUND; 
 	// inst->integer_costs = 0;
 
