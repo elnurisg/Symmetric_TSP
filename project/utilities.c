@@ -144,7 +144,6 @@ int * add_to_array(int starting_pos, int new_element, int *arr, int size){
 
 int * remove_from_array(int pos, int *arr, int size){
     int *new_arr = (int *)calloc(size, sizeof(int));
-    int last_pos = 1;
 
     arr[size-1] = -1;
 
@@ -274,7 +273,7 @@ void write_cost_to_file(double cost, const char *filename, int append) {
         }
     }
 
-    FILE *fp;  
+    FILE *fp = NULL;  
     if (append == 0)
         fp = fopen(filename, "a");  // Append mode
     else if (append == 1)

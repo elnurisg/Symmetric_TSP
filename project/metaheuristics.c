@@ -390,7 +390,7 @@ void free_Individual(Individual *individual) {
 
 
 // calculate fitness values of all population and return to the ondex with best fitness value
-Individual * find_champion_individual(instance *inst, Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size){
+Individual * find_champion_individual(Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size){
 	
 	Individual *champion_individual = (Individual *)malloc(sizeof(Individual));
 	champion_individual->fitness = INFINITY;
@@ -441,7 +441,7 @@ void calculate_population_fitness(instance *inst, Individual *population, int po
 	}
 
 }
-void crossover(instance *inst, Individual *population, int population_size, Individual *children, int children_size, int cutting_type ){
+void crossover(instance *inst, Individual *population, Individual *children, int children_size, int cutting_type ){
 	
 	int parent1; int parent2; int cutting_position;
 
@@ -599,7 +599,7 @@ Individual * survival_probabilities_of_generation(Individual *population, int po
 
 // kill population with bad genes and choose the fittest population for the next generation
 // return new_population
-Individual * elitism(instance *inst, Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion){
+Individual * elitism(Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion){
 	
 	Individual *new_population = (Individual *) calloc(population_size, sizeof(Individual));
 	Individual *Generation;
@@ -716,7 +716,7 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){
 
 	do
 	{
-		crossover(inst, population, population_size, children, children_size, cutting_type);
+		crossover(inst, population, children, children_size, cutting_type);
 		
 		if (repair == 0) // OFF, punish their fitness with penalty
 			avoid_bad_genes(inst, children, children_size);
@@ -725,16 +725,16 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){
 		
 		mutate_population(inst, population, population_size, mutations, mutants_size);
 		
-		champion = find_champion_individual(inst, population, population_size, children, children_size, mutations, mutants_size);
+		champion = find_champion_individual(population, population_size, children, children_size, mutations, mutants_size);
 		printf("Champion fitness of generation%d is:%f\n", count_generations, champion->fitness);
 
-		population = elitism(inst, population, population_size, children, children_size, mutations, mutants_size, champion);
+		population = elitism(population, population_size, children, children_size, mutations, mutants_size, champion);
 		
 		count_generations++;
 	} while (second() - t1 < inst->timelimit);
 	
 	// find the champion of the last survived generation of elitism
-	champion = find_champion_individual(inst, population, population_size, children, children_size, mutations, mutants_size);
+	champion = find_champion_individual(population, population_size, children, children_size, mutations, mutants_size);
 
 	// update the best_sol in case it is better
 	if (champion->fitness < inst->best_val)

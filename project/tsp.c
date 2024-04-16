@@ -459,7 +459,6 @@ int xpos(int i, int j, instance *inst)      // to be verified
 void build_model(instance *inst, CPXENVptr env, CPXLPptr lp)
 {    
 
-	double zero = 0.0;  
 	char binary = 'B'; 
 
 	char **cname = (char **) calloc(1, sizeof(char *));		// (char **) required by cplex...
