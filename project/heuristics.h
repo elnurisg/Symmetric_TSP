@@ -27,7 +27,7 @@ int greedy_step(instance *inst, int current_node, int *uncovered_nodes, int curr
 **/
 int extra_mileage_heuristic(instance *inst, int starting_mode);
 void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy);
-int * extra_mileage_step(instance *inst, int *uncovered_nodes, int current_length, int *nodes_hierarchy);
+void extra_mileage_step(instance *inst, int *uncovered_nodes, int current_length, int *nodes_hierarchy, int *best_values);
 double delta_cost_extra_mileage(instance *inst, int i, int j, int h);
 void calculate_best_val(instance *inst);
 int maximum_cost_pos(instance *inst);

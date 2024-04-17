@@ -52,7 +52,7 @@ int dist(int i, int j, instance *inst);
 int random_node_with_time_seed(int length);
 int random_0_to_length(instance *inst, int length);
 int random_0_to_length_but_different_than_previous(instance *inst, int length, int previous_random_value);
-int verify_tour(instance *inst);
+int verify_tour(instance *inst, int *tour);
 double random01();
 double cost(int i, int j, instance *inst);
 void print_error(const char *err);  

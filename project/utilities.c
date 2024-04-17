@@ -34,20 +34,20 @@ void plot_tsp_tour(instance *inst, int writing_to_file){
 
 }
 
-int verify_tour(instance *inst){
+int verify_tour(instance *inst, int *tour){
 	for (int i = 0; i < inst->nnodes; i++)
 	{
 		for (int j = 0; j < inst->nnodes; j++)
 		{
-			if(i!=j && inst->best_sol[i]==inst->best_sol[j]) {
-				printf("indexes %d and %d are the same nodes: %d\n", i,j, inst->best_sol[i]);
+			if(i!=j && tour[i]==tour[j]) {
+				printf("indexes %d and %d are the same nodes: %d\n", i,j, tour[i]);
 				return 1;
 			}
 
 		}
 
 	}
-	if (inst->best_sol[0] != inst->best_sol[inst->nnodes]){
+	if (tour[0] != tour[inst->nnodes]){
 		printf("first and the last nodes are not the same\n");
 		return 1;
 	}

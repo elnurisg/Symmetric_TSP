@@ -162,6 +162,8 @@ int new_tour_from_break_positions(instance *inst, int *break_positions, int arr_
 	inst->best_sol[inst->nnodes] = inst->best_sol[0]; //close the tour
 
 	calculate_best_val(inst);
+	
+	free(optimal_solution);
 	return 0;
 }
 
@@ -204,11 +206,12 @@ int n_opt_kick(instance *inst, int n){
 	shuffle_array_for_kick(break_positions, arr_size);
 
 	new_tour_from_break_positions(inst, break_positions, arr_size);
-	// if(verify_tour(inst)==0) printf("\tIt is a tour!\n");
+	// if(verify_tour(inst, inst->best_sol)==0) printf("\tIt is a tour!\n");
 
 	printf("\n \tupdate in best_val after kick is %f\n", inst->best_val);
+
+	free(break_positions);
 	return 0;
-	//// verify if it's tour
 }
 
 int variable_neighborhood_search(instance *inst, int kick_neighborhood){
@@ -219,8 +222,6 @@ int variable_neighborhood_search(instance *inst, int kick_neighborhood){
 	
 	// char filename[50];
     // snprintf(filename, sizeof(filename), "cost_plot/costs_VNS_%d-OPT.txt", kick_neighborhood);
-
-	double t1 = second();
 
 	two_opt_refining_heuristic(inst, inst->best_sol, 0);
 	// write_cost_to_file(inst->best_val, filename, 1);
@@ -243,14 +244,14 @@ int variable_neighborhood_search(instance *inst, int kick_neighborhood){
 			printf("\n \tupdate in best_val %f\n", inst->best_val);
 		}
 		
-	} while (second() - t1 < inst->timelimit);
+	} while (second() - inst->tstart < inst->timelimit);
 	
 	copy_array(optimal_solution, inst->nnodes+1, inst->best_sol);
 	inst->best_val = optimal_value;
 
 	free(optimal_solution);
 
-	if(verify_tour(inst)==0) printf("\tIt is a tour!\n");
+	if(verify_tour(inst, inst->best_sol)==0) printf("\tIt is a tour!\n");
 	return 0;
 }
 
@@ -305,9 +306,6 @@ double average_delta_cost_between_two_edges(instance *inst){
 int simulated_annealing(instance *inst){
 	printf("\n_________________________________________________________\nSimulated Annealing:\n");
 
-	double t1 = second();
-
-
 	int scaler = average_delta_cost_between_two_edges(inst);
 	double optimal_value = inst->best_val;
 	int* optimal_solution = copy_to_new_array(inst->best_sol, inst->nnodes+1);
@@ -326,14 +324,14 @@ int simulated_annealing(instance *inst){
 			printf("\n \tupdate in best_val %f\n", inst->best_val);
 		}
 		
-	} while (second() - t1 < inst->timelimit);
+	} while (second() - inst->tstart < inst->timelimit);
 
 	copy_array(optimal_solution, inst->nnodes+1, inst->best_sol);
 	inst->best_val = optimal_value;
 
 	free(optimal_solution);
 
-	// if(verify_tour(inst)==0) printf("\tIt is a tour!\n");
+	// if(verify_tour(inst, inst->best_sol)==0) printf("\tIt is a tour!\n");
 	return 0;
 
 }
@@ -658,10 +656,10 @@ void repair_extra_mileage(instance *inst, Individual *individual){
 	}
 
 	// and applying extra-mileage
-	int best_node_pos; int best_edge_pos; int *best_values_index;
+	int best_node_pos; int best_edge_pos; int *best_values_index = (int *) calloc(2, sizeof(int));
 	while (uncovered_length != 0) 
 	{ 
-		best_values_index = extra_mileage_step(inst, uncovered_nodes, uncovered_length, individual->genes);
+		extra_mileage_step(inst, uncovered_nodes, uncovered_length, individual->genes, best_values_index);
 		best_edge_pos = best_values_index[0]; 
 		best_node_pos = best_values_index[1];
 
@@ -683,7 +681,6 @@ void repair_extra_mileage(instance *inst, Individual *individual){
 
 int genetic_algorithm(instance *inst, int repair, int cutting_type){
 	printf("\n_________________________________________________________\nGenetic Alghorithm:\n");
-	double t1 = second();
 
 	int population_size = 1000;
 	int children_size = population_size/2;
@@ -712,10 +709,13 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){
 		printf("Champion fitness of generation%d is:%f\n", count_generations, champion->fitness);
 		
 		count_generations++;
-	} while (second() - t1 < inst->timelimit);
+	} while (second() - inst->tstart < inst->timelimit);
+
+	// even if repair is off, apply repairing to champion to get a tour
+	if(repair == 0) repair_bad_genes(inst, champion, 1, 2);
 
 	// update the best_sol in case champion is better
-	if (champion->fitness < inst->best_val)
+	if (champion->fitness < inst->best_val && verify_tour(inst, champion->genes)==0)
 	{
 		copy_array(champion->genes, inst->nnodes+1, inst->best_sol);
 		inst->best_val = champion->fitness;

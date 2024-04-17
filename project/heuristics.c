@@ -206,13 +206,10 @@ double delta_cost_extra_mileage(instance *inst, int i, int j, int h){
 	return delta_cost;
 }
 
-int * extra_mileage_step(instance *inst, int *uncovered_nodes, int current_length, int *nodes_hierarchy){
+void extra_mileage_step(instance *inst, int *uncovered_nodes, int current_length, int *nodes_hierarchy, int *best_values){
 
-	int best_node;
-	int best_edge;
-	int *best_values = (int *) calloc(2, sizeof(int));
-	double min_cost = __DBL_MAX__;
-	double delta_cost = 0;
+	int best_node; int best_edge;
+	double min_cost = __DBL_MAX__; double delta_cost = 0;
 
 	for (int i = 0; i < inst->nnodes - current_length - 1; i++) // for each edge
 	{	
@@ -233,8 +230,6 @@ int * extra_mileage_step(instance *inst, int *uncovered_nodes, int current_lengt
 	best_values[0] = best_edge;
 	best_values[1] = best_node;
 
-	return best_values;
-
 }
 
 void calculate_best_val(instance *inst){
@@ -251,51 +246,43 @@ void calculate_best_val(instance *inst){
 void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy){
 	int *uncovered_nodes = (int *) calloc(inst->nnodes, sizeof(int));
 	int current_length = inst->nnodes;
-	// inst->best_sol = (int *) calloc(inst->nnodes+1, sizeof(int));
-		// in order to close the tour +1 node in best_sol
-	inst->best_val = (inst->cost[nodes_hierarchy[0]*inst->nnodes + nodes_hierarchy[1]]);
+	int *best_values = (int *) calloc(2, sizeof(int)); int best_node_pos; int best_edge_pos;
 
 	for (int i = 0; i < inst->nnodes; i++)
-	{
 		uncovered_nodes[i] = i; 
-	}
-	int best_node_pos; int best_edge_pos; int *best_values_index;
 
-	current_length --;
-	uncovered_nodes[nodes_hierarchy[0]] = uncovered_nodes[current_length];
-	current_length --;
-	uncovered_nodes[nodes_hierarchy[1]] = uncovered_nodes[current_length];
+	uncovered_nodes[nodes_hierarchy[0]] = uncovered_nodes[--current_length];
+	uncovered_nodes[nodes_hierarchy[1]] = uncovered_nodes[--current_length];
 
 	while (current_length != 0) 
 	{ 
-		best_values_index = extra_mileage_step(inst, uncovered_nodes, current_length, nodes_hierarchy);
-		best_edge_pos = best_values_index[0]; 
-		best_node_pos = best_values_index[1];
+		extra_mileage_step(inst, uncovered_nodes, current_length, nodes_hierarchy, best_values);
+		best_edge_pos = best_values[0]; 
+		best_node_pos = best_values[1];
 
 		// update nodes_hierarchy
 		add_to_array(best_edge_pos, uncovered_nodes[best_node_pos], nodes_hierarchy, inst->nnodes);
 		
-		current_length--; // one node is already covered
-		// update the uncovered_nodes
-		uncovered_nodes[best_node_pos] = uncovered_nodes[current_length];
+		// one node is already covered, update the uncovered_nodes
+		uncovered_nodes[best_node_pos] = uncovered_nodes[--current_length];
 	}
 
 	copy_array(nodes_hierarchy,inst->nnodes,inst->best_sol); //nodes_hierarchy;
-	inst->best_val += inst->cost[inst->best_sol[inst->nnodes]*inst->nnodes + inst->best_sol[0]];
 	inst->best_sol[inst->nnodes]= inst->best_sol[0]; // close the tour
 
 	calculate_best_val(inst);
 
+	free(uncovered_nodes);
 }
 
 int extra_mileage_heuristic(instance *inst, int starting_mode){
 	printf("\n_________________________________________________________\nInsertion Heuristic:\n");
 
-	int *nodes_hierarchy = (int *) calloc(inst->nnodes, sizeof(int));
+	int *nodes_hierarchy = NULL;
 	double min_cost; int random_node_with_time_seed_pos;
 	int *nodes_hierarchy_with_best_starting_couple = (int *) calloc(inst->nnodes, sizeof(int));
 	int length_of_cost = inst->nnodes*inst->nnodes;
-	int hullSize; Point* convexHull;
+	int hullSize; Point* convexHull = NULL;
 
 	switch (starting_mode)
 	{
@@ -306,7 +293,6 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 	case 1:  // A, B is random (A!=B)
 		random_node_with_time_seed_pos = random_node_with_time_seed(length_of_cost);
 		nodes_hierarchy = find_nodes(inst, random_node_with_time_seed_pos);
-		// printf("\n random_nod_pos is %d \n", random_node_with_time_seed_pos);
 
 		while (random_node_with_time_seed_pos % inst->nnodes == random_node_with_time_seed_pos / inst->nnodes) // A must be different from B
 		{
@@ -322,10 +308,7 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 		// however, with convexHull we get best_value close to the other one
 		convexHull = grahamScan(inst, &hullSize);
 		
-		nodes_hierarchy[0] = convexHull[0].id;
-		nodes_hierarchy[1] = convexHull[1].id;
-		calculate_extra_mileage_heuristics(inst, nodes_hierarchy);
-		min_cost = inst->best_val;
+		min_cost = INFINITY;
 
 		for (int i = 0; i < hullSize; i++)
 		{
@@ -351,7 +334,7 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 		calculate_extra_mileage_heuristics(inst, nodes_hierarchy_with_best_starting_couple);
 		break;
 	default:
-            printf("Error! \n starting_node is not in correct format\n");
+            printf("Error! \n starting_mode is not in correct format\n");
 	}
 
 	free(nodes_hierarchy);
