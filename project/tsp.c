@@ -86,7 +86,7 @@ int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 		if (incumbent_value < UB)
 		{
 			UB = incumbent_value;
-			best_succ = copy_array(succ, inst->nnodes);
+			copy_array(succ, inst->nnodes, best_succ);
 			// store the best succ solution found so far
 		}		
 		iteration++;

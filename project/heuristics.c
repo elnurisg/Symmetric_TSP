@@ -273,14 +273,14 @@ void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy){
 		best_node_pos = best_values_index[1];
 
 		// update nodes_hierarchy
-		nodes_hierarchy = add_to_array(best_edge_pos, uncovered_nodes[best_node_pos], nodes_hierarchy, inst->nnodes);
+		add_to_array(best_edge_pos, uncovered_nodes[best_node_pos], nodes_hierarchy, inst->nnodes);
 		
 		current_length--; // one node is already covered
 		// update the uncovered_nodes
 		uncovered_nodes[best_node_pos] = uncovered_nodes[current_length];
 	}
 
-	inst->best_sol = nodes_hierarchy;
+	copy_array(nodes_hierarchy,inst->nnodes,inst->best_sol); //nodes_hierarchy;
 	inst->best_val += inst->cost[inst->best_sol[inst->nnodes]*inst->nnodes + inst->best_sol[0]];
 	inst->best_sol[inst->nnodes]= inst->best_sol[0]; // close the tour
 
@@ -336,7 +336,7 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 				if (min_cost > inst->best_val)
 				{
 					min_cost = inst->best_val;
-					nodes_hierarchy_with_best_starting_couple = copy_array(nodes_hierarchy, inst->nnodes);
+					copy_array(nodes_hierarchy, inst->nnodes, nodes_hierarchy_with_best_starting_couple);
 				}
 			}
 			
@@ -354,6 +354,9 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
             printf("Error! \n starting_node is not in correct format\n");
 	}
 
+	free(nodes_hierarchy);
+	free(nodes_hierarchy_with_best_starting_couple);
+	
 	return 0;
 
 }

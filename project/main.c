@@ -52,16 +52,16 @@ int main(int argc, char **argv)
 	inst.best_sol = (int *) calloc(inst.nnodes+1, sizeof(int)); 
 
 	// if ( greedy_heuristic(&inst, 2, 0) ) print_error(" error within greedy_heuristic()");
-	// if ( extra_mileage_heuristic(&inst, 1) ) print_error(" error within greedy_heuristic()");
+	// if ( extra_mileage_heuristic(&inst, 2) ) print_error(" error within greedy_heuristic()");
 	// printf("\n \tbest_val is %f\n", inst.best_val);
 	// if ( variable_neighborhood_search(&inst, 3) ) print_error(" error within variable_neighborhood_search()");
 	// if ( simulated_annealing(&inst) ) print_error(" error within simulated_annealing()");
 	// if ( tabu_search(&inst, 1) ) print_error(" error within tabu_search()");
 	// if ( two_opt_refining_heuristic(&inst, inst.best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
-	// if ( genetic_algorithm(&inst, 2, 0) ) print_error(" error within genetic_algorithm()");
-	// if ( TSPopt(&inst, 1) ) print_error(" error within TSPopt()");
+	if ( genetic_algorithm(&inst, 2, 0) ) print_error(" error within genetic_algorithm()");
+	// if ( TSPopt(&inst, 0) ) print_error(" error within TSPopt()");
 	// if (hard_fixing(&inst, 0.3)) print_error(" error within hard_fixing()");
-	if (local_branching(&inst, 10)) print_error(" error within local_branching()");
+	// if (local_branching(&inst, 10)) print_error(" error within local_branching()");
 
 	double t2 = second();
 

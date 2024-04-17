@@ -48,7 +48,7 @@ int tabu_search(instance *inst, int tenure_mode){
 	int iteration = 0;
 	int update_switch = 0;
 
-	int* optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
+	int* optimal_solution = copy_to_new_array(inst->best_sol, inst->nnodes+1);
 	double optimal_value = inst->best_val;
 	inst->tabu_list = (int *) calloc(inst->nnodes, sizeof(int));
 
@@ -95,7 +95,7 @@ int tabu_search(instance *inst, int tenure_mode){
 
 			if (optimal_value > inst->best_val)
 			{
-				optimal_solution = copy_array(inst->best_sol, inst->nnodes);
+				copy_array(inst->best_sol, inst->nnodes, optimal_solution);
 				optimal_value = inst->best_val;
 			}
 			
@@ -103,7 +103,7 @@ int tabu_search(instance *inst, int tenure_mode){
 		iteration++;
 	} while (second() - t1 < inst->timelimit);
 	
-	inst->best_sol = copy_array(optimal_solution, inst->nnodes);
+	copy_array(optimal_solution, inst->nnodes, inst->best_sol);
 	inst->best_val = optimal_value;
 	inst->best_sol[inst->nnodes] = inst->best_sol[0];
 
@@ -140,7 +140,7 @@ int copy_segment_in_reverse_order(instance *inst, int *old_solution, int startin
 
 int new_tour_from_break_positions(instance *inst, int *break_positions, int arr_size){
 	
-	int* optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
+	int* optimal_solution = copy_to_new_array(inst->best_sol, inst->nnodes+1);
 	int into_pos = 0;
 
 	for (int i = 0; i < arr_size; i+=2)
@@ -225,7 +225,7 @@ int variable_neighborhood_search(instance *inst, int kick_neighborhood){
 	two_opt_refining_heuristic(inst, inst->best_sol, 0);
 	// write_cost_to_file(inst->best_val, filename, 1);
 
-	int* optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
+	int* optimal_solution = copy_to_new_array(inst->best_sol, inst->nnodes+1);
 	double optimal_value = inst->best_val;
 	
 	do
@@ -238,14 +238,14 @@ int variable_neighborhood_search(instance *inst, int kick_neighborhood){
 
 		if (optimal_value > inst->best_val)
 		{
-			optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
+			copy_array(inst->best_sol, inst->nnodes+1, optimal_solution);
 			optimal_value = inst->best_val;
 			printf("\n \tupdate in best_val %f\n", inst->best_val);
 		}
 		
 	} while (second() - t1 < inst->timelimit);
 	
-	inst->best_sol = copy_array(optimal_solution, inst->nnodes+1);
+	copy_array(optimal_solution, inst->nnodes+1, inst->best_sol);
 	inst->best_val = optimal_value;
 
 	free(optimal_solution);
@@ -310,7 +310,7 @@ int simulated_annealing(instance *inst){
 
 	int scaler = average_delta_cost_between_two_edges(inst);
 	double optimal_value = inst->best_val;
-	int* optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
+	int* optimal_solution = copy_to_new_array(inst->best_sol, inst->nnodes+1);
 	
 	do
 	{
@@ -321,14 +321,14 @@ int simulated_annealing(instance *inst){
 
 		if (optimal_value > inst->best_val)
 		{
-			optimal_solution = copy_array(inst->best_sol, inst->nnodes+1);
+			copy_array(inst->best_sol, inst->nnodes+1, optimal_solution);
 			optimal_value = inst->best_val;
 			printf("\n \tupdate in best_val %f\n", inst->best_val);
 		}
 		
 	} while (second() - t1 < inst->timelimit);
 
-	inst->best_sol = copy_array(optimal_solution, inst->nnodes+1);
+	copy_array(optimal_solution, inst->nnodes+1, inst->best_sol);
 	inst->best_val = optimal_value;
 
 	free(optimal_solution);
@@ -389,37 +389,6 @@ void free_Individual(Individual *individual) {
 }
 
 
-// calculate fitness values of all population and return to the ondex with best fitness value
-Individual * find_champion_individual(Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size){
-	
-	Individual *champion_individual = (Individual *)malloc(sizeof(Individual));
-	champion_individual->fitness = INFINITY;
-
-	for (int i = 0; i < population_size; i++)
-	{
-		if (population[i].fitness < champion_individual->fitness)
-		{
-			champion_individual = &population[i];
-		}	
-	}
-	for (int i = 0; i < children_size; i++)
-	{
-		if (children[i].fitness < champion_individual->fitness)
-		{
-			champion_individual = &children[i];
-		}	
-	}
-	for (int i = 0; i < mutants_size; i++)
-	{
-		if (mutations[i].fitness < champion_individual->fitness)
-		{
-			champion_individual = &mutations[i];
-		}	
-	}
-
-	return champion_individual;
-}
-
 void calculate_individual_fitness(instance *inst, Individual *individual){
 
 	double fitness = 0;
@@ -441,7 +410,7 @@ void calculate_population_fitness(instance *inst, Individual *population, int po
 	}
 
 }
-void crossover(instance *inst, Individual *population, Individual *children, int children_size, int cutting_type ){
+void crossover(instance *inst, Individual *population, int population_size, Individual *children, int children_size, int cutting_type ){
 	
 	int parent1; int parent2; int cutting_position;
 
@@ -462,10 +431,10 @@ void crossover(instance *inst, Individual *population, Individual *children, int
 
 	for (int i = 0; i < children_size; i++)
 	{
-		parent1 = random_0_to_length(inst, inst->nnodes);
-		parent2 = random_0_to_length_but_different_than_previous(inst, inst->nnodes, parent1);
-		children[i].genes = combine_two_tours_from_pos(population[parent1].genes,
-					 population[parent2].genes, inst->nnodes, cutting_position);
+		parent1 = random_0_to_length(inst, population_size);
+		parent2 = random_0_to_length_but_different_than_previous(inst, population_size, parent1);
+		combine_two_tours_from_pos(population[parent1].genes,
+					 population[parent2].genes, inst->nnodes, cutting_position, children[i].genes);
 	}
 	calculate_population_fitness(inst, children, children_size);
 	
@@ -540,7 +509,7 @@ void mutate_population(instance *inst, Individual *population, int population_si
 	for (int i = 0; i < mutants_size; i++)
 	{
 		mutant = random_0_to_length(inst, population_size);
-		mutations[i].genes = copy_array(population[mutant].genes, inst->nnodes+1);
+		copy_array(population[mutant].genes, inst->nnodes+1, mutations[i].genes);
 		alteration_of_genes(inst, mutations[i].genes);
 	}
 	calculate_population_fitness(inst, mutations, mutants_size);
@@ -551,14 +520,14 @@ double probability_of_individual(Individual *individual, Individual *champion){
 	return (champion->fitness / individual->fitness);
 }
 
-// Function to compare individuals based on their probabilities (for sorting)
+// Function to compare individuals based on their fitness (for sorting)
 int compare_individuals(const void *a, const void *b) {
     const Individual *individualA = (const Individual *)a;
     const Individual *individualB = (const Individual *)b;
 
-    if (individualA->probability < individualB->probability) {
-        return 1;  // sorting in descending order
-    } else if (individualA->probability > individualB->probability) {
+    if (individualA->fitness > individualB->fitness) {
+        return 1;  // sorting in ascending order
+    } else if (individualA->fitness < individualB->fitness) {
         return -1;
     } else {
         return 0;
@@ -567,60 +536,74 @@ int compare_individuals(const void *a, const void *b) {
 
 // calculate survival_probabilities with respect to its fitness and add into its structure
 // gather all generation and sort them in the descending order of their survival rate
-Individual * survival_probabilities_of_generation(Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion){
+void survival_probabilities_of_generation(instance *inst, Individual *Generation, Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion){
 	
 	int generation_size = population_size + children_size + mutants_size;
-    Individual *Generation = (Individual *)malloc(generation_size * sizeof(Individual));
 	int index = 0;
 
 	for (int j = 0; j < children_size; j++)
 	{
-		children[j].probability = probability_of_individual(&children[j], champion);
-		Generation[index++] = children[j];
+		copy_array(children[j].genes, inst->nnodes+1, Generation[index].genes);
+		calculate_individual_fitness(inst, &Generation[index]);
+		index++;
 	}
 
 	for (int z = 0; z < population_size; z++)
 	{
-		population[z].probability = probability_of_individual(&population[z], champion);
-		Generation[index++] = population[z];
+		copy_array(population[z].genes, inst->nnodes+1, Generation[index].genes);
+		calculate_individual_fitness(inst, &Generation[index]);
+		index++;
 	}
 
 	for (int h = 0; h < mutants_size; h++)
 	{
-		mutations[h].probability = probability_of_individual(&mutations[h], champion);
-		Generation[index++] = mutations[h];
+		copy_array(mutations[h].genes, inst->nnodes+1, Generation[index].genes);
+		calculate_individual_fitness(inst, &Generation[index]);
+		index++;
 	}
 
-    // sort the combined array based on probabilities
+    // sort the combined array based on their fitness
     qsort(Generation, generation_size, sizeof(Individual), compare_individuals);
+	
+	copy_array(Generation[0].genes, inst->nnodes+1, champion->genes);
+	champion->fitness = Generation[0].fitness;
 
-    return Generation;
+	probability_of_population(Generation, generation_size, champion);
+
+}
+
+void probability_of_population(Individual *Generation, int generation_size, Individual *champion){
+	
+	for (int i = 0; i < generation_size; i++)
+		Generation[i].probability = probability_of_individual(&Generation[i], champion);
+
 }
 
 // kill population with bad genes and choose the fittest population for the next generation
 // return new_population
-Individual * elitism(Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion){
-	
-	Individual *new_population = (Individual *) calloc(population_size, sizeof(Individual));
-	Individual *Generation;
+void elitism(instance *inst, Individual *population, int population_size, Individual *children, int children_size, Individual *mutations, int mutants_size, Individual *champion){
+		
+	int generation_size = population_size + children_size + mutants_size;
+    Individual *Generation = allocate_population(inst, generation_size);
 
 	int new_population_count = 0;
-	Generation = survival_probabilities_of_generation(population, population_size, children, children_size, mutations, mutants_size, champion);
+	survival_probabilities_of_generation(inst, Generation, population, population_size, children, children_size, mutations, mutants_size, champion);
 
 	while (new_population_count < population_size)
 	{
-		for (int i = 0; i < children_size + population_size + mutants_size; i++)
+		for (int i = 0; i < generation_size; i++)
 		{
-			if (random01() <= Generation[i].probability){
-				new_population[new_population_count] = Generation[i];
+			if (random01() <= Generation[i].probability && new_population_count < population_size){
+				copy_array(Generation[i].genes, inst->nnodes+1, population[new_population_count].genes);
 				new_population_count++;
 			}
 
 		}
 				
 	}
-
-	return new_population;
+	calculate_population_fitness(inst, population, population_size);
+	
+	free_population(Generation, generation_size);
 }
 
 void eliminate_multiple_visits(instance *inst, Individual *individual){
@@ -631,7 +614,7 @@ void eliminate_multiple_visits(instance *inst, Individual *individual){
 		{
 				if ((individual->genes[i] == individual->genes[j]) && (individual->genes[i] != -1)) 
 				{
-					individual->genes = remove_from_array(j, individual->genes, inst->nnodes+1);
+					remove_from_array(j, individual->genes, inst->nnodes+1, individual->genes);
 					j--; // bcz new pos j is different node now
 					
 				}
@@ -683,7 +666,7 @@ void repair_extra_mileage(instance *inst, Individual *individual){
 		best_node_pos = best_values_index[1];
 
 		// update individual->genes
-		individual->genes = add_to_array(best_edge_pos, uncovered_nodes[best_node_pos], individual->genes, inst->nnodes);
+		add_to_array(best_edge_pos, uncovered_nodes[best_node_pos], individual->genes, inst->nnodes);
 		
 		uncovered_length--; // one node is already covered
 		// update the uncovered_nodes
@@ -705,41 +688,36 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){
 	int population_size = 1000;
 	int children_size = population_size/2;
 	int mutants_size = population_size/10;
-	Individual *champion; int count_generations = 0;
+	Individual *champion = allocate_population(inst, 1); int count_generations = 0;
 
 	Individual *population = (Individual *) calloc(population_size, sizeof(Individual));
-	Individual *children = (Individual *) calloc(children_size, sizeof(Individual));
-	Individual *mutations = (Individual *) calloc(mutants_size, sizeof(Individual));
+	Individual *children = allocate_population(inst, children_size);
+	Individual *mutations = allocate_population(inst, mutants_size);
 	
 	initialize_population_randomly(inst, population_size, population);
 	count_generations++;
 
 	do
 	{
-		crossover(inst, population, children, children_size, cutting_type);
-		
+		crossover(inst, population, population_size, children, children_size, cutting_type);
+
 		if (repair == 0) // OFF, punish their fitness with penalty
 			avoid_bad_genes(inst, children, children_size);
 		else  // ON 
 			repair_bad_genes(inst, children, children_size, repair);
-		
+
 		mutate_population(inst, population, population_size, mutations, mutants_size);
 		
-		champion = find_champion_individual(population, population_size, children, children_size, mutations, mutants_size);
+		elitism(inst, population, population_size, children, children_size, mutations, mutants_size, champion);
 		printf("Champion fitness of generation%d is:%f\n", count_generations, champion->fitness);
-
-		population = elitism(population, population_size, children, children_size, mutations, mutants_size, champion);
 		
 		count_generations++;
 	} while (second() - t1 < inst->timelimit);
-	
-	// find the champion of the last survived generation of elitism
-	champion = find_champion_individual(population, population_size, children, children_size, mutations, mutants_size);
 
-	// update the best_sol in case it is better
+	// update the best_sol in case champion is better
 	if (champion->fitness < inst->best_val)
 	{
-		inst->best_sol = copy_array(champion->genes, inst->nnodes+1);
+		copy_array(champion->genes, inst->nnodes+1, inst->best_sol);
 		inst->best_val = champion->fitness;
 	}
  
@@ -750,4 +728,14 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){
 	free_Individual(champion);
 
 	return 0;
+}
+
+Individual * allocate_population(instance *inst, int population_size){
+
+	Individual *population = (Individual *) calloc(population_size, sizeof(Individual));
+	
+	for (int i = 0; i < population_size; i++) 
+		population[i].genes = (int *) calloc((inst->nnodes+1), sizeof(int));
+	
+	return population;
 }

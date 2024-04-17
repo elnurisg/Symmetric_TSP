@@ -108,7 +108,16 @@ int random_0_to_length(instance *inst, int length){
 }
 
 
-int * copy_array(int *arr, int size){
+void copy_array(int *arr, int size, int *arr_to_copy){
+
+    for (int i = 0; i < size; i++)
+    {
+        arr_to_copy[i] = arr[i];
+    }
+
+}
+
+int * copy_to_new_array(int *arr, int size){
     int *cpy = (int *)calloc(size, sizeof(int));
     for (int i = 0; i < size; i++)
     {
@@ -118,32 +127,32 @@ int * copy_array(int *arr, int size){
     return cpy; 
 }
 
-int * add_to_array(int starting_pos, int new_element, int *arr, int size){
-    int *new_arr = (int *)calloc(size, sizeof(int));
+
+void add_to_array(int starting_pos, int new_element, int *arr, int size){
+    int *tmp = copy_to_new_array(arr, size);
 
     for (int i = 0; i < size; i++)
     {
         if (i <= starting_pos)
         {
-            new_arr[i] = arr[i];
+            arr[i] = tmp[i];
         }
         else if (i == starting_pos+1)
         {
-            new_arr[i] = new_element;
+            arr[i] = new_element;
         }
         else
         {
-            new_arr[i] = arr[i-1];
+            arr[i] = tmp[i-1];
         }
         
     }
 
-    return new_arr;
+    free(tmp);
 
 }
 
-int * remove_from_array(int pos, int *arr, int size){
-    int *new_arr = (int *)calloc(size, sizeof(int));
+void remove_from_array(int pos, int *arr, int size, int *new_arr){
 
     arr[size-1] = -1;
 
@@ -161,7 +170,6 @@ int * remove_from_array(int pos, int *arr, int size){
     }
 
     new_arr[size-1] = -1;
-    return new_arr;
 
 }
 
@@ -241,9 +249,7 @@ void shuffle_tsp_sol(int *arr, int nnodes) {
 }
 
 
-int * combine_two_tours_from_pos(int *arr1, int *arr2, int size, int position) {
-
-    int *result_arr = (int *) calloc(size, sizeof(int));
+void combine_two_tours_from_pos(int *arr1, int *arr2, int size, int position, int *result_arr) {
 
     // copy elements from arr1 before the point
     for (int i = 0; i < position; i++) {
@@ -257,7 +263,6 @@ int * combine_two_tours_from_pos(int *arr1, int *arr2, int size, int position) {
 
     result_arr[size] = result_arr[0]; // close the tour
 
-    return result_arr;
 }
 
 void write_cost_to_file(double cost, const char *filename, int append) {
