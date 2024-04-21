@@ -395,7 +395,7 @@ int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance){
 		update_switch = 0;
 		for (int i = 0; i < inst->nnodes; i++) // nodes in 0 and 280 would have been be the same
 		{
-			for (int j = i+2; j < inst->nnodes; j++)
+			for (int j = i+1; j < inst->nnodes; j++)
 			{
 				delta_cost = delta_cost_two_opt(i, j, inst, tsp_sol);
 				if (delta_cost < min_delta_cost)
