@@ -9,8 +9,8 @@
 // #include "convex_hull.h"
 
 
-#define VERBOSE				    50		// printing level  (=10 only incumbent, =20 little output, =50-60 good, =70 verbose, >=100 cplex log)
-//////////////////////////// add VERBOSE also for cplex output
+#define VERBOSE				    50		// printing level  ()
+#define CPLEX_VERBOSE 0 // VERBOSE for cplex output 1 for CPX_ON, 0 for CPX_OFF
 //hard-wired parameters
 #define XSMALL		  		  1e-5 		// 1e-4*	// tolerance used to decide ingerality of 0-1 var.s
 #define EPSILON		  		  1e-5		// 1e-5		// very small numerical tolerance 
@@ -25,10 +25,8 @@ typedef struct {
 	double *xcoord;
 	double *ycoord;
 	double *cost;    // c_{ij}
-	// int count_of_random_points;
 
 	// parameters 
-	// double timelimit;						// overall time limit, in sec.s
 	int random_seed;
 	char input_file[1000];		  			// input file
 	double timelimit;
@@ -36,14 +34,9 @@ typedef struct {
 	//global data
 	double best_val;
 	double	tstart;								
-	// double zbest;							// best sol. available  
-	// double tbest;							// time for the best sol. available  
 	int *best_sol;						// best sol. available    
 	int *tabu_list;						// if instance has a tabu list   
 	int ncols;
-	// double	best_lb;						// best lower bound available  
-	// double *load_min;						// minimum load when leaving a node
-	// double *load_max;						// maximum load when leaving a node
 
 } instance;        
 
@@ -56,6 +49,14 @@ int verify_tour(instance *inst, int *tour);
 double random01();
 double cost(int i, int j, instance *inst);
 void print_error(const char *err);  
+
+/**
+ * @brief Calculates the cost value of the given instance solution best_sol and initiliaze into best_val.
+ *
+ * @param[in, out] inst Input instance of the TSP problem.
+**/
+void calculate_best_val(instance *inst);
+
 
 int * copy_to_new_array(int *arr, int size);
 void copy_array(int *arr, int size, int *arr_to_copy);

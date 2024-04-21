@@ -124,8 +124,8 @@ int local_branching(instance *inst, int k){
         remove_last_constraints(env, lp);
 
         if(absolute_best_value <= inst->best_val){
-            k = 2*k; // if stuck in a local minimum, increase the size of the neighborhood
-            if(VERBOSE >= 100)    printf("Stuck in a local minimum with value: %f\n\t[!]So k is increased twice (k=%d) for the next iteration\n", inst->best_val, k);
+            k += k_initial; // if stuck in a local minimum, increase the size of the neighborhood
+            if(VERBOSE >= 100)    printf("Stuck in a local minimum with value: %f\n\t[!]So k is increased +%d (k=%d) for the next iteration\n", inst->best_val, k_initial, k);
         }
         else {
             k = k_initial; // if found a better solution, reset the size of the neighborhood

@@ -38,8 +38,6 @@ int tenure_length_update(instance *inst, int current_tenure, int iteration, int 
 int tabu_search(instance *inst, int tenure_mode){
 	printf("\n_________________________________________________________\nTabu Search:\n");
 
-	double t1 = second();
-
 	int tenure; int upper_bound_tenure=100; tenure = upper_bound_tenure/5;//initialization
 
 	double delta_cost; double min_delta_cost;
@@ -60,7 +58,7 @@ int tabu_search(instance *inst, int tenure_mode){
 		
 		for (int i = 0; i < inst->nnodes; i++) // nodes in 0 and 280 would have been be the same
 		{
-			for (int j = i+2; j < inst->nnodes; j++)
+			for (int j = i+1; j < inst->nnodes; j++)
 			{
 				delta_cost = delta_cost_two_opt(i, j, inst, inst->best_sol);
 
@@ -91,7 +89,7 @@ int tabu_search(instance *inst, int tenure_mode){
 			inst->tabu_list[inst->best_sol[a_with_min_delta_cost]] = iteration;
 			inst->tabu_list[inst->best_sol[b_with_min_delta_cost]] = iteration;
 
-			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, inst, inst->best_sol, 0);
+			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, inst, inst->best_sol);
 
 			if (optimal_value > inst->best_val)
 			{
@@ -101,7 +99,7 @@ int tabu_search(instance *inst, int tenure_mode){
 			
 		}
 		iteration++;
-	} while (second() - t1 < inst->timelimit);
+	} while (second() - inst->tstart < inst->timelimit);
 	
 	copy_array(optimal_solution, inst->nnodes, inst->best_sol);
 	inst->best_val = optimal_value;
@@ -278,7 +276,7 @@ int annealing_process(instance *inst, int scaler){
 		delta_cost = delta_cost_two_opt(a, b, inst, inst->best_sol);
 
 		if (random01() <= metropolis_formula(delta_cost, T, scaler))
-			update_tour(a, b, inst, inst->best_sol, 0);
+			update_tour(a, b, inst, inst->best_sol);
 
 	}
 
@@ -656,19 +654,10 @@ void repair_extra_mileage(instance *inst, Individual *individual){
 	}
 
 	// and applying extra-mileage
-	int best_node_pos; int best_edge_pos; int *best_values_index = (int *) calloc(2, sizeof(int));
 	while (uncovered_length != 0) 
 	{ 
-		extra_mileage_step(inst, uncovered_nodes, uncovered_length, individual->genes, best_values_index);
-		best_edge_pos = best_values_index[0]; 
-		best_node_pos = best_values_index[1];
-
-		// update individual->genes
-		add_to_array(best_edge_pos, uncovered_nodes[best_node_pos], individual->genes, inst->nnodes);
-		
+		extra_mileage_step(inst, uncovered_nodes, uncovered_length, individual->genes);
 		uncovered_length--; // one node is already covered
-		// update the uncovered_nodes
-		uncovered_nodes[best_node_pos] = uncovered_nodes[uncovered_length];
 	}
 
 	// close the tour

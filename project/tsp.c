@@ -261,10 +261,9 @@ int TSPopt(instance *inst, int model_type)
 	build_model(inst, env, lp);
 	
 	// Cplex's parameter setting
-	// CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_OFF);
-	// if ( VERBOSE >= 60 ) CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_ON); // Cplex output on screen
 	// CPXsetintparam(env, CPX_PARAM_RANDOMSEED, 123456);	
-	// CPXsetdblparam(env, CPX_PARAM_TILIM, 3600.0); 
+	if ( CPLEX_VERBOSE == 1 ) CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_ON); // Cplex output on screen
+	else if ( CPLEX_VERBOSE == 0 )	CPXsetintparam(env, CPX_PARAM_SCRIND, CPX_OFF);
 
 	// Cplex internal methods for primal integral
 	// CPXsetintparam(env, CPXPARAM_Emphasis_MIP, 5); // emphasize on finding good feasible solutions||5 for primal integral

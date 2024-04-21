@@ -10,6 +10,18 @@ double cost(int i, int j, instance *inst)
 }
 
 
+void calculate_best_val(instance *inst){
+	double total_cost = 0;
+	for (int i = 0; i < inst->nnodes; i++)
+	{
+		total_cost += cost(inst->best_sol[i], inst->best_sol[i+1], inst);
+	}
+
+	inst->best_val = total_cost;
+	
+}
+
+
 // plot the solution in commands.txt file 
 //and writes the solution to the file if writing_to_file is true
 void plot_tsp_tour(instance *inst, int writing_to_file){
