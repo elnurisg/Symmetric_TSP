@@ -351,7 +351,7 @@ double delta_cost_two_opt(int a, int b, instance *inst, int *tsp_sol){
 	return delta_cost;
 }
 
-int update_tour(int a, int b, instance *inst, int *tsp_sol){
+int update_tour(int a, int b, int *tsp_sol){
 
 	int succ_a = a + 1;int succ_b = b+1;int counter = 1;int tmp;
 	if (a < b)
@@ -412,13 +412,14 @@ int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance){
 		if (update_switch == 1)
 		{
 			printf("[2-OPT Refining] Possible update detected, delta_cost: %f\n",min_delta_cost);
-			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, inst, tsp_sol);
+			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, tsp_sol);
 		}
 		
 	} while (update_switch == 1);
 	
 	tsp_sol[inst->nnodes] = tsp_sol[0];
 
+	calculate_best_val(inst);
 	if (is_instance == 0)
 		printf("\n \t[2-OPT Refining] update in best_val after 2-OPT refining is %f\n", inst->best_val);
 	

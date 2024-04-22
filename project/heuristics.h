@@ -137,4 +137,4 @@ double delta_cost_two_opt(int a, int b, instance *inst, int *tsp_sol);
  * @param[in, out] tsp_sol Current solution of the TSP.
  * @return Returns 1 if the tour is updated, 0 otherwise.
 **/
-int update_tour(int i, int j, instance *inst, int *tsp_sol);
+int update_tour(int i, int j, int *tsp_sol);

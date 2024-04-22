@@ -15,7 +15,7 @@
 #define XSMALL		  		  1e-5 		// 1e-4*	// tolerance used to decide ingerality of 0-1 var.s
 #define EPSILON		  		  1e-5		// 1e-5		// very small numerical tolerance 
 // #define TICKS_PER_SECOND 	  1000.0  	// cplex's ticks on Intel Core i7 quadcore @2.3GHZ
-                                 
+#define LARGE_INT_NUMBER		  1e+5		// 1e+5		// a large number                                 
 //data structures  
 
 typedef struct {   
