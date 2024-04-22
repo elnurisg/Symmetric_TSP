@@ -35,77 +35,74 @@ int tenure_length_update(instance *inst, int current_tenure, int iteration, int 
 	return tenure;
 }
 
-int tabu_search(instance *inst, int tenure_mode){
+int tabu_search(instance *inst, int tenure_mode, int aspiration_criteria){
 	printf("\n_________________________________________________________\nTabu Search:\n");
 
-	int tenure; int upper_bound_tenure=100; tenure = upper_bound_tenure/5;//initialization
+	int upper_bound_tenure = (inst->nnodes/10 > 100) ? 100 : inst->nnodes/10;
+	int tenure = upper_bound_tenure/5;//initialization
 
 	double delta_cost; double min_delta_cost;
 	int a_with_min_delta_cost; int b_with_min_delta_cost;
   
 	int iteration = 0;
-	int update_switch = 0;
 
-	int* optimal_solution = copy_to_new_array(inst->best_sol, inst->nnodes+1);
-	double optimal_value = inst->best_val;
+	int* curr_solution = copy_to_new_array(inst->best_sol, inst->nnodes+1);
+	double curr_value = inst->best_val;
 	inst->tabu_list = (int *) calloc(inst->nnodes, sizeof(int));
+	for (int i = 0; i < inst->nnodes; i++)
+		inst->tabu_list[i] = - LARGE_INT_NUMBER;
 
 	do
 	{
 		min_delta_cost = INFINITY;
-		update_switch = 0;
 		tenure = tenure_length_update(inst, tenure, iteration, upper_bound_tenure, tenure_mode);
 		
 		for (int i = 0; i < inst->nnodes; i++) // nodes in 0 and 280 would have been be the same
 		{
 			for (int j = i+1; j < inst->nnodes; j++)
 			{
-				delta_cost = delta_cost_two_opt(i, j, inst, inst->best_sol);
+				if(curr_solution[j] == curr_solution[i+1] || curr_solution[i] == curr_solution[j+1]) continue;
 
-				if (iteration - inst->tabu_list[inst->best_sol[i]] <= tenure || 
-								iteration - inst->tabu_list[inst->best_sol[j]] <= tenure)
+				delta_cost = delta_cost_two_opt(i, j, inst, curr_solution);
+
+				if (iteration - inst->tabu_list[i] <= tenure || 
+								iteration - inst->tabu_list[j] <= tenure)
 				{  // do not consider tabu nodes
-					if (delta_cost >= 0) // if it is negative then 
-					{	// having an aspiration criteria that it would improve solution 
+					if(aspiration_criteria == 1) continue; // it is off
+					else if (aspiration_criteria == 0 && delta_cost >= 0) continue;
+					//if it is negative then having an aspiration criteria that it would improve solution
 						//even it is in tabu list
-						continue;
-					}
-					
 				}
-				
+
 				if (delta_cost < min_delta_cost)
 				{
 					min_delta_cost = delta_cost;
 					a_with_min_delta_cost = i;
 					b_with_min_delta_cost = j;
-					update_switch = 1;
 				}
 				
 			}
 			
 		}
-		if (update_switch == 1)
+
+		inst->tabu_list[a_with_min_delta_cost] = iteration;
+		inst->tabu_list[b_with_min_delta_cost] = iteration;
+
+		update_tour(a_with_min_delta_cost, b_with_min_delta_cost, curr_solution);
+		curr_value = curr_value + min_delta_cost;
+
+		if (curr_value < inst->best_val)
 		{
-			inst->tabu_list[inst->best_sol[a_with_min_delta_cost]] = iteration;
-			inst->tabu_list[inst->best_sol[b_with_min_delta_cost]] = iteration;
+			copy_array(curr_solution, inst->nnodes, inst->best_sol);
+			inst->best_val = curr_value;
+			printf("curr value is %f, iteration is %d tenure %d\n", curr_value, iteration, tenure);
 
-			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, inst, inst->best_sol);
-
-			if (optimal_value > inst->best_val)
-			{
-				copy_array(inst->best_sol, inst->nnodes, optimal_solution);
-				optimal_value = inst->best_val;
-			}
-			
 		}
+		printf("curr value is %f, iteration is %d tenure %d\n", curr_value, iteration, tenure);
 		iteration++;
 	} while (second() - inst->tstart < inst->timelimit);
 	
-	copy_array(optimal_solution, inst->nnodes, inst->best_sol);
-	inst->best_val = optimal_value;
-	inst->best_sol[inst->nnodes] = inst->best_sol[0];
-
-	free(optimal_solution);
+	free(curr_solution);
 	free(inst->tabu_list);
 
 	return 0;
@@ -276,7 +273,7 @@ int annealing_process(instance *inst, int scaler){
 		delta_cost = delta_cost_two_opt(a, b, inst, inst->best_sol);
 
 		if (random01() <= metropolis_formula(delta_cost, T, scaler))
-			update_tour(a, b, inst, inst->best_sol);
+			update_tour(a, b, inst->best_sol);
 
 	}
 

@@ -1,5 +1,6 @@
 #include "utilities.h"
 #include "heuristics.h"
+#include <limits.h>
 
 typedef struct{
 	int *genes; // in our case it is tsp solution
@@ -15,11 +16,11 @@ typedef struct{
  * Tabu Search
  * @param[in, out] inst Input instance of the tsp problem. 
  * @param[in] tenure_mode The tenure mode of the tabu search, 0 for reactive step tenure, 1 for reactive line tenure and 2 is for random tenure.
+ * @param[in] aspiration_criteria Flag for the tabu search to use aspiration criteria or not. 0 is to use aspiration criteria, 1 is to not use aspiration criteria.
  * @return Returns 0 if the tabu search is successfully applied without encountering any errors.
 **/
-int tabu_search(instance *inst, int tenure_mode);
+int tabu_search(instance *inst, int tenure_mode, int aspiration_criteria);
 int tenure_length_update(instance *inst, int current_tenure, int iteration, int upper_bound_tenure, int tenure_mode);
-int update_tour_and_tabu_list(int a, int b, instance *inst);
 
 ///////////////////////////////////Variable Neighborhood Search/////////////////////////////////////////	
 /**
