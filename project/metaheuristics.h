@@ -13,13 +13,30 @@ typedef struct{
 ///////////////////////////////////Tabu Search/////////////////////////////////////////
 
 /**
- * Tabu Search
- * @param[in, out] inst Input instance of the tsp problem. 
- * @param[in] tenure_mode The tenure mode of the tabu search, 0 for reactive step tenure, 1 for reactive line tenure and 2 is for random tenure.
- * @param[in] aspiration_criteria Flag for the tabu search to use aspiration criteria or not. 0 is to use aspiration criteria, 1 is to not use aspiration criteria.
- * @return Returns 0 if the tabu search is successfully applied without encountering any errors.
+ * @brief Tabu Search: A metaheuristic method for solving combinatorial optimization problems by iteratively moving from a current solution to a neighboring solution while avoiding previously visited solutions.
+ *
+ * @param[in, out] inst Input instance of the TSP problem.
+ * @param[in] tenure_mode The tenure mode of the Tabu Search:
+ *                         - 0: Reactive step tenure.
+ *                         - 1: Reactive line tenure.
+ *                         - 2: Random tenure.
+ * @param[in] aspiration_criteria Flag indicating whether the Tabu Search should use aspiration criteria or not:
+ *                                - 0: Use aspiration criteria.
+ *                                - 1: Do not use aspiration criteria.
+ * @return Returns 0 if the Tabu Search is successfully applied without encountering any errors.
 **/
 int tabu_search(instance *inst, int tenure_mode, int aspiration_criteria);
+
+/**
+ * @brief Updates the tenure length for Tabu Search.
+ *
+ * @param[in] inst Input instance of the TSP problem.
+ * @param[in] current_tenure Current tenure length.
+ * @param[in] iteration Current iteration number.
+ * @param[in] upper_bound_tenure Upper bound on the tenure length.
+ * @param[in] tenure_mode The tenure mode of the Tabu Search.
+ * @return Returns the updated tenure length.
+**/
 int tenure_length_update(instance *inst, int current_tenure, int iteration, int upper_bound_tenure, int tenure_mode);
 
 ///////////////////////////////////Variable Neighborhood Search/////////////////////////////////////////	
@@ -39,14 +56,41 @@ int copy_segment_in_reverse_order(instance *inst, int *old_solution, int startin
 
 ///////////////////////////////////Simulated Annealing/////////////////////////////////////////
 /**
- * Simulated Annealing
- * @param[in, out] inst Input instance of the tsp problem.
- * @return Returns 0 if the simulated annealing is successfully applied without encountering any errors.
+ * @brief Simulated Annealing: A probabilistic metaheuristic algorithm for solving combinatorial optimization problems, inspired by the annealing process in metallurgy.
+ *
+ * @param[in, out] inst Input instance of the TSP problem.
+ * @param[in] annealing_iterations The number of iterations for the simulated annealing process.
+ * @return Returns 0 if the Simulated Annealing algorithm is successfully applied without encountering any errors.
 **/
-int simulated_annealing(instance *inst);
-double metropolis_formula(double delta_cost, double Temprature, int scaler);
-int annealing_process(instance *inst, int scaler);
-double average_delta_cost_between_two_edges(instance *inst);
+int simulated_annealing(instance *inst, int annealing_iterations);
+
+/**
+ * @brief Calculates the acceptance probability using the Metropolis formula in Simulated Annealing.
+ *
+ * @param[in] delta_cost Change in cost between the current and proposed solution.
+ * @param[in] temperature Current temperature in the annealing process.
+ * @param[in] scaler Scaling factor for the Metropolis formula.
+ * @return Returns the acceptance probability.
+**/
+double metropolis_formula(double delta_cost, double temperature, int scaler);
+
+/**
+ * @brief Performs the annealing process in Simulated Annealing.
+ *
+ * @param[in] inst Input instance of the TSP problem.
+ * @param[in] scaler Scaling factor for the acceptance probability (calculated by Metropolis formula).
+ * @param[in, out] tsp_sol The given solution to which the annealing process will be applied.
+**/
+void annealing_process(instance *inst, int scaler, int *tsp_sol);
+
+/**
+ * @brief Calculates the average change in cost between two edges in the given TSP solution.
+ *
+ * @param[in] inst Input instance of the TSP problem.
+ * @param[in] tsp_sol The given TSP solution for which the average is going to be calculated.
+ * @return Returns the average change in cost between two edges.
+**/
+double average_delta_cost_between_two_edges(instance *inst, int *tsp_sol);
 
 ///////////////////////////////////Genetic Algorithm/////////////////////////////////////////
 /**

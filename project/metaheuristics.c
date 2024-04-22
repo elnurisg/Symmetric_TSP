@@ -257,7 +257,7 @@ double metropolis_formula(double delta_cost, double Temprature, int scaler){
 	return exp(-(delta_cost / scaler) / Temprature);
 }
 
-int annealing_process(instance *inst, int scaler){
+void annealing_process(instance *inst, int scaler, int *tsp_sol){
 	
 	// choosing random nodes for 2-OPT
 	int a; int b; double delta_cost;
@@ -270,26 +270,22 @@ int annealing_process(instance *inst, int scaler){
 			a = random_0_to_length(inst, inst->nnodes);
 			b = random_0_to_length(inst, inst->nnodes);
 		} while ( a+1 > b );
-		delta_cost = delta_cost_two_opt(a, b, inst, inst->best_sol);
+		delta_cost = delta_cost_two_opt(a, b, inst, tsp_sol);
 
 		if (random01() <= metropolis_formula(delta_cost, T, scaler))
-			update_tour(a, b, inst->best_sol);
+			update_tour(a, b, tsp_sol);
 
 	}
-
-	// two_opt_refining_heuristic(inst, inst->best_sol, 0); //it is 0 degree now and so,
-	// all negative costs should be applied
-	return 0;
 }
 
-double average_delta_cost_between_two_edges(instance *inst){
+double average_delta_cost_between_two_edges(instance *inst, int *tsp_sol){
 
 	double sum_delta_cost = 0; double numbers = 0;
 	for (int i = 0; i < inst->nnodes; i++) // nodes in 0 and 280 would have been be the same
 	{
-		for (int j = i+2; j < inst->nnodes; j++)
+		for (int j = i+1; j < inst->nnodes; j++)
 		{
-			sum_delta_cost += delta_cost_two_opt(i, j, inst, inst->best_sol);
+			sum_delta_cost += delta_cost_two_opt(i, j, inst, tsp_sol);
 			numbers++;
 		}
 	}
@@ -298,35 +294,37 @@ double average_delta_cost_between_two_edges(instance *inst){
 	return average_delta_cost;
 	
 }
-int simulated_annealing(instance *inst){
+int simulated_annealing(instance *inst, int annealing_iterations){
 	printf("\n_________________________________________________________\nSimulated Annealing:\n");
 
-	int scaler = average_delta_cost_between_two_edges(inst);
+	int scaler = average_delta_cost_between_two_edges(inst, inst->best_sol);
 	double optimal_value = inst->best_val;
 	int* optimal_solution = copy_to_new_array(inst->best_sol, inst->nnodes+1);
 	
 	do
 	{
-		//apply annealing twice (heat up right after cooling)
-		annealing_process(inst, scaler);annealing_process(inst, scaler);
-		two_opt_refining_heuristic(inst, inst->best_sol, 0); //it is 0 degree now and so,
-								// all negative costs should be applied
+		//apply annealing annealing_iterations times (heat up right after cooling)
+		for (int i = 0; i < annealing_iterations; i++)
+			annealing_process(inst, scaler, optimal_solution);		
 
-		if (optimal_value > inst->best_val)
+		two_opt_refining_heuristic(inst, optimal_solution, 0); //it is 0 degree now and so,
+													// all negative costs should be applied
+
+		optimal_value = calculate_total_cost(inst, optimal_solution);
+
+		printf("current value is %f\n", optimal_value);
+
+		if (optimal_value < inst->best_val)
 		{
-			copy_array(inst->best_sol, inst->nnodes+1, optimal_solution);
-			optimal_value = inst->best_val;
+			copy_array(optimal_solution, inst->nnodes+1, inst->best_sol);
+			inst->best_val = optimal_value;
 			printf("\n \tupdate in best_val %f\n", inst->best_val);
 		}
 		
 	} while (second() - inst->tstart < inst->timelimit);
 
-	copy_array(optimal_solution, inst->nnodes+1, inst->best_sol);
-	inst->best_val = optimal_value;
-
 	free(optimal_solution);
 
-	// if(verify_tour(inst, inst->best_sol)==0) printf("\tIt is a tour!\n");
 	return 0;
 
 }

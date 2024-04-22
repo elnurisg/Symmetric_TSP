@@ -21,6 +21,16 @@ void calculate_best_val(instance *inst){
 	
 }
 
+int calculate_total_cost(instance *inst, int *tour){
+    double total_cost = 0;
+    for (int i = 0; i < inst->nnodes; i++)
+    {
+        total_cost += cost(tour[i], tour[i+1], inst);
+    }
+
+    return total_cost;
+}
+
 
 // plot the solution in commands.txt file 
 //and writes the solution to the file if writing_to_file is true
