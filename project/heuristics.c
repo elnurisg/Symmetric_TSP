@@ -120,6 +120,8 @@ int greedy_step(instance *inst, int current_node, int *uncovered_nodes, int curr
 int greedy_heuristic(instance *inst, int starting_mode, int grasp)
 {
 	printf("\n_________________________________________________________\nGreedy Heuristic:\n");
+	inst->heur_flag = 1;
+
 	int starting_pos;
 	int random_node_with_time_seed_pos;
 	int min_cost;
@@ -257,7 +259,8 @@ void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy){
 
 int extra_mileage_heuristic(instance *inst, int starting_mode){
 	printf("\n_________________________________________________________\nInsertion Heuristic:\n");
-
+	inst->heur_flag = 1;
+	
 	int *nodes_hierarchy = NULL;
 	double min_cost; int random_node_with_time_seed_pos;
 	int *nodes_hierarchy_with_best_starting_couple = (int *) calloc(inst->nnodes, sizeof(int));

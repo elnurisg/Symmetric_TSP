@@ -38,6 +38,9 @@ typedef struct {
 	int *tabu_list;						// if instance has a tabu list   
 	int ncols;
 
+	// if heuristic (greedy or insertion) is used // to be sure for metaheuristics
+	int heur_flag; // 0 for no, 1 is for yes
+
 } instance;        
 
 void plot_tsp_tour(instance *inst, int writing_to_file);

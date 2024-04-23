@@ -37,6 +37,7 @@ int tenure_length_update(instance *inst, int current_tenure, int iteration, int 
 
 int tabu_search(instance *inst, int tenure_mode, int aspiration_criteria){
 	printf("\n_________________________________________________________\nTabu Search:\n");
+	if (inst->heur_flag == 0) print_error("Error! Greedy or Insertion Heuristic should be applied before Metaheuristic (tabu search)\n");
 
 	int upper_bound_tenure = (inst->nnodes/10 > 100) ? 100 : inst->nnodes/10;
 	int tenure = upper_bound_tenure/5;//initialization
@@ -212,6 +213,7 @@ int n_opt_kick(instance *inst, int n){
 int variable_neighborhood_search(instance *inst, int kick_neighborhood){
 	printf("\n_________________________________________________________\nVariable Neighborhood Search:\n");
 	
+	if (inst->heur_flag == 0) print_error("Error! Greedy or Insertion Heuristic should be applied before Metaheuristic (VNS)\n");
 	if (kick_neighborhood == 0 || kick_neighborhood > (inst->nnodes/3)) print_error("Error! Kick neighborhood can not be 0 or more than the one third of the number of nodes\n");
 	// 0-OPT kick is not meaningful
 	
@@ -296,6 +298,7 @@ double average_delta_cost_between_two_edges(instance *inst, int *tsp_sol){
 }
 int simulated_annealing(instance *inst, int annealing_iterations){
 	printf("\n_________________________________________________________\nSimulated Annealing:\n");
+	if (inst->heur_flag == 0) print_error("Error! Greedy or Insertion Heuristic should be applied before Metaheuristic (Simulated Annealing)\n");
 
 	int scaler = average_delta_cost_between_two_edges(inst, inst->best_sol);
 	double optimal_value = inst->best_val;
@@ -383,7 +386,7 @@ void free_Individual(Individual *individual) {
 void calculate_individual_fitness(instance *inst, Individual *individual){
 
 	double fitness = 0;
-	for (int j = 0; j < (inst->nnodes+1); j++)
+	for (int j = 0; j < inst->nnodes; j++)
 	{
 		fitness += cost(individual->genes[j], individual->genes[j+1], inst);			
 	}
@@ -438,14 +441,14 @@ void print_parents_and_child(instance *inst, Individual *parent1, Individual *pa
 }
 
 // detect deffects in genes, punish wrong genes with penalty and increase cost(fitness)
-// in case of deffects, increase cost with the power of deffects
+// in case of deffects, increase cost with multiplying by number of the deffects
 // and if there are more than 1 occurence of node means at least one missing node,
 // so value for deffects is >=2 if not 0
-void avoid_bad_genes(instance *inst, Individual *children, int children_size){
+void avoid_bad_genes(instance *inst, Individual *population, int population_size){
 	
 	int deffects; int count_of_node;
 
-	for (int z = 0; z < children_size; z++)
+	for (int z = 0; z < population_size; z++)
 	{
 		deffects = 0;
 
@@ -454,7 +457,7 @@ void avoid_bad_genes(instance *inst, Individual *children, int children_size){
 			count_of_node = 0;
 			for (int j = 0; j < inst->nnodes; j++)
 			{
-				if (i == children[z].genes[j]) // there are subtours or missing elements
+				if (i == population[z].genes[j]) // there are subtours or missing elements
 				{
 					count_of_node++;
 				}
@@ -466,8 +469,12 @@ void avoid_bad_genes(instance *inst, Individual *children, int children_size){
 			}
 		}
 
+		// if it is not tour
+		if (population[z].genes[inst->nnodes] != population[z].genes[0])
+			deffects++;
+
 		if (deffects != 0)
-				children[z].fitness = pow(children[z].fitness, deffects);
+				population[z].fitness += population[z].fitness * deffects;
 
 	}
 	
@@ -613,15 +620,15 @@ void eliminate_multiple_visits(instance *inst, Individual *individual){
 	}
 }
 
-void repair_bad_genes(instance *inst, Individual *children, int children_size, int apply_two_opt){
+void repair_bad_genes(instance *inst, Individual *population, int population_size, int apply_two_opt){
 		
-	for (int z = 0; z < children_size; z++)
+	for (int z = 0; z < population_size; z++)
 	{
-		eliminate_multiple_visits(inst, &children[z]);
-		repair_extra_mileage(inst, &children[z]);
+		eliminate_multiple_visits(inst, &population[z]);
+		repair_extra_mileage(inst, &population[z]);
 		if(apply_two_opt == 2)
-			two_opt_refining_heuristic(inst, children[z].genes, 1);
-		calculate_individual_fitness(inst, &children[z]);
+			two_opt_refining_heuristic(inst, population[z].genes, 1);
+		calculate_individual_fitness(inst, &population[z]);
 	}
 }
 
@@ -698,6 +705,8 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){
 	// even if repair is off, apply repairing to champion to get a tour
 	if(repair == 0) repair_bad_genes(inst, champion, 1, 2);
 
+	printf("Fitness of the Champion of Natural Selection over %d generations is:%f\n", --count_generations, champion->fitness);
+	
 	// update the best_sol in case champion is better
 	if (champion->fitness < inst->best_val && verify_tour(inst, champion->genes)==0)
 	{
