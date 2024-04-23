@@ -9,7 +9,7 @@
 // #include "convex_hull.h"
 
 
-#define VERBOSE				    50		// printing level  ()
+#define VERBOSE				    50		// printing level 
 #define CPLEX_VERBOSE 0 // VERBOSE for cplex output 1 for CPX_ON, 0 for CPX_OFF
 //hard-wired parameters
 #define XSMALL		  		  1e-5 		// 1e-4*	// tolerance used to decide ingerality of 0-1 var.s
@@ -56,7 +56,7 @@ void print_error(const char *err);
  * @param[in, out] inst Input instance of the TSP problem.
 **/
 void calculate_best_val(instance *inst);
-
+int calculate_total_cost(instance *inst, int *tour);
 
 int * copy_to_new_array(int *arr, int size);
 void copy_array(int *arr, int size, int *arr_to_copy);
