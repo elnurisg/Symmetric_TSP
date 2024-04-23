@@ -205,7 +205,7 @@ void extra_mileage_step(instance *inst, int *uncovered_nodes, int uncovered_leng
 	int best_node_pos; int best_edge_pos;
 	double min_cost = __DBL_MAX__; double delta_cost = 0;
 
-	for (int i = 0; i < inst->nnodes - uncovered_length - 1; i++) // for each edge
+	for (int i = 0; i < inst->nnodes - uncovered_length; i++) // for each edge
 	{	
 		
 		for (int j = 0; j < uncovered_length; j++) // for each uncovered_node
@@ -382,8 +382,8 @@ int update_tour(int a, int b, int *tsp_sol){
 // and then the edge will be a, its successor(a+1), b and its successor(b+1)
 
 int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance){
-	if (is_instance == 0)	
-		printf("\n_________________________________________________________\n2-OPT Refining Heuristic:\n");
+	// if (is_instance == 0)	
+		// printf("\n_________________________________________________________\n2-OPT Refining Heuristic:\n");
 
 	double delta_cost;
 	int a_with_min_delta_cost; int b_with_min_delta_cost;
@@ -411,7 +411,7 @@ int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance){
 		}
 		if (update_switch == 1)
 		{
-			printf("[2-OPT Refining] Possible update detected, delta_cost: %f\n",min_delta_cost);
+			// printf("[2-OPT Refining] Possible update detected, delta_cost: %f\n",min_delta_cost);
 			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, tsp_sol);
 		}
 		
@@ -419,9 +419,9 @@ int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance){
 	
 	tsp_sol[inst->nnodes] = tsp_sol[0];
 
-	calculate_best_val(inst);
-	if (is_instance == 0)
-		printf("\n \t[2-OPT Refining] update in best_val after 2-OPT refining is %f\n", inst->best_val);
-	
+	// if (is_instance == 0){
+		// calculate_best_val(inst);
+		// printf("\n \t[2-OPT Refining] update in best_val after 2-OPT refining is %f\n", inst->best_val);
+	// }
 	return 0;
 }
