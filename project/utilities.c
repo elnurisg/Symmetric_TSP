@@ -21,7 +21,7 @@ void calculate_best_val(instance *inst){
 	
 }
 
-int calculate_total_cost(instance *inst, int *tour){
+double calculate_total_cost(instance *inst, int *tour){
     double total_cost = 0;
     for (int i = 0; i < inst->nnodes; i++)
     {

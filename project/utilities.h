@@ -59,7 +59,7 @@ void print_error(const char *err);
  * @param[in, out] inst Input instance of the TSP problem.
 **/
 void calculate_best_val(instance *inst);
-int calculate_total_cost(instance *inst, int *tour);
+double calculate_total_cost(instance *inst, int *tour);
 
 int * copy_to_new_array(int *arr, int size);
 void copy_array(int *arr, int size, int *arr_to_copy);
