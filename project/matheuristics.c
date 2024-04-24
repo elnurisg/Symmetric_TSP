@@ -41,12 +41,12 @@ int hard_fixing(instance *inst, double pfix){
 
 }
 
+
 void fixing(CPXENVptr env, CPXLPptr lp, instance *inst, double pfix){
 
     double bd = 1; int index; char bound = 'L';
     int *succ = (int *) calloc(inst->nnodes, sizeof(int));
     store_succ(inst, succ, inst->best_sol);
-    // double lb_value, ub_value;
 
 	for ( int i = 0; i < inst->nnodes; i++ )
 	{
@@ -56,10 +56,6 @@ void fixing(CPXENVptr env, CPXLPptr lp, instance *inst, double pfix){
             {
                 index = xpos(i,j, inst);
                 if (CPXchgbds(env, lp, 1, &index, &bound, &bd)) print_error("Error in CPXchgbds() fixing");
-                // if (CPXgetlb(env, lp, &lb_value, index, index)) print_error("Error in CPXgetlb()");
-                // if (CPXgetub(env, lp, &ub_value, index, index)) print_error("Error in CPXgetub()");
-
-                // printf("Variable x(%d,%d) lower bound: %f, upper bound: %f and pos is %d\n", i+1, j+1, lb_value, ub_value, index);
             }
         }
     }
@@ -70,7 +66,6 @@ void fixing(CPXENVptr env, CPXLPptr lp, instance *inst, double pfix){
 void unfixing(CPXENVptr env, CPXLPptr lp, instance *inst){
 
     double bd = 0; int index; char bound = 'L';
-    // double lb_value, ub_value;
 
     for ( int i = 0; i < inst->nnodes; i++ )
     {
@@ -78,12 +73,6 @@ void unfixing(CPXENVptr env, CPXLPptr lp, instance *inst){
         {
             index = xpos(i,j, inst);
             if (CPXchgbds(env, lp, 1, &index, &bound, &bd)) print_error("Error in CPXchgbds() unfixing");
-
-            // if (CPXgetlb(env, lp, &lb_value, index, index)) print_error("Error in CPXgetlb()");
-            // if (CPXgetub(env, lp, &ub_value, index, index)) print_error("Error in CPXgetub()");
-
-            // printf("UNFIX: Variable x(%d,%d) lower bound: %f, upper bound: %f and pos is %d\n", i+1, j+1, lb_value, ub_value, index);
-
         }
     }
 
@@ -138,7 +127,9 @@ int local_branching(instance *inst, int k){
     CPXcloseCPLEX(&env); 
 
     return 0; // or an appropriate nonzero error code
+
 }
+
 
 void add_local_branching_constraints(CPXENVptr env, CPXLPptr lp, instance *inst, int k){
     
@@ -172,6 +163,7 @@ void add_local_branching_constraints(CPXENVptr env, CPXLPptr lp, instance *inst,
 	free(index);
 
 }
+
 
 void remove_last_constraints(CPXENVptr env, CPXLPptr lp){
         

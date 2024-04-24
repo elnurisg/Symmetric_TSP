@@ -1,38 +1,7 @@
 #include "tsp.h"
-// #include <time.h>
-// #include "convex_hull.h"
 
-// void print_error(const char *err);
 double second();       
-int time_limit_expired(instance *inst);
-
-int is_fractional(double x) 						// it works for x in [0,1] only
-{
-	return ( (x > XSMALL) && (x < 1-XSMALL) );
-}    
-
-int is_all_integer(int n, const double *x) 			// it works for x_j in [0,1] only
-{
-	for ( int j = 0; j < n; j++ ) 
-	{
-		if ( is_fractional(x[j]) ) return 0; 
-	}
-	return 1;
-}                                                                                                                               
                          
-
-int time_limit_expired(instance *inst)	 
-{
-	double tspan = second() - inst->tstart;
-	if (  tspan > inst->timelimit ) 
-	{
-		if ( VERBOSE >= 100 ) printf("\n\n$$$ time limit of %10.1lf sec.s expired after %10.1lf sec.s $$$\n\n", inst->timelimit, tspan);
-		//exit(0); 
-		return 1;
-	}  
-	return 0;
-}
-
 
 int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 {
@@ -44,9 +13,6 @@ int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 	int *ncomp = (int *) calloc(1, sizeof(int));
 
 	double LB = -CPX_INFBOUND; // lower bound
-	// if ( greedy_heuristic(inst, 2, 0) ) print_error(" error within greedy_heuristic()");
-	// if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
-	// calculate_best_val(inst);
 	double UB = inst->best_val; // upper bound
 	double objval; double incumbent_value; int iteration = 0;
 
@@ -72,13 +38,11 @@ int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 		else
 		{
 			for (int component_num = 1; component_num <= *ncomp; component_num++)
-			{
 				add_subtour_constraint(NULL, env, lp, inst, comp, component_num, inst->ncols);
 				// add a subtour elimination constraint
-			}	
+			
 			patching_heuristic(NULL, env, lp, inst->ncols, inst, succ, comp, ncomp);
 			incumbent_value = calc_succ_value(succ, inst);
-
 		}
 
 		CPXsetdblparam(env, CPX_PARAM_TILIM, (inst->tstart + inst->timelimit - second())); 
@@ -88,11 +52,13 @@ int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 			UB = incumbent_value;
 			copy_array(succ, inst->nnodes, best_succ);
 			// store the best succ solution found so far
-		}		
+		}	
+
 		iteration++;
 		printf("\nITERATION: %d\t", iteration);
 		printf("LB: %f\t",LB); printf("UB: %f\t",UB); (LB == UB) ? printf("||| Solution is Optimal\n") : printf("||| %f%% gap\n", (UB-LB)/LB*100);
-	} while ((LB < (1-EPSILON) * UB) && (second() - inst->tstart < inst->timelimit));
+
+	} while ((LB < (1-EPSILON) * UB) && (!time_limit_expired(inst)));
 
 
 	if (VERBOSE >= 100){
@@ -119,6 +85,7 @@ int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 	free(ncomp);
 
 	return 0;
+
 }
 
 
@@ -131,9 +98,6 @@ int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp)
 	int *ncomp = (int *) calloc(1, sizeof(int));
 
 	double LB = -CPX_INFBOUND; // lower bound
-	// if ( greedy_heuristic(inst, 2, 0) ) print_error(" error within greedy_heuristic()");
-	// if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
-	// calculate_best_val(inst);
 	double UB = inst->best_val;// upper bound
 	
 	CPXsetdblparam(env, CPX_PARAM_CUTUP, UB);
@@ -147,7 +111,7 @@ int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp)
 	if(CPXcallbacksetfunc(env, lp, contextid, my_cut_callback, inst)) print_error("CPXcallbacksetfunc() error");
 	
 // adding mipstart solution, this is different than PARAM_CUT, it will make sure that Cplex start from this solution
-	heur_sol_to_mipstart(env, lp, inst);
+	best_sol_to_mipstart(env, lp, inst);
 
 	if (CPXmipopt(env, lp)) print_error("CPXmipopt() error"); 
 
@@ -172,10 +136,13 @@ int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp)
 	free(ncomp);	
 
 	return 0;
+
 }
+
 
 static int CPXPUBLIC my_cut_callback(CPXCALLBACKCONTEXTptr context, CPXLONG contextid, void *userhandle )
 {
+
 	instance* inst = (instance *) userhandle;
 	double* xstar = (double *) calloc(inst->ncols, sizeof(double));
 	int *succ = (int *) calloc(inst->nnodes, sizeof(int));
@@ -210,7 +177,9 @@ static int CPXPUBLIC my_cut_callback(CPXCALLBACKCONTEXTptr context, CPXLONG cont
 	free(ncomp);	
 
 	return 0;
+
 }
+
 
 void post_heuristic(CPXCALLBACKCONTEXTptr context, instance *inst, int *succ, double succ_value)
 {
@@ -229,7 +198,8 @@ void post_heuristic(CPXCALLBACKCONTEXTptr context, instance *inst, int *succ, do
 
 }
 
-int heur_sol_to_mipstart(CPXENVptr env, CPXLPptr lp, instance *inst)
+
+int best_sol_to_mipstart(CPXENVptr env, CPXLPptr lp, instance *inst)
 {
 	//convert best_sol to xstar
 	double *xheu = (double *) calloc(inst->ncols, sizeof(double)); //all zeros initially
@@ -246,11 +216,12 @@ int heur_sol_to_mipstart(CPXENVptr env, CPXLPptr lp, instance *inst)
 	free(indices);
 	
 	return 0;
+
 }
+
 
 int TSPopt(instance *inst, int model_type)
 {  
-	
 	// open CPLEX model
 	int error;
 	CPXENVptr env = CPXopenCPLEX(&error);
@@ -295,6 +266,7 @@ int TSPopt(instance *inst, int model_type)
 
 }
 
+
 double delta_cost_patching(int a, int b, instance *inst, int *succ){
 	
 	double delta_cost = 0;
@@ -304,7 +276,9 @@ double delta_cost_patching(int a, int b, instance *inst, int *succ){
 	delta_cost = cost_of_new_edges - cost_of_old_edges;
 
 	return delta_cost;
+
 }
+
 
 void patching_heuristic(void *context_pointer, void *environment, void* linear_program, int ncols, instance *inst, int *succ, int *comp, int *ncomp){
 
@@ -327,12 +301,10 @@ void patching_heuristic(void *context_pointer, void *environment, void* linear_p
 						min_delta_cost = delta_cost;
 						min_a = a; min_b = b;
 					}
-					
 				}
-				
-			}
-			
+			}	
 		}
+
 		update_succ_and_comp(inst, min_a, min_b, succ, comp);
 		--*ncomp;
 		if(*ncomp != 1) add_subtour_constraint(context_pointer, environment, linear_program, inst, comp, comp[min_b], ncols); // as new component has component number of min_b
@@ -343,28 +315,27 @@ void patching_heuristic(void *context_pointer, void *environment, void* linear_p
 	store_succ(inst, succ, sol);
 
 	free(sol);
+
 }
+
 
 void store_succ(instance *inst, int *succ, int *sol){
 	
-	for (int i = 0; i < inst->nnodes; i++)
-	{
-		succ[sol[i]] = sol[i+1];
-	}
+	for (int i = 0; i < inst->nnodes; i++)		succ[sol[i]] = sol[i+1];
 	
 }
 
 
-void update_succ_and_comp(instance *inst, int min_a, int min_b, int *succ, int *comp){
+void update_succ_and_comp(instance *inst, int a, int b, int *succ, int *comp){
 
-	int temp = succ[min_a];
-	succ[min_a] = succ[min_b];
-	succ[min_b] = temp;
+	int temp = succ[a];
+	succ[a] = succ[b];
+	succ[b] = temp;
 
-	int comp_a = comp[min_a];
+	int comp_a = comp[a];
 	for (int i = 0; i < inst->nnodes; i++)
 	{
-		if (comp[i] == comp_a) comp[i] = comp[min_b];
+		if (comp[i] == comp_a) comp[i] = comp[b];
 	}
 
 }
@@ -375,13 +346,12 @@ double calc_succ_value(int *succ, instance *inst){
 	double val = 0;
 
 	store_solution(inst, succ, sol);
-	for (int i = 0; i < inst->nnodes; i++)
-	{
-		val += dist(sol[i], sol[i+1], inst);
-	}
+	val = calculate_total_cost(inst, sol);
 
 	free(sol);
+
 	return val;
+
 }
 
 /* Transforms the solution stored in the successor array format into a custom solution format for the Traveling Salesman Problem (TSP).
@@ -390,6 +360,7 @@ double calc_succ_value(int *succ, instance *inst){
    - succ: Array storing the successor of each node in the solution.
    - sol: Array to store the custom solution format.
 */
+
 void store_solution(instance *inst, int *succ, int *sol){
 	
 	sol[0] = 0;
@@ -399,6 +370,7 @@ void store_solution(instance *inst, int *succ, int *sol){
 	}
 	
 }
+
 
 void add_subtour_constraint(void *context_pointer, void *environment, void* linear_program, instance *inst, int *comp, int component_num, int ncols)
 {
@@ -444,14 +416,19 @@ void add_subtour_constraint(void *context_pointer, void *environment, void* line
 	free(value);
 	free(index);
 	// free(cname);		
+
 }
 
-int xpos(int i, int j, instance *inst)      // to be verified                                           
+
+int xpos(int i, int j, instance *inst)                                        
 { 
+
 	if ( i == j ) print_error(" i == j in xpos" );
 	if ( i > j ) return xpos(j,i,inst);
 	int pos = i * inst->nnodes + j - (( i + 1 ) * ( i + 2 )) / 2;
+
 	return pos;
+
 }
 	
 
@@ -507,7 +484,6 @@ void build_model(instance *inst, CPXENVptr env, CPXLPptr lp)
 	free(cname);
 
 }
-
 
 
 void build_sol(const double *xstar, instance *inst, int *succ, int *comp, int *ncomp) // build succ() and comp() wrt xstar()...
