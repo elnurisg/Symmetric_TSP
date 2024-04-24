@@ -228,7 +228,7 @@ void swap(int *a, int *b) {
     *b = temp;
 }
 
-void shuffle_array_for_kick(int arr[], int n) {
+void shuffle_array_for_kick(int *arr, int n) {
     srand(time(NULL)); int j;
 // shuffle the array with keeping segments together
 // we use pair of numbers in order to indicate the segments (its starting and ending)

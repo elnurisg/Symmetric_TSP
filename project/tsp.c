@@ -284,7 +284,7 @@ int TSPopt(instance *inst, int model_type)
 	}
 	else
 	{
-		print_error("Error! Model type is not defined correctly. Please choose 0 for [Benders' loop] and 1 for [Branch and Cut]");
+		print_error("Model type is not defined correctly. Please choose 0 for [Benders' loop] and 1 for [Branch and Cut]");
 	}	
 
 	// free and close cplex model   

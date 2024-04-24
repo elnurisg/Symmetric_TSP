@@ -25,14 +25,14 @@ int main(int argc, char **argv)
 	// inst.nnodes + 1 is bcz of the closing the tour
 	inst.best_sol = (int *) calloc(inst.nnodes+1, sizeof(int)); 
 
-	if ( greedy_heuristic(&inst, 2, 0) ) print_error(" error within greedy_heuristic()");
+	// if ( greedy_heuristic(&inst, 0, 0) ) print_error(" error within greedy_heuristic()");
 	// if ( extra_mileage_heuristic(&inst, 2) ) print_error(" error within extra_mileage_heuristic()");
-	printf("\n \tbest_val is %f\n", inst.best_val);
+	// printf("\n \tbest_val is %f\n", inst.best_val);
 	// if ( variable_neighborhood_search(&inst, 10) ) print_error(" error within variable_neighborhood_search()");
-	// if ( simulated_annealing(&inst) ) print_error(" error within simulated_annealing()");
-	if ( tabu_search(&inst, 0) ) print_error(" error within tabu_search()");
+	// if ( simulated_annealing(&inst, 2) ) print_error(" error within simulated_annealing()");
 	// if ( two_opt_refining_heuristic(&inst, inst.best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
-	// if ( genetic_algorithm(&inst, 2, 2) ) print_error(" error within genetic_algorithm()");
+	// if ( tabu_search(&inst, 2, 1) ) print_error(" error within tabu_search()");
+	if ( genetic_algorithm(&inst, 0, 0) ) print_error(" error within genetic_algorithm()");
 	// if ( TSPopt(&inst, 1) ) print_error(" error within TSPopt()");
 	// if (hard_fixing(&inst, 0.3)) print_error(" error within hard_fixing()");
 	// if (local_branching(&inst, 10)) print_error(" error within local_branching()");
@@ -244,7 +244,7 @@ void parse_command_line(int argc, char** argv, instance *inst)
 	inst->timelimit = CPX_INFBOUND;
 	// inst->cutoff = CPX_INFBOUND; 
 	// inst->integer_costs = 0;
-
+	inst->heur_flag = 0;
 	// inst->available_memory = 12000;   			// available memory, in MB, for Cplex execution (e.g., 12000)
 	// inst->max_nodes = -1; 						// max n. of branching nodes in the final run (-1 unlimited)        
 
