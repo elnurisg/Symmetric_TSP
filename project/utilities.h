@@ -52,6 +52,7 @@ int verify_tour(instance *inst, int *tour);
 double random01();
 double cost(int i, int j, instance *inst);
 void print_error(const char *err);  
+int time_limit_expired(instance *inst);
 
 /**
  * @brief Calculates the cost value of the given instance solution best_sol and initiliaze into best_val.

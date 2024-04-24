@@ -1,5 +1,7 @@
 #include "utilities.h"
 
+double second(); 
+
 void print_error(const char *err) { printf("\n\n ERROR: %s \n\n", err); fflush(NULL); exit(1); }   
 
 double random01() { return ((double) rand() / RAND_MAX); } // return a random value in range 0.0-1.0
@@ -9,6 +11,16 @@ double cost(int i, int j, instance *inst)
 	return inst->cost[i*inst->nnodes + j];
 }
 
+int time_limit_expired(instance *inst)	 
+{
+	double tspan = second() - inst->tstart;
+	if (  tspan > inst->timelimit ) 
+	{
+		if ( VERBOSE >= 200 ) printf("\n\n$$$ time limit of %10.1lf sec.s expired after %10.1lf sec.s $$$\n\n", inst->timelimit, tspan);
+		return 1;
+	}  
+	return 0;
+}
 
 void calculate_best_val(instance *inst){
 	double total_cost = 0;

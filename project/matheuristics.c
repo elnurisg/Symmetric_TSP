@@ -1,7 +1,5 @@
 #include "matheuristics.h"
 
-double second();  
-
 
 /////////////////////////////////// Hard-fixing /////////////////////////////////////////
 
@@ -26,7 +24,7 @@ int hard_fixing(instance *inst, double pfix){
 	calculate_best_val(inst);
     
     double absolute_best_value = inst->best_val;
-    while (second() - inst->tstart < inst->timelimit)
+    while (!time_limit_expired(inst))
     {
         fixing(env, lp, inst, pfix);
         if (branch_and_cut(inst, env, lp)) print_error("Error in branch_and_cut()");
@@ -117,7 +115,7 @@ int local_branching(instance *inst, int k){
     double absolute_best_value = inst->best_val;
     int k_initial = k;
 
-    while (second() - inst->tstart < inst->timelimit)
+    while (!time_limit_expired(inst))
     {
         add_local_branching_constraints(env, lp, inst, k);
         if (branch_and_cut(inst, env, lp)) print_error("Error in branch_and_cut()");

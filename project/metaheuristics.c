@@ -1,7 +1,5 @@
 #include "metaheuristics.h"
 
-double second();       
-
 
 ///////////////////////////////////Tabu Search/////////////////////////////////////////
 
@@ -101,7 +99,7 @@ int tabu_search(instance *inst, int tenure_mode, int aspiration_criteria){
 		}
 		printf("[Tabu Search] Current value is %f, iteration is %d tenure %d\n", curr_value, iteration, tenure);
 		iteration++;
-	} while (second() - inst->tstart < inst->timelimit);
+	} while (!time_limit_expired(inst));
 	
 	free(curr_solution);
 	free(inst->tabu_list);
@@ -233,7 +231,7 @@ int variable_neighborhood_search(instance *inst, int kick_neighborhood){
 			printf("\n \t[VNS] Update in best_val %f\n", inst->best_val);
 		}
 		
-	} while (second() - inst->tstart < inst->timelimit);
+	} while (!time_limit_expired(inst));
 	
 	free(current_solution);
 
@@ -322,7 +320,7 @@ int simulated_annealing(instance *inst, int annealing_iterations){
 			printf("[Simulated Annealing] Update in best_val %f\n", inst->best_val);
 		}
 		
-	} while (second() - inst->tstart < inst->timelimit);
+	} while (!time_limit_expired(inst));
 
 	free(optimal_solution);
 
@@ -730,7 +728,7 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){
 		
 		count_generations++;
 		
-	} while (second() - inst->tstart < inst->timelimit);
+	} while (!time_limit_expired(inst));
 
 	// if repair is off, then it might not evolve to be a tour, so it has been decided to repair the last survivor champion
 	// and as it is applied for repair=0, in order to be fair it is also applied for repair=1
