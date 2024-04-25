@@ -1,11 +1,9 @@
 #ifndef CONVEX_HULL_H
 #define CONVEX_HULL_H
 
-// #include "tsp.h"
-
 #include <stdio.h>
 #include <stdlib.h>
-#include "utilities.h"
+#include "../include/utilities.h"
 
 typedef struct {
     double x, y;

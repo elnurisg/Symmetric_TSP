@@ -1,5 +1,5 @@
-#include "tsp.h"           
-#include "matheuristics.h"
+#include "../include/tsp.h"           
+#include "../include/matheuristics.h"
 
 double second();
 double random01();     
@@ -33,8 +33,8 @@ int main(int argc, char **argv)
 	// if ( two_opt_refining_heuristic(&inst, inst.best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
 	// if ( tabu_search(&inst, 2, 1) ) print_error(" error within tabu_search()");
 	// if ( genetic_algorithm(&inst, 0, 0) ) print_error(" error within genetic_algorithm()");
-	if ( TSPopt(&inst, 0) ) print_error(" error within TSPopt()");
-	// if (hard_fixing(&inst, 0.3)) print_error(" error within hard_fixing()");
+	// if ( TSPopt(&inst, 1) ) print_error(" error within TSPopt()");
+	if (hard_fixing(&inst, 0.3)) print_error(" error within hard_fixing()");
 	// if (local_branching(&inst, 10)) print_error(" error within local_branching()");
 
 	double t2 = second();

@@ -6,7 +6,6 @@
 #include <time.h>
 #include <sys/stat.h>
 #include <math.h>
-// #include "convex_hull.h"
 
 
 #define VERBOSE				    50		// printing level 

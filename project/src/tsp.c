@@ -1,4 +1,4 @@
-#include "tsp.h"
+#include "../include/tsp.h"
 
 double second();       
                          

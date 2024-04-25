@@ -3,6 +3,11 @@
     "files.associations": {
         "stdio.h": "c",
         "convex_hull.h": "c",
-        "cstdlib": "c"
+        "cstdlib": "c",
+        "matheuristics.h": "c",
+        "tsp.h": "c",
+        "metaheuristics.h": "c",
+        "utilities.h": "c",
+        "heuristics.h": "c"
     }
 }

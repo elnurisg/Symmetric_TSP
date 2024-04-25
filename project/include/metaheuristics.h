@@ -1,5 +1,5 @@
-#include "utilities.h"
-#include "heuristics.h"
+#include "../include/utilities.h"
+#include "../include/heuristics.h"
 #include <limits.h>
 
 typedef struct{

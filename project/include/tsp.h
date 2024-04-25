@@ -7,9 +7,9 @@
 #include <stdio.h>  
 #include <time.h>
 
-#include "utilities.h"
-#include "heuristics.h"
-#include "metaheuristics.h"
+#include "../include/utilities.h"
+#include "../include/heuristics.h"
+#include "../include/metaheuristics.h"
 
 #include <cplex.h>  
 #include <pthread.h>  

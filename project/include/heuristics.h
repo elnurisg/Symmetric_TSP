@@ -1,5 +1,5 @@
-#include "utilities.h"
-#include "convex_hull.h"
+#include "../include/utilities.h"
+#include "../include/convex_hull.h"
 
 
 ///////////////////////////////////Greedy Heuristic/////////////////////////////////////////

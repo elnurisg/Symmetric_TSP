@@ -1,4 +1,4 @@
-#include "utilities.h"
+#include "../include/utilities.h"
 
 double second(); 
 
@@ -64,7 +64,7 @@ void plot_tsp_tour(instance *inst, int writing_to_file){
 	}
 	
 
-    system("gnuplot ./plot/commands.txt");
+    system("gnuplot plot/commands.txt");
 
 }
 

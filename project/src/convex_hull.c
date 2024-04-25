@@ -1,4 +1,4 @@
-#include "convex_hull.h"
+#include "../include/convex_hull.h"
 
 // function to swap_Pointers two points
 void swap_Pointers(Point* a, Point* b) {
