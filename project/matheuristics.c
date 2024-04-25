@@ -5,34 +5,34 @@
 
 int hard_fixing(instance *inst, double pfix){
 
+    printf("\n_________________________________________________________\nHard-fixing:\n\n");
     if (inst->timelimit == CPX_INFBOUND)
-        print_error("Time limit not specified or invalid. \nFor Hard-fixing method you should specify the time limit as the goal is to minimize the primal integral in given time limit.\n");
+        print_error("[Hard-fixing] Time limit not specified or invalid. \nFor Hard-fixing method you should specify the time limit as the goal is to minimize the primal integral in given time limit.\n");
 
     	// open CPLEX model
 	int error;
 	CPXENVptr env = CPXopenCPLEX(&error);
-	if ( error ) print_error("CPXopenCPLEX() error");
+	if ( error ) print_error("[Hard-fixing] CPXopenCPLEX() error");
 	CPXLPptr lp = CPXcreateprob(env, &error, "TSP model version 1"); 
-	if ( error ) print_error("CPXcreateprob() error");
+	if ( error ) print_error("[Hard-fixing] CPXcreateprob() error");
 
 	build_model(inst, env, lp);
 
     inst->ncols = CPXgetnumcols(env, lp);
 
-	if ( greedy_heuristic(inst, 2, 0) ) print_error(" error within greedy_heuristic()");
-	if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
+	if ( greedy_heuristic(inst, 2, 0) ) print_error("[Hard-fixing] error within greedy_heuristic()");
+	if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error("[Hard-fixing] error within two_opt_refining_heuristic()");
 	calculate_best_val(inst);
     
     double absolute_best_value = inst->best_val;
     while (!time_limit_expired(inst))
     {
         fixing(env, lp, inst, pfix);
-        if (branch_and_cut(inst, env, lp)) print_error("Error in branch_and_cut()");
+        if (branch_and_cut(inst, env, lp)) print_error("[Hard-fixing] Error in branch_and_cut()");
         unfixing(env, lp, inst);
         if(VERBOSE >= 100 && absolute_best_value > inst->best_val)    printf("Found better solution with value: %f\n", inst->best_val);
     }
     
-
 	// free and close cplex model   
 	CPXfreeprob(env, &lp);
 	CPXcloseCPLEX(&env); 
@@ -61,7 +61,9 @@ void fixing(CPXENVptr env, CPXLPptr lp, instance *inst, double pfix){
     }
     
     free(succ);
+
 }
+
 
 void unfixing(CPXENVptr env, CPXLPptr lp, instance *inst){
 
@@ -72,7 +74,7 @@ void unfixing(CPXENVptr env, CPXLPptr lp, instance *inst){
         for ( int j = i+1; j < inst->nnodes; j++ )
         {
             index = xpos(i,j, inst);
-            if (CPXchgbds(env, lp, 1, &index, &bound, &bd)) print_error("Error in CPXchgbds() unfixing");
+            if (CPXchgbds(env, lp, 1, &index, &bound, &bd)) print_error("[Hard-fixing] Error in CPXchgbds() unfixing");
         }
     }
 
@@ -82,23 +84,25 @@ void unfixing(CPXENVptr env, CPXLPptr lp, instance *inst){
 /////////////////////////////////// Local branching /////////////////////////////////////////
 
 int local_branching(instance *inst, int k){
-    
+
+	printf("\n_________________________________________________________\nLocal Branching:\n\n");
+
     if (inst->timelimit == CPX_INFBOUND)
-        print_error("Time limit not specified or invalid. \nFor Local Branching method you should specify the time limit as the goal is to minimize the primal integral in given time limit.\n");
+        print_error("[Local Branching] Time limit not specified or invalid. \nFor Local Branching method you should specify the time limit as the goal is to minimize the primal integral in given time limit.\n");
 
     // open CPLEX model
     int error;
     CPXENVptr env = CPXopenCPLEX(&error);
-    if ( error ) print_error("CPXopenCPLEX() error");
+    if ( error ) print_error("[Local Branching] CPXopenCPLEX() error");
     CPXLPptr lp = CPXcreateprob(env, &error, "TSP model version 1"); 
-    if ( error ) print_error("CPXcreateprob() error");
+    if ( error ) print_error("[Local Branching] CPXcreateprob() error");
 
     build_model(inst, env, lp);
 
     inst->ncols = CPXgetnumcols(env, lp);
 
-    if ( greedy_heuristic(inst, 2, 0) ) print_error(" error within greedy_heuristic()");
-    if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error(" error within two_opt_refining_heuristic()");
+    if ( greedy_heuristic(inst, 2, 0) ) print_error("[Local Branching] error within greedy_heuristic()");
+    if ( two_opt_refining_heuristic(inst, inst->best_sol, 0) ) print_error("[Local Branching] error within two_opt_refining_heuristic()");
     calculate_best_val(inst);
     
     double absolute_best_value = inst->best_val;
@@ -107,7 +111,7 @@ int local_branching(instance *inst, int k){
     while (!time_limit_expired(inst))
     {
         add_local_branching_constraints(env, lp, inst, k);
-        if (branch_and_cut(inst, env, lp)) print_error("Error in branch_and_cut()");
+        if (branch_and_cut(inst, env, lp)) print_error("[Local Branching] Error in branch_and_cut()");
         remove_last_constraints(env, lp);
 
         if(absolute_best_value <= inst->best_val){
@@ -121,7 +125,6 @@ int local_branching(instance *inst, int k){
         }
     }
     
-
     // free and close cplex model   
     CPXfreeprob(env, &lp);
     CPXcloseCPLEX(&env); 
@@ -170,6 +173,6 @@ void remove_last_constraints(CPXENVptr env, CPXLPptr lp){
     int begin = CPXgetnumrows(env, lp) - 1;
     int end = CPXgetnumrows(env, lp) - 1;
 
-    if (CPXdelrows(env, lp, begin, end)) print_error("Error in CPXdelrows()");
+    if (CPXdelrows(env, lp, begin, end)) print_error("[Local Branching] Error in CPXdelrows()");
 
 }

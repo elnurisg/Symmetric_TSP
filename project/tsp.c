@@ -6,6 +6,8 @@ double second();
 int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 {
 
+	printf("\n_________________________________________________________\nBenders loop:\n\n");
+
 	double *xstar = (double *) calloc(inst->ncols, sizeof(double));
 	int *succ = (int *) calloc(inst->nnodes, sizeof(int));
 	int *best_succ = (int *) calloc(inst->nnodes, sizeof(int));
@@ -20,8 +22,8 @@ int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 	{
 		CPXsetdblparam(env, CPX_PARAM_CUTUP, UB);
 		CPXsetintparam(env, CPX_PARAM_NODELIM, 100);
-		if (CPXmipopt(env,lp)) print_error("CPXmipopt() error"); 
-		if ( CPXgetbestobjval(env, lp, &objval) ) print_error("CPXgetbestobjval() error");	
+		if (CPXmipopt(env,lp)) print_error("[Benders loop] CPXmipopt() error"); 
+		if ( CPXgetbestobjval(env, lp, &objval) ) print_error("[Benders loop] CPXgetbestobjval() error");	
 		if ( CPXgetx(env, lp, xstar, 0, inst->ncols-1) ) continue;//print_error("CPXgetx() error");
 		
 		// new LB is assumed to increase as having more constraints
@@ -92,6 +94,8 @@ int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp)
 {
 
+	printf("\n_________________________________________________________\nBranch && Cut:\n\n");
+	
 	double *xstar = (double *) calloc(inst->ncols, sizeof(double));
 	int *succ = (int *) calloc(inst->nnodes, sizeof(int));
 	int *comp = (int *) calloc(inst->nnodes, sizeof(int));
@@ -108,12 +112,12 @@ int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp)
 
 	// installing a lazyconstraint callback to cut infeasible integer solution
 	CPXLONG contextid = CPX_CALLBACKCONTEXT_CANDIDATE; // means lazy constraints
-	if(CPXcallbacksetfunc(env, lp, contextid, my_cut_callback, inst)) print_error("CPXcallbacksetfunc() error");
+	if(CPXcallbacksetfunc(env, lp, contextid, my_cut_callback, inst)) print_error("[B&&C]CPXcallbacksetfunc() error");
 	
 // adding mipstart solution, this is different than PARAM_CUT, it will make sure that Cplex start from this solution
 	best_sol_to_mipstart(env, lp, inst);
 
-	if (CPXmipopt(env, lp)) print_error("CPXmipopt() error"); 
+	if (CPXmipopt(env, lp)) print_error("[B&&C] CPXmipopt() error"); 
 
 	CPXgetbestobjval(env, lp, &LB);
 	CPXgetobjval(env, lp, &UB);
