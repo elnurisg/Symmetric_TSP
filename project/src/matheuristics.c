@@ -89,7 +89,8 @@ int local_branching(instance *inst, int k){
 
     if (inst->timelimit == CPX_INFBOUND)
         print_error("[Local Branching] Time limit not specified or invalid. \nFor Local Branching method you should specify the time limit as the goal is to minimize the primal integral in given time limit.\n");
-
+    if (k < 0 || k > inst->nnodes) print_error("[Local Branching] Branching contraint is not correct");    
+    
     // open CPLEX model
     int error;
     CPXENVptr env = CPXopenCPLEX(&error);
