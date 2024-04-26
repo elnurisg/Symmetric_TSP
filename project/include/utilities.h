@@ -42,6 +42,35 @@ typedef struct {
 
 } instance;        
 
+typedef struct {
+	// Flags for algorithms
+    int greedy_heuristic;
+    int extra_mileage_heuristic;
+    int variable_neighborhood_search;
+    int simulated_annealing;
+    int two_opt_refining_heuristic;
+    int tabu_search;
+    int genetic_algorithm;
+    int TSPopt;
+    int hard_fixing;
+    int local_branching;
+
+    // Parameters of algorithms
+    int greedy_starting_mode;
+    int greedy_grasp;
+    int extra_mileage_starting_mode;
+    int VNS_kick_neighborhood;
+    int SA_iterations;
+    int tabu_tenure_mode;
+	int tabu_aspiration;
+    int genetic_repair;
+    int genetic_cutting;
+    int TSPopt_model;
+    double hard_fixing_probability;
+    int local_branching_constraint;
+} Config;
+
+
 void plot_tsp_tour(instance *inst, int writing_to_file);
 int dist(int i, int j, instance *inst);
 int random_node_with_time_seed(int length);
