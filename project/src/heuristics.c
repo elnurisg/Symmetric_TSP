@@ -1,4 +1,5 @@
 #include "../include/heuristics.h"
+double second();
 
 ///////////////////////////////////Greedy Heuristic/////////////////////////////////////////
 
@@ -249,11 +250,6 @@ void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy){
 		uncovered_length--;
 	}
 
-	copy_array(nodes_hierarchy, inst->nnodes, inst->best_sol); //nodes_hierarchy;
-	inst->best_sol[inst->nnodes]= inst->best_sol[0]; // close the tour
-
-	calculate_best_val(inst);
-
 	free(uncovered_nodes);
 }
 
@@ -262,8 +258,9 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 	inst->heur_flag = 1;
 	
 	int *nodes_hierarchy = NULL;
-	double min_cost; int random_node_with_time_seed_pos;
-	int *nodes_hierarchy_with_best_starting_couple = (int *) calloc(inst->nnodes, sizeof(int));
+	double min_cost; int random_node_with_time_seed_pos; double cost;
+	int *best_starting_couple = (int *) calloc(2, sizeof(int));
+	int *starting_couple = (int *) calloc(2, sizeof(int));
 	int length_of_cost = inst->nnodes*inst->nnodes;
 	int hullSize; Point* convexHull = NULL;
 
@@ -277,6 +274,11 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 		, nodes_hierarchy[1]);
 
 		calculate_extra_mileage_heuristics(inst, nodes_hierarchy);
+
+		copy_array(nodes_hierarchy, inst->nnodes, inst->best_sol); //nodes_hierarchy;
+		inst->best_sol[inst->nnodes]= inst->best_sol[0]; // close the tour
+		calculate_best_val(inst);
+
 		free(nodes_hierarchy);
 		break;
 	case 1:  // A, B is random (A!=B)
@@ -295,6 +297,11 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 		, nodes_hierarchy[1]);
 		
 		calculate_extra_mileage_heuristics(inst, nodes_hierarchy);
+		
+		copy_array(nodes_hierarchy, inst->nnodes, inst->best_sol); //nodes_hierarchy;
+		inst->best_sol[inst->nnodes]= inst->best_sol[0]; // close the tour
+		calculate_best_val(inst);
+
 		free(nodes_hierarchy);
 		break;
 
@@ -310,31 +317,42 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 			for (int j = i+1; j < hullSize; j++)
 			{ // cost index which A!=B and and check each couple just once
 				nodes_hierarchy = find_nodes(inst, (convexHull[i].id*inst->nnodes)+convexHull[j].id); 
+				starting_couple[0] = nodes_hierarchy[0];
+				starting_couple[1] = nodes_hierarchy[1];
+
 				calculate_extra_mileage_heuristics(inst, nodes_hierarchy);
-				if (min_cost > inst->best_val)
+				cost = calculate_total_cost(inst, nodes_hierarchy);
+
+				if (min_cost > cost)
 				{
-					min_cost = inst->best_val;
-					copy_array(nodes_hierarchy, inst->nnodes, nodes_hierarchy_with_best_starting_couple);
+					min_cost = cost;
+					best_starting_couple[0] = starting_couple[0];
+					best_starting_couple[1] = starting_couple[1];
+					copy_array(nodes_hierarchy, inst->nnodes, inst->best_sol); //nodes_hierarchy;
+					inst->best_sol[inst->nnodes] = inst->best_sol[0]; // close the tour
+					calculate_best_val(inst);
 				}
 				free(nodes_hierarchy);
+				
+				if(time_limit_expired(inst)) break;
 			}
-			
+			if(time_limit_expired(inst)) break;		
 		}
 		
 		printf("\n [Insertion Heuristic] The best starting nodes are %d and %d \n"
-		, nodes_hierarchy_with_best_starting_couple[0]
-		, nodes_hierarchy_with_best_starting_couple[1]);
+		, best_starting_couple[0]
+		, best_starting_couple[1]);
 		
 		free(convexHull);
 
-		calculate_extra_mileage_heuristics(inst, nodes_hierarchy_with_best_starting_couple);
 		break;
 	default:
             print_error("[Insertion Heuristic] starting_mode is not in correct format\n");
 	}
 
-	free(nodes_hierarchy_with_best_starting_couple);
-	
+	free(best_starting_couple);
+	free(starting_couple);
+
 	return 0;
 
 }
