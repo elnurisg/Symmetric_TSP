@@ -1,0 +1,2151 @@
+../../tsp -generate_random 2000 -time_limit 600 -greedy 1 0 -tabu_search 0 1 -seed 7 
+
+
+available parameters (vers. 21-Apr-2024) --------------------------------------------------
+-file <input_file> NULL
+-time_limit <timelimit> 600.000000
+-generate_random <nnodes> 2000
+-seed <random_seed> 7
+
+ALGORITHMS:
+-greedy <starting_mode> 1 <grasp_mode> 0
+-extra_mileage <starting_mode> -1
+-two_opt
+-VNS <kick_neighborhood> -1
+-SA <iterations> -1
+-tabu_search <tenure_mode> 0 <aspiration> 1
+-genetic_algorithm <repair_mode> -1 <cutting_type> -1
+-tsp_opt <model_type> -1
+-hard_fixing <probability> -1.000000
+-local_branching <branching_constraint> -1
+
+enter -help or --help for help
+----------------------------------------------------------------------------------------------
+
+
+_________________________________________________________
+Greedy Heuristic:
+
+ [Greedy Heuristic] Random starting position is node 1691 
+
+_________________________________________________________
+Tabu Search:
+
+[Tabu Search] Update in best_val curr value is 408345.000000, iteration is 0 tenure 100
+[Tabu Search] Current value is 408345.000000, iteration is 0 tenure 100
+[Tabu Search] Update in best_val curr value is 406750.000000, iteration is 1 tenure 100
+[Tabu Search] Current value is 406750.000000, iteration is 1 tenure 100
+[Tabu Search] Update in best_val curr value is 405375.000000, iteration is 2 tenure 100
+[Tabu Search] Current value is 405375.000000, iteration is 2 tenure 100
+[Tabu Search] Update in best_val curr value is 404151.000000, iteration is 3 tenure 100
+[Tabu Search] Current value is 404151.000000, iteration is 3 tenure 100
+[Tabu Search] Update in best_val curr value is 403082.000000, iteration is 4 tenure 100
+[Tabu Search] Current value is 403082.000000, iteration is 4 tenure 100
+[Tabu Search] Update in best_val curr value is 402113.000000, iteration is 5 tenure 100
+[Tabu Search] Current value is 402113.000000, iteration is 5 tenure 100
+[Tabu Search] Update in best_val curr value is 401268.000000, iteration is 6 tenure 100
+[Tabu Search] Current value is 401268.000000, iteration is 6 tenure 100
+[Tabu Search] Update in best_val curr value is 400485.000000, iteration is 7 tenure 100
+[Tabu Search] Current value is 400485.000000, iteration is 7 tenure 100
+[Tabu Search] Update in best_val curr value is 399588.000000, iteration is 8 tenure 100
+[Tabu Search] Current value is 399588.000000, iteration is 8 tenure 100
+[Tabu Search] Update in best_val curr value is 398853.000000, iteration is 9 tenure 100
+[Tabu Search] Current value is 398853.000000, iteration is 9 tenure 100
+[Tabu Search] Update in best_val curr value is 397896.000000, iteration is 10 tenure 100
+[Tabu Search] Current value is 397896.000000, iteration is 10 tenure 100
+[Tabu Search] Update in best_val curr value is 396939.000000, iteration is 11 tenure 100
+[Tabu Search] Current value is 396939.000000, iteration is 11 tenure 100
+[Tabu Search] Update in best_val curr value is 396235.000000, iteration is 12 tenure 100
+[Tabu Search] Current value is 396235.000000, iteration is 12 tenure 100
+[Tabu Search] Update in best_val curr value is 395617.000000, iteration is 13 tenure 100
+[Tabu Search] Current value is 395617.000000, iteration is 13 tenure 100
+[Tabu Search] Update in best_val curr value is 394756.000000, iteration is 14 tenure 100
+[Tabu Search] Current value is 394756.000000, iteration is 14 tenure 100
+[Tabu Search] Update in best_val curr value is 394160.000000, iteration is 15 tenure 100
+[Tabu Search] Current value is 394160.000000, iteration is 15 tenure 100
+[Tabu Search] Update in best_val curr value is 393570.000000, iteration is 16 tenure 100
+[Tabu Search] Current value is 393570.000000, iteration is 16 tenure 100
+[Tabu Search] Update in best_val curr value is 392742.000000, iteration is 17 tenure 100
+[Tabu Search] Current value is 392742.000000, iteration is 17 tenure 100
+[Tabu Search] Update in best_val curr value is 392014.000000, iteration is 18 tenure 100
+[Tabu Search] Current value is 392014.000000, iteration is 18 tenure 100
+[Tabu Search] Update in best_val curr value is 391428.000000, iteration is 19 tenure 100
+[Tabu Search] Current value is 391428.000000, iteration is 19 tenure 100
+[Tabu Search] Update in best_val curr value is 390838.000000, iteration is 20 tenure 100
+[Tabu Search] Current value is 390838.000000, iteration is 20 tenure 100
+[Tabu Search] Update in best_val curr value is 390261.000000, iteration is 21 tenure 100
+[Tabu Search] Current value is 390261.000000, iteration is 21 tenure 100
+[Tabu Search] Update in best_val curr value is 389693.000000, iteration is 22 tenure 100
+[Tabu Search] Current value is 389693.000000, iteration is 22 tenure 100
+[Tabu Search] Update in best_val curr value is 389101.000000, iteration is 23 tenure 100
+[Tabu Search] Current value is 389101.000000, iteration is 23 tenure 100
+[Tabu Search] Update in best_val curr value is 388420.000000, iteration is 24 tenure 100
+[Tabu Search] Current value is 388420.000000, iteration is 24 tenure 100
+[Tabu Search] Update in best_val curr value is 387867.000000, iteration is 25 tenure 100
+[Tabu Search] Current value is 387867.000000, iteration is 25 tenure 100
+[Tabu Search] Update in best_val curr value is 387335.000000, iteration is 26 tenure 100
+[Tabu Search] Current value is 387335.000000, iteration is 26 tenure 100
+[Tabu Search] Update in best_val curr value is 386795.000000, iteration is 27 tenure 100
+[Tabu Search] Current value is 386795.000000, iteration is 27 tenure 100
+[Tabu Search] Update in best_val curr value is 386261.000000, iteration is 28 tenure 100
+[Tabu Search] Current value is 386261.000000, iteration is 28 tenure 100
+[Tabu Search] Update in best_val curr value is 385619.000000, iteration is 29 tenure 100
+[Tabu Search] Current value is 385619.000000, iteration is 29 tenure 100
+[Tabu Search] Update in best_val curr value is 385094.000000, iteration is 30 tenure 100
+[Tabu Search] Current value is 385094.000000, iteration is 30 tenure 100
+[Tabu Search] Update in best_val curr value is 384599.000000, iteration is 31 tenure 100
+[Tabu Search] Current value is 384599.000000, iteration is 31 tenure 100
+[Tabu Search] Update in best_val curr value is 383809.000000, iteration is 32 tenure 100
+[Tabu Search] Current value is 383809.000000, iteration is 32 tenure 100
+[Tabu Search] Update in best_val curr value is 383125.000000, iteration is 33 tenure 100
+[Tabu Search] Current value is 383125.000000, iteration is 33 tenure 100
+[Tabu Search] Update in best_val curr value is 382605.000000, iteration is 34 tenure 100
+[Tabu Search] Current value is 382605.000000, iteration is 34 tenure 100
+[Tabu Search] Update in best_val curr value is 382139.000000, iteration is 35 tenure 100
+[Tabu Search] Current value is 382139.000000, iteration is 35 tenure 100
+[Tabu Search] Update in best_val curr value is 381685.000000, iteration is 36 tenure 100
+[Tabu Search] Current value is 381685.000000, iteration is 36 tenure 100
+[Tabu Search] Update in best_val curr value is 381252.000000, iteration is 37 tenure 100
+[Tabu Search] Current value is 381252.000000, iteration is 37 tenure 100
+[Tabu Search] Update in best_val curr value is 380833.000000, iteration is 38 tenure 100
+[Tabu Search] Current value is 380833.000000, iteration is 38 tenure 100
+[Tabu Search] Update in best_val curr value is 380434.000000, iteration is 39 tenure 100
+[Tabu Search] Current value is 380434.000000, iteration is 39 tenure 100
+[Tabu Search] Update in best_val curr value is 380034.000000, iteration is 40 tenure 100
+[Tabu Search] Current value is 380034.000000, iteration is 40 tenure 100
+[Tabu Search] Update in best_val curr value is 379619.000000, iteration is 41 tenure 100
+[Tabu Search] Current value is 379619.000000, iteration is 41 tenure 100
+[Tabu Search] Update in best_val curr value is 379228.000000, iteration is 42 tenure 100
+[Tabu Search] Current value is 379228.000000, iteration is 42 tenure 100
+[Tabu Search] Update in best_val curr value is 378840.000000, iteration is 43 tenure 100
+[Tabu Search] Current value is 378840.000000, iteration is 43 tenure 100
+[Tabu Search] Update in best_val curr value is 378285.000000, iteration is 44 tenure 100
+[Tabu Search] Current value is 378285.000000, iteration is 44 tenure 100
+[Tabu Search] Update in best_val curr value is 377760.000000, iteration is 45 tenure 100
+[Tabu Search] Current value is 377760.000000, iteration is 45 tenure 100
+[Tabu Search] Update in best_val curr value is 377312.000000, iteration is 46 tenure 100
+[Tabu Search] Current value is 377312.000000, iteration is 46 tenure 100
+[Tabu Search] Update in best_val curr value is 376932.000000, iteration is 47 tenure 100
+[Tabu Search] Current value is 376932.000000, iteration is 47 tenure 100
+[Tabu Search] Update in best_val curr value is 376558.000000, iteration is 48 tenure 100
+[Tabu Search] Current value is 376558.000000, iteration is 48 tenure 100
+[Tabu Search] Update in best_val curr value is 376191.000000, iteration is 49 tenure 100
+[Tabu Search] Current value is 376191.000000, iteration is 49 tenure 100
+[Tabu Search] Update in best_val curr value is 375820.000000, iteration is 50 tenure 100
+[Tabu Search] Current value is 375820.000000, iteration is 50 tenure 100
+[Tabu Search] Update in best_val curr value is 375439.000000, iteration is 51 tenure 100
+[Tabu Search] Current value is 375439.000000, iteration is 51 tenure 100
+[Tabu Search] Update in best_val curr value is 375075.000000, iteration is 52 tenure 100
+[Tabu Search] Current value is 375075.000000, iteration is 52 tenure 100
+[Tabu Search] Update in best_val curr value is 374725.000000, iteration is 53 tenure 100
+[Tabu Search] Current value is 374725.000000, iteration is 53 tenure 100
+[Tabu Search] Update in best_val curr value is 374382.000000, iteration is 54 tenure 100
+[Tabu Search] Current value is 374382.000000, iteration is 54 tenure 100
+[Tabu Search] Update in best_val curr value is 374040.000000, iteration is 55 tenure 100
+[Tabu Search] Current value is 374040.000000, iteration is 55 tenure 100
+[Tabu Search] Update in best_val curr value is 373706.000000, iteration is 56 tenure 100
+[Tabu Search] Current value is 373706.000000, iteration is 56 tenure 100
+[Tabu Search] Update in best_val curr value is 373386.000000, iteration is 57 tenure 100
+[Tabu Search] Current value is 373386.000000, iteration is 57 tenure 100
+[Tabu Search] Update in best_val curr value is 372760.000000, iteration is 58 tenure 100
+[Tabu Search] Current value is 372760.000000, iteration is 58 tenure 100
+[Tabu Search] Update in best_val curr value is 372440.000000, iteration is 59 tenure 100
+[Tabu Search] Current value is 372440.000000, iteration is 59 tenure 100
+[Tabu Search] Update in best_val curr value is 372123.000000, iteration is 60 tenure 100
+[Tabu Search] Current value is 372123.000000, iteration is 60 tenure 100
+[Tabu Search] Update in best_val curr value is 371788.000000, iteration is 61 tenure 100
+[Tabu Search] Current value is 371788.000000, iteration is 61 tenure 100
+[Tabu Search] Update in best_val curr value is 371358.000000, iteration is 62 tenure 100
+[Tabu Search] Current value is 371358.000000, iteration is 62 tenure 100
+[Tabu Search] Update in best_val curr value is 371052.000000, iteration is 63 tenure 100
+[Tabu Search] Current value is 371052.000000, iteration is 63 tenure 100
+[Tabu Search] Update in best_val curr value is 370753.000000, iteration is 64 tenure 100
+[Tabu Search] Current value is 370753.000000, iteration is 64 tenure 100
+[Tabu Search] Update in best_val curr value is 370466.000000, iteration is 65 tenure 100
+[Tabu Search] Current value is 370466.000000, iteration is 65 tenure 100
+[Tabu Search] Update in best_val curr value is 370182.000000, iteration is 66 tenure 100
+[Tabu Search] Current value is 370182.000000, iteration is 66 tenure 100
+[Tabu Search] Update in best_val curr value is 369905.000000, iteration is 67 tenure 100
+[Tabu Search] Current value is 369905.000000, iteration is 67 tenure 100
+[Tabu Search] Update in best_val curr value is 369520.000000, iteration is 68 tenure 100
+[Tabu Search] Current value is 369520.000000, iteration is 68 tenure 100
+[Tabu Search] Update in best_val curr value is 369198.000000, iteration is 69 tenure 100
+[Tabu Search] Current value is 369198.000000, iteration is 69 tenure 100
+[Tabu Search] Update in best_val curr value is 368851.000000, iteration is 70 tenure 100
+[Tabu Search] Current value is 368851.000000, iteration is 70 tenure 100
+[Tabu Search] Update in best_val curr value is 368562.000000, iteration is 71 tenure 100
+[Tabu Search] Current value is 368562.000000, iteration is 71 tenure 100
+[Tabu Search] Update in best_val curr value is 368294.000000, iteration is 72 tenure 100
+[Tabu Search] Current value is 368294.000000, iteration is 72 tenure 100
+[Tabu Search] Update in best_val curr value is 368026.000000, iteration is 73 tenure 100
+[Tabu Search] Current value is 368026.000000, iteration is 73 tenure 100
+[Tabu Search] Update in best_val curr value is 367763.000000, iteration is 74 tenure 100
+[Tabu Search] Current value is 367763.000000, iteration is 74 tenure 100
+[Tabu Search] Update in best_val curr value is 367503.000000, iteration is 75 tenure 100
+[Tabu Search] Current value is 367503.000000, iteration is 75 tenure 100
+[Tabu Search] Update in best_val curr value is 367245.000000, iteration is 76 tenure 100
+[Tabu Search] Current value is 367245.000000, iteration is 76 tenure 100
+[Tabu Search] Update in best_val curr value is 366951.000000, iteration is 77 tenure 100
+[Tabu Search] Current value is 366951.000000, iteration is 77 tenure 100
+[Tabu Search] Update in best_val curr value is 366701.000000, iteration is 78 tenure 100
+[Tabu Search] Current value is 366701.000000, iteration is 78 tenure 100
+[Tabu Search] Update in best_val curr value is 366461.000000, iteration is 79 tenure 100
+[Tabu Search] Current value is 366461.000000, iteration is 79 tenure 100
+[Tabu Search] Update in best_val curr value is 365984.000000, iteration is 80 tenure 20
+[Tabu Search] Current value is 365984.000000, iteration is 80 tenure 20
+[Tabu Search] Update in best_val curr value is 365643.000000, iteration is 81 tenure 20
+[Tabu Search] Current value is 365643.000000, iteration is 81 tenure 20
+[Tabu Search] Update in best_val curr value is 365364.000000, iteration is 82 tenure 20
+[Tabu Search] Current value is 365364.000000, iteration is 82 tenure 20
+[Tabu Search] Update in best_val curr value is 365117.000000, iteration is 83 tenure 20
+[Tabu Search] Current value is 365117.000000, iteration is 83 tenure 20
+[Tabu Search] Update in best_val curr value is 364883.000000, iteration is 84 tenure 20
+[Tabu Search] Current value is 364883.000000, iteration is 84 tenure 20
+[Tabu Search] Update in best_val curr value is 364651.000000, iteration is 85 tenure 20
+[Tabu Search] Current value is 364651.000000, iteration is 85 tenure 20
+[Tabu Search] Update in best_val curr value is 364358.000000, iteration is 86 tenure 20
+[Tabu Search] Current value is 364358.000000, iteration is 86 tenure 20
+[Tabu Search] Update in best_val curr value is 364096.000000, iteration is 87 tenure 20
+[Tabu Search] Current value is 364096.000000, iteration is 87 tenure 20
+[Tabu Search] Update in best_val curr value is 363864.000000, iteration is 88 tenure 20
+[Tabu Search] Current value is 363864.000000, iteration is 88 tenure 20
+[Tabu Search] Update in best_val curr value is 363633.000000, iteration is 89 tenure 20
+[Tabu Search] Current value is 363633.000000, iteration is 89 tenure 20
+[Tabu Search] Update in best_val curr value is 363412.000000, iteration is 90 tenure 20
+[Tabu Search] Current value is 363412.000000, iteration is 90 tenure 20
+[Tabu Search] Update in best_val curr value is 363193.000000, iteration is 91 tenure 20
+[Tabu Search] Current value is 363193.000000, iteration is 91 tenure 20
+[Tabu Search] Update in best_val curr value is 362975.000000, iteration is 92 tenure 20
+[Tabu Search] Current value is 362975.000000, iteration is 92 tenure 20
+[Tabu Search] Update in best_val curr value is 362758.000000, iteration is 93 tenure 20
+[Tabu Search] Current value is 362758.000000, iteration is 93 tenure 20
+[Tabu Search] Update in best_val curr value is 362545.000000, iteration is 94 tenure 20
+[Tabu Search] Current value is 362545.000000, iteration is 94 tenure 20
+[Tabu Search] Update in best_val curr value is 362320.000000, iteration is 95 tenure 20
+[Tabu Search] Current value is 362320.000000, iteration is 95 tenure 20
+[Tabu Search] Update in best_val curr value is 362107.000000, iteration is 96 tenure 20
+[Tabu Search] Current value is 362107.000000, iteration is 96 tenure 20
+[Tabu Search] Update in best_val curr value is 361898.000000, iteration is 97 tenure 20
+[Tabu Search] Current value is 361898.000000, iteration is 97 tenure 20
+[Tabu Search] Update in best_val curr value is 361692.000000, iteration is 98 tenure 20
+[Tabu Search] Current value is 361692.000000, iteration is 98 tenure 20
+[Tabu Search] Update in best_val curr value is 361489.000000, iteration is 99 tenure 20
+[Tabu Search] Current value is 361489.000000, iteration is 99 tenure 20
+[Tabu Search] Update in best_val curr value is 361176.000000, iteration is 100 tenure 20
+[Tabu Search] Current value is 361176.000000, iteration is 100 tenure 20
+[Tabu Search] Update in best_val curr value is 360813.000000, iteration is 101 tenure 20
+[Tabu Search] Current value is 360813.000000, iteration is 101 tenure 20
+[Tabu Search] Update in best_val curr value is 360611.000000, iteration is 102 tenure 20
+[Tabu Search] Current value is 360611.000000, iteration is 102 tenure 20
+[Tabu Search] Update in best_val curr value is 360411.000000, iteration is 103 tenure 20
+[Tabu Search] Current value is 360411.000000, iteration is 103 tenure 20
+[Tabu Search] Update in best_val curr value is 360213.000000, iteration is 104 tenure 20
+[Tabu Search] Current value is 360213.000000, iteration is 104 tenure 20
+[Tabu Search] Update in best_val curr value is 360018.000000, iteration is 105 tenure 20
+[Tabu Search] Current value is 360018.000000, iteration is 105 tenure 20
+[Tabu Search] Update in best_val curr value is 359825.000000, iteration is 106 tenure 20
+[Tabu Search] Current value is 359825.000000, iteration is 106 tenure 20
+[Tabu Search] Update in best_val curr value is 359635.000000, iteration is 107 tenure 20
+[Tabu Search] Current value is 359635.000000, iteration is 107 tenure 20
+[Tabu Search] Update in best_val curr value is 359453.000000, iteration is 108 tenure 20
+[Tabu Search] Current value is 359453.000000, iteration is 108 tenure 20
+[Tabu Search] Update in best_val curr value is 359271.000000, iteration is 109 tenure 20
+[Tabu Search] Current value is 359271.000000, iteration is 109 tenure 20
+[Tabu Search] Update in best_val curr value is 359091.000000, iteration is 110 tenure 20
+[Tabu Search] Current value is 359091.000000, iteration is 110 tenure 20
+[Tabu Search] Update in best_val curr value is 358852.000000, iteration is 111 tenure 20
+[Tabu Search] Current value is 358852.000000, iteration is 111 tenure 20
+[Tabu Search] Update in best_val curr value is 358651.000000, iteration is 112 tenure 20
+[Tabu Search] Current value is 358651.000000, iteration is 112 tenure 20
+[Tabu Search] Update in best_val curr value is 358474.000000, iteration is 113 tenure 20
+[Tabu Search] Current value is 358474.000000, iteration is 113 tenure 20
+[Tabu Search] Update in best_val curr value is 358297.000000, iteration is 114 tenure 20
+[Tabu Search] Current value is 358297.000000, iteration is 114 tenure 20
+[Tabu Search] Update in best_val curr value is 358120.000000, iteration is 115 tenure 20
+[Tabu Search] Current value is 358120.000000, iteration is 115 tenure 20
+[Tabu Search] Update in best_val curr value is 357944.000000, iteration is 116 tenure 20
+[Tabu Search] Current value is 357944.000000, iteration is 116 tenure 20
+[Tabu Search] Update in best_val curr value is 357768.000000, iteration is 117 tenure 20
+[Tabu Search] Current value is 357768.000000, iteration is 117 tenure 20
+[Tabu Search] Update in best_val curr value is 357595.000000, iteration is 118 tenure 20
+[Tabu Search] Current value is 357595.000000, iteration is 118 tenure 20
+[Tabu Search] Update in best_val curr value is 357427.000000, iteration is 119 tenure 20
+[Tabu Search] Current value is 357427.000000, iteration is 119 tenure 20
+[Tabu Search] Update in best_val curr value is 357263.000000, iteration is 120 tenure 20
+[Tabu Search] Current value is 357263.000000, iteration is 120 tenure 20
+[Tabu Search] Update in best_val curr value is 357103.000000, iteration is 121 tenure 20
+[Tabu Search] Current value is 357103.000000, iteration is 121 tenure 20
+[Tabu Search] Update in best_val curr value is 356944.000000, iteration is 122 tenure 20
+[Tabu Search] Current value is 356944.000000, iteration is 122 tenure 20
+[Tabu Search] Update in best_val curr value is 356791.000000, iteration is 123 tenure 20
+[Tabu Search] Current value is 356791.000000, iteration is 123 tenure 20
+[Tabu Search] Update in best_val curr value is 356441.000000, iteration is 124 tenure 20
+[Tabu Search] Current value is 356441.000000, iteration is 124 tenure 20
+[Tabu Search] Update in best_val curr value is 356291.000000, iteration is 125 tenure 20
+[Tabu Search] Current value is 356291.000000, iteration is 125 tenure 20
+[Tabu Search] Update in best_val curr value is 356147.000000, iteration is 126 tenure 20
+[Tabu Search] Current value is 356147.000000, iteration is 126 tenure 20
+[Tabu Search] Update in best_val curr value is 356004.000000, iteration is 127 tenure 20
+[Tabu Search] Current value is 356004.000000, iteration is 127 tenure 20
+[Tabu Search] Update in best_val curr value is 355866.000000, iteration is 128 tenure 20
+[Tabu Search] Current value is 355866.000000, iteration is 128 tenure 20
+[Tabu Search] Update in best_val curr value is 355730.000000, iteration is 129 tenure 20
+[Tabu Search] Current value is 355730.000000, iteration is 129 tenure 20
+[Tabu Search] Update in best_val curr value is 355446.000000, iteration is 130 tenure 20
+[Tabu Search] Current value is 355446.000000, iteration is 130 tenure 20
+[Tabu Search] Update in best_val curr value is 355311.000000, iteration is 131 tenure 20
+[Tabu Search] Current value is 355311.000000, iteration is 131 tenure 20
+[Tabu Search] Update in best_val curr value is 355177.000000, iteration is 132 tenure 20
+[Tabu Search] Current value is 355177.000000, iteration is 132 tenure 20
+[Tabu Search] Update in best_val curr value is 355044.000000, iteration is 133 tenure 20
+[Tabu Search] Current value is 355044.000000, iteration is 133 tenure 20
+[Tabu Search] Update in best_val curr value is 354913.000000, iteration is 134 tenure 20
+[Tabu Search] Current value is 354913.000000, iteration is 134 tenure 20
+[Tabu Search] Update in best_val curr value is 354783.000000, iteration is 135 tenure 20
+[Tabu Search] Current value is 354783.000000, iteration is 135 tenure 20
+[Tabu Search] Update in best_val curr value is 354658.000000, iteration is 136 tenure 20
+[Tabu Search] Current value is 354658.000000, iteration is 136 tenure 20
+[Tabu Search] Update in best_val curr value is 354533.000000, iteration is 137 tenure 20
+[Tabu Search] Current value is 354533.000000, iteration is 137 tenure 20
+[Tabu Search] Update in best_val curr value is 354404.000000, iteration is 138 tenure 20
+[Tabu Search] Current value is 354404.000000, iteration is 138 tenure 20
+[Tabu Search] Update in best_val curr value is 354242.000000, iteration is 139 tenure 20
+[Tabu Search] Current value is 354242.000000, iteration is 139 tenure 20
+[Tabu Search] Update in best_val curr value is 354118.000000, iteration is 140 tenure 20
+[Tabu Search] Current value is 354118.000000, iteration is 140 tenure 20
+[Tabu Search] Update in best_val curr value is 353977.000000, iteration is 141 tenure 20
+[Tabu Search] Current value is 353977.000000, iteration is 141 tenure 20
+[Tabu Search] Update in best_val curr value is 353855.000000, iteration is 142 tenure 20
+[Tabu Search] Current value is 353855.000000, iteration is 142 tenure 20
+[Tabu Search] Update in best_val curr value is 353671.000000, iteration is 143 tenure 20
+[Tabu Search] Current value is 353671.000000, iteration is 143 tenure 20
+[Tabu Search] Update in best_val curr value is 353398.000000, iteration is 144 tenure 20
+[Tabu Search] Current value is 353398.000000, iteration is 144 tenure 20
+[Tabu Search] Update in best_val curr value is 353206.000000, iteration is 145 tenure 20
+[Tabu Search] Current value is 353206.000000, iteration is 145 tenure 20
+[Tabu Search] Update in best_val curr value is 353089.000000, iteration is 146 tenure 20
+[Tabu Search] Current value is 353089.000000, iteration is 146 tenure 20
+[Tabu Search] Update in best_val curr value is 352973.000000, iteration is 147 tenure 20
+[Tabu Search] Current value is 352973.000000, iteration is 147 tenure 20
+[Tabu Search] Update in best_val curr value is 352858.000000, iteration is 148 tenure 20
+[Tabu Search] Current value is 352858.000000, iteration is 148 tenure 20
+[Tabu Search] Update in best_val curr value is 352744.000000, iteration is 149 tenure 20
+[Tabu Search] Current value is 352744.000000, iteration is 149 tenure 20
+[Tabu Search] Update in best_val curr value is 352631.000000, iteration is 150 tenure 20
+[Tabu Search] Current value is 352631.000000, iteration is 150 tenure 20
+[Tabu Search] Update in best_val curr value is 352416.000000, iteration is 151 tenure 20
+[Tabu Search] Current value is 352416.000000, iteration is 151 tenure 20
+[Tabu Search] Update in best_val curr value is 352304.000000, iteration is 152 tenure 20
+[Tabu Search] Current value is 352304.000000, iteration is 152 tenure 20
+[Tabu Search] Update in best_val curr value is 352196.000000, iteration is 153 tenure 20
+[Tabu Search] Current value is 352196.000000, iteration is 153 tenure 20
+[Tabu Search] Update in best_val curr value is 352088.000000, iteration is 154 tenure 20
+[Tabu Search] Current value is 352088.000000, iteration is 154 tenure 20
+[Tabu Search] Update in best_val curr value is 351980.000000, iteration is 155 tenure 20
+[Tabu Search] Current value is 351980.000000, iteration is 155 tenure 20
+[Tabu Search] Update in best_val curr value is 351872.000000, iteration is 156 tenure 20
+[Tabu Search] Current value is 351872.000000, iteration is 156 tenure 20
+[Tabu Search] Update in best_val curr value is 351765.000000, iteration is 157 tenure 20
+[Tabu Search] Current value is 351765.000000, iteration is 157 tenure 20
+[Tabu Search] Update in best_val curr value is 351658.000000, iteration is 158 tenure 20
+[Tabu Search] Current value is 351658.000000, iteration is 158 tenure 20
+[Tabu Search] Update in best_val curr value is 351553.000000, iteration is 159 tenure 20
+[Tabu Search] Current value is 351553.000000, iteration is 159 tenure 20
+[Tabu Search] Update in best_val curr value is 351448.000000, iteration is 160 tenure 100
+[Tabu Search] Current value is 351448.000000, iteration is 160 tenure 100
+[Tabu Search] Update in best_val curr value is 351344.000000, iteration is 161 tenure 100
+[Tabu Search] Current value is 351344.000000, iteration is 161 tenure 100
+[Tabu Search] Update in best_val curr value is 351242.000000, iteration is 162 tenure 100
+[Tabu Search] Current value is 351242.000000, iteration is 162 tenure 100
+[Tabu Search] Update in best_val curr value is 351140.000000, iteration is 163 tenure 100
+[Tabu Search] Current value is 351140.000000, iteration is 163 tenure 100
+[Tabu Search] Update in best_val curr value is 351039.000000, iteration is 164 tenure 100
+[Tabu Search] Current value is 351039.000000, iteration is 164 tenure 100
+[Tabu Search] Update in best_val curr value is 350940.000000, iteration is 165 tenure 100
+[Tabu Search] Current value is 350940.000000, iteration is 165 tenure 100
+[Tabu Search] Update in best_val curr value is 350842.000000, iteration is 166 tenure 100
+[Tabu Search] Current value is 350842.000000, iteration is 166 tenure 100
+[Tabu Search] Update in best_val curr value is 350744.000000, iteration is 167 tenure 100
+[Tabu Search] Current value is 350744.000000, iteration is 167 tenure 100
+[Tabu Search] Update in best_val curr value is 350648.000000, iteration is 168 tenure 100
+[Tabu Search] Current value is 350648.000000, iteration is 168 tenure 100
+[Tabu Search] Update in best_val curr value is 350553.000000, iteration is 169 tenure 100
+[Tabu Search] Current value is 350553.000000, iteration is 169 tenure 100
+[Tabu Search] Update in best_val curr value is 350374.000000, iteration is 170 tenure 100
+[Tabu Search] Current value is 350374.000000, iteration is 170 tenure 100
+[Tabu Search] Update in best_val curr value is 350279.000000, iteration is 171 tenure 100
+[Tabu Search] Current value is 350279.000000, iteration is 171 tenure 100
+[Tabu Search] Update in best_val curr value is 350185.000000, iteration is 172 tenure 100
+[Tabu Search] Current value is 350185.000000, iteration is 172 tenure 100
+[Tabu Search] Update in best_val curr value is 350095.000000, iteration is 173 tenure 100
+[Tabu Search] Current value is 350095.000000, iteration is 173 tenure 100
+[Tabu Search] Update in best_val curr value is 350007.000000, iteration is 174 tenure 100
+[Tabu Search] Current value is 350007.000000, iteration is 174 tenure 100
+[Tabu Search] Update in best_val curr value is 349919.000000, iteration is 175 tenure 100
+[Tabu Search] Current value is 349919.000000, iteration is 175 tenure 100
+[Tabu Search] Update in best_val curr value is 349831.000000, iteration is 176 tenure 100
+[Tabu Search] Current value is 349831.000000, iteration is 176 tenure 100
+[Tabu Search] Update in best_val curr value is 349744.000000, iteration is 177 tenure 100
+[Tabu Search] Current value is 349744.000000, iteration is 177 tenure 100
+[Tabu Search] Update in best_val curr value is 349657.000000, iteration is 178 tenure 100
+[Tabu Search] Current value is 349657.000000, iteration is 178 tenure 100
+[Tabu Search] Update in best_val curr value is 349570.000000, iteration is 179 tenure 100
+[Tabu Search] Current value is 349570.000000, iteration is 179 tenure 100
+[Tabu Search] Update in best_val curr value is 349484.000000, iteration is 180 tenure 100
+[Tabu Search] Current value is 349484.000000, iteration is 180 tenure 100
+[Tabu Search] Update in best_val curr value is 349398.000000, iteration is 181 tenure 100
+[Tabu Search] Current value is 349398.000000, iteration is 181 tenure 100
+[Tabu Search] Update in best_val curr value is 349313.000000, iteration is 182 tenure 100
+[Tabu Search] Current value is 349313.000000, iteration is 182 tenure 100
+[Tabu Search] Update in best_val curr value is 349231.000000, iteration is 183 tenure 100
+[Tabu Search] Current value is 349231.000000, iteration is 183 tenure 100
+[Tabu Search] Update in best_val curr value is 349079.000000, iteration is 184 tenure 100
+[Tabu Search] Current value is 349079.000000, iteration is 184 tenure 100
+[Tabu Search] Update in best_val curr value is 348988.000000, iteration is 185 tenure 100
+[Tabu Search] Current value is 348988.000000, iteration is 185 tenure 100
+[Tabu Search] Update in best_val curr value is 348907.000000, iteration is 186 tenure 100
+[Tabu Search] Current value is 348907.000000, iteration is 186 tenure 100
+[Tabu Search] Update in best_val curr value is 348831.000000, iteration is 187 tenure 100
+[Tabu Search] Current value is 348831.000000, iteration is 187 tenure 100
+[Tabu Search] Update in best_val curr value is 348757.000000, iteration is 188 tenure 100
+[Tabu Search] Current value is 348757.000000, iteration is 188 tenure 100
+[Tabu Search] Update in best_val curr value is 348684.000000, iteration is 189 tenure 100
+[Tabu Search] Current value is 348684.000000, iteration is 189 tenure 100
+[Tabu Search] Update in best_val curr value is 348611.000000, iteration is 190 tenure 100
+[Tabu Search] Current value is 348611.000000, iteration is 190 tenure 100
+[Tabu Search] Update in best_val curr value is 348539.000000, iteration is 191 tenure 100
+[Tabu Search] Current value is 348539.000000, iteration is 191 tenure 100
+[Tabu Search] Update in best_val curr value is 348468.000000, iteration is 192 tenure 100
+[Tabu Search] Current value is 348468.000000, iteration is 192 tenure 100
+[Tabu Search] Update in best_val curr value is 348397.000000, iteration is 193 tenure 100
+[Tabu Search] Current value is 348397.000000, iteration is 193 tenure 100
+[Tabu Search] Update in best_val curr value is 348327.000000, iteration is 194 tenure 100
+[Tabu Search] Current value is 348327.000000, iteration is 194 tenure 100
+[Tabu Search] Update in best_val curr value is 348257.000000, iteration is 195 tenure 100
+[Tabu Search] Current value is 348257.000000, iteration is 195 tenure 100
+[Tabu Search] Update in best_val curr value is 348188.000000, iteration is 196 tenure 100
+[Tabu Search] Current value is 348188.000000, iteration is 196 tenure 100
+[Tabu Search] Update in best_val curr value is 348119.000000, iteration is 197 tenure 100
+[Tabu Search] Current value is 348119.000000, iteration is 197 tenure 100
+[Tabu Search] Update in best_val curr value is 348051.000000, iteration is 198 tenure 100
+[Tabu Search] Current value is 348051.000000, iteration is 198 tenure 100
+[Tabu Search] Update in best_val curr value is 347984.000000, iteration is 199 tenure 100
+[Tabu Search] Current value is 347984.000000, iteration is 199 tenure 100
+[Tabu Search] Update in best_val curr value is 347918.000000, iteration is 200 tenure 100
+[Tabu Search] Current value is 347918.000000, iteration is 200 tenure 100
+[Tabu Search] Update in best_val curr value is 347853.000000, iteration is 201 tenure 100
+[Tabu Search] Current value is 347853.000000, iteration is 201 tenure 100
+[Tabu Search] Update in best_val curr value is 347789.000000, iteration is 202 tenure 100
+[Tabu Search] Current value is 347789.000000, iteration is 202 tenure 100
+[Tabu Search] Update in best_val curr value is 347725.000000, iteration is 203 tenure 100
+[Tabu Search] Current value is 347725.000000, iteration is 203 tenure 100
+[Tabu Search] Update in best_val curr value is 347664.000000, iteration is 204 tenure 100
+[Tabu Search] Current value is 347664.000000, iteration is 204 tenure 100
+[Tabu Search] Update in best_val curr value is 347564.000000, iteration is 205 tenure 100
+[Tabu Search] Current value is 347564.000000, iteration is 205 tenure 100
+[Tabu Search] Update in best_val curr value is 347504.000000, iteration is 206 tenure 100
+[Tabu Search] Current value is 347504.000000, iteration is 206 tenure 100
+[Tabu Search] Update in best_val curr value is 347444.000000, iteration is 207 tenure 100
+[Tabu Search] Current value is 347444.000000, iteration is 207 tenure 100
+[Tabu Search] Update in best_val curr value is 347387.000000, iteration is 208 tenure 100
+[Tabu Search] Current value is 347387.000000, iteration is 208 tenure 100
+[Tabu Search] Update in best_val curr value is 347332.000000, iteration is 209 tenure 100
+[Tabu Search] Current value is 347332.000000, iteration is 209 tenure 100
+[Tabu Search] Update in best_val curr value is 347256.000000, iteration is 210 tenure 100
+[Tabu Search] Current value is 347256.000000, iteration is 210 tenure 100
+[Tabu Search] Update in best_val curr value is 347203.000000, iteration is 211 tenure 100
+[Tabu Search] Current value is 347203.000000, iteration is 211 tenure 100
+[Tabu Search] Update in best_val curr value is 347151.000000, iteration is 212 tenure 100
+[Tabu Search] Current value is 347151.000000, iteration is 212 tenure 100
+[Tabu Search] Update in best_val curr value is 347100.000000, iteration is 213 tenure 100
+[Tabu Search] Current value is 347100.000000, iteration is 213 tenure 100
+[Tabu Search] Update in best_val curr value is 347050.000000, iteration is 214 tenure 100
+[Tabu Search] Current value is 347050.000000, iteration is 214 tenure 100
+[Tabu Search] Update in best_val curr value is 347001.000000, iteration is 215 tenure 100
+[Tabu Search] Current value is 347001.000000, iteration is 215 tenure 100
+[Tabu Search] Update in best_val curr value is 346954.000000, iteration is 216 tenure 100
+[Tabu Search] Current value is 346954.000000, iteration is 216 tenure 100
+[Tabu Search] Update in best_val curr value is 346907.000000, iteration is 217 tenure 100
+[Tabu Search] Current value is 346907.000000, iteration is 217 tenure 100
+[Tabu Search] Update in best_val curr value is 346861.000000, iteration is 218 tenure 100
+[Tabu Search] Current value is 346861.000000, iteration is 218 tenure 100
+[Tabu Search] Update in best_val curr value is 346815.000000, iteration is 219 tenure 100
+[Tabu Search] Current value is 346815.000000, iteration is 219 tenure 100
+[Tabu Search] Update in best_val curr value is 346770.000000, iteration is 220 tenure 100
+[Tabu Search] Current value is 346770.000000, iteration is 220 tenure 100
+[Tabu Search] Update in best_val curr value is 346726.000000, iteration is 221 tenure 100
+[Tabu Search] Current value is 346726.000000, iteration is 221 tenure 100
+[Tabu Search] Update in best_val curr value is 346682.000000, iteration is 222 tenure 100
+[Tabu Search] Current value is 346682.000000, iteration is 222 tenure 100
+[Tabu Search] Update in best_val curr value is 346639.000000, iteration is 223 tenure 100
+[Tabu Search] Current value is 346639.000000, iteration is 223 tenure 100
+[Tabu Search] Update in best_val curr value is 346598.000000, iteration is 224 tenure 100
+[Tabu Search] Current value is 346598.000000, iteration is 224 tenure 100
+[Tabu Search] Update in best_val curr value is 346303.000000, iteration is 225 tenure 100
+[Tabu Search] Current value is 346303.000000, iteration is 225 tenure 100
+[Tabu Search] Update in best_val curr value is 346223.000000, iteration is 226 tenure 100
+[Tabu Search] Current value is 346223.000000, iteration is 226 tenure 100
+[Tabu Search] Update in best_val curr value is 346059.000000, iteration is 227 tenure 100
+[Tabu Search] Current value is 346059.000000, iteration is 227 tenure 100
+[Tabu Search] Update in best_val curr value is 345900.000000, iteration is 228 tenure 100
+[Tabu Search] Current value is 345900.000000, iteration is 228 tenure 100
+[Tabu Search] Update in best_val curr value is 345833.000000, iteration is 229 tenure 100
+[Tabu Search] Current value is 345833.000000, iteration is 229 tenure 100
+[Tabu Search] Update in best_val curr value is 345767.000000, iteration is 230 tenure 100
+[Tabu Search] Current value is 345767.000000, iteration is 230 tenure 100
+[Tabu Search] Update in best_val curr value is 345703.000000, iteration is 231 tenure 100
+[Tabu Search] Current value is 345703.000000, iteration is 231 tenure 100
+[Tabu Search] Update in best_val curr value is 345651.000000, iteration is 232 tenure 100
+[Tabu Search] Current value is 345651.000000, iteration is 232 tenure 100
+[Tabu Search] Update in best_val curr value is 345609.000000, iteration is 233 tenure 100
+[Tabu Search] Current value is 345609.000000, iteration is 233 tenure 100
+[Tabu Search] Update in best_val curr value is 345569.000000, iteration is 234 tenure 100
+[Tabu Search] Current value is 345569.000000, iteration is 234 tenure 100
+[Tabu Search] Update in best_val curr value is 345529.000000, iteration is 235 tenure 100
+[Tabu Search] Current value is 345529.000000, iteration is 235 tenure 100
+[Tabu Search] Update in best_val curr value is 345492.000000, iteration is 236 tenure 100
+[Tabu Search] Current value is 345492.000000, iteration is 236 tenure 100
+[Tabu Search] Update in best_val curr value is 345456.000000, iteration is 237 tenure 100
+[Tabu Search] Current value is 345456.000000, iteration is 237 tenure 100
+[Tabu Search] Update in best_val curr value is 345420.000000, iteration is 238 tenure 100
+[Tabu Search] Current value is 345420.000000, iteration is 238 tenure 100
+[Tabu Search] Update in best_val curr value is 345386.000000, iteration is 239 tenure 100
+[Tabu Search] Current value is 345386.000000, iteration is 239 tenure 100
+[Tabu Search] Update in best_val curr value is 345309.000000, iteration is 240 tenure 20
+[Tabu Search] Current value is 345309.000000, iteration is 240 tenure 20
+[Tabu Search] Update in best_val curr value is 345240.000000, iteration is 241 tenure 20
+[Tabu Search] Current value is 345240.000000, iteration is 241 tenure 20
+[Tabu Search] Update in best_val curr value is 345172.000000, iteration is 242 tenure 20
+[Tabu Search] Current value is 345172.000000, iteration is 242 tenure 20
+[Tabu Search] Update in best_val curr value is 345133.000000, iteration is 243 tenure 20
+[Tabu Search] Current value is 345133.000000, iteration is 243 tenure 20
+[Tabu Search] Update in best_val curr value is 345095.000000, iteration is 244 tenure 20
+[Tabu Search] Current value is 345095.000000, iteration is 244 tenure 20
+[Tabu Search] Update in best_val curr value is 345058.000000, iteration is 245 tenure 20
+[Tabu Search] Current value is 345058.000000, iteration is 245 tenure 20
+[Tabu Search] Update in best_val curr value is 345024.000000, iteration is 246 tenure 20
+[Tabu Search] Current value is 345024.000000, iteration is 246 tenure 20
+[Tabu Search] Update in best_val curr value is 344991.000000, iteration is 247 tenure 20
+[Tabu Search] Current value is 344991.000000, iteration is 247 tenure 20
+[Tabu Search] Update in best_val curr value is 344959.000000, iteration is 248 tenure 20
+[Tabu Search] Current value is 344959.000000, iteration is 248 tenure 20
+[Tabu Search] Update in best_val curr value is 344928.000000, iteration is 249 tenure 20
+[Tabu Search] Current value is 344928.000000, iteration is 249 tenure 20
+[Tabu Search] Update in best_val curr value is 344897.000000, iteration is 250 tenure 20
+[Tabu Search] Current value is 344897.000000, iteration is 250 tenure 20
+[Tabu Search] Update in best_val curr value is 344867.000000, iteration is 251 tenure 20
+[Tabu Search] Current value is 344867.000000, iteration is 251 tenure 20
+[Tabu Search] Update in best_val curr value is 344839.000000, iteration is 252 tenure 20
+[Tabu Search] Current value is 344839.000000, iteration is 252 tenure 20
+[Tabu Search] Update in best_val curr value is 344811.000000, iteration is 253 tenure 20
+[Tabu Search] Current value is 344811.000000, iteration is 253 tenure 20
+[Tabu Search] Update in best_val curr value is 344783.000000, iteration is 254 tenure 20
+[Tabu Search] Current value is 344783.000000, iteration is 254 tenure 20
+[Tabu Search] Update in best_val curr value is 344750.000000, iteration is 255 tenure 20
+[Tabu Search] Current value is 344750.000000, iteration is 255 tenure 20
+[Tabu Search] Update in best_val curr value is 344398.000000, iteration is 256 tenure 20
+[Tabu Search] Current value is 344398.000000, iteration is 256 tenure 20
+[Tabu Search] Update in best_val curr value is 344372.000000, iteration is 257 tenure 20
+[Tabu Search] Current value is 344372.000000, iteration is 257 tenure 20
+[Tabu Search] Update in best_val curr value is 344346.000000, iteration is 258 tenure 20
+[Tabu Search] Current value is 344346.000000, iteration is 258 tenure 20
+[Tabu Search] Update in best_val curr value is 344321.000000, iteration is 259 tenure 20
+[Tabu Search] Current value is 344321.000000, iteration is 259 tenure 20
+[Tabu Search] Update in best_val curr value is 344296.000000, iteration is 260 tenure 20
+[Tabu Search] Current value is 344296.000000, iteration is 260 tenure 20
+[Tabu Search] Update in best_val curr value is 344272.000000, iteration is 261 tenure 20
+[Tabu Search] Current value is 344272.000000, iteration is 261 tenure 20
+[Tabu Search] Update in best_val curr value is 344248.000000, iteration is 262 tenure 20
+[Tabu Search] Current value is 344248.000000, iteration is 262 tenure 20
+[Tabu Search] Update in best_val curr value is 344224.000000, iteration is 263 tenure 20
+[Tabu Search] Current value is 344224.000000, iteration is 263 tenure 20
+[Tabu Search] Update in best_val curr value is 344200.000000, iteration is 264 tenure 20
+[Tabu Search] Current value is 344200.000000, iteration is 264 tenure 20
+[Tabu Search] Update in best_val curr value is 344106.000000, iteration is 265 tenure 20
+[Tabu Search] Current value is 344106.000000, iteration is 265 tenure 20
+[Tabu Search] Update in best_val curr value is 344083.000000, iteration is 266 tenure 20
+[Tabu Search] Current value is 344083.000000, iteration is 266 tenure 20
+[Tabu Search] Update in best_val curr value is 344060.000000, iteration is 267 tenure 20
+[Tabu Search] Current value is 344060.000000, iteration is 267 tenure 20
+[Tabu Search] Update in best_val curr value is 344038.000000, iteration is 268 tenure 20
+[Tabu Search] Current value is 344038.000000, iteration is 268 tenure 20
+[Tabu Search] Update in best_val curr value is 344016.000000, iteration is 269 tenure 20
+[Tabu Search] Current value is 344016.000000, iteration is 269 tenure 20
+[Tabu Search] Update in best_val curr value is 343994.000000, iteration is 270 tenure 20
+[Tabu Search] Current value is 343994.000000, iteration is 270 tenure 20
+[Tabu Search] Update in best_val curr value is 343975.000000, iteration is 271 tenure 20
+[Tabu Search] Current value is 343975.000000, iteration is 271 tenure 20
+[Tabu Search] Update in best_val curr value is 343958.000000, iteration is 272 tenure 20
+[Tabu Search] Current value is 343958.000000, iteration is 272 tenure 20
+[Tabu Search] Update in best_val curr value is 343941.000000, iteration is 273 tenure 20
+[Tabu Search] Current value is 343941.000000, iteration is 273 tenure 20
+[Tabu Search] Update in best_val curr value is 343924.000000, iteration is 274 tenure 20
+[Tabu Search] Current value is 343924.000000, iteration is 274 tenure 20
+[Tabu Search] Update in best_val curr value is 343908.000000, iteration is 275 tenure 20
+[Tabu Search] Current value is 343908.000000, iteration is 275 tenure 20
+[Tabu Search] Update in best_val curr value is 343895.000000, iteration is 276 tenure 20
+[Tabu Search] Current value is 343895.000000, iteration is 276 tenure 20
+[Tabu Search] Update in best_val curr value is 343882.000000, iteration is 277 tenure 20
+[Tabu Search] Current value is 343882.000000, iteration is 277 tenure 20
+[Tabu Search] Update in best_val curr value is 343870.000000, iteration is 278 tenure 20
+[Tabu Search] Current value is 343870.000000, iteration is 278 tenure 20
+[Tabu Search] Update in best_val curr value is 343731.000000, iteration is 279 tenure 20
+[Tabu Search] Current value is 343731.000000, iteration is 279 tenure 20
+[Tabu Search] Update in best_val curr value is 343720.000000, iteration is 280 tenure 20
+[Tabu Search] Current value is 343720.000000, iteration is 280 tenure 20
+[Tabu Search] Update in best_val curr value is 343709.000000, iteration is 281 tenure 20
+[Tabu Search] Current value is 343709.000000, iteration is 281 tenure 20
+[Tabu Search] Update in best_val curr value is 343700.000000, iteration is 282 tenure 20
+[Tabu Search] Current value is 343700.000000, iteration is 282 tenure 20
+[Tabu Search] Update in best_val curr value is 343691.000000, iteration is 283 tenure 20
+[Tabu Search] Current value is 343691.000000, iteration is 283 tenure 20
+[Tabu Search] Update in best_val curr value is 343683.000000, iteration is 284 tenure 20
+[Tabu Search] Current value is 343683.000000, iteration is 284 tenure 20
+[Tabu Search] Update in best_val curr value is 343675.000000, iteration is 285 tenure 20
+[Tabu Search] Current value is 343675.000000, iteration is 285 tenure 20
+[Tabu Search] Update in best_val curr value is 343657.000000, iteration is 286 tenure 20
+[Tabu Search] Current value is 343657.000000, iteration is 286 tenure 20
+[Tabu Search] Update in best_val curr value is 343645.000000, iteration is 287 tenure 20
+[Tabu Search] Current value is 343645.000000, iteration is 287 tenure 20
+[Tabu Search] Update in best_val curr value is 343506.000000, iteration is 288 tenure 20
+[Tabu Search] Current value is 343506.000000, iteration is 288 tenure 20
+[Tabu Search] Update in best_val curr value is 343499.000000, iteration is 289 tenure 20
+[Tabu Search] Current value is 343499.000000, iteration is 289 tenure 20
+[Tabu Search] Update in best_val curr value is 343437.000000, iteration is 290 tenure 20
+[Tabu Search] Current value is 343437.000000, iteration is 290 tenure 20
+[Tabu Search] Update in best_val curr value is 343430.000000, iteration is 291 tenure 20
+[Tabu Search] Current value is 343430.000000, iteration is 291 tenure 20
+[Tabu Search] Update in best_val curr value is 343424.000000, iteration is 292 tenure 20
+[Tabu Search] Current value is 343424.000000, iteration is 292 tenure 20
+[Tabu Search] Update in best_val curr value is 343419.000000, iteration is 293 tenure 20
+[Tabu Search] Current value is 343419.000000, iteration is 293 tenure 20
+[Tabu Search] Update in best_val curr value is 343416.000000, iteration is 294 tenure 20
+[Tabu Search] Current value is 343416.000000, iteration is 294 tenure 20
+[Tabu Search] Update in best_val curr value is 343413.000000, iteration is 295 tenure 20
+[Tabu Search] Current value is 343413.000000, iteration is 295 tenure 20
+[Tabu Search] Update in best_val curr value is 343411.000000, iteration is 296 tenure 20
+[Tabu Search] Current value is 343411.000000, iteration is 296 tenure 20
+[Tabu Search] Update in best_val curr value is 343409.000000, iteration is 297 tenure 20
+[Tabu Search] Current value is 343409.000000, iteration is 297 tenure 20
+[Tabu Search] Update in best_val curr value is 343323.000000, iteration is 298 tenure 20
+[Tabu Search] Current value is 343323.000000, iteration is 298 tenure 20
+[Tabu Search] Update in best_val curr value is 343249.000000, iteration is 299 tenure 20
+[Tabu Search] Current value is 343249.000000, iteration is 299 tenure 20
+[Tabu Search] Update in best_val curr value is 343223.000000, iteration is 300 tenure 20
+[Tabu Search] Current value is 343223.000000, iteration is 300 tenure 20
+[Tabu Search] Update in best_val curr value is 343216.000000, iteration is 301 tenure 20
+[Tabu Search] Current value is 343216.000000, iteration is 301 tenure 20
+[Tabu Search] Update in best_val curr value is 343214.000000, iteration is 302 tenure 20
+[Tabu Search] Current value is 343214.000000, iteration is 302 tenure 20
+[Tabu Search] Update in best_val curr value is 343212.000000, iteration is 303 tenure 20
+[Tabu Search] Current value is 343212.000000, iteration is 303 tenure 20
+[Tabu Search] Current value is 343212.000000, iteration is 304 tenure 20
+[Tabu Search] Current value is 343212.000000, iteration is 305 tenure 20
+[Tabu Search] Update in best_val curr value is 343156.000000, iteration is 306 tenure 20
+[Tabu Search] Current value is 343156.000000, iteration is 306 tenure 20
+[Tabu Search] Update in best_val curr value is 343121.000000, iteration is 307 tenure 20
+[Tabu Search] Current value is 343121.000000, iteration is 307 tenure 20
+[Tabu Search] Current value is 343122.000000, iteration is 308 tenure 20
+[Tabu Search] Update in best_val curr value is 343120.000000, iteration is 309 tenure 20
+[Tabu Search] Current value is 343120.000000, iteration is 309 tenure 20
+[Tabu Search] Current value is 343121.000000, iteration is 310 tenure 20
+[Tabu Search] Current value is 343122.000000, iteration is 311 tenure 20
+[Tabu Search] Current value is 343124.000000, iteration is 312 tenure 20
+[Tabu Search] Update in best_val curr value is 343099.000000, iteration is 313 tenure 20
+[Tabu Search] Current value is 343099.000000, iteration is 313 tenure 20
+[Tabu Search] Current value is 343102.000000, iteration is 314 tenure 20
+[Tabu Search] Current value is 343105.000000, iteration is 315 tenure 20
+[Tabu Search] Current value is 343108.000000, iteration is 316 tenure 20
+[Tabu Search] Current value is 343110.000000, iteration is 317 tenure 20
+[Tabu Search] Current value is 343113.000000, iteration is 318 tenure 20
+[Tabu Search] Current value is 343117.000000, iteration is 319 tenure 20
+[Tabu Search] Current value is 343121.000000, iteration is 320 tenure 100
+[Tabu Search] Current value is 343125.000000, iteration is 321 tenure 100
+[Tabu Search] Current value is 343130.000000, iteration is 322 tenure 100
+[Tabu Search] Current value is 343135.000000, iteration is 323 tenure 100
+[Tabu Search] Current value is 343141.000000, iteration is 324 tenure 100
+[Tabu Search] Current value is 343122.000000, iteration is 325 tenure 100
+[Tabu Search] Current value is 343129.000000, iteration is 326 tenure 100
+[Tabu Search] Current value is 343136.000000, iteration is 327 tenure 100
+[Tabu Search] Current value is 343144.000000, iteration is 328 tenure 100
+[Tabu Search] Current value is 343152.000000, iteration is 329 tenure 100
+[Tabu Search] Current value is 343160.000000, iteration is 330 tenure 100
+[Tabu Search] Current value is 343169.000000, iteration is 331 tenure 100
+[Tabu Search] Current value is 343178.000000, iteration is 332 tenure 100
+[Tabu Search] Current value is 343187.000000, iteration is 333 tenure 100
+[Tabu Search] Current value is 343197.000000, iteration is 334 tenure 100
+[Tabu Search] Current value is 343208.000000, iteration is 335 tenure 100
+[Tabu Search] Current value is 343219.000000, iteration is 336 tenure 100
+[Tabu Search] Current value is 343230.000000, iteration is 337 tenure 100
+[Tabu Search] Current value is 343241.000000, iteration is 338 tenure 100
+[Tabu Search] Current value is 343253.000000, iteration is 339 tenure 100
+[Tabu Search] Current value is 343246.000000, iteration is 340 tenure 100
+[Tabu Search] Current value is 343258.000000, iteration is 341 tenure 100
+[Tabu Search] Current value is 343270.000000, iteration is 342 tenure 100
+[Tabu Search] Current value is 343284.000000, iteration is 343 tenure 100
+[Tabu Search] Current value is 343298.000000, iteration is 344 tenure 100
+[Tabu Search] Current value is 343312.000000, iteration is 345 tenure 100
+[Tabu Search] Current value is 343326.000000, iteration is 346 tenure 100
+[Tabu Search] Current value is 343340.000000, iteration is 347 tenure 100
+[Tabu Search] Current value is 343354.000000, iteration is 348 tenure 100
+[Tabu Search] Current value is 343368.000000, iteration is 349 tenure 100
+[Tabu Search] Current value is 343382.000000, iteration is 350 tenure 100
+[Tabu Search] Current value is 343397.000000, iteration is 351 tenure 100
+[Tabu Search] Current value is 343314.000000, iteration is 352 tenure 100
+[Tabu Search] Current value is 343263.000000, iteration is 353 tenure 100
+[Tabu Search] Current value is 343249.000000, iteration is 354 tenure 100
+[Tabu Search] Current value is 343235.000000, iteration is 355 tenure 100
+[Tabu Search] Current value is 343221.000000, iteration is 356 tenure 100
+[Tabu Search] Current value is 343207.000000, iteration is 357 tenure 100
+[Tabu Search] Current value is 343193.000000, iteration is 358 tenure 100
+[Tabu Search] Current value is 343181.000000, iteration is 359 tenure 100
+[Tabu Search] Current value is 343169.000000, iteration is 360 tenure 100
+[Tabu Search] Current value is 343157.000000, iteration is 361 tenure 100
+[Tabu Search] Update in best_val curr value is 342903.000000, iteration is 362 tenure 100
+[Tabu Search] Current value is 342903.000000, iteration is 362 tenure 100
+[Tabu Search] Update in best_val curr value is 342892.000000, iteration is 363 tenure 100
+[Tabu Search] Current value is 342892.000000, iteration is 363 tenure 100
+[Tabu Search] Update in best_val curr value is 342881.000000, iteration is 364 tenure 100
+[Tabu Search] Current value is 342881.000000, iteration is 364 tenure 100
+[Tabu Search] Update in best_val curr value is 342870.000000, iteration is 365 tenure 100
+[Tabu Search] Current value is 342870.000000, iteration is 365 tenure 100
+[Tabu Search] Update in best_val curr value is 342860.000000, iteration is 366 tenure 100
+[Tabu Search] Current value is 342860.000000, iteration is 366 tenure 100
+[Tabu Search] Update in best_val curr value is 342851.000000, iteration is 367 tenure 100
+[Tabu Search] Current value is 342851.000000, iteration is 367 tenure 100
+[Tabu Search] Update in best_val curr value is 342842.000000, iteration is 368 tenure 100
+[Tabu Search] Current value is 342842.000000, iteration is 368 tenure 100
+[Tabu Search] Update in best_val curr value is 342833.000000, iteration is 369 tenure 100
+[Tabu Search] Current value is 342833.000000, iteration is 369 tenure 100
+[Tabu Search] Update in best_val curr value is 342825.000000, iteration is 370 tenure 100
+[Tabu Search] Current value is 342825.000000, iteration is 370 tenure 100
+[Tabu Search] Update in best_val curr value is 342818.000000, iteration is 371 tenure 100
+[Tabu Search] Current value is 342818.000000, iteration is 371 tenure 100
+[Tabu Search] Update in best_val curr value is 342812.000000, iteration is 372 tenure 100
+[Tabu Search] Current value is 342812.000000, iteration is 372 tenure 100
+[Tabu Search] Update in best_val curr value is 342807.000000, iteration is 373 tenure 100
+[Tabu Search] Current value is 342807.000000, iteration is 373 tenure 100
+[Tabu Search] Update in best_val curr value is 342799.000000, iteration is 374 tenure 100
+[Tabu Search] Current value is 342799.000000, iteration is 374 tenure 100
+[Tabu Search] Update in best_val curr value is 342794.000000, iteration is 375 tenure 100
+[Tabu Search] Current value is 342794.000000, iteration is 375 tenure 100
+[Tabu Search] Update in best_val curr value is 342780.000000, iteration is 376 tenure 100
+[Tabu Search] Current value is 342780.000000, iteration is 376 tenure 100
+[Tabu Search] Update in best_val curr value is 342776.000000, iteration is 377 tenure 100
+[Tabu Search] Current value is 342776.000000, iteration is 377 tenure 100
+[Tabu Search] Update in best_val curr value is 342772.000000, iteration is 378 tenure 100
+[Tabu Search] Current value is 342772.000000, iteration is 378 tenure 100
+[Tabu Search] Update in best_val curr value is 342768.000000, iteration is 379 tenure 100
+[Tabu Search] Current value is 342768.000000, iteration is 379 tenure 100
+[Tabu Search] Update in best_val curr value is 342765.000000, iteration is 380 tenure 100
+[Tabu Search] Current value is 342765.000000, iteration is 380 tenure 100
+[Tabu Search] Update in best_val curr value is 342762.000000, iteration is 381 tenure 100
+[Tabu Search] Current value is 342762.000000, iteration is 381 tenure 100
+[Tabu Search] Update in best_val curr value is 342759.000000, iteration is 382 tenure 100
+[Tabu Search] Current value is 342759.000000, iteration is 382 tenure 100
+[Tabu Search] Update in best_val curr value is 342756.000000, iteration is 383 tenure 100
+[Tabu Search] Current value is 342756.000000, iteration is 383 tenure 100
+[Tabu Search] Update in best_val curr value is 342754.000000, iteration is 384 tenure 100
+[Tabu Search] Current value is 342754.000000, iteration is 384 tenure 100
+[Tabu Search] Update in best_val curr value is 342752.000000, iteration is 385 tenure 100
+[Tabu Search] Current value is 342752.000000, iteration is 385 tenure 100
+[Tabu Search] Update in best_val curr value is 342751.000000, iteration is 386 tenure 100
+[Tabu Search] Current value is 342751.000000, iteration is 386 tenure 100
+[Tabu Search] Update in best_val curr value is 342750.000000, iteration is 387 tenure 100
+[Tabu Search] Current value is 342750.000000, iteration is 387 tenure 100
+[Tabu Search] Current value is 342750.000000, iteration is 388 tenure 100
+[Tabu Search] Current value is 342752.000000, iteration is 389 tenure 100
+[Tabu Search] Current value is 342754.000000, iteration is 390 tenure 100
+[Tabu Search] Current value is 342759.000000, iteration is 391 tenure 100
+[Tabu Search] Current value is 342764.000000, iteration is 392 tenure 100
+[Tabu Search] Current value is 342770.000000, iteration is 393 tenure 100
+[Tabu Search] Current value is 342777.000000, iteration is 394 tenure 100
+[Tabu Search] Current value is 342784.000000, iteration is 395 tenure 100
+[Tabu Search] Current value is 342792.000000, iteration is 396 tenure 100
+[Tabu Search] Current value is 342800.000000, iteration is 397 tenure 100
+[Tabu Search] Current value is 342808.000000, iteration is 398 tenure 100
+[Tabu Search] Current value is 342817.000000, iteration is 399 tenure 100
+[Tabu Search] Update in best_val curr value is 342655.000000, iteration is 400 tenure 20
+[Tabu Search] Current value is 342655.000000, iteration is 400 tenure 20
+[Tabu Search] Update in best_val curr value is 342526.000000, iteration is 401 tenure 20
+[Tabu Search] Current value is 342526.000000, iteration is 401 tenure 20
+[Tabu Search] Update in best_val curr value is 342424.000000, iteration is 402 tenure 20
+[Tabu Search] Current value is 342424.000000, iteration is 402 tenure 20
+[Tabu Search] Update in best_val curr value is 342410.000000, iteration is 403 tenure 20
+[Tabu Search] Current value is 342410.000000, iteration is 403 tenure 20
+[Tabu Search] Update in best_val curr value is 342396.000000, iteration is 404 tenure 20
+[Tabu Search] Current value is 342396.000000, iteration is 404 tenure 20
+[Tabu Search] Update in best_val curr value is 342387.000000, iteration is 405 tenure 20
+[Tabu Search] Current value is 342387.000000, iteration is 405 tenure 20
+[Tabu Search] Update in best_val curr value is 342379.000000, iteration is 406 tenure 20
+[Tabu Search] Current value is 342379.000000, iteration is 406 tenure 20
+[Tabu Search] Update in best_val curr value is 342371.000000, iteration is 407 tenure 20
+[Tabu Search] Current value is 342371.000000, iteration is 407 tenure 20
+[Tabu Search] Update in best_val curr value is 342363.000000, iteration is 408 tenure 20
+[Tabu Search] Current value is 342363.000000, iteration is 408 tenure 20
+[Tabu Search] Update in best_val curr value is 342356.000000, iteration is 409 tenure 20
+[Tabu Search] Current value is 342356.000000, iteration is 409 tenure 20
+[Tabu Search] Update in best_val curr value is 342349.000000, iteration is 410 tenure 20
+[Tabu Search] Current value is 342349.000000, iteration is 410 tenure 20
+[Tabu Search] Update in best_val curr value is 342343.000000, iteration is 411 tenure 20
+[Tabu Search] Current value is 342343.000000, iteration is 411 tenure 20
+[Tabu Search] Update in best_val curr value is 342338.000000, iteration is 412 tenure 20
+[Tabu Search] Current value is 342338.000000, iteration is 412 tenure 20
+[Tabu Search] Update in best_val curr value is 342333.000000, iteration is 413 tenure 20
+[Tabu Search] Current value is 342333.000000, iteration is 413 tenure 20
+[Tabu Search] Update in best_val curr value is 342331.000000, iteration is 414 tenure 20
+[Tabu Search] Current value is 342331.000000, iteration is 414 tenure 20
+[Tabu Search] Update in best_val curr value is 342329.000000, iteration is 415 tenure 20
+[Tabu Search] Current value is 342329.000000, iteration is 415 tenure 20
+[Tabu Search] Update in best_val curr value is 342328.000000, iteration is 416 tenure 20
+[Tabu Search] Current value is 342328.000000, iteration is 416 tenure 20
+[Tabu Search] Current value is 342328.000000, iteration is 417 tenure 20
+[Tabu Search] Current value is 342329.000000, iteration is 418 tenure 20
+[Tabu Search] Update in best_val curr value is 342321.000000, iteration is 419 tenure 20
+[Tabu Search] Current value is 342321.000000, iteration is 419 tenure 20
+[Tabu Search] Current value is 342322.000000, iteration is 420 tenure 20
+[Tabu Search] Current value is 342324.000000, iteration is 421 tenure 20
+[Tabu Search] Current value is 342326.000000, iteration is 422 tenure 20
+[Tabu Search] Current value is 342329.000000, iteration is 423 tenure 20
+[Tabu Search] Current value is 342332.000000, iteration is 424 tenure 20
+[Tabu Search] Current value is 342335.000000, iteration is 425 tenure 20
+[Tabu Search] Current value is 342338.000000, iteration is 426 tenure 20
+[Tabu Search] Current value is 342342.000000, iteration is 427 tenure 20
+[Tabu Search] Current value is 342346.000000, iteration is 428 tenure 20
+[Tabu Search] Current value is 342350.000000, iteration is 429 tenure 20
+[Tabu Search] Current value is 342355.000000, iteration is 430 tenure 20
+[Tabu Search] Current value is 342360.000000, iteration is 431 tenure 20
+[Tabu Search] Current value is 342366.000000, iteration is 432 tenure 20
+[Tabu Search] Current value is 342371.000000, iteration is 433 tenure 20
+[Tabu Search] Current value is 342376.000000, iteration is 434 tenure 20
+[Tabu Search] Current value is 342378.000000, iteration is 435 tenure 20
+[Tabu Search] Current value is 342380.000000, iteration is 436 tenure 20
+[Tabu Search] Current value is 342381.000000, iteration is 437 tenure 20
+[Tabu Search] Current value is 342381.000000, iteration is 438 tenure 20
+[Tabu Search] Current value is 342380.000000, iteration is 439 tenure 20
+[Tabu Search] Current value is 342386.000000, iteration is 440 tenure 20
+[Tabu Search] Current value is 342385.000000, iteration is 441 tenure 20
+[Tabu Search] Current value is 342383.000000, iteration is 442 tenure 20
+[Tabu Search] Current value is 342381.000000, iteration is 443 tenure 20
+[Tabu Search] Current value is 342378.000000, iteration is 444 tenure 20
+[Tabu Search] Current value is 342375.000000, iteration is 445 tenure 20
+[Tabu Search] Current value is 342372.000000, iteration is 446 tenure 20
+[Tabu Search] Current value is 342369.000000, iteration is 447 tenure 20
+[Tabu Search] Current value is 342365.000000, iteration is 448 tenure 20
+[Tabu Search] Current value is 342361.000000, iteration is 449 tenure 20
+[Tabu Search] Current value is 342357.000000, iteration is 450 tenure 20
+[Tabu Search] Current value is 342352.000000, iteration is 451 tenure 20
+[Tabu Search] Current value is 342347.000000, iteration is 452 tenure 20
+[Tabu Search] Current value is 342341.000000, iteration is 453 tenure 20
+[Tabu Search] Current value is 342336.000000, iteration is 454 tenure 20
+[Tabu Search] Current value is 342331.000000, iteration is 455 tenure 20
+[Tabu Search] Current value is 342329.000000, iteration is 456 tenure 20
+[Tabu Search] Current value is 342327.000000, iteration is 457 tenure 20
+[Tabu Search] Current value is 342326.000000, iteration is 458 tenure 20
+[Tabu Search] Current value is 342326.000000, iteration is 459 tenure 20
+[Tabu Search] Current value is 342327.000000, iteration is 460 tenure 20
+[Tabu Search] Current value is 342321.000000, iteration is 461 tenure 20
+[Tabu Search] Current value is 342322.000000, iteration is 462 tenure 20
+[Tabu Search] Current value is 342324.000000, iteration is 463 tenure 20
+[Tabu Search] Current value is 342326.000000, iteration is 464 tenure 20
+[Tabu Search] Current value is 342329.000000, iteration is 465 tenure 20
+[Tabu Search] Current value is 342332.000000, iteration is 466 tenure 20
+[Tabu Search] Current value is 342335.000000, iteration is 467 tenure 20
+[Tabu Search] Current value is 342338.000000, iteration is 468 tenure 20
+[Tabu Search] Current value is 342342.000000, iteration is 469 tenure 20
+[Tabu Search] Current value is 342346.000000, iteration is 470 tenure 20
+[Tabu Search] Current value is 342350.000000, iteration is 471 tenure 20
+[Tabu Search] Current value is 342355.000000, iteration is 472 tenure 20
+[Tabu Search] Current value is 342360.000000, iteration is 473 tenure 20
+[Tabu Search] Current value is 342366.000000, iteration is 474 tenure 20
+[Tabu Search] Current value is 342371.000000, iteration is 475 tenure 20
+[Tabu Search] Current value is 342376.000000, iteration is 476 tenure 20
+[Tabu Search] Current value is 342378.000000, iteration is 477 tenure 20
+[Tabu Search] Current value is 342380.000000, iteration is 478 tenure 20
+[Tabu Search] Current value is 342381.000000, iteration is 479 tenure 20
+[Tabu Search] Current value is 342388.000000, iteration is 480 tenure 100
+[Tabu Search] Current value is 342395.000000, iteration is 481 tenure 100
+[Tabu Search] Current value is 342403.000000, iteration is 482 tenure 100
+[Tabu Search] Current value is 342411.000000, iteration is 483 tenure 100
+[Tabu Search] Current value is 342420.000000, iteration is 484 tenure 100
+[Tabu Search] Current value is 342429.000000, iteration is 485 tenure 100
+[Tabu Search] Current value is 342438.000000, iteration is 486 tenure 100
+[Tabu Search] Current value is 342448.000000, iteration is 487 tenure 100
+[Tabu Search] Current value is 342459.000000, iteration is 488 tenure 100
+[Tabu Search] Current value is 342470.000000, iteration is 489 tenure 100
+[Tabu Search] Current value is 342481.000000, iteration is 490 tenure 100
+[Tabu Search] Current value is 342493.000000, iteration is 491 tenure 100
+[Tabu Search] Current value is 342505.000000, iteration is 492 tenure 100
+[Tabu Search] Current value is 342517.000000, iteration is 493 tenure 100
+[Tabu Search] Current value is 342530.000000, iteration is 494 tenure 100
+[Tabu Search] Current value is 342543.000000, iteration is 495 tenure 100
+[Tabu Search] Current value is 342557.000000, iteration is 496 tenure 100
+[Tabu Search] Current value is 342571.000000, iteration is 497 tenure 100
+[Tabu Search] Current value is 342585.000000, iteration is 498 tenure 100
+[Tabu Search] Current value is 342599.000000, iteration is 499 tenure 100
+[Tabu Search] Current value is 342613.000000, iteration is 500 tenure 100
+[Tabu Search] Current value is 342627.000000, iteration is 501 tenure 100
+[Tabu Search] Current value is 342642.000000, iteration is 502 tenure 100
+[Tabu Search] Current value is 342642.000000, iteration is 503 tenure 100
+[Tabu Search] Current value is 342656.000000, iteration is 504 tenure 100
+[Tabu Search] Current value is 342670.000000, iteration is 505 tenure 100
+[Tabu Search] Current value is 342679.000000, iteration is 506 tenure 100
+[Tabu Search] Current value is 342687.000000, iteration is 507 tenure 100
+[Tabu Search] Current value is 342695.000000, iteration is 508 tenure 100
+[Tabu Search] Current value is 342703.000000, iteration is 509 tenure 100
+[Tabu Search] Current value is 342710.000000, iteration is 510 tenure 100
+[Tabu Search] Current value is 342717.000000, iteration is 511 tenure 100
+[Tabu Search] Current value is 342732.000000, iteration is 512 tenure 100
+[Tabu Search] Current value is 342747.000000, iteration is 513 tenure 100
+[Tabu Search] Current value is 342762.000000, iteration is 514 tenure 100
+[Tabu Search] Current value is 342777.000000, iteration is 515 tenure 100
+[Tabu Search] Current value is 342793.000000, iteration is 516 tenure 100
+[Tabu Search] Current value is 342809.000000, iteration is 517 tenure 100
+[Tabu Search] Current value is 342825.000000, iteration is 518 tenure 100
+[Tabu Search] Current value is 342842.000000, iteration is 519 tenure 100
+[Tabu Search] Current value is 342850.000000, iteration is 520 tenure 100
+[Tabu Search] Current value is 342867.000000, iteration is 521 tenure 100
+[Tabu Search] Current value is 342884.000000, iteration is 522 tenure 100
+[Tabu Search] Current value is 342901.000000, iteration is 523 tenure 100
+[Tabu Search] Current value is 342918.000000, iteration is 524 tenure 100
+[Tabu Search] Current value is 342935.000000, iteration is 525 tenure 100
+[Tabu Search] Current value is 342952.000000, iteration is 526 tenure 100
+[Tabu Search] Current value is 342969.000000, iteration is 527 tenure 100
+[Tabu Search] Current value is 342986.000000, iteration is 528 tenure 100
+[Tabu Search] Current value is 343004.000000, iteration is 529 tenure 100
+[Tabu Search] Current value is 343022.000000, iteration is 530 tenure 100
+[Tabu Search] Current value is 343040.000000, iteration is 531 tenure 100
+[Tabu Search] Current value is 343058.000000, iteration is 532 tenure 100
+[Tabu Search] Current value is 343076.000000, iteration is 533 tenure 100
+[Tabu Search] Current value is 343095.000000, iteration is 534 tenure 100
+[Tabu Search] Current value is 343114.000000, iteration is 535 tenure 100
+[Tabu Search] Current value is 343133.000000, iteration is 536 tenure 100
+[Tabu Search] Current value is 343152.000000, iteration is 537 tenure 100
+[Tabu Search] Current value is 343172.000000, iteration is 538 tenure 100
+[Tabu Search] Current value is 343192.000000, iteration is 539 tenure 100
+[Tabu Search] Current value is 343212.000000, iteration is 540 tenure 100
+[Tabu Search] Current value is 343225.000000, iteration is 541 tenure 100
+[Tabu Search] Current value is 343212.000000, iteration is 542 tenure 100
+[Tabu Search] Current value is 343219.000000, iteration is 543 tenure 100
+[Tabu Search] Current value is 343203.000000, iteration is 544 tenure 100
+[Tabu Search] Current value is 343196.000000, iteration is 545 tenure 100
+[Tabu Search] Current value is 343216.000000, iteration is 546 tenure 100
+[Tabu Search] Current value is 343236.000000, iteration is 547 tenure 100
+[Tabu Search] Current value is 343257.000000, iteration is 548 tenure 100
+[Tabu Search] Current value is 343278.000000, iteration is 549 tenure 100
+[Tabu Search] Current value is 343300.000000, iteration is 550 tenure 100
+[Tabu Search] Current value is 343322.000000, iteration is 551 tenure 100
+[Tabu Search] Current value is 343344.000000, iteration is 552 tenure 100
+[Tabu Search] Current value is 343366.000000, iteration is 553 tenure 100
+[Tabu Search] Current value is 343388.000000, iteration is 554 tenure 100
+[Tabu Search] Current value is 343410.000000, iteration is 555 tenure 100
+[Tabu Search] Current value is 343432.000000, iteration is 556 tenure 100
+[Tabu Search] Current value is 343454.000000, iteration is 557 tenure 100
+[Tabu Search] Current value is 343477.000000, iteration is 558 tenure 100
+[Tabu Search] Current value is 343500.000000, iteration is 559 tenure 100
+[Tabu Search] Current value is 343252.000000, iteration is 560 tenure 20
+[Tabu Search] Current value is 342761.000000, iteration is 561 tenure 20
+[Tabu Search] Current value is 342708.000000, iteration is 562 tenure 20
+[Tabu Search] Current value is 342669.000000, iteration is 563 tenure 20
+[Tabu Search] Current value is 342649.000000, iteration is 564 tenure 20
+[Tabu Search] Current value is 342629.000000, iteration is 565 tenure 20
+[Tabu Search] Current value is 342610.000000, iteration is 566 tenure 20
+[Tabu Search] Current value is 342590.000000, iteration is 567 tenure 20
+[Tabu Search] Current value is 342570.000000, iteration is 568 tenure 20
+[Tabu Search] Current value is 342549.000000, iteration is 569 tenure 20
+[Tabu Search] Current value is 342528.000000, iteration is 570 tenure 20
+[Tabu Search] Current value is 342506.000000, iteration is 571 tenure 20
+[Tabu Search] Current value is 342484.000000, iteration is 572 tenure 20
+[Tabu Search] Current value is 342462.000000, iteration is 573 tenure 20
+[Tabu Search] Current value is 342440.000000, iteration is 574 tenure 20
+[Tabu Search] Current value is 342418.000000, iteration is 575 tenure 20
+[Tabu Search] Current value is 342396.000000, iteration is 576 tenure 20
+[Tabu Search] Current value is 342374.000000, iteration is 577 tenure 20
+[Tabu Search] Current value is 342352.000000, iteration is 578 tenure 20
+[Tabu Search] Current value is 342329.000000, iteration is 579 tenure 20
+[Tabu Search] Update in best_val curr value is 342306.000000, iteration is 580 tenure 20
+[Tabu Search] Current value is 342306.000000, iteration is 580 tenure 20
+[Tabu Search] Update in best_val curr value is 342282.000000, iteration is 581 tenure 20
+[Tabu Search] Current value is 342282.000000, iteration is 581 tenure 20
+[Tabu Search] Update in best_val curr value is 342263.000000, iteration is 582 tenure 20
+[Tabu Search] Current value is 342263.000000, iteration is 582 tenure 20
+[Tabu Search] Update in best_val curr value is 342244.000000, iteration is 583 tenure 20
+[Tabu Search] Current value is 342244.000000, iteration is 583 tenure 20
+[Tabu Search] Update in best_val curr value is 342226.000000, iteration is 584 tenure 20
+[Tabu Search] Current value is 342226.000000, iteration is 584 tenure 20
+[Tabu Search] Update in best_val curr value is 342208.000000, iteration is 585 tenure 20
+[Tabu Search] Current value is 342208.000000, iteration is 585 tenure 20
+[Tabu Search] Update in best_val curr value is 342190.000000, iteration is 586 tenure 20
+[Tabu Search] Current value is 342190.000000, iteration is 586 tenure 20
+[Tabu Search] Update in best_val curr value is 342172.000000, iteration is 587 tenure 20
+[Tabu Search] Current value is 342172.000000, iteration is 587 tenure 20
+[Tabu Search] Update in best_val curr value is 342154.000000, iteration is 588 tenure 20
+[Tabu Search] Current value is 342154.000000, iteration is 588 tenure 20
+[Tabu Search] Update in best_val curr value is 342137.000000, iteration is 589 tenure 20
+[Tabu Search] Current value is 342137.000000, iteration is 589 tenure 20
+[Tabu Search] Update in best_val curr value is 342120.000000, iteration is 590 tenure 20
+[Tabu Search] Current value is 342120.000000, iteration is 590 tenure 20
+[Tabu Search] Update in best_val curr value is 342103.000000, iteration is 591 tenure 20
+[Tabu Search] Current value is 342103.000000, iteration is 591 tenure 20
+[Tabu Search] Update in best_val curr value is 342086.000000, iteration is 592 tenure 20
+[Tabu Search] Current value is 342086.000000, iteration is 592 tenure 20
+[Tabu Search] Update in best_val curr value is 342069.000000, iteration is 593 tenure 20
+[Tabu Search] Current value is 342069.000000, iteration is 593 tenure 20
+[Tabu Search] Update in best_val curr value is 342052.000000, iteration is 594 tenure 20
+[Tabu Search] Current value is 342052.000000, iteration is 594 tenure 20
+[Tabu Search] Update in best_val curr value is 342035.000000, iteration is 595 tenure 20
+[Tabu Search] Current value is 342035.000000, iteration is 595 tenure 20
+[Tabu Search] Update in best_val curr value is 342018.000000, iteration is 596 tenure 20
+[Tabu Search] Current value is 342018.000000, iteration is 596 tenure 20
+[Tabu Search] Update in best_val curr value is 342001.000000, iteration is 597 tenure 20
+[Tabu Search] Current value is 342001.000000, iteration is 597 tenure 20
+[Tabu Search] Update in best_val curr value is 341985.000000, iteration is 598 tenure 20
+[Tabu Search] Current value is 341985.000000, iteration is 598 tenure 20
+[Tabu Search] Update in best_val curr value is 341969.000000, iteration is 599 tenure 20
+[Tabu Search] Current value is 341969.000000, iteration is 599 tenure 20
+[Tabu Search] Update in best_val curr value is 341953.000000, iteration is 600 tenure 20
+[Tabu Search] Current value is 341953.000000, iteration is 600 tenure 20
+[Tabu Search] Update in best_val curr value is 341938.000000, iteration is 601 tenure 20
+[Tabu Search] Current value is 341938.000000, iteration is 601 tenure 20
+[Tabu Search] Update in best_val curr value is 341923.000000, iteration is 602 tenure 20
+[Tabu Search] Current value is 341923.000000, iteration is 602 tenure 20
+[Tabu Search] Update in best_val curr value is 341908.000000, iteration is 603 tenure 20
+[Tabu Search] Current value is 341908.000000, iteration is 603 tenure 20
+[Tabu Search] Update in best_val curr value is 341894.000000, iteration is 604 tenure 20
+[Tabu Search] Current value is 341894.000000, iteration is 604 tenure 20
+[Tabu Search] Update in best_val curr value is 341880.000000, iteration is 605 tenure 20
+[Tabu Search] Current value is 341880.000000, iteration is 605 tenure 20
+[Tabu Search] Update in best_val curr value is 341866.000000, iteration is 606 tenure 20
+[Tabu Search] Current value is 341866.000000, iteration is 606 tenure 20
+[Tabu Search] Update in best_val curr value is 341852.000000, iteration is 607 tenure 20
+[Tabu Search] Current value is 341852.000000, iteration is 607 tenure 20
+[Tabu Search] Update in best_val curr value is 341838.000000, iteration is 608 tenure 20
+[Tabu Search] Current value is 341838.000000, iteration is 608 tenure 20
+[Tabu Search] Update in best_val curr value is 341824.000000, iteration is 609 tenure 20
+[Tabu Search] Current value is 341824.000000, iteration is 609 tenure 20
+[Tabu Search] Update in best_val curr value is 341810.000000, iteration is 610 tenure 20
+[Tabu Search] Current value is 341810.000000, iteration is 610 tenure 20
+[Tabu Search] Update in best_val curr value is 341796.000000, iteration is 611 tenure 20
+[Tabu Search] Current value is 341796.000000, iteration is 611 tenure 20
+[Tabu Search] Update in best_val curr value is 341783.000000, iteration is 612 tenure 20
+[Tabu Search] Current value is 341783.000000, iteration is 612 tenure 20
+[Tabu Search] Update in best_val curr value is 341771.000000, iteration is 613 tenure 20
+[Tabu Search] Current value is 341771.000000, iteration is 613 tenure 20
+[Tabu Search] Update in best_val curr value is 341759.000000, iteration is 614 tenure 20
+[Tabu Search] Current value is 341759.000000, iteration is 614 tenure 20
+[Tabu Search] Update in best_val curr value is 341747.000000, iteration is 615 tenure 20
+[Tabu Search] Current value is 341747.000000, iteration is 615 tenure 20
+[Tabu Search] Update in best_val curr value is 341736.000000, iteration is 616 tenure 20
+[Tabu Search] Current value is 341736.000000, iteration is 616 tenure 20
+[Tabu Search] Update in best_val curr value is 341725.000000, iteration is 617 tenure 20
+[Tabu Search] Current value is 341725.000000, iteration is 617 tenure 20
+[Tabu Search] Update in best_val curr value is 341714.000000, iteration is 618 tenure 20
+[Tabu Search] Current value is 341714.000000, iteration is 618 tenure 20
+[Tabu Search] Update in best_val curr value is 341704.000000, iteration is 619 tenure 20
+[Tabu Search] Current value is 341704.000000, iteration is 619 tenure 20
+[Tabu Search] Update in best_val curr value is 341695.000000, iteration is 620 tenure 20
+[Tabu Search] Current value is 341695.000000, iteration is 620 tenure 20
+[Tabu Search] Update in best_val curr value is 341686.000000, iteration is 621 tenure 20
+[Tabu Search] Current value is 341686.000000, iteration is 621 tenure 20
+[Tabu Search] Update in best_val curr value is 341677.000000, iteration is 622 tenure 20
+[Tabu Search] Current value is 341677.000000, iteration is 622 tenure 20
+[Tabu Search] Update in best_val curr value is 341668.000000, iteration is 623 tenure 20
+[Tabu Search] Current value is 341668.000000, iteration is 623 tenure 20
+[Tabu Search] Update in best_val curr value is 341660.000000, iteration is 624 tenure 20
+[Tabu Search] Current value is 341660.000000, iteration is 624 tenure 20
+[Tabu Search] Update in best_val curr value is 341652.000000, iteration is 625 tenure 20
+[Tabu Search] Current value is 341652.000000, iteration is 625 tenure 20
+[Tabu Search] Update in best_val curr value is 341644.000000, iteration is 626 tenure 20
+[Tabu Search] Current value is 341644.000000, iteration is 626 tenure 20
+[Tabu Search] Update in best_val curr value is 341636.000000, iteration is 627 tenure 20
+[Tabu Search] Current value is 341636.000000, iteration is 627 tenure 20
+[Tabu Search] Update in best_val curr value is 341628.000000, iteration is 628 tenure 20
+[Tabu Search] Current value is 341628.000000, iteration is 628 tenure 20
+[Tabu Search] Update in best_val curr value is 341620.000000, iteration is 629 tenure 20
+[Tabu Search] Current value is 341620.000000, iteration is 629 tenure 20
+[Tabu Search] Update in best_val curr value is 341613.000000, iteration is 630 tenure 20
+[Tabu Search] Current value is 341613.000000, iteration is 630 tenure 20
+[Tabu Search] Update in best_val curr value is 341606.000000, iteration is 631 tenure 20
+[Tabu Search] Current value is 341606.000000, iteration is 631 tenure 20
+[Tabu Search] Update in best_val curr value is 341601.000000, iteration is 632 tenure 20
+[Tabu Search] Current value is 341601.000000, iteration is 632 tenure 20
+[Tabu Search] Update in best_val curr value is 341596.000000, iteration is 633 tenure 20
+[Tabu Search] Current value is 341596.000000, iteration is 633 tenure 20
+[Tabu Search] Update in best_val curr value is 341591.000000, iteration is 634 tenure 20
+[Tabu Search] Current value is 341591.000000, iteration is 634 tenure 20
+[Tabu Search] Update in best_val curr value is 341586.000000, iteration is 635 tenure 20
+[Tabu Search] Current value is 341586.000000, iteration is 635 tenure 20
+[Tabu Search] Update in best_val curr value is 341582.000000, iteration is 636 tenure 20
+[Tabu Search] Current value is 341582.000000, iteration is 636 tenure 20
+[Tabu Search] Update in best_val curr value is 341578.000000, iteration is 637 tenure 20
+[Tabu Search] Current value is 341578.000000, iteration is 637 tenure 20
+[Tabu Search] Update in best_val curr value is 341574.000000, iteration is 638 tenure 20
+[Tabu Search] Current value is 341574.000000, iteration is 638 tenure 20
+[Tabu Search] Update in best_val curr value is 341571.000000, iteration is 639 tenure 20
+[Tabu Search] Current value is 341571.000000, iteration is 639 tenure 20
+[Tabu Search] Update in best_val curr value is 341568.000000, iteration is 640 tenure 100
+[Tabu Search] Current value is 341568.000000, iteration is 640 tenure 100
+[Tabu Search] Update in best_val curr value is 341565.000000, iteration is 641 tenure 100
+[Tabu Search] Current value is 341565.000000, iteration is 641 tenure 100
+[Tabu Search] Update in best_val curr value is 341562.000000, iteration is 642 tenure 100
+[Tabu Search] Current value is 341562.000000, iteration is 642 tenure 100
+[Tabu Search] Update in best_val curr value is 341559.000000, iteration is 643 tenure 100
+[Tabu Search] Current value is 341559.000000, iteration is 643 tenure 100
+[Tabu Search] Update in best_val curr value is 341557.000000, iteration is 644 tenure 100
+[Tabu Search] Current value is 341557.000000, iteration is 644 tenure 100
+[Tabu Search] Update in best_val curr value is 341555.000000, iteration is 645 tenure 100
+[Tabu Search] Current value is 341555.000000, iteration is 645 tenure 100
+[Tabu Search] Update in best_val curr value is 341553.000000, iteration is 646 tenure 100
+[Tabu Search] Current value is 341553.000000, iteration is 646 tenure 100
+[Tabu Search] Update in best_val curr value is 341551.000000, iteration is 647 tenure 100
+[Tabu Search] Current value is 341551.000000, iteration is 647 tenure 100
+[Tabu Search] Update in best_val curr value is 341550.000000, iteration is 648 tenure 100
+[Tabu Search] Current value is 341550.000000, iteration is 648 tenure 100
+[Tabu Search] Update in best_val curr value is 341549.000000, iteration is 649 tenure 100
+[Tabu Search] Current value is 341549.000000, iteration is 649 tenure 100
+[Tabu Search] Update in best_val curr value is 341548.000000, iteration is 650 tenure 100
+[Tabu Search] Current value is 341548.000000, iteration is 650 tenure 100
+[Tabu Search] Current value is 341548.000000, iteration is 651 tenure 100
+[Tabu Search] Current value is 341554.000000, iteration is 652 tenure 100
+[Tabu Search] Current value is 341561.000000, iteration is 653 tenure 100
+[Tabu Search] Current value is 341574.000000, iteration is 654 tenure 100
+[Tabu Search] Current value is 341590.000000, iteration is 655 tenure 100
+[Tabu Search] Current value is 341608.000000, iteration is 656 tenure 100
+[Tabu Search] Current value is 341626.000000, iteration is 657 tenure 100
+[Tabu Search] Current value is 341645.000000, iteration is 658 tenure 100
+[Tabu Search] Current value is 341668.000000, iteration is 659 tenure 100
+[Tabu Search] Current value is 341691.000000, iteration is 660 tenure 100
+[Tabu Search] Current value is 341714.000000, iteration is 661 tenure 100
+[Tabu Search] Current value is 341738.000000, iteration is 662 tenure 100
+[Tabu Search] Current value is 341762.000000, iteration is 663 tenure 100
+[Tabu Search] Current value is 341786.000000, iteration is 664 tenure 100
+[Tabu Search] Current value is 341788.000000, iteration is 665 tenure 100
+[Tabu Search] Current value is 341808.000000, iteration is 666 tenure 100
+[Tabu Search] Current value is 341827.000000, iteration is 667 tenure 100
+[Tabu Search] Current value is 341847.000000, iteration is 668 tenure 100
+[Tabu Search] Current value is 341867.000000, iteration is 669 tenure 100
+[Tabu Search] Current value is 341888.000000, iteration is 670 tenure 100
+[Tabu Search] Current value is 341909.000000, iteration is 671 tenure 100
+[Tabu Search] Current value is 341931.000000, iteration is 672 tenure 100
+[Tabu Search] Current value is 341953.000000, iteration is 673 tenure 100
+[Tabu Search] Current value is 341977.000000, iteration is 674 tenure 100
+[Tabu Search] Current value is 342001.000000, iteration is 675 tenure 100
+[Tabu Search] Current value is 342023.000000, iteration is 676 tenure 100
+[Tabu Search] Current value is 342045.000000, iteration is 677 tenure 100
+[Tabu Search] Current value is 342067.000000, iteration is 678 tenure 100
+[Tabu Search] Current value is 342089.000000, iteration is 679 tenure 100
+[Tabu Search] Current value is 342112.000000, iteration is 680 tenure 100
+[Tabu Search] Current value is 342135.000000, iteration is 681 tenure 100
+[Tabu Search] Current value is 342159.000000, iteration is 682 tenure 100
+[Tabu Search] Current value is 342178.000000, iteration is 683 tenure 100
+[Tabu Search] Current value is 342197.000000, iteration is 684 tenure 100
+[Tabu Search] Current value is 342215.000000, iteration is 685 tenure 100
+[Tabu Search] Current value is 342233.000000, iteration is 686 tenure 100
+[Tabu Search] Current value is 342251.000000, iteration is 687 tenure 100
+[Tabu Search] Current value is 342269.000000, iteration is 688 tenure 100
+[Tabu Search] Current value is 342293.000000, iteration is 689 tenure 100
+[Tabu Search] Current value is 342310.000000, iteration is 690 tenure 100
+[Tabu Search] Current value is 342327.000000, iteration is 691 tenure 100
+[Tabu Search] Current value is 342344.000000, iteration is 692 tenure 100
+[Tabu Search] Current value is 342361.000000, iteration is 693 tenure 100
+[Tabu Search] Current value is 342378.000000, iteration is 694 tenure 100
+[Tabu Search] Current value is 342395.000000, iteration is 695 tenure 100
+[Tabu Search] Current value is 342412.000000, iteration is 696 tenure 100
+[Tabu Search] Current value is 342429.000000, iteration is 697 tenure 100
+[Tabu Search] Current value is 342446.000000, iteration is 698 tenure 100
+[Tabu Search] Current value is 342471.000000, iteration is 699 tenure 100
+[Tabu Search] Current value is 342487.000000, iteration is 700 tenure 100
+[Tabu Search] Current value is 342503.000000, iteration is 701 tenure 100
+[Tabu Search] Current value is 342518.000000, iteration is 702 tenure 100
+[Tabu Search] Current value is 342533.000000, iteration is 703 tenure 100
+[Tabu Search] Current value is 342529.000000, iteration is 704 tenure 100
+[Tabu Search] Current value is 342543.000000, iteration is 705 tenure 100
+[Tabu Search] Current value is 342557.000000, iteration is 706 tenure 100
+[Tabu Search] Current value is 342571.000000, iteration is 707 tenure 100
+[Tabu Search] Current value is 342585.000000, iteration is 708 tenure 100
+[Tabu Search] Current value is 342599.000000, iteration is 709 tenure 100
+[Tabu Search] Current value is 342613.000000, iteration is 710 tenure 100
+[Tabu Search] Current value is 342627.000000, iteration is 711 tenure 100
+[Tabu Search] Current value is 342641.000000, iteration is 712 tenure 100
+[Tabu Search] Current value is 342654.000000, iteration is 713 tenure 100
+[Tabu Search] Current value is 342666.000000, iteration is 714 tenure 100
+[Tabu Search] Current value is 342678.000000, iteration is 715 tenure 100
+[Tabu Search] Current value is 342690.000000, iteration is 716 tenure 100
+[Tabu Search] Current value is 342701.000000, iteration is 717 tenure 100
+[Tabu Search] Current value is 342712.000000, iteration is 718 tenure 100
+[Tabu Search] Current value is 342723.000000, iteration is 719 tenure 100
+[Tabu Search] Current value is 342698.000000, iteration is 720 tenure 20
+[Tabu Search] Current value is 342674.000000, iteration is 721 tenure 20
+[Tabu Search] Current value is 342650.000000, iteration is 722 tenure 20
+[Tabu Search] Current value is 342626.000000, iteration is 723 tenure 20
+[Tabu Search] Current value is 342602.000000, iteration is 724 tenure 20
+[Tabu Search] Current value is 342578.000000, iteration is 725 tenure 20
+[Tabu Search] Current value is 342554.000000, iteration is 726 tenure 20
+[Tabu Search] Current value is 342531.000000, iteration is 727 tenure 20
+[Tabu Search] Current value is 342508.000000, iteration is 728 tenure 20
+[Tabu Search] Current value is 342485.000000, iteration is 729 tenure 20
+[Tabu Search] Current value is 342462.000000, iteration is 730 tenure 20
+[Tabu Search] Current value is 342439.000000, iteration is 731 tenure 20
+[Tabu Search] Current value is 342417.000000, iteration is 732 tenure 20
+[Tabu Search] Current value is 342395.000000, iteration is 733 tenure 20
+[Tabu Search] Current value is 342373.000000, iteration is 734 tenure 20
+[Tabu Search] Current value is 342351.000000, iteration is 735 tenure 20
+[Tabu Search] Current value is 342329.000000, iteration is 736 tenure 20
+[Tabu Search] Current value is 342307.000000, iteration is 737 tenure 20
+[Tabu Search] Current value is 342286.000000, iteration is 738 tenure 20
+[Tabu Search] Current value is 342265.000000, iteration is 739 tenure 20
+[Tabu Search] Current value is 342245.000000, iteration is 740 tenure 20
+[Tabu Search] Current value is 342225.000000, iteration is 741 tenure 20
+[Tabu Search] Current value is 342205.000000, iteration is 742 tenure 20
+[Tabu Search] Current value is 342186.000000, iteration is 743 tenure 20
+[Tabu Search] Current value is 342167.000000, iteration is 744 tenure 20
+[Tabu Search] Current value is 342148.000000, iteration is 745 tenure 20
+[Tabu Search] Current value is 342130.000000, iteration is 746 tenure 20
+[Tabu Search] Current value is 342112.000000, iteration is 747 tenure 20
+[Tabu Search] Current value is 342094.000000, iteration is 748 tenure 20
+[Tabu Search] Current value is 342076.000000, iteration is 749 tenure 20
+[Tabu Search] Current value is 342058.000000, iteration is 750 tenure 20
+[Tabu Search] Current value is 342040.000000, iteration is 751 tenure 20
+[Tabu Search] Current value is 342023.000000, iteration is 752 tenure 20
+[Tabu Search] Current value is 342006.000000, iteration is 753 tenure 20
+[Tabu Search] Current value is 341989.000000, iteration is 754 tenure 20
+[Tabu Search] Current value is 341972.000000, iteration is 755 tenure 20
+[Tabu Search] Current value is 341955.000000, iteration is 756 tenure 20
+[Tabu Search] Current value is 341938.000000, iteration is 757 tenure 20
+[Tabu Search] Current value is 341921.000000, iteration is 758 tenure 20
+[Tabu Search] Current value is 341904.000000, iteration is 759 tenure 20
+[Tabu Search] Current value is 341887.000000, iteration is 760 tenure 20
+[Tabu Search] Current value is 341871.000000, iteration is 761 tenure 20
+[Tabu Search] Current value is 341855.000000, iteration is 762 tenure 20
+[Tabu Search] Current value is 341839.000000, iteration is 763 tenure 20
+[Tabu Search] Current value is 341824.000000, iteration is 764 tenure 20
+[Tabu Search] Current value is 341809.000000, iteration is 765 tenure 20
+[Tabu Search] Current value is 341795.000000, iteration is 766 tenure 20
+[Tabu Search] Current value is 341781.000000, iteration is 767 tenure 20
+[Tabu Search] Current value is 341767.000000, iteration is 768 tenure 20
+[Tabu Search] Current value is 341753.000000, iteration is 769 tenure 20
+[Tabu Search] Current value is 341739.000000, iteration is 770 tenure 20
+[Tabu Search] Current value is 341725.000000, iteration is 771 tenure 20
+[Tabu Search] Current value is 341711.000000, iteration is 772 tenure 20
+[Tabu Search] Current value is 341697.000000, iteration is 773 tenure 20
+[Tabu Search] Current value is 341684.000000, iteration is 774 tenure 20
+[Tabu Search] Current value is 341671.000000, iteration is 775 tenure 20
+[Tabu Search] Current value is 341659.000000, iteration is 776 tenure 20
+[Tabu Search] Current value is 341647.000000, iteration is 777 tenure 20
+[Tabu Search] Current value is 341635.000000, iteration is 778 tenure 20
+[Tabu Search] Current value is 341623.000000, iteration is 779 tenure 20
+[Tabu Search] Current value is 341612.000000, iteration is 780 tenure 20
+[Tabu Search] Current value is 341601.000000, iteration is 781 tenure 20
+[Tabu Search] Current value is 341590.000000, iteration is 782 tenure 20
+[Tabu Search] Current value is 341583.000000, iteration is 783 tenure 20
+[Tabu Search] Current value is 341577.000000, iteration is 784 tenure 20
+[Tabu Search] Current value is 341577.000000, iteration is 785 tenure 20
+[Tabu Search] Current value is 341577.000000, iteration is 786 tenure 20
+[Tabu Search] Current value is 341578.000000, iteration is 787 tenure 20
+[Tabu Search] Current value is 341579.000000, iteration is 788 tenure 20
+[Tabu Search] Current value is 341580.000000, iteration is 789 tenure 20
+[Tabu Search] Current value is 341582.000000, iteration is 790 tenure 20
+[Tabu Search] Current value is 341584.000000, iteration is 791 tenure 20
+[Tabu Search] Current value is 341586.000000, iteration is 792 tenure 20
+[Tabu Search] Current value is 341588.000000, iteration is 793 tenure 20
+[Tabu Search] Current value is 341591.000000, iteration is 794 tenure 20
+[Tabu Search] Current value is 341594.000000, iteration is 795 tenure 20
+[Tabu Search] Current value is 341597.000000, iteration is 796 tenure 20
+[Tabu Search] Current value is 341600.000000, iteration is 797 tenure 20
+[Tabu Search] Current value is 341603.000000, iteration is 798 tenure 20
+[Tabu Search] Current value is 341607.000000, iteration is 799 tenure 20
+[Tabu Search] Current value is 341611.000000, iteration is 800 tenure 100
+[Tabu Search] Current value is 341615.000000, iteration is 801 tenure 100
+[Tabu Search] Current value is 341620.000000, iteration is 802 tenure 100
+[Tabu Search] Current value is 341625.000000, iteration is 803 tenure 100
+[Tabu Search] Current value is 341630.000000, iteration is 804 tenure 100
+[Tabu Search] Current value is 341635.000000, iteration is 805 tenure 100
+[Tabu Search] Current value is 341642.000000, iteration is 806 tenure 100
+[Tabu Search] Current value is 341649.000000, iteration is 807 tenure 100
+[Tabu Search] Current value is 341657.000000, iteration is 808 tenure 100
+[Tabu Search] Current value is 341665.000000, iteration is 809 tenure 100
+[Tabu Search] Current value is 341673.000000, iteration is 810 tenure 100
+[Tabu Search] Current value is 341681.000000, iteration is 811 tenure 100
+[Tabu Search] Current value is 341689.000000, iteration is 812 tenure 100
+[Tabu Search] Current value is 341697.000000, iteration is 813 tenure 100
+[Tabu Search] Current value is 341706.000000, iteration is 814 tenure 100
+[Tabu Search] Current value is 341715.000000, iteration is 815 tenure 100
+[Tabu Search] Current value is 341724.000000, iteration is 816 tenure 100
+[Tabu Search] Current value is 341733.000000, iteration is 817 tenure 100
+[Tabu Search] Current value is 341743.000000, iteration is 818 tenure 100
+[Tabu Search] Current value is 341759.000000, iteration is 819 tenure 100
+[Tabu Search] Current value is 341777.000000, iteration is 820 tenure 100
+[Tabu Search] Current value is 341799.000000, iteration is 821 tenure 100
+[Tabu Search] Current value is 341821.000000, iteration is 822 tenure 100
+[Tabu Search] Current value is 341845.000000, iteration is 823 tenure 100
+[Tabu Search] Current value is 341869.000000, iteration is 824 tenure 100
+[Tabu Search] Current value is 341893.000000, iteration is 825 tenure 100
+[Tabu Search] Current value is 341917.000000, iteration is 826 tenure 100
+[Tabu Search] Current value is 341941.000000, iteration is 827 tenure 100
+[Tabu Search] Current value is 341964.000000, iteration is 828 tenure 100
+[Tabu Search] Current value is 341987.000000, iteration is 829 tenure 100
+[Tabu Search] Current value is 342010.000000, iteration is 830 tenure 100
+[Tabu Search] Current value is 342033.000000, iteration is 831 tenure 100
+[Tabu Search] Current value is 342056.000000, iteration is 832 tenure 100
+[Tabu Search] Current value is 342078.000000, iteration is 833 tenure 100
+[Tabu Search] Current value is 342100.000000, iteration is 834 tenure 100
+[Tabu Search] Current value is 342122.000000, iteration is 835 tenure 100
+[Tabu Search] Current value is 342144.000000, iteration is 836 tenure 100
+[Tabu Search] Current value is 342166.000000, iteration is 837 tenure 100
+[Tabu Search] Current value is 342188.000000, iteration is 838 tenure 100
+[Tabu Search] Current value is 342209.000000, iteration is 839 tenure 100
+[Tabu Search] Current value is 342230.000000, iteration is 840 tenure 100
+[Tabu Search] Current value is 342250.000000, iteration is 841 tenure 100
+[Tabu Search] Current value is 342270.000000, iteration is 842 tenure 100
+[Tabu Search] Current value is 342290.000000, iteration is 843 tenure 100
+[Tabu Search] Current value is 342309.000000, iteration is 844 tenure 100
+[Tabu Search] Current value is 342328.000000, iteration is 845 tenure 100
+[Tabu Search] Current value is 342347.000000, iteration is 846 tenure 100
+[Tabu Search] Current value is 342372.000000, iteration is 847 tenure 100
+[Tabu Search] Current value is 342390.000000, iteration is 848 tenure 100
+[Tabu Search] Current value is 342415.000000, iteration is 849 tenure 100
+[Tabu Search] Current value is 342433.000000, iteration is 850 tenure 100
+[Tabu Search] Current value is 342451.000000, iteration is 851 tenure 100
+[Tabu Search] Current value is 342469.000000, iteration is 852 tenure 100
+[Tabu Search] Current value is 342486.000000, iteration is 853 tenure 100
+[Tabu Search] Current value is 342503.000000, iteration is 854 tenure 100
+[Tabu Search] Current value is 342520.000000, iteration is 855 tenure 100
+[Tabu Search] Current value is 342537.000000, iteration is 856 tenure 100
+[Tabu Search] Current value is 342554.000000, iteration is 857 tenure 100
+[Tabu Search] Current value is 342571.000000, iteration is 858 tenure 100
+[Tabu Search] Current value is 342588.000000, iteration is 859 tenure 100
+[Tabu Search] Current value is 342605.000000, iteration is 860 tenure 100
+[Tabu Search] Current value is 342622.000000, iteration is 861 tenure 100
+[Tabu Search] Current value is 342638.000000, iteration is 862 tenure 100
+[Tabu Search] Current value is 342654.000000, iteration is 863 tenure 100
+[Tabu Search] Current value is 342670.000000, iteration is 864 tenure 100
+[Tabu Search] Current value is 342685.000000, iteration is 865 tenure 100
+[Tabu Search] Current value is 342700.000000, iteration is 866 tenure 100
+[Tabu Search] Current value is 342714.000000, iteration is 867 tenure 100
+[Tabu Search] Current value is 342728.000000, iteration is 868 tenure 100
+[Tabu Search] Current value is 342742.000000, iteration is 869 tenure 100
+[Tabu Search] Current value is 342756.000000, iteration is 870 tenure 100
+[Tabu Search] Current value is 342770.000000, iteration is 871 tenure 100
+[Tabu Search] Current value is 342784.000000, iteration is 872 tenure 100
+[Tabu Search] Current value is 342798.000000, iteration is 873 tenure 100
+[Tabu Search] Current value is 342812.000000, iteration is 874 tenure 100
+[Tabu Search] Current value is 342825.000000, iteration is 875 tenure 100
+[Tabu Search] Current value is 342838.000000, iteration is 876 tenure 100
+[Tabu Search] Current value is 342850.000000, iteration is 877 tenure 100
+[Tabu Search] Current value is 342862.000000, iteration is 878 tenure 100
+[Tabu Search] Current value is 342874.000000, iteration is 879 tenure 100
+[Tabu Search] Current value is 342849.000000, iteration is 880 tenure 20
+[Tabu Search] Current value is 342824.000000, iteration is 881 tenure 20
+[Tabu Search] Current value is 342800.000000, iteration is 882 tenure 20
+[Tabu Search] Current value is 342776.000000, iteration is 883 tenure 20
+[Tabu Search] Current value is 342752.000000, iteration is 884 tenure 20
+[Tabu Search] Current value is 342728.000000, iteration is 885 tenure 20
+[Tabu Search] Current value is 342704.000000, iteration is 886 tenure 20
+[Tabu Search] Current value is 342681.000000, iteration is 887 tenure 20
+[Tabu Search] Current value is 342658.000000, iteration is 888 tenure 20
+[Tabu Search] Current value is 342635.000000, iteration is 889 tenure 20
+[Tabu Search] Current value is 342612.000000, iteration is 890 tenure 20
+[Tabu Search] Current value is 342589.000000, iteration is 891 tenure 20
+[Tabu Search] Current value is 342567.000000, iteration is 892 tenure 20
+[Tabu Search] Current value is 342545.000000, iteration is 893 tenure 20
+[Tabu Search] Current value is 342523.000000, iteration is 894 tenure 20
+[Tabu Search] Current value is 342501.000000, iteration is 895 tenure 20
+[Tabu Search] Current value is 342479.000000, iteration is 896 tenure 20
+[Tabu Search] Current value is 342457.000000, iteration is 897 tenure 20
+[Tabu Search] Current value is 342435.000000, iteration is 898 tenure 20
+[Tabu Search] Current value is 342413.000000, iteration is 899 tenure 20
+[Tabu Search] Current value is 342392.000000, iteration is 900 tenure 20
+[Tabu Search] Current value is 342371.000000, iteration is 901 tenure 20
+[Tabu Search] Current value is 342351.000000, iteration is 902 tenure 20
+[Tabu Search] Current value is 342331.000000, iteration is 903 tenure 20
+[Tabu Search] Current value is 342311.000000, iteration is 904 tenure 20
+[Tabu Search] Current value is 342292.000000, iteration is 905 tenure 20
+[Tabu Search] Current value is 342273.000000, iteration is 906 tenure 20
+[Tabu Search] Current value is 342254.000000, iteration is 907 tenure 20
+[Tabu Search] Current value is 342236.000000, iteration is 908 tenure 20
+[Tabu Search] Current value is 342218.000000, iteration is 909 tenure 20
+[Tabu Search] Current value is 342200.000000, iteration is 910 tenure 20
+[Tabu Search] Current value is 342182.000000, iteration is 911 tenure 20
+[Tabu Search] Current value is 342164.000000, iteration is 912 tenure 20
+[Tabu Search] Current value is 342147.000000, iteration is 913 tenure 20
+[Tabu Search] Current value is 342130.000000, iteration is 914 tenure 20
+[Tabu Search] Current value is 342113.000000, iteration is 915 tenure 20
+[Tabu Search] Current value is 342096.000000, iteration is 916 tenure 20
+[Tabu Search] Current value is 342079.000000, iteration is 917 tenure 20
+[Tabu Search] Current value is 342062.000000, iteration is 918 tenure 20
+[Tabu Search] Current value is 342045.000000, iteration is 919 tenure 20
+[Tabu Search] Current value is 342028.000000, iteration is 920 tenure 20
+[Tabu Search] Current value is 342011.000000, iteration is 921 tenure 20
+[Tabu Search] Current value is 341995.000000, iteration is 922 tenure 20
+[Tabu Search] Current value is 341979.000000, iteration is 923 tenure 20
+[Tabu Search] Current value is 341963.000000, iteration is 924 tenure 20
+[Tabu Search] Current value is 341947.000000, iteration is 925 tenure 20
+[Tabu Search] Current value is 341932.000000, iteration is 926 tenure 20
+[Tabu Search] Current value is 341917.000000, iteration is 927 tenure 20
+[Tabu Search] Current value is 341902.000000, iteration is 928 tenure 20
+[Tabu Search] Current value is 341888.000000, iteration is 929 tenure 20
+[Tabu Search] Current value is 341874.000000, iteration is 930 tenure 20
+[Tabu Search] Current value is 341860.000000, iteration is 931 tenure 20
+[Tabu Search] Current value is 341846.000000, iteration is 932 tenure 20
+[Tabu Search] Current value is 341832.000000, iteration is 933 tenure 20
+[Tabu Search] Current value is 341818.000000, iteration is 934 tenure 20
+[Tabu Search] Current value is 341804.000000, iteration is 935 tenure 20
+[Tabu Search] Current value is 341790.000000, iteration is 936 tenure 20
+[Tabu Search] Current value is 341777.000000, iteration is 937 tenure 20
+[Tabu Search] Current value is 341764.000000, iteration is 938 tenure 20
+[Tabu Search] Current value is 341752.000000, iteration is 939 tenure 20
+[Tabu Search] Current value is 341740.000000, iteration is 940 tenure 20
+[Tabu Search] Current value is 341728.000000, iteration is 941 tenure 20
+[Tabu Search] Current value is 341718.000000, iteration is 942 tenure 20
+[Tabu Search] Current value is 341709.000000, iteration is 943 tenure 20
+[Tabu Search] Current value is 341700.000000, iteration is 944 tenure 20
+[Tabu Search] Current value is 341691.000000, iteration is 945 tenure 20
+[Tabu Search] Current value is 341682.000000, iteration is 946 tenure 20
+[Tabu Search] Current value is 341674.000000, iteration is 947 tenure 20
+[Tabu Search] Current value is 341666.000000, iteration is 948 tenure 20
+[Tabu Search] Current value is 341658.000000, iteration is 949 tenure 20
+[Tabu Search] Current value is 341650.000000, iteration is 950 tenure 20
+[Tabu Search] Current value is 341642.000000, iteration is 951 tenure 20
+[Tabu Search] Current value is 341634.000000, iteration is 952 tenure 20
+[Tabu Search] Current value is 341627.000000, iteration is 953 tenure 20
+[Tabu Search] Current value is 341620.000000, iteration is 954 tenure 20
+[Tabu Search] Current value is 341615.000000, iteration is 955 tenure 20
+[Tabu Search] Current value is 341610.000000, iteration is 956 tenure 20
+[Tabu Search] Current value is 341605.000000, iteration is 957 tenure 20
+[Tabu Search] Current value is 341600.000000, iteration is 958 tenure 20
+[Tabu Search] Current value is 341596.000000, iteration is 959 tenure 20
+[Tabu Search] Current value is 341592.000000, iteration is 960 tenure 100
+[Tabu Search] Current value is 341588.000000, iteration is 961 tenure 100
+[Tabu Search] Current value is 341585.000000, iteration is 962 tenure 100
+[Tabu Search] Current value is 341582.000000, iteration is 963 tenure 100
+[Tabu Search] Current value is 341579.000000, iteration is 964 tenure 100
+[Tabu Search] Current value is 341576.000000, iteration is 965 tenure 100
+[Tabu Search] Current value is 341573.000000, iteration is 966 tenure 100
+[Tabu Search] Current value is 341571.000000, iteration is 967 tenure 100
+[Tabu Search] Current value is 341569.000000, iteration is 968 tenure 100
+[Tabu Search] Current value is 341567.000000, iteration is 969 tenure 100
+[Tabu Search] Current value is 341565.000000, iteration is 970 tenure 100
+[Tabu Search] Current value is 341564.000000, iteration is 971 tenure 100
+[Tabu Search] Current value is 341563.000000, iteration is 972 tenure 100
+[Tabu Search] Current value is 341562.000000, iteration is 973 tenure 100
+[Tabu Search] Current value is 341562.000000, iteration is 974 tenure 100
+[Tabu Search] Current value is 341568.000000, iteration is 975 tenure 100
+[Tabu Search] Current value is 341575.000000, iteration is 976 tenure 100
+[Tabu Search] Current value is 341586.000000, iteration is 977 tenure 100
+[Tabu Search] Current value is 341597.000000, iteration is 978 tenure 100
+[Tabu Search] Current value is 341608.000000, iteration is 979 tenure 100
+[Tabu Search] Current value is 341620.000000, iteration is 980 tenure 100
+[Tabu Search] Current value is 341638.000000, iteration is 981 tenure 100
+[Tabu Search] Current value is 341656.000000, iteration is 982 tenure 100
+[Tabu Search] Current value is 341675.000000, iteration is 983 tenure 100
+[Tabu Search] Current value is 341699.000000, iteration is 984 tenure 100
+[Tabu Search] Current value is 341723.000000, iteration is 985 tenure 100
+[Tabu Search] Current value is 341747.000000, iteration is 986 tenure 100
+[Tabu Search] Current value is 341771.000000, iteration is 987 tenure 100
+[Tabu Search] Current value is 341794.000000, iteration is 988 tenure 100
+[Tabu Search] Current value is 341817.000000, iteration is 989 tenure 100
+[Tabu Search] Current value is 341840.000000, iteration is 990 tenure 100
+[Tabu Search] Current value is 341863.000000, iteration is 991 tenure 100
+[Tabu Search] Current value is 341886.000000, iteration is 992 tenure 100
+[Tabu Search] Current value is 341908.000000, iteration is 993 tenure 100
+[Tabu Search] Current value is 341930.000000, iteration is 994 tenure 100
+[Tabu Search] Current value is 341954.000000, iteration is 995 tenure 100
+[Tabu Search] Current value is 341978.000000, iteration is 996 tenure 100
+[Tabu Search] Current value is 342000.000000, iteration is 997 tenure 100
+[Tabu Search] Current value is 342022.000000, iteration is 998 tenure 100
+[Tabu Search] Current value is 342044.000000, iteration is 999 tenure 100
+[Tabu Search] Current value is 342066.000000, iteration is 1000 tenure 100
+[Tabu Search] Current value is 342087.000000, iteration is 1001 tenure 100
+[Tabu Search] Current value is 342108.000000, iteration is 1002 tenure 100
+[Tabu Search] Current value is 342128.000000, iteration is 1003 tenure 100
+[Tabu Search] Current value is 342148.000000, iteration is 1004 tenure 100
+[Tabu Search] Current value is 342168.000000, iteration is 1005 tenure 100
+[Tabu Search] Current value is 342187.000000, iteration is 1006 tenure 100
+[Tabu Search] Current value is 342206.000000, iteration is 1007 tenure 100
+[Tabu Search] Current value is 342225.000000, iteration is 1008 tenure 100
+[Tabu Search] Current value is 342243.000000, iteration is 1009 tenure 100
+[Tabu Search] Current value is 342261.000000, iteration is 1010 tenure 100
+[Tabu Search] Current value is 342279.000000, iteration is 1011 tenure 100
+[Tabu Search] Current value is 342297.000000, iteration is 1012 tenure 100
+[Tabu Search] Current value is 342322.000000, iteration is 1013 tenure 100
+[Tabu Search] Current value is 342339.000000, iteration is 1014 tenure 100
+[Tabu Search] Current value is 342356.000000, iteration is 1015 tenure 100
+[Tabu Search] Current value is 342373.000000, iteration is 1016 tenure 100
+[Tabu Search] Current value is 342390.000000, iteration is 1017 tenure 100
+[Tabu Search] Current value is 342407.000000, iteration is 1018 tenure 100
+[Tabu Search] Current value is 342424.000000, iteration is 1019 tenure 100
+[Tabu Search] Current value is 342441.000000, iteration is 1020 tenure 100
+[Tabu Search] Current value is 342458.000000, iteration is 1021 tenure 100
+[Tabu Search] Current value is 342475.000000, iteration is 1022 tenure 100
+[Tabu Search] Current value is 342500.000000, iteration is 1023 tenure 100
+[Tabu Search] Current value is 342516.000000, iteration is 1024 tenure 100
+[Tabu Search] Current value is 342532.000000, iteration is 1025 tenure 100
+[Tabu Search] Current value is 342548.000000, iteration is 1026 tenure 100
+[Tabu Search] Current value is 342563.000000, iteration is 1027 tenure 100
+[Tabu Search] Current value is 342578.000000, iteration is 1028 tenure 100
+[Tabu Search] Current value is 342574.000000, iteration is 1029 tenure 100
+[Tabu Search] Current value is 342588.000000, iteration is 1030 tenure 100
+[Tabu Search] Current value is 342602.000000, iteration is 1031 tenure 100
+[Tabu Search] Current value is 342616.000000, iteration is 1032 tenure 100
+[Tabu Search] Current value is 342630.000000, iteration is 1033 tenure 100
+[Tabu Search] Current value is 342644.000000, iteration is 1034 tenure 100
+[Tabu Search] Current value is 342658.000000, iteration is 1035 tenure 100
+[Tabu Search] Current value is 342672.000000, iteration is 1036 tenure 100
+[Tabu Search] Current value is 342686.000000, iteration is 1037 tenure 100
+[Tabu Search] Current value is 342699.000000, iteration is 1038 tenure 100
+[Tabu Search] Current value is 342712.000000, iteration is 1039 tenure 100
+[Tabu Search] Current value is 342687.000000, iteration is 1040 tenure 20
+[Tabu Search] Current value is 342663.000000, iteration is 1041 tenure 20
+[Tabu Search] Current value is 342639.000000, iteration is 1042 tenure 20
+[Tabu Search] Current value is 342615.000000, iteration is 1043 tenure 20
+[Tabu Search] Current value is 342590.000000, iteration is 1044 tenure 20
+[Tabu Search] Current value is 342566.000000, iteration is 1045 tenure 20
+[Tabu Search] Current value is 342542.000000, iteration is 1046 tenure 20
+[Tabu Search] Current value is 342518.000000, iteration is 1047 tenure 20
+[Tabu Search] Current value is 342495.000000, iteration is 1048 tenure 20
+[Tabu Search] Current value is 342472.000000, iteration is 1049 tenure 20
+[Tabu Search] Current value is 342449.000000, iteration is 1050 tenure 20
+[Tabu Search] Current value is 342426.000000, iteration is 1051 tenure 20
+[Tabu Search] Current value is 342403.000000, iteration is 1052 tenure 20
+[Tabu Search] Current value is 342381.000000, iteration is 1053 tenure 20
+[Tabu Search] Current value is 342359.000000, iteration is 1054 tenure 20
+[Tabu Search] Current value is 342337.000000, iteration is 1055 tenure 20
+[Tabu Search] Current value is 342315.000000, iteration is 1056 tenure 20
+[Tabu Search] Current value is 342293.000000, iteration is 1057 tenure 20
+[Tabu Search] Current value is 342271.000000, iteration is 1058 tenure 20
+[Tabu Search] Current value is 342250.000000, iteration is 1059 tenure 20
+[Tabu Search] Current value is 342229.000000, iteration is 1060 tenure 20
+[Tabu Search] Current value is 342209.000000, iteration is 1061 tenure 20
+[Tabu Search] Current value is 342189.000000, iteration is 1062 tenure 20
+[Tabu Search] Current value is 342169.000000, iteration is 1063 tenure 20
+[Tabu Search] Current value is 342150.000000, iteration is 1064 tenure 20
+[Tabu Search] Current value is 342131.000000, iteration is 1065 tenure 20
+[Tabu Search] Current value is 342112.000000, iteration is 1066 tenure 20
+[Tabu Search] Current value is 342094.000000, iteration is 1067 tenure 20
+[Tabu Search] Current value is 342076.000000, iteration is 1068 tenure 20
+[Tabu Search] Current value is 342058.000000, iteration is 1069 tenure 20
+[Tabu Search] Current value is 342040.000000, iteration is 1070 tenure 20
+[Tabu Search] Current value is 342022.000000, iteration is 1071 tenure 20
+[Tabu Search] Current value is 342004.000000, iteration is 1072 tenure 20
+[Tabu Search] Current value is 341987.000000, iteration is 1073 tenure 20
+[Tabu Search] Current value is 341970.000000, iteration is 1074 tenure 20
+[Tabu Search] Current value is 341953.000000, iteration is 1075 tenure 20
+[Tabu Search] Current value is 341936.000000, iteration is 1076 tenure 20
+[Tabu Search] Current value is 341919.000000, iteration is 1077 tenure 20
+[Tabu Search] Current value is 341902.000000, iteration is 1078 tenure 20
+[Tabu Search] Current value is 341885.000000, iteration is 1079 tenure 20
+[Tabu Search] Current value is 341868.000000, iteration is 1080 tenure 20
+[Tabu Search] Current value is 341851.000000, iteration is 1081 tenure 20
+[Tabu Search] Current value is 341835.000000, iteration is 1082 tenure 20
+[Tabu Search] Current value is 341819.000000, iteration is 1083 tenure 20
+[Tabu Search] Current value is 341803.000000, iteration is 1084 tenure 20
+[Tabu Search] Current value is 341788.000000, iteration is 1085 tenure 20
+[Tabu Search] Current value is 341773.000000, iteration is 1086 tenure 20
+[Tabu Search] Current value is 341759.000000, iteration is 1087 tenure 20
+[Tabu Search] Current value is 341745.000000, iteration is 1088 tenure 20
+[Tabu Search] Current value is 341731.000000, iteration is 1089 tenure 20
+[Tabu Search] Current value is 341717.000000, iteration is 1090 tenure 20
+[Tabu Search] Current value is 341703.000000, iteration is 1091 tenure 20
+[Tabu Search] Current value is 341689.000000, iteration is 1092 tenure 20
+[Tabu Search] Current value is 341675.000000, iteration is 1093 tenure 20
+[Tabu Search] Current value is 341661.000000, iteration is 1094 tenure 20
+[Tabu Search] Current value is 341648.000000, iteration is 1095 tenure 20
+[Tabu Search] Current value is 341635.000000, iteration is 1096 tenure 20
+[Tabu Search] Current value is 341623.000000, iteration is 1097 tenure 20
+[Tabu Search] Current value is 341612.000000, iteration is 1098 tenure 20
+[Tabu Search] Current value is 341601.000000, iteration is 1099 tenure 20
+[Tabu Search] Current value is 341590.000000, iteration is 1100 tenure 20
+[Tabu Search] Current value is 341583.000000, iteration is 1101 tenure 20
+[Tabu Search] Current value is 341577.000000, iteration is 1102 tenure 20
+[Tabu Search] Current value is 341577.000000, iteration is 1103 tenure 20
+[Tabu Search] Current value is 341577.000000, iteration is 1104 tenure 20
+[Tabu Search] Current value is 341578.000000, iteration is 1105 tenure 20
+[Tabu Search] Current value is 341579.000000, iteration is 1106 tenure 20
+[Tabu Search] Current value is 341580.000000, iteration is 1107 tenure 20
+[Tabu Search] Current value is 341582.000000, iteration is 1108 tenure 20
+[Tabu Search] Current value is 341584.000000, iteration is 1109 tenure 20
+[Tabu Search] Current value is 341586.000000, iteration is 1110 tenure 20
+[Tabu Search] Current value is 341588.000000, iteration is 1111 tenure 20
+[Tabu Search] Current value is 341591.000000, iteration is 1112 tenure 20
+[Tabu Search] Current value is 341594.000000, iteration is 1113 tenure 20
+[Tabu Search] Current value is 341597.000000, iteration is 1114 tenure 20
+[Tabu Search] Current value is 341600.000000, iteration is 1115 tenure 20
+[Tabu Search] Current value is 341603.000000, iteration is 1116 tenure 20
+[Tabu Search] Current value is 341607.000000, iteration is 1117 tenure 20
+[Tabu Search] Current value is 341611.000000, iteration is 1118 tenure 20
+[Tabu Search] Current value is 341615.000000, iteration is 1119 tenure 20
+[Tabu Search] Current value is 341620.000000, iteration is 1120 tenure 100
+[Tabu Search] Current value is 341625.000000, iteration is 1121 tenure 100
+[Tabu Search] Current value is 341630.000000, iteration is 1122 tenure 100
+[Tabu Search] Current value is 341635.000000, iteration is 1123 tenure 100
+[Tabu Search] Current value is 341642.000000, iteration is 1124 tenure 100
+[Tabu Search] Current value is 341649.000000, iteration is 1125 tenure 100
+[Tabu Search] Current value is 341657.000000, iteration is 1126 tenure 100
+[Tabu Search] Current value is 341665.000000, iteration is 1127 tenure 100
+[Tabu Search] Current value is 341673.000000, iteration is 1128 tenure 100
+[Tabu Search] Current value is 341681.000000, iteration is 1129 tenure 100
+[Tabu Search] Current value is 341689.000000, iteration is 1130 tenure 100
+[Tabu Search] Current value is 341697.000000, iteration is 1131 tenure 100
+[Tabu Search] Current value is 341706.000000, iteration is 1132 tenure 100
+[Tabu Search] Current value is 341715.000000, iteration is 1133 tenure 100
+[Tabu Search] Current value is 341724.000000, iteration is 1134 tenure 100
+[Tabu Search] Current value is 341733.000000, iteration is 1135 tenure 100
+[Tabu Search] Current value is 341743.000000, iteration is 1136 tenure 100
+[Tabu Search] Current value is 341755.000000, iteration is 1137 tenure 100
+[Tabu Search] Current value is 341767.000000, iteration is 1138 tenure 100
+[Tabu Search] Current value is 341779.000000, iteration is 1139 tenure 100
+[Tabu Search] Current value is 341795.000000, iteration is 1140 tenure 100
+[Tabu Search] Current value is 341813.000000, iteration is 1141 tenure 100
+[Tabu Search] Current value is 341835.000000, iteration is 1142 tenure 100
+[Tabu Search] Current value is 341857.000000, iteration is 1143 tenure 100
+[Tabu Search] Current value is 341881.000000, iteration is 1144 tenure 100
+[Tabu Search] Current value is 341905.000000, iteration is 1145 tenure 100
+[Tabu Search] Current value is 341929.000000, iteration is 1146 tenure 100
+[Tabu Search] Current value is 341953.000000, iteration is 1147 tenure 100
+[Tabu Search] Current value is 341977.000000, iteration is 1148 tenure 100
+[Tabu Search] Current value is 342000.000000, iteration is 1149 tenure 100
+[Tabu Search] Current value is 342023.000000, iteration is 1150 tenure 100
+[Tabu Search] Current value is 342046.000000, iteration is 1151 tenure 100
+[Tabu Search] Current value is 342069.000000, iteration is 1152 tenure 100
+[Tabu Search] Current value is 342092.000000, iteration is 1153 tenure 100
+[Tabu Search] Current value is 342114.000000, iteration is 1154 tenure 100
+[Tabu Search] Current value is 342136.000000, iteration is 1155 tenure 100
+[Tabu Search] Current value is 342158.000000, iteration is 1156 tenure 100
+[Tabu Search] Current value is 342180.000000, iteration is 1157 tenure 100
+[Tabu Search] Current value is 342202.000000, iteration is 1158 tenure 100
+[Tabu Search] Current value is 342224.000000, iteration is 1159 tenure 100
+[Tabu Search] Current value is 342245.000000, iteration is 1160 tenure 100
+[Tabu Search] Current value is 342266.000000, iteration is 1161 tenure 100
+[Tabu Search] Current value is 342286.000000, iteration is 1162 tenure 100
+[Tabu Search] Current value is 342306.000000, iteration is 1163 tenure 100
+[Tabu Search] Current value is 342326.000000, iteration is 1164 tenure 100
+[Tabu Search] Current value is 342345.000000, iteration is 1165 tenure 100
+[Tabu Search] Current value is 342364.000000, iteration is 1166 tenure 100
+[Tabu Search] Current value is 342383.000000, iteration is 1167 tenure 100
+[Tabu Search] Current value is 342408.000000, iteration is 1168 tenure 100
+[Tabu Search] Current value is 342426.000000, iteration is 1169 tenure 100
+[Tabu Search] Current value is 342451.000000, iteration is 1170 tenure 100
+[Tabu Search] Current value is 342469.000000, iteration is 1171 tenure 100
+[Tabu Search] Current value is 342487.000000, iteration is 1172 tenure 100
+[Tabu Search] Current value is 342505.000000, iteration is 1173 tenure 100
+[Tabu Search] Current value is 342522.000000, iteration is 1174 tenure 100
+[Tabu Search] Current value is 342539.000000, iteration is 1175 tenure 100
+[Tabu Search] Current value is 342556.000000, iteration is 1176 tenure 100
+[Tabu Search] Current value is 342573.000000, iteration is 1177 tenure 100
+[Tabu Search] Current value is 342590.000000, iteration is 1178 tenure 100
+[Tabu Search] Current value is 342607.000000, iteration is 1179 tenure 100
+[Tabu Search] Current value is 342624.000000, iteration is 1180 tenure 100
+[Tabu Search] Current value is 342641.000000, iteration is 1181 tenure 100
+[Tabu Search] Current value is 342658.000000, iteration is 1182 tenure 100
+[Tabu Search] Current value is 342674.000000, iteration is 1183 tenure 100
+[Tabu Search] Current value is 342690.000000, iteration is 1184 tenure 100
+[Tabu Search] Current value is 342706.000000, iteration is 1185 tenure 100
+[Tabu Search] Current value is 342721.000000, iteration is 1186 tenure 100
+[Tabu Search] Current value is 342736.000000, iteration is 1187 tenure 100
+[Tabu Search] Current value is 342750.000000, iteration is 1188 tenure 100
+[Tabu Search] Current value is 342764.000000, iteration is 1189 tenure 100
+[Tabu Search] Current value is 342778.000000, iteration is 1190 tenure 100
+[Tabu Search] Current value is 342792.000000, iteration is 1191 tenure 100
+[Tabu Search] Current value is 342806.000000, iteration is 1192 tenure 100
+[Tabu Search] Current value is 342820.000000, iteration is 1193 tenure 100
+[Tabu Search] Current value is 342834.000000, iteration is 1194 tenure 100
+[Tabu Search] Current value is 342848.000000, iteration is 1195 tenure 100
+[Tabu Search] Current value is 342861.000000, iteration is 1196 tenure 100
+[Tabu Search] Current value is 342874.000000, iteration is 1197 tenure 100
+[Tabu Search] Current value is 342886.000000, iteration is 1198 tenure 100
+[Tabu Search] Current value is 342897.000000, iteration is 1199 tenure 100
+[Tabu Search] Current value is 342872.000000, iteration is 1200 tenure 20
+[Tabu Search] Current value is 342847.000000, iteration is 1201 tenure 20
+[Tabu Search] Current value is 342823.000000, iteration is 1202 tenure 20
+[Tabu Search] Current value is 342799.000000, iteration is 1203 tenure 20
+[Tabu Search] Current value is 342775.000000, iteration is 1204 tenure 20
+[Tabu Search] Current value is 342751.000000, iteration is 1205 tenure 20
+[Tabu Search] Current value is 342727.000000, iteration is 1206 tenure 20
+[Tabu Search] Current value is 342704.000000, iteration is 1207 tenure 20
+[Tabu Search] Current value is 342681.000000, iteration is 1208 tenure 20
+[Tabu Search] Current value is 342658.000000, iteration is 1209 tenure 20
+[Tabu Search] Current value is 342635.000000, iteration is 1210 tenure 20
+[Tabu Search] Current value is 342612.000000, iteration is 1211 tenure 20
+[Tabu Search] Current value is 342590.000000, iteration is 1212 tenure 20
+[Tabu Search] Current value is 342568.000000, iteration is 1213 tenure 20
+[Tabu Search] Current value is 342546.000000, iteration is 1214 tenure 20
+[Tabu Search] Current value is 342524.000000, iteration is 1215 tenure 20
+[Tabu Search] Current value is 342502.000000, iteration is 1216 tenure 20
+[Tabu Search] Current value is 342480.000000, iteration is 1217 tenure 20
+[Tabu Search] Current value is 342458.000000, iteration is 1218 tenure 20
+[Tabu Search] Current value is 342436.000000, iteration is 1219 tenure 20
+[Tabu Search] Current value is 342415.000000, iteration is 1220 tenure 20
+[Tabu Search] Current value is 342394.000000, iteration is 1221 tenure 20
+[Tabu Search] Current value is 342374.000000, iteration is 1222 tenure 20
+[Tabu Search] Current value is 342354.000000, iteration is 1223 tenure 20
+[Tabu Search] Current value is 342334.000000, iteration is 1224 tenure 20
+[Tabu Search] Current value is 342315.000000, iteration is 1225 tenure 20
+[Tabu Search] Current value is 342296.000000, iteration is 1226 tenure 20
+[Tabu Search] Current value is 342277.000000, iteration is 1227 tenure 20
+[Tabu Search] Current value is 342259.000000, iteration is 1228 tenure 20
+[Tabu Search] Current value is 342241.000000, iteration is 1229 tenure 20
+[Tabu Search] Current value is 342223.000000, iteration is 1230 tenure 20
+[Tabu Search] Current value is 342205.000000, iteration is 1231 tenure 20
+[Tabu Search] Current value is 342187.000000, iteration is 1232 tenure 20
+[Tabu Search] Current value is 342170.000000, iteration is 1233 tenure 20
+[Tabu Search] Current value is 342153.000000, iteration is 1234 tenure 20
+[Tabu Search] Current value is 342136.000000, iteration is 1235 tenure 20
+[Tabu Search] Current value is 342119.000000, iteration is 1236 tenure 20
+[Tabu Search] Current value is 342102.000000, iteration is 1237 tenure 20
+[Tabu Search] Current value is 342085.000000, iteration is 1238 tenure 20
+[Tabu Search] Current value is 342068.000000, iteration is 1239 tenure 20
+[Tabu Search] Current value is 342051.000000, iteration is 1240 tenure 20
+[Tabu Search] Current value is 342034.000000, iteration is 1241 tenure 20
+[Tabu Search] Current value is 342018.000000, iteration is 1242 tenure 20
+[Tabu Search] Current value is 342002.000000, iteration is 1243 tenure 20
+[Tabu Search] Current value is 341986.000000, iteration is 1244 tenure 20
+[Tabu Search] Current value is 341970.000000, iteration is 1245 tenure 20
+[Tabu Search] Current value is 341955.000000, iteration is 1246 tenure 20
+[Tabu Search] Current value is 341940.000000, iteration is 1247 tenure 20
+[Tabu Search] Current value is 341925.000000, iteration is 1248 tenure 20
+[Tabu Search] Current value is 341911.000000, iteration is 1249 tenure 20
+[Tabu Search] Current value is 341897.000000, iteration is 1250 tenure 20
+[Tabu Search] Current value is 341883.000000, iteration is 1251 tenure 20
+[Tabu Search] Current value is 341869.000000, iteration is 1252 tenure 20
+[Tabu Search] Current value is 341855.000000, iteration is 1253 tenure 20
+[Tabu Search] Current value is 341841.000000, iteration is 1254 tenure 20
+[Tabu Search] Current value is 341827.000000, iteration is 1255 tenure 20
+[Tabu Search] Current value is 341813.000000, iteration is 1256 tenure 20
+[Tabu Search] Current value is 341800.000000, iteration is 1257 tenure 20
+[Tabu Search] Current value is 341787.000000, iteration is 1258 tenure 20
+[Tabu Search] Current value is 341775.000000, iteration is 1259 tenure 20
+[Tabu Search] Current value is 341763.000000, iteration is 1260 tenure 20
+[Tabu Search] Current value is 341751.000000, iteration is 1261 tenure 20
+[Tabu Search] Current value is 341739.000000, iteration is 1262 tenure 20
+[Tabu Search] Current value is 341728.000000, iteration is 1263 tenure 20
+[Tabu Search] Current value is 341718.000000, iteration is 1264 tenure 20
+[Tabu Search] Current value is 341709.000000, iteration is 1265 tenure 20
+[Tabu Search] Current value is 341700.000000, iteration is 1266 tenure 20
+[Tabu Search] Current value is 341691.000000, iteration is 1267 tenure 20
+[Tabu Search] Current value is 341682.000000, iteration is 1268 tenure 20
+[Tabu Search] Current value is 341674.000000, iteration is 1269 tenure 20
+[Tabu Search] Current value is 341666.000000, iteration is 1270 tenure 20
+[Tabu Search] Current value is 341658.000000, iteration is 1271 tenure 20
+[Tabu Search] Current value is 341650.000000, iteration is 1272 tenure 20
+[Tabu Search] Current value is 341642.000000, iteration is 1273 tenure 20
+[Tabu Search] Current value is 341634.000000, iteration is 1274 tenure 20
+[Tabu Search] Current value is 341627.000000, iteration is 1275 tenure 20
+[Tabu Search] Current value is 341620.000000, iteration is 1276 tenure 20
+[Tabu Search] Current value is 341615.000000, iteration is 1277 tenure 20
+[Tabu Search] Current value is 341610.000000, iteration is 1278 tenure 20
+[Tabu Search] Current value is 341605.000000, iteration is 1279 tenure 20
+[Tabu Search] Current value is 341600.000000, iteration is 1280 tenure 100
+[Tabu Search] Current value is 341596.000000, iteration is 1281 tenure 100
+[Tabu Search] Current value is 341592.000000, iteration is 1282 tenure 100
+[Tabu Search] Current value is 341588.000000, iteration is 1283 tenure 100
+[Tabu Search] Current value is 341585.000000, iteration is 1284 tenure 100
+[Tabu Search] Current value is 341582.000000, iteration is 1285 tenure 100
+[Tabu Search] Current value is 341579.000000, iteration is 1286 tenure 100
+[Tabu Search] Current value is 341576.000000, iteration is 1287 tenure 100
+[Tabu Search] Current value is 341573.000000, iteration is 1288 tenure 100
+[Tabu Search] Current value is 341571.000000, iteration is 1289 tenure 100
+[Tabu Search] Current value is 341569.000000, iteration is 1290 tenure 100
+[Tabu Search] Current value is 341567.000000, iteration is 1291 tenure 100
+[Tabu Search] Current value is 341565.000000, iteration is 1292 tenure 100
+[Tabu Search] Current value is 341564.000000, iteration is 1293 tenure 100
+[Tabu Search] Current value is 341563.000000, iteration is 1294 tenure 100
+[Tabu Search] Current value is 341562.000000, iteration is 1295 tenure 100
+[Tabu Search] Current value is 341562.000000, iteration is 1296 tenure 100
+[Tabu Search] Current value is 341568.000000, iteration is 1297 tenure 100
+[Tabu Search] Current value is 341575.000000, iteration is 1298 tenure 100
+[Tabu Search] Current value is 341586.000000, iteration is 1299 tenure 100
+[Tabu Search] Current value is 341597.000000, iteration is 1300 tenure 100
+[Tabu Search] Current value is 341615.000000, iteration is 1301 tenure 100
+[Tabu Search] Current value is 341633.000000, iteration is 1302 tenure 100
+[Tabu Search] Current value is 341652.000000, iteration is 1303 tenure 100
+[Tabu Search] Current value is 341676.000000, iteration is 1304 tenure 100
+[Tabu Search] Current value is 341700.000000, iteration is 1305 tenure 100
+[Tabu Search] Current value is 341724.000000, iteration is 1306 tenure 100
+[Tabu Search] Current value is 341748.000000, iteration is 1307 tenure 100
+[Tabu Search] Current value is 341771.000000, iteration is 1308 tenure 100
+[Tabu Search] Current value is 341794.000000, iteration is 1309 tenure 100
+[Tabu Search] Current value is 341817.000000, iteration is 1310 tenure 100
+[Tabu Search] Current value is 341840.000000, iteration is 1311 tenure 100
+[Tabu Search] Current value is 341863.000000, iteration is 1312 tenure 100
+[Tabu Search] Current value is 341885.000000, iteration is 1313 tenure 100
+[Tabu Search] Current value is 341907.000000, iteration is 1314 tenure 100
+[Tabu Search] Current value is 341931.000000, iteration is 1315 tenure 100
+[Tabu Search] Current value is 341955.000000, iteration is 1316 tenure 100
+[Tabu Search] Current value is 341977.000000, iteration is 1317 tenure 100
+[Tabu Search] Current value is 341999.000000, iteration is 1318 tenure 100
+[Tabu Search] Current value is 342021.000000, iteration is 1319 tenure 100
+[Tabu Search] Current value is 342043.000000, iteration is 1320 tenure 100
+[Tabu Search] Current value is 342064.000000, iteration is 1321 tenure 100
+[Tabu Search] Current value is 342085.000000, iteration is 1322 tenure 100
+[Tabu Search] Current value is 342105.000000, iteration is 1323 tenure 100
+[Tabu Search] Current value is 342125.000000, iteration is 1324 tenure 100
+[Tabu Search] Current value is 342145.000000, iteration is 1325 tenure 100
+[Tabu Search] Current value is 342164.000000, iteration is 1326 tenure 100
+[Tabu Search] Current value is 342183.000000, iteration is 1327 tenure 100
+[Tabu Search] Current value is 342202.000000, iteration is 1328 tenure 100
+[Tabu Search] Current value is 342220.000000, iteration is 1329 tenure 100
+[Tabu Search] Current value is 342238.000000, iteration is 1330 tenure 100
+[Tabu Search] Current value is 342256.000000, iteration is 1331 tenure 100
+[Tabu Search] Current value is 342274.000000, iteration is 1332 tenure 100
+[Tabu Search] Current value is 342299.000000, iteration is 1333 tenure 100
+[Tabu Search] Current value is 342316.000000, iteration is 1334 tenure 100
+[Tabu Search] Current value is 342333.000000, iteration is 1335 tenure 100
+[Tabu Search] Current value is 342350.000000, iteration is 1336 tenure 100
+[Tabu Search] Current value is 342367.000000, iteration is 1337 tenure 100
+[Tabu Search] Current value is 342384.000000, iteration is 1338 tenure 100
+[Tabu Search] Current value is 342401.000000, iteration is 1339 tenure 100
+[Tabu Search] Current value is 342418.000000, iteration is 1340 tenure 100
+[Tabu Search] Current value is 342435.000000, iteration is 1341 tenure 100
+[Tabu Search] Current value is 342452.000000, iteration is 1342 tenure 100
+[Tabu Search] Current value is 342477.000000, iteration is 1343 tenure 100
+[Tabu Search] Current value is 342493.000000, iteration is 1344 tenure 100
+[Tabu Search] Current value is 342509.000000, iteration is 1345 tenure 100
+[Tabu Search] Current value is 342525.000000, iteration is 1346 tenure 100
+[Tabu Search] Current value is 342540.000000, iteration is 1347 tenure 100
+[Tabu Search] Current value is 342555.000000, iteration is 1348 tenure 100
+[Tabu Search] Current value is 342551.000000, iteration is 1349 tenure 100
+[Tabu Search] Current value is 342565.000000, iteration is 1350 tenure 100
+[Tabu Search] Current value is 342579.000000, iteration is 1351 tenure 100
+[Tabu Search] Current value is 342593.000000, iteration is 1352 tenure 100
+[Tabu Search] Current value is 342607.000000, iteration is 1353 tenure 100
+[Tabu Search] Current value is 342621.000000, iteration is 1354 tenure 100
+[Tabu Search] Current value is 342635.000000, iteration is 1355 tenure 100
+[Tabu Search] Current value is 342649.000000, iteration is 1356 tenure 100
+[Tabu Search] Current value is 342663.000000, iteration is 1357 tenure 100
+[Tabu Search] Current value is 342676.000000, iteration is 1358 tenure 100
+[Tabu Search] Current value is 342689.000000, iteration is 1359 tenure 100
+[Tabu Search] Current value is 342664.000000, iteration is 1360 tenure 20
+[Tabu Search] Current value is 342640.000000, iteration is 1361 tenure 20
+[Tabu Search] Current value is 342616.000000, iteration is 1362 tenure 20
+[Tabu Search] Current value is 342592.000000, iteration is 1363 tenure 20
+[Tabu Search] Current value is 342567.000000, iteration is 1364 tenure 20
+[Tabu Search] Current value is 342543.000000, iteration is 1365 tenure 20
+[Tabu Search] Current value is 342519.000000, iteration is 1366 tenure 20
+[Tabu Search] Current value is 342495.000000, iteration is 1367 tenure 20
+[Tabu Search] Current value is 342472.000000, iteration is 1368 tenure 20
+[Tabu Search] Current value is 342449.000000, iteration is 1369 tenure 20
+[Tabu Search] Current value is 342426.000000, iteration is 1370 tenure 20
+[Tabu Search] Current value is 342403.000000, iteration is 1371 tenure 20
+[Tabu Search] Current value is 342380.000000, iteration is 1372 tenure 20
+[Tabu Search] Current value is 342358.000000, iteration is 1373 tenure 20
+[Tabu Search] Current value is 342336.000000, iteration is 1374 tenure 20
+[Tabu Search] Current value is 342314.000000, iteration is 1375 tenure 20
+[Tabu Search] Current value is 342292.000000, iteration is 1376 tenure 20
+[Tabu Search] Current value is 342270.000000, iteration is 1377 tenure 20
+[Tabu Search] Current value is 342248.000000, iteration is 1378 tenure 20
+[Tabu Search] Current value is 342227.000000, iteration is 1379 tenure 20
+[Tabu Search] Current value is 342206.000000, iteration is 1380 tenure 20
+[Tabu Search] Current value is 342186.000000, iteration is 1381 tenure 20
+[Tabu Search] Current value is 342166.000000, iteration is 1382 tenure 20
+[Tabu Search] Current value is 342146.000000, iteration is 1383 tenure 20
+[Tabu Search] Current value is 342127.000000, iteration is 1384 tenure 20
+[Tabu Search] Current value is 342108.000000, iteration is 1385 tenure 20
+[Tabu Search] Current value is 342089.000000, iteration is 1386 tenure 20
+[Tabu Search] Current value is 342071.000000, iteration is 1387 tenure 20
+[Tabu Search] Current value is 342053.000000, iteration is 1388 tenure 20
+[Tabu Search] Current value is 342035.000000, iteration is 1389 tenure 20
+[Tabu Search] Current value is 342017.000000, iteration is 1390 tenure 20
+[Tabu Search] Current value is 341999.000000, iteration is 1391 tenure 20
+[Tabu Search] Current value is 341981.000000, iteration is 1392 tenure 20
+[Tabu Search] Current value is 341964.000000, iteration is 1393 tenure 20
+[Tabu Search] Current value is 341947.000000, iteration is 1394 tenure 20
+[Tabu Search] Current value is 341930.000000, iteration is 1395 tenure 20
+[Tabu Search] Current value is 341913.000000, iteration is 1396 tenure 20
+[Tabu Search] Current value is 341896.000000, iteration is 1397 tenure 20
+[Tabu Search] Current value is 341879.000000, iteration is 1398 tenure 20
+[Tabu Search] Current value is 341862.000000, iteration is 1399 tenure 20
+[Tabu Search] Current value is 341845.000000, iteration is 1400 tenure 20
+[Tabu Search] Current value is 341828.000000, iteration is 1401 tenure 20
+[Tabu Search] Current value is 341812.000000, iteration is 1402 tenure 20
+[Tabu Search] Current value is 341796.000000, iteration is 1403 tenure 20
+[Tabu Search] Current value is 341780.000000, iteration is 1404 tenure 20
+[Tabu Search] Current value is 341765.000000, iteration is 1405 tenure 20
+[Tabu Search] Current value is 341750.000000, iteration is 1406 tenure 20
+[Tabu Search] Current value is 341736.000000, iteration is 1407 tenure 20
+[Tabu Search] Current value is 341722.000000, iteration is 1408 tenure 20
+[Tabu Search] Current value is 341708.000000, iteration is 1409 tenure 20
+[Tabu Search] Current value is 341694.000000, iteration is 1410 tenure 20
+[Tabu Search] Current value is 341680.000000, iteration is 1411 tenure 20
+[Tabu Search] Current value is 341666.000000, iteration is 1412 tenure 20
+[Tabu Search] Current value is 341652.000000, iteration is 1413 tenure 20
+[Tabu Search] Current value is 341638.000000, iteration is 1414 tenure 20
+[Tabu Search] Current value is 341625.000000, iteration is 1415 tenure 20
+[Tabu Search] Current value is 341612.000000, iteration is 1416 tenure 20
+[Tabu Search] Current value is 341601.000000, iteration is 1417 tenure 20
+[Tabu Search] Current value is 341590.000000, iteration is 1418 tenure 20
+[Tabu Search] Current value is 341583.000000, iteration is 1419 tenure 20
+[Tabu Search] Current value is 341577.000000, iteration is 1420 tenure 20
+[Tabu Search] Current value is 341577.000000, iteration is 1421 tenure 20
+[Tabu Search] Current value is 341577.000000, iteration is 1422 tenure 20
+[Tabu Search] Current value is 341578.000000, iteration is 1423 tenure 20
+[Tabu Search] Current value is 341579.000000, iteration is 1424 tenure 20
+[Tabu Search] Current value is 341580.000000, iteration is 1425 tenure 20
+[Tabu Search] Current value is 341582.000000, iteration is 1426 tenure 20
+[Tabu Search] Current value is 341584.000000, iteration is 1427 tenure 20
+[Tabu Search] Current value is 341586.000000, iteration is 1428 tenure 20
+[Tabu Search] Current value is 341588.000000, iteration is 1429 tenure 20
+[Tabu Search] Current value is 341591.000000, iteration is 1430 tenure 20
+[Tabu Search] Current value is 341594.000000, iteration is 1431 tenure 20
+[Tabu Search] Current value is 341597.000000, iteration is 1432 tenure 20
+[Tabu Search] Current value is 341600.000000, iteration is 1433 tenure 20
+[Tabu Search] Current value is 341603.000000, iteration is 1434 tenure 20
+[Tabu Search] Current value is 341607.000000, iteration is 1435 tenure 20
+[Tabu Search] Current value is 341611.000000, iteration is 1436 tenure 20
+[Tabu Search] Current value is 341615.000000, iteration is 1437 tenure 20
+[Tabu Search] Current value is 341620.000000, iteration is 1438 tenure 20
+[Tabu Search] Current value is 341625.000000, iteration is 1439 tenure 20
+[Tabu Search] Current value is 341630.000000, iteration is 1440 tenure 100
+[Tabu Search] Current value is 341635.000000, iteration is 1441 tenure 100
+[Tabu Search] Current value is 341642.000000, iteration is 1442 tenure 100
+[Tabu Search] Current value is 341649.000000, iteration is 1443 tenure 100
+[Tabu Search] Current value is 341657.000000, iteration is 1444 tenure 100
+[Tabu Search] Current value is 341665.000000, iteration is 1445 tenure 100
+[Tabu Search] Current value is 341673.000000, iteration is 1446 tenure 100
+[Tabu Search] Current value is 341681.000000, iteration is 1447 tenure 100
+[Tabu Search] Current value is 341689.000000, iteration is 1448 tenure 100
+[Tabu Search] Current value is 341697.000000, iteration is 1449 tenure 100
+[Tabu Search] Current value is 341706.000000, iteration is 1450 tenure 100
+[Tabu Search] Current value is 341715.000000, iteration is 1451 tenure 100
+[Tabu Search] Current value is 341724.000000, iteration is 1452 tenure 100
+[Tabu Search] Current value is 341733.000000, iteration is 1453 tenure 100
+[Tabu Search] Current value is 341743.000000, iteration is 1454 tenure 100
+[Tabu Search] Current value is 341754.000000, iteration is 1455 tenure 100
+[Tabu Search] Current value is 341766.000000, iteration is 1456 tenure 100
+[Tabu Search] Current value is 341778.000000, iteration is 1457 tenure 100
+[Tabu Search] Current value is 341790.000000, iteration is 1458 tenure 100
+[Tabu Search] Current value is 341802.000000, iteration is 1459 tenure 100
+[Tabu Search] Current value is 341818.000000, iteration is 1460 tenure 100
+[Tabu Search] Current value is 341836.000000, iteration is 1461 tenure 100
+[Tabu Search] Current value is 341858.000000, iteration is 1462 tenure 100
+[Tabu Search] Current value is 341880.000000, iteration is 1463 tenure 100
+[Tabu Search] Current value is 341904.000000, iteration is 1464 tenure 100
+[Tabu Search] Current value is 341928.000000, iteration is 1465 tenure 100
+[Tabu Search] Current value is 341952.000000, iteration is 1466 tenure 100
+[Tabu Search] Current value is 341976.000000, iteration is 1467 tenure 100
+[Tabu Search] Current value is 342000.000000, iteration is 1468 tenure 100
+[Tabu Search] Current value is 342023.000000, iteration is 1469 tenure 100
+[Tabu Search] Current value is 342046.000000, iteration is 1470 tenure 100
+[Tabu Search] Current value is 342069.000000, iteration is 1471 tenure 100
+[Tabu Search] Current value is 342092.000000, iteration is 1472 tenure 100
+[Tabu Search] Current value is 342115.000000, iteration is 1473 tenure 100
+[Tabu Search] Current value is 342137.000000, iteration is 1474 tenure 100
+[Tabu Search] Current value is 342159.000000, iteration is 1475 tenure 100
+[Tabu Search] Current value is 342181.000000, iteration is 1476 tenure 100
+[Tabu Search] Current value is 342203.000000, iteration is 1477 tenure 100
+[Tabu Search] Current value is 342225.000000, iteration is 1478 tenure 100
+[Tabu Search] Current value is 342247.000000, iteration is 1479 tenure 100
+[Tabu Search] Current value is 342268.000000, iteration is 1480 tenure 100
+[Tabu Search] Current value is 342289.000000, iteration is 1481 tenure 100
+[Tabu Search] Current value is 342309.000000, iteration is 1482 tenure 100
+[Tabu Search] Current value is 342329.000000, iteration is 1483 tenure 100
+[Tabu Search] Current value is 342349.000000, iteration is 1484 tenure 100
+[Tabu Search] Current value is 342368.000000, iteration is 1485 tenure 100
+[Tabu Search] Current value is 342387.000000, iteration is 1486 tenure 100
+[Tabu Search] Current value is 342406.000000, iteration is 1487 tenure 100
+[Tabu Search] Current value is 342431.000000, iteration is 1488 tenure 100
+[Tabu Search] Current value is 342449.000000, iteration is 1489 tenure 100
+[Tabu Search] Current value is 342474.000000, iteration is 1490 tenure 100
+[Tabu Search] Current value is 342492.000000, iteration is 1491 tenure 100
+[Tabu Search] Current value is 342510.000000, iteration is 1492 tenure 100
+[Tabu Search] Current value is 342528.000000, iteration is 1493 tenure 100
+[Tabu Search] Current value is 342545.000000, iteration is 1494 tenure 100
+[Tabu Search] Current value is 342562.000000, iteration is 1495 tenure 100
+[Tabu Search] Current value is 342579.000000, iteration is 1496 tenure 100
+[Tabu Search] Current value is 342596.000000, iteration is 1497 tenure 100
+[Tabu Search] Current value is 342613.000000, iteration is 1498 tenure 100
+[Tabu Search] Current value is 342630.000000, iteration is 1499 tenure 100
+[Tabu Search] Current value is 342647.000000, iteration is 1500 tenure 100
+[Tabu Search] Current value is 342664.000000, iteration is 1501 tenure 100
+[Tabu Search] Current value is 342681.000000, iteration is 1502 tenure 100
+[Tabu Search] Current value is 342697.000000, iteration is 1503 tenure 100
+[Tabu Search] Current value is 342713.000000, iteration is 1504 tenure 100
+[Tabu Search] Current value is 342729.000000, iteration is 1505 tenure 100
+[Tabu Search] Current value is 342744.000000, iteration is 1506 tenure 100
+[Tabu Search] Current value is 342759.000000, iteration is 1507 tenure 100
+[Tabu Search] Current value is 342773.000000, iteration is 1508 tenure 100
+[Tabu Search] Current value is 342787.000000, iteration is 1509 tenure 100
+[Tabu Search] Current value is 342801.000000, iteration is 1510 tenure 100
+[Tabu Search] Current value is 342815.000000, iteration is 1511 tenure 100
+[Tabu Search] Current value is 342829.000000, iteration is 1512 tenure 100
+[Tabu Search] Current value is 342843.000000, iteration is 1513 tenure 100
+[Tabu Search] Current value is 342857.000000, iteration is 1514 tenure 100
+[Tabu Search] Current value is 342871.000000, iteration is 1515 tenure 100
+[Tabu Search] Current value is 342884.000000, iteration is 1516 tenure 100
+[Tabu Search] Current value is 342897.000000, iteration is 1517 tenure 100
+[Tabu Search] Current value is 342908.000000, iteration is 1518 tenure 100
+[Tabu Search] Current value is 342919.000000, iteration is 1519 tenure 100
+[Tabu Search] Current value is 342894.000000, iteration is 1520 tenure 20
+[Tabu Search] Current value is 342869.000000, iteration is 1521 tenure 20
+[Tabu Search] Current value is 342845.000000, iteration is 1522 tenure 20
+[Tabu Search] Current value is 342821.000000, iteration is 1523 tenure 20
+[Tabu Search] Current value is 342797.000000, iteration is 1524 tenure 20
+[Tabu Search] Current value is 342773.000000, iteration is 1525 tenure 20
+[Tabu Search] Current value is 342749.000000, iteration is 1526 tenure 20
+[Tabu Search] Current value is 342726.000000, iteration is 1527 tenure 20
+[Tabu Search] Current value is 342703.000000, iteration is 1528 tenure 20
+[Tabu Search] Current value is 342680.000000, iteration is 1529 tenure 20
+[Tabu Search] Current value is 342657.000000, iteration is 1530 tenure 20
+[Tabu Search] Current value is 342634.000000, iteration is 1531 tenure 20
+[Tabu Search] Current value is 342612.000000, iteration is 1532 tenure 20
+[Tabu Search] Current value is 342590.000000, iteration is 1533 tenure 20
+[Tabu Search] Current value is 342568.000000, iteration is 1534 tenure 20
+[Tabu Search] Current value is 342546.000000, iteration is 1535 tenure 20
+[Tabu Search] Current value is 342524.000000, iteration is 1536 tenure 20
+[Tabu Search] Current value is 342502.000000, iteration is 1537 tenure 20
+[Tabu Search] Current value is 342480.000000, iteration is 1538 tenure 20
+[Tabu Search] Current value is 342458.000000, iteration is 1539 tenure 20
+[Tabu Search] Current value is 342437.000000, iteration is 1540 tenure 20
+[Tabu Search] Current value is 342416.000000, iteration is 1541 tenure 20
+[Tabu Search] Current value is 342396.000000, iteration is 1542 tenure 20
+[Tabu Search] Current value is 342376.000000, iteration is 1543 tenure 20
+[Tabu Search] Current value is 342356.000000, iteration is 1544 tenure 20
+[Tabu Search] Current value is 342337.000000, iteration is 1545 tenure 20
+[Tabu Search] Current value is 342318.000000, iteration is 1546 tenure 20
+[Tabu Search] Current value is 342299.000000, iteration is 1547 tenure 20
+[Tabu Search] Current value is 342281.000000, iteration is 1548 tenure 20
+[Tabu Search] Current value is 342263.000000, iteration is 1549 tenure 20
+[Tabu Search] Current value is 342245.000000, iteration is 1550 tenure 20
+[Tabu Search] Current value is 342227.000000, iteration is 1551 tenure 20
+[Tabu Search] Current value is 342209.000000, iteration is 1552 tenure 20
+[Tabu Search] Current value is 342192.000000, iteration is 1553 tenure 20
+[Tabu Search] Current value is 342175.000000, iteration is 1554 tenure 20
+[Tabu Search] Current value is 342158.000000, iteration is 1555 tenure 20
+[Tabu Search] Current value is 342141.000000, iteration is 1556 tenure 20
+[Tabu Search] Current value is 342124.000000, iteration is 1557 tenure 20
+[Tabu Search] Current value is 342107.000000, iteration is 1558 tenure 20
+[Tabu Search] Current value is 342090.000000, iteration is 1559 tenure 20
+[Tabu Search] Current value is 342073.000000, iteration is 1560 tenure 20
+[Tabu Search] Current value is 342056.000000, iteration is 1561 tenure 20
+[Tabu Search] Current value is 342040.000000, iteration is 1562 tenure 20
+[Tabu Search] Current value is 342024.000000, iteration is 1563 tenure 20
+[Tabu Search] Current value is 342008.000000, iteration is 1564 tenure 20
+[Tabu Search] Current value is 341992.000000, iteration is 1565 tenure 20
+[Tabu Search] Current value is 341977.000000, iteration is 1566 tenure 20
+[Tabu Search] Current value is 341962.000000, iteration is 1567 tenure 20
+[Tabu Search] Current value is 341947.000000, iteration is 1568 tenure 20
+[Tabu Search] Current value is 341933.000000, iteration is 1569 tenure 20
+[Tabu Search] Current value is 341919.000000, iteration is 1570 tenure 20
+[Tabu Search] Current value is 341905.000000, iteration is 1571 tenure 20
+[Tabu Search] Current value is 341891.000000, iteration is 1572 tenure 20
+[Tabu Search] Current value is 341877.000000, iteration is 1573 tenure 20
+[Tabu Search] Current value is 341863.000000, iteration is 1574 tenure 20
+[Tabu Search] Current value is 341849.000000, iteration is 1575 tenure 20
+[Tabu Search] Current value is 341835.000000, iteration is 1576 tenure 20
+[Tabu Search] Current value is 341822.000000, iteration is 1577 tenure 20
+[Tabu Search] Current value is 341809.000000, iteration is 1578 tenure 20
+[Tabu Search] Current value is 341797.000000, iteration is 1579 tenure 20
+[Tabu Search] Current value is 341785.000000, iteration is 1580 tenure 20
+[Tabu Search] Current value is 341773.000000, iteration is 1581 tenure 20
+[Tabu Search] Current value is 341761.000000, iteration is 1582 tenure 20
+[Tabu Search] Current value is 341750.000000, iteration is 1583 tenure 20
+[Tabu Search] Current value is 341739.000000, iteration is 1584 tenure 20
+[Tabu Search] Current value is 341728.000000, iteration is 1585 tenure 20
+[Tabu Search] Current value is 341718.000000, iteration is 1586 tenure 20
+[Tabu Search] Current value is 341709.000000, iteration is 1587 tenure 20
+[Tabu Search] Current value is 341700.000000, iteration is 1588 tenure 20
+[Tabu Search] Current value is 341691.000000, iteration is 1589 tenure 20
+[Tabu Search] Current value is 341682.000000, iteration is 1590 tenure 20
+[Tabu Search] Current value is 341674.000000, iteration is 1591 tenure 20
+[Tabu Search] Current value is 341666.000000, iteration is 1592 tenure 20
+[Tabu Search] Current value is 341658.000000, iteration is 1593 tenure 20
+[Tabu Search] Current value is 341650.000000, iteration is 1594 tenure 20
+[Tabu Search] Current value is 341642.000000, iteration is 1595 tenure 20
+[Tabu Search] Current value is 341634.000000, iteration is 1596 tenure 20
+[Tabu Search] Current value is 341627.000000, iteration is 1597 tenure 20
+[Tabu Search] Current value is 341620.000000, iteration is 1598 tenure 20
+[Tabu Search] Current value is 341615.000000, iteration is 1599 tenure 20
+[Tabu Search] Current value is 341610.000000, iteration is 1600 tenure 100
+[Tabu Search] Current value is 341605.000000, iteration is 1601 tenure 100
+[Tabu Search] Current value is 341600.000000, iteration is 1602 tenure 100
+[Tabu Search] Current value is 341596.000000, iteration is 1603 tenure 100
+[Tabu Search] Current value is 341592.000000, iteration is 1604 tenure 100
+[Tabu Search] Current value is 341588.000000, iteration is 1605 tenure 100
+[Tabu Search] Current value is 341585.000000, iteration is 1606 tenure 100
+[Tabu Search] Current value is 341582.000000, iteration is 1607 tenure 100
+[Tabu Search] Current value is 341579.000000, iteration is 1608 tenure 100
+[Tabu Search] Current value is 341576.000000, iteration is 1609 tenure 100
+[Tabu Search] Current value is 341573.000000, iteration is 1610 tenure 100
+[Tabu Search] Current value is 341571.000000, iteration is 1611 tenure 100
+[Tabu Search] Current value is 341569.000000, iteration is 1612 tenure 100
+[Tabu Search] Current value is 341567.000000, iteration is 1613 tenure 100
+[Tabu Search] Current value is 341565.000000, iteration is 1614 tenure 100
+[Tabu Search] Current value is 341564.000000, iteration is 1615 tenure 100
+[Tabu Search] Current value is 341563.000000, iteration is 1616 tenure 100
+[Tabu Search] Current value is 341562.000000, iteration is 1617 tenure 100
+[Tabu Search] Current value is 341562.000000, iteration is 1618 tenure 100
+[Tabu Search] Current value is 341568.000000, iteration is 1619 tenure 100
+[Tabu Search] Current value is 341575.000000, iteration is 1620 tenure 100
+[Tabu Search] Current value is 341593.000000, iteration is 1621 tenure 100
+[Tabu Search] Current value is 341611.000000, iteration is 1622 tenure 100
+[Tabu Search] Current value is 341630.000000, iteration is 1623 tenure 100
+[Tabu Search] Current value is 341654.000000, iteration is 1624 tenure 100
+[Tabu Search] Current value is 341678.000000, iteration is 1625 tenure 100
+[Tabu Search] Current value is 341702.000000, iteration is 1626 tenure 100
+[Tabu Search] Current value is 341726.000000, iteration is 1627 tenure 100
+[Tabu Search] Current value is 341749.000000, iteration is 1628 tenure 100
+[Tabu Search] Current value is 341772.000000, iteration is 1629 tenure 100
+[Tabu Search] Current value is 341795.000000, iteration is 1630 tenure 100
+[Tabu Search] Current value is 341818.000000, iteration is 1631 tenure 100
+[Tabu Search] Current value is 341841.000000, iteration is 1632 tenure 100
+[Tabu Search] Current value is 341863.000000, iteration is 1633 tenure 100
+[Tabu Search] Current value is 341885.000000, iteration is 1634 tenure 100
+[Tabu Search] Current value is 341909.000000, iteration is 1635 tenure 100
+[Tabu Search] Current value is 341933.000000, iteration is 1636 tenure 100
+[Tabu Search] Current value is 341955.000000, iteration is 1637 tenure 100
+[Tabu Search] Current value is 341977.000000, iteration is 1638 tenure 100
+[Tabu Search] Current value is 341999.000000, iteration is 1639 tenure 100
+[Tabu Search] Current value is 342021.000000, iteration is 1640 tenure 100
+[Tabu Search] Current value is 342042.000000, iteration is 1641 tenure 100
+[Tabu Search] Current value is 342063.000000, iteration is 1642 tenure 100
+[Tabu Search] Current value is 342083.000000, iteration is 1643 tenure 100
+[Tabu Search] Current value is 342103.000000, iteration is 1644 tenure 100
+[Tabu Search] Current value is 342123.000000, iteration is 1645 tenure 100
+[Tabu Search] Current value is 342142.000000, iteration is 1646 tenure 100
+[Tabu Search] Current value is 342161.000000, iteration is 1647 tenure 100
+[Tabu Search] Current value is 342180.000000, iteration is 1648 tenure 100
+[Tabu Search] Current value is 342198.000000, iteration is 1649 tenure 100
+[Tabu Search] Current value is 342216.000000, iteration is 1650 tenure 100
+[Tabu Search] Current value is 342234.000000, iteration is 1651 tenure 100
+[Tabu Search] Current value is 342252.000000, iteration is 1652 tenure 100
+[Tabu Search] Current value is 342277.000000, iteration is 1653 tenure 100
+[Tabu Search] Current value is 342294.000000, iteration is 1654 tenure 100
+[Tabu Search] Current value is 342311.000000, iteration is 1655 tenure 100
+[Tabu Search] Current value is 342328.000000, iteration is 1656 tenure 100
+[Tabu Search] Current value is 342345.000000, iteration is 1657 tenure 100
+[Tabu Search] Current value is 342362.000000, iteration is 1658 tenure 100
+[Tabu Search] Current value is 342379.000000, iteration is 1659 tenure 100
+[Tabu Search] Current value is 342396.000000, iteration is 1660 tenure 100
+[Tabu Search] Current value is 342413.000000, iteration is 1661 tenure 100
+[Tabu Search] Current value is 342430.000000, iteration is 1662 tenure 100
+[Tabu Search] Current value is 342455.000000, iteration is 1663 tenure 100
+[Tabu Search] Current value is 342471.000000, iteration is 1664 tenure 100
+[Tabu Search] Current value is 342487.000000, iteration is 1665 tenure 100
+[Tabu Search] Current value is 342503.000000, iteration is 1666 tenure 100
+[Tabu Search] Current value is 342518.000000, iteration is 1667 tenure 100
+[Tabu Search] Current value is 342533.000000, iteration is 1668 tenure 100
+[Tabu Search] Current value is 342529.000000, iteration is 1669 tenure 100
+[Tabu Search] Current value is 342543.000000, iteration is 1670 tenure 100
+[Tabu Search] Current value is 342557.000000, iteration is 1671 tenure 100
+[Tabu Search] Current value is 342571.000000, iteration is 1672 tenure 100
+[Tabu Search] Current value is 342585.000000, iteration is 1673 tenure 100
+[Tabu Search] Current value is 342599.000000, iteration is 1674 tenure 100
+[Tabu Search] Current value is 342613.000000, iteration is 1675 tenure 100
+[Tabu Search] Current value is 342627.000000, iteration is 1676 tenure 100
+[Tabu Search] Current value is 342641.000000, iteration is 1677 tenure 100
+[Tabu Search] Current value is 342654.000000, iteration is 1678 tenure 100
+[Tabu Search] Current value is 342667.000000, iteration is 1679 tenure 100
+[Tabu Search] Current value is 342642.000000, iteration is 1680 tenure 20
+[Tabu Search] Current value is 342618.000000, iteration is 1681 tenure 20
+[Tabu Search] Current value is 342594.000000, iteration is 1682 tenure 20
+[Tabu Search] Current value is 342570.000000, iteration is 1683 tenure 20
+[Tabu Search] Current value is 342545.000000, iteration is 1684 tenure 20
+[Tabu Search] Current value is 342521.000000, iteration is 1685 tenure 20
+[Tabu Search] Current value is 342497.000000, iteration is 1686 tenure 20
+[Tabu Search] Current value is 342473.000000, iteration is 1687 tenure 20
+[Tabu Search] Current value is 342450.000000, iteration is 1688 tenure 20
+[Tabu Search] Current value is 342427.000000, iteration is 1689 tenure 20
+[Tabu Search] Current value is 342404.000000, iteration is 1690 tenure 20
+[Tabu Search] Current value is 342381.000000, iteration is 1691 tenure 20
+[Tabu Search] Current value is 342358.000000, iteration is 1692 tenure 20
+[Tabu Search] Current value is 342336.000000, iteration is 1693 tenure 20
+[T

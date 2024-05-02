@@ -1,0 +1,4834 @@
+../../tsp -generate_random 2000 -time_limit 600 -greedy 1 0 -VNS 7 -seed 0 
+
+
+available parameters (vers. 21-Apr-2024) --------------------------------------------------
+-file <input_file> NULL
+-time_limit <timelimit> 600.000000
+-generate_random <nnodes> 2000
+-seed <random_seed> 0
+
+ALGORITHMS:
+-greedy <starting_mode> 1 <grasp_mode> 0
+-extra_mileage <starting_mode> -1
+-two_opt
+-VNS <kick_neighborhood> 7
+-SA <iterations> -1
+-tabu_search <tenure_mode> -1 <aspiration> -1
+-genetic_algorithm <repair_mode> -1 <cutting_type> -1
+-tsp_opt <model_type> -1
+-hard_fixing <probability> -1.000000
+-local_branching <branching_constraint> -1
+
+enter -help or --help for help
+----------------------------------------------------------------------------------------------
+
+
+_________________________________________________________
+Greedy Heuristic:
+
+ [Greedy Heuristic] Random starting position is node 226 
+
+_________________________________________________________
+Variable Neighborhood Search:
+
+
+[7-OPT kick] Total cost after kick is 363406.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+ 	[VNS] Update in best_val 341216.000000
+
+[7-OPT kick] Total cost after kick is 375452.000000
+
+[2-OPT Refining] Total cost after refining is 341629.000000
+
+[7-OPT kick] Total cost after kick is 372872.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 375735.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 374914.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 374696.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 368685.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 376172.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 375656.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 370953.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 357859.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 357834.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 357834.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 377604.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 384413.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 385680.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 388171.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 376796.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 377871.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 365512.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 370140.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 373482.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 376482.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 381366.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 369987.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 374413.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 388500.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 365248.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 362904.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 362904.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 373601.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 386010.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 383787.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 370185.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 376447.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 385117.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 379156.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 389544.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 391709.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 373264.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 361407.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 361407.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 361407.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 366098.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 363032.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 363032.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 355851.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 369737.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 372324.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 379673.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 379673.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 367131.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 378032.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 378032.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 380653.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 379872.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 374035.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 380876.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 377142.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 375647.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 384816.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 376356.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 372760.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 375226.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 372484.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 376077.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 376077.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 365251.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 367928.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 376183.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 384059.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 368776.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 362021.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 362021.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 376036.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 368587.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 373838.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 370317.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 370919.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 384703.000000
+
+[2-OPT Refining] Total cost after refining is 341710.000000
+
+[7-OPT kick] Total cost after kick is 379652.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 356586.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 365729.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 376682.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 390880.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 379475.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 361278.000000
+
+[2-OPT Refining] Total cost after refining is 341216.000000
+
+[7-OPT kick] Total cost after kick is 358842.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+ 	[VNS] Update in best_val 341163.000000
+
+[7-OPT kick] Total cost after kick is 358543.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 368624.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 386525.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 373420.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 377098.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371407.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 367037.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371000.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 367788.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 363391.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 357868.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361604.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372583.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375777.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361015.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 359855.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 359855.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 376671.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372225.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 373612.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 385097.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 379042.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372749.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 370648.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 370648.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 370648.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 377022.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 382773.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369290.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 363506.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 368470.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 377557.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 377557.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372630.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 383036.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 383383.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 385018.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369993.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369561.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 356631.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 362709.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 362709.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 388160.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369995.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375677.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374273.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 378772.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 380641.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 381773.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369667.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369667.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 364823.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 352101.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369950.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 366282.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 382812.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 383263.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 381871.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375662.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 382102.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 382102.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 377580.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 377314.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 377314.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 373902.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361705.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374986.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 382405.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375236.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371785.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371785.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371785.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 359981.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371526.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 370216.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369176.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 370627.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369020.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369020.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 356964.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361059.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 378247.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 388280.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 388280.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 387103.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369695.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 367712.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 377642.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 377642.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374862.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 373317.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369776.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374021.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 378321.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 370830.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 370830.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 367581.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 364290.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 364290.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 377288.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 379933.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372584.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 368419.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 384629.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 366790.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374028.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374186.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 364571.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 368549.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 368549.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361810.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 360741.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 380020.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 368302.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 365897.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 364643.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371659.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372497.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 363710.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 365925.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 382854.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 382854.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 385840.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369915.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369019.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371066.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374410.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 376034.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 382197.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 382197.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369175.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 367776.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 354116.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 363058.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 363058.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 363058.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 386476.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 359346.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 353038.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 364548.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361884.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361470.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361470.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 379678.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 379055.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 384707.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 379941.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 379941.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 387567.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371093.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 370175.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372183.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 378173.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 373980.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 370601.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 379416.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372404.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 359680.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372141.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374386.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 383217.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 380227.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 381368.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374871.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 376593.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 368983.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371994.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 383744.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 383744.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 366555.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 362447.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 362447.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375388.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 379665.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 379665.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 384306.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 385547.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 364566.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 356993.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 356993.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 356993.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371916.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369978.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 365007.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369745.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369355.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 373476.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 373476.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 356409.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 352311.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 352311.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361099.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374163.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374163.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 382719.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 377447.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 365563.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 382011.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 362766.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371624.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374722.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374114.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371025.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 352890.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 378674.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 376586.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 373937.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 359044.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 359044.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 379672.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374792.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 376916.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 385804.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 378681.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 378116.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 378116.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 381651.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 378303.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 366403.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375592.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375592.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 379326.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 373545.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 383951.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 383711.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 367955.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375848.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 393643.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372864.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371248.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371248.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 365883.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 371864.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375689.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 378298.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 380632.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 367447.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 367447.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 365196.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 369555.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 378381.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372151.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372151.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 376761.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 391176.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361146.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361098.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361098.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361098.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 361098.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 380884.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 392613.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 383054.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 360269.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375695.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 366824.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 360284.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 360284.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 360897.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 366433.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 372258.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375267.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 374981.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 382237.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 381095.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375648.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 375648.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 373959.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 376895.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 388400.000000
+
+[2-OPT Refining] Total cost after refining is 341163.000000
+
+[7-OPT kick] Total cost after kick is 383992.000000
+
+[2-OPT Refining] Total cost after refining is 340919.000000
+
+ 	[VNS] Update in best_val 340919.000000
+
+[7-OPT kick] Total cost after kick is 361681.000000
+
+[2-OPT Refining] Total cost after refining is 340919.000000
+
+[7-OPT kick] Total cost after kick is 364154.000000
+
+[2-OPT Refining] Total cost after refining is 340919.000000
+
+[7-OPT kick] Total cost after kick is 364154.000000
+
+[2-OPT Refining] Total cost after refining is 340919.000000
+
+[7-OPT kick] Total cost after kick is 368664.000000
+
+[2-OPT Refining] Total cost after refining is 340919.000000
+
+[7-OPT kick] Total cost after kick is 379223.000000
+
+[2-OPT Refining] Total cost after refining is 340919.000000
+
+[7-OPT kick] Total cost after kick is 379560.000000
+
+[2-OPT Refining] Total cost after refining is 340919.000000
+
+[7-OPT kick] Total cost after kick is 367074.000000
+
+[2-OPT Refining] Total cost after refining is 340919.000000
+
+[7-OPT kick] Total cost after kick is 367038.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+ 	[VNS] Update in best_val 340565.000000
+
+[7-OPT kick] Total cost after kick is 366489.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 375417.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 375417.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378369.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 367629.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 363903.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 362796.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 377538.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 379040.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 397585.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 397884.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 397884.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 385321.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 360841.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 377112.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 377112.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 376846.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 385838.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374929.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 367746.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 357675.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 365374.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 367022.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369562.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369562.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369562.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369087.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 366265.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 372202.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 391511.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 391511.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 373017.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 373599.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 373233.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374648.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 370992.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 387493.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 373695.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 361818.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 365371.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 373173.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 360419.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374313.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 384916.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 377779.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 358350.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 358350.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 375133.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 376580.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 372655.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368734.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 361636.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 371528.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 371360.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 375872.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 375996.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368039.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 372191.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 370013.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 364044.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 372958.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 373780.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 360548.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 364120.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 384912.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 388427.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 375468.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 367810.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 377364.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 377364.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 383459.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 383760.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 389889.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 360636.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 361544.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 361544.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 361544.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 383774.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 373069.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 370460.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374857.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 379728.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378496.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378496.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 371592.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 370487.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 377763.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 383800.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368012.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 352659.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 352659.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 364772.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368296.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374477.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 363732.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 359750.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368839.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369931.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 384463.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 363137.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378587.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378587.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378778.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368982.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 376347.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374991.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 384212.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 371980.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 372521.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369784.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378788.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369565.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 385297.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 394634.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 367168.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 361674.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 371234.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 370671.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368680.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 363709.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368950.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368536.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 373018.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 376547.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374722.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 364844.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369470.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 356972.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 356972.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 362592.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 361035.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 361035.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 363876.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 379820.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 384800.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 384424.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 386986.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 381528.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374559.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 371474.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 382654.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 376873.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378752.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 376010.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 375249.000000
+
+[2-OPT Refining] Total cost after refining is 340595.000000
+
+[7-OPT kick] Total cost after kick is 376661.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 372540.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 370104.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 363242.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 393283.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369527.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 351315.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 351315.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 380153.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369732.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378272.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 376494.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 376494.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 382204.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 362268.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 354965.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374235.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 371389.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 380994.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378537.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 364042.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 379155.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 373173.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374173.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 364184.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 359254.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 379760.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 386541.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 388366.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369454.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369141.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369141.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374350.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369532.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 371232.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 379170.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 362677.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 375545.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 366183.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 360494.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 360494.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 375612.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369478.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 362932.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 376109.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 377640.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369444.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 381093.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368794.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378911.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 386734.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 367718.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 367718.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 363917.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368761.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368761.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368761.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 375959.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368910.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 357642.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368905.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368905.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368905.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 360218.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 356526.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 356526.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368264.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374415.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369019.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378071.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378071.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 372523.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 392603.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 384152.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 366029.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 366029.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 366479.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 371061.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 383707.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 378868.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 375972.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369748.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369748.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 377270.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 366759.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368197.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 365176.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368689.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 374066.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 368396.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 365473.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 365473.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 362279.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 382758.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 382633.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 372083.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 372083.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 383772.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 373909.000000
+
+[2-OPT Refining] Total cost after refining is 340565.000000
+
+[7-OPT kick] Total cost after kick is 369216.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+ 	[VNS] Update in best_val 340318.000000
+
+[7-OPT kick] Total cost after kick is 372578.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 379799.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 373952.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 379380.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374030.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 384651.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 384651.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378833.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376086.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369694.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369210.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369210.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369210.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 389667.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371420.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368835.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374653.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364762.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376611.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375151.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372814.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372814.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376590.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 382198.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 382198.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 382302.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 365561.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375630.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375630.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366072.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366704.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380826.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366316.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369981.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372816.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376580.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 367210.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 351796.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362594.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362594.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 373540.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 384185.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 379835.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 365131.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375635.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371028.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 363041.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362089.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362089.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 365876.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371228.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376021.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 356671.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 363261.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378129.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369767.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369767.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371718.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 367596.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371125.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 383534.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 381173.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 382362.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 382362.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374862.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371525.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368024.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371370.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 367957.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 359105.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 387447.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378601.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378612.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 343710.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 344415.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 344415.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 381187.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371169.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371931.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366161.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375342.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 379477.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370064.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362977.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364729.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 367774.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 363211.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376965.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 381244.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 382397.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 373226.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374998.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375603.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366146.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369852.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368818.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369720.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374441.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366896.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 357661.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 360379.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 373102.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374533.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 361434.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368658.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368658.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 356351.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 353832.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 353832.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376023.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 377081.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364127.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 361773.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 356361.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 355939.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 356266.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 358965.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 358965.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368396.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369305.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369466.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374750.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370512.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372068.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 355187.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 361057.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 382722.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378070.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 390593.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371911.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374789.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376894.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 382409.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380228.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371244.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380331.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 373563.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364518.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362497.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 355494.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 381965.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369751.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364769.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366906.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 367476.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374643.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 382321.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 358825.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 358825.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364616.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 363843.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366813.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 383646.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 386953.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376538.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369201.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364723.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371030.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 387132.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380542.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362213.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 354694.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 359770.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370589.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 377081.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380255.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375366.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 373719.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 386951.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 379178.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 373613.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372829.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374783.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375103.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 379650.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 377232.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378490.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375731.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 373328.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372491.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 381451.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 377251.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374122.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369795.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 367681.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 363393.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370561.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 373720.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 377110.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 359593.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 356906.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 356906.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368370.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 360561.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369645.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372914.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375856.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368248.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380595.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378300.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 373507.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371911.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368188.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364248.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 361442.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366933.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 360389.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366537.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368128.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362241.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362553.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362167.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380006.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380006.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372629.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 365441.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364197.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370959.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 365779.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375591.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 379142.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371387.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364591.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 377673.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371499.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371604.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364458.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362218.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369171.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 367688.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 367688.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366298.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370569.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 373918.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 381965.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 357802.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 356412.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 365732.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370075.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 365738.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 365738.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364061.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 365904.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 365904.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366678.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364655.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378203.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372681.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372681.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380189.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362807.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362807.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376558.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 386708.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364517.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 361134.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371629.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371629.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371629.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 373539.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 383689.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 383689.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 379406.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372938.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380456.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370658.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371460.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 361195.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 361195.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 356191.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366696.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380217.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378446.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374815.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370490.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362472.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 367071.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375958.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371649.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 360274.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 357568.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371829.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369340.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368596.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372306.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364925.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370137.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 361586.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 367378.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 396918.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376097.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370159.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 358694.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368065.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 377191.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 377215.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 360914.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364424.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370017.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 377240.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 384723.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376619.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370793.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371121.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376619.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378351.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 369378.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376464.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 366383.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 364385.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376804.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374833.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 368569.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378867.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378867.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370336.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376013.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376013.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378585.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 367869.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 361841.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 360609.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 357139.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 357139.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 363312.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 360272.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362479.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 363041.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 375577.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376957.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 378067.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 384857.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370054.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370054.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 382522.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 377819.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 379125.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 391238.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 372823.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 363600.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 370130.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371203.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362726.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371489.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 376938.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 386246.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 379785.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371282.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 362503.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 357978.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 353520.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 353520.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 353520.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380085.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 380409.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374372.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 371562.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374906.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374409.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 374069.000000
+
+[2-OPT Refining] Total cost after refining is 340318.000000
+
+[7-OPT kick] Total cost after kick is 391071.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+ 	[VNS] Update in best_val 340202.000000
+
+[7-OPT kick] Total cost after kick is 359381.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 355544.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 363320.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 370194.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 373019.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 375254.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 375254.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 372827.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 371476.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 371476.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 367143.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 376447.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 372115.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 362402.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 361992.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 378696.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 378696.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 379511.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 386507.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 378710.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 359733.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 357556.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 370390.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 370390.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 367262.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 376554.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 380145.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 373612.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 367949.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 373155.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 387678.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 387678.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 380834.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 371242.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 367804.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 377993.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 378537.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 363550.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 366632.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 366632.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 366389.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 367926.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 367179.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 376467.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 388785.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 370451.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 369148.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 384003.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 390812.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 375128.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 358516.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 365883.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 363665.000000
+
+[2-OPT Refining] Total cost after refining is 340202.000000
+
+[7-OPT kick] Total cost after kick is 364226.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+ 	[VNS] Update in best_val 339841.000000
+
+[7-OPT kick] Total cost after kick is 379605.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 378001.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 360233.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369416.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369416.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 373921.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370162.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370162.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 378193.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 372536.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 372536.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369630.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 371599.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370216.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 375591.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 377435.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 366524.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 379482.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 360225.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 352398.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 352398.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 378677.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 377771.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 368463.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 375266.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 362508.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369915.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 373857.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 368682.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 380167.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 378299.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 372542.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 364345.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 357829.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 357829.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370148.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370404.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 382863.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 377610.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 378181.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 375173.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 365987.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 365987.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 374643.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 378484.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 371655.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 366161.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 364175.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 360884.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 366350.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 363922.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 374126.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 375351.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 363617.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 372277.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 375573.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 376332.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 380478.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 372460.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 373028.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 373028.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 379202.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 373106.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 374534.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 380372.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 372446.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 376043.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 382616.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 384051.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 378332.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370657.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 366209.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 378697.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 372613.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 368778.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 376751.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 356338.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 362544.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 367498.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 376317.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 376596.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 368028.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 353602.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 372162.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370398.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370398.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 374211.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 379799.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 362338.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 356822.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 356822.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 356822.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 356822.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369712.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 378856.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 368194.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 372883.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 362669.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 367912.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 382701.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369116.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370219.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370977.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 366660.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 360135.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 384508.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 389630.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 378542.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 382974.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370791.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 371007.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 364129.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 362866.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 376170.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 366207.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 366607.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 348310.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 361559.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 361559.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 380841.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 374969.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370978.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 363119.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 394699.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 376229.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369744.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369744.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 378833.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 363571.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 363537.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 368220.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 366532.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 374354.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 372148.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 362564.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 374530.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 374491.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369942.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 381222.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369950.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 371097.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 368980.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 367291.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 368194.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 368194.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 379137.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 383864.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 384449.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 390420.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 382677.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 366337.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 371635.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 368495.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 375138.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 371798.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369695.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 375026.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369431.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 369503.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 365665.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 365665.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 370780.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 385328.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 374763.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 359917.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 373396.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 377451.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+[7-OPT kick] Total cost after kick is 360709.000000
+
+[2-OPT Refining] Total cost after refining is 339841.000000
+
+ 	best_val is 339841.000000
+
+----------------------------------------------------------------------------------------------
+Took 600.190107 seconds 
+
+	It is a tour!

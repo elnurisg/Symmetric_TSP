@@ -1,0 +1,48 @@
+../../tsp -generate_random 2000 -time_limit 600 -greedy 1 0 -SA 3 -seed 0 
+
+
+available parameters (vers. 21-Apr-2024) --------------------------------------------------
+-file <input_file> NULL
+-time_limit <timelimit> 600.000000
+-generate_random <nnodes> 2000
+-seed <random_seed> 0
+
+ALGORITHMS:
+-greedy <starting_mode> 1 <grasp_mode> 0
+-extra_mileage <starting_mode> -1
+-two_opt
+-VNS <kick_neighborhood> -1
+-SA <iterations> 3
+-tabu_search <tenure_mode> -1 <aspiration> -1
+-genetic_algorithm <repair_mode> -1 <cutting_type> -1
+-tsp_opt <model_type> -1
+-hard_fixing <probability> -1.000000
+-local_branching <branching_constraint> -1
+
+enter -help or --help for help
+----------------------------------------------------------------------------------------------
+
+
+_________________________________________________________
+Greedy Heuristic:
+
+ [Greedy Heuristic] Random starting position is node 421 
+
+_________________________________________________________
+Simulated Annealing:
+
+[Simulated Annealing] Current value is 364055.000000
+[Simulated Annealing] Update in best_val 364055.000000
+[Simulated Annealing] Current value is 364049.000000
+[Simulated Annealing] Update in best_val 364049.000000
+[Simulated Annealing] Current value is 361018.000000
+[Simulated Annealing] Update in best_val 361018.000000
+[Simulated Annealing] Current value is 359451.000000
+[Simulated Annealing] Update in best_val 359451.000000
+
+ 	best_val is 359451.000000
+
+----------------------------------------------------------------------------------------------
+Took 709.813316 seconds 
+
+	It is a tour!
