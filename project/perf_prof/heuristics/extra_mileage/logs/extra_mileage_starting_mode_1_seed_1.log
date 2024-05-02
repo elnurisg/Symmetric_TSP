@@ -1,0 +1,36 @@
+./tsp -generate_random 2000 -time_limit 300 -extra_mileage 1 -seed 1 
+
+
+available parameters (vers. 21-Apr-2024) --------------------------------------------------
+-file <input_file> NULL
+-time_limit <timelimit> 300.000000
+-generate_random <nnodes> 2000
+-seed <random_seed> 1
+
+ALGORITHMS:
+-greedy <starting_mode> -1 <grasp_mode> -1
+-extra_mileage <starting_mode> 1
+-two_opt
+-VNS <kick_neighborhood> -1
+-SA <iterations> -1
+-tabu_search <tenure_mode> -1 <aspiration> -1
+-genetic_algorithm <repair_mode> -1 <cutting_type> -1
+-tsp_opt <model_type> -1
+-hard_fixing <probability> -1.000000
+-local_branching <branching_constraint> -1
+
+enter -help or --help for help
+----------------------------------------------------------------------------------------------
+
+
+_________________________________________________________
+Insertion Heuristic:
+
+ [Insertion Heuristic] The starting nodes which have been chosen randomly are 817 and 83 
+
+ 	best_val is 398445.000000
+
+----------------------------------------------------------------------------------------------
+Took 53.729025 seconds 
+
+	It is a tour!
