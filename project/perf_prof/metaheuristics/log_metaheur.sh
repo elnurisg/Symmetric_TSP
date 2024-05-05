@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Path to your executable
+# Path to executable
 EXECUTABLE="../../tsp"
 
 
 run_tabu() {
 
     local NUM_INSTANCES_TABU=$1
-    NUM_NODES=2000  
+    NUM_NODES=500  
     TIME_LIMIT=600
 
     directory="./tabu_search/logs"
@@ -31,7 +31,7 @@ run_tabu() {
 run_vns() {
 
     local NUM_INSTANCES_VNS=$1
-    NUM_NODES=2000  
+    NUM_NODES=500  
     TIME_LIMIT=600
 
     directory="./VNS/logs"
@@ -53,7 +53,7 @@ run_vns() {
 run_simulated_annealing() {
 
     local NUM_INSTANCES_SA=$1
-    NUM_NODES=2000  
+    NUM_NODES=500  
     TIME_LIMIT=600
 
     directory="./simulated_annealing/logs"
@@ -75,7 +75,7 @@ run_simulated_annealing() {
 run_genetic_alg() {
 
     local NUM_INSTANCES_GA=$1
-    NUM_NODES=2000  
+    NUM_NODES=500  
     TIME_LIMIT=600
 
     directory="./genetic_algorithm/logs"
@@ -97,9 +97,15 @@ run_genetic_alg() {
 }
 
 # All algos are initialized by greedy 1 0
-seed_num_meta_heuristic=50
+seed_num_meta_heuristic=10
 
-run_tabu "$seed_num_meta_heuristic"
+# run_tabu "$seed_num_meta_heuristic"
 # run_vns "$seed_num_meta_heuristic"
 # run_simulated_annealing "$seed_num_meta_heuristic"
 # run_genetic_alg "$seed_num_meta_heuristic"
+
+run_tabu "$seed_num_meta_heuristic" & \
+run_vns "$seed_num_meta_heuristic" & \
+run_simulated_annealing "$seed_num_meta_heuristic" & \
+run_genetic_alg "$seed_num_meta_heuristic" & \
+wait

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Path to your executable
+# Path to executable
 EXECUTABLE="../../tsp"
 
 
