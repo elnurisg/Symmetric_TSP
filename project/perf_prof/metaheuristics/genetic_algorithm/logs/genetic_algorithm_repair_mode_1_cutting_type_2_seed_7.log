@@ -1,0 +1,103 @@
+../../tsp -generate_random 500 -time_limit 600 -genetic_algorithm 1 2 -seed 7 
+
+
+available parameters (vers. 21-Apr-2024) --------------------------------------------------
+-file <input_file> NULL
+-time_limit <timelimit> 600.000000
+-generate_random <nnodes> 500
+-seed <random_seed> 7
+
+ALGORITHMS:
+-greedy <starting_mode> -1 <grasp_mode> -1
+-extra_mileage <starting_mode> -1
+-two_opt
+-VNS <kick_neighborhood> -1
+-SA <iterations> -1
+-tabu_search <tenure_mode> -1 <aspiration> -1
+-genetic_algorithm <repair_mode> 1 <cutting_type> 1
+-tsp_opt <model_type> -1
+-hard_fixing <probability> -1.000000
+-local_branching <branching_constraint> -1
+
+enter -help or --help for help
+----------------------------------------------------------------------------------------------
+
+
+_________________________________________________________
+Genetic Alghorithm:
+
+[Genetic Algorithm] Champion fitness of generation1 is:1865158.000000
+[Genetic Algorithm] Champion fitness of generation2 is:1549640.000000
+[Genetic Algorithm] Champion fitness of generation3 is:1363148.000000
+[Genetic Algorithm] Champion fitness of generation4 is:1248032.000000
+[Genetic Algorithm] Champion fitness of generation5 is:1156314.000000
+[Genetic Algorithm] Champion fitness of generation6 is:1063145.000000
+[Genetic Algorithm] Champion fitness of generation7 is:939786.000000
+[Genetic Algorithm] Champion fitness of generation8 is:923643.000000
+[Genetic Algorithm] Champion fitness of generation9 is:864540.000000
+[Genetic Algorithm] Champion fitness of generation10 is:831837.000000
+[Genetic Algorithm] Champion fitness of generation11 is:789997.000000
+[Genetic Algorithm] Champion fitness of generation12 is:765521.000000
+[Genetic Algorithm] Champion fitness of generation13 is:689910.000000
+[Genetic Algorithm] Champion fitness of generation14 is:687862.000000
+[Genetic Algorithm] Champion fitness of generation15 is:654354.000000
+[Genetic Algorithm] Champion fitness of generation16 is:593020.000000
+[Genetic Algorithm] Champion fitness of generation17 is:573157.000000
+[Genetic Algorithm] Champion fitness of generation18 is:555590.000000
+[Genetic Algorithm] Champion fitness of generation19 is:534405.000000
+[Genetic Algorithm] Champion fitness of generation20 is:508998.000000
+[Genetic Algorithm] Champion fitness of generation21 is:484763.000000
+[Genetic Algorithm] Champion fitness of generation22 is:443720.000000
+[Genetic Algorithm] Champion fitness of generation23 is:435822.000000
+[Genetic Algorithm] Champion fitness of generation24 is:435822.000000
+[Genetic Algorithm] Champion fitness of generation25 is:413891.000000
+[Genetic Algorithm] Champion fitness of generation26 is:405669.000000
+[Genetic Algorithm] Champion fitness of generation27 is:373906.000000
+[Genetic Algorithm] Champion fitness of generation28 is:373906.000000
+[Genetic Algorithm] Champion fitness of generation29 is:373906.000000
+[Genetic Algorithm] Champion fitness of generation30 is:373906.000000
+[Genetic Algorithm] Champion fitness of generation31 is:369718.000000
+[Genetic Algorithm] Champion fitness of generation32 is:354171.000000
+[Genetic Algorithm] Champion fitness of generation33 is:343944.000000
+[Genetic Algorithm] Champion fitness of generation34 is:342194.000000
+[Genetic Algorithm] Champion fitness of generation35 is:340617.000000
+[Genetic Algorithm] Champion fitness of generation36 is:340617.000000
+[Genetic Algorithm] Champion fitness of generation37 is:340617.000000
+[Genetic Algorithm] Champion fitness of generation38 is:326398.000000
+[Genetic Algorithm] Champion fitness of generation39 is:326398.000000
+[Genetic Algorithm] Champion fitness of generation40 is:319050.000000
+[Genetic Algorithm] Champion fitness of generation41 is:311479.000000
+[Genetic Algorithm] Champion fitness of generation42 is:311479.000000
+[Genetic Algorithm] Champion fitness of generation43 is:301215.000000
+[Genetic Algorithm] Champion fitness of generation44 is:301215.000000
+[Genetic Algorithm] Champion fitness of generation45 is:300654.000000
+[Genetic Algorithm] Champion fitness of generation46 is:296132.000000
+[Genetic Algorithm] Champion fitness of generation47 is:296132.000000
+[Genetic Algorithm] Champion fitness of generation48 is:296132.000000
+[Genetic Algorithm] Champion fitness of generation49 is:296132.000000
+[Genetic Algorithm] Champion fitness of generation50 is:295655.000000
+[Genetic Algorithm] Champion fitness of generation51 is:294706.000000
+[Genetic Algorithm] Champion fitness of generation52 is:292708.000000
+[Genetic Algorithm] Champion fitness of generation53 is:292106.000000
+[Genetic Algorithm] Champion fitness of generation54 is:290187.000000
+[Genetic Algorithm] Champion fitness of generation55 is:288707.000000
+[Genetic Algorithm] Champion fitness of generation56 is:288707.000000
+[Genetic Algorithm] Champion fitness of generation57 is:288707.000000
+[Genetic Algorithm] Champion fitness of generation58 is:288707.000000
+[Genetic Algorithm] Champion fitness of generation59 is:288483.000000
+[Genetic Algorithm] Champion fitness of generation60 is:286680.000000
+[Genetic Algorithm] Champion fitness of generation61 is:286680.000000
+[Genetic Algorithm] Champion fitness of generation62 is:286680.000000
+[Genetic Algorithm] Champion fitness of generation63 is:286522.000000
+[Genetic Algorithm] Champion fitness of generation64 is:286522.000000
+[Genetic Algorithm] Champion fitness of generation65 is:285412.000000
+[Genetic Algorithm] Champion fitness of generation66 is:285412.000000
+[Genetic Algorithm] Champion fitness of generation67 is:285412.000000
+[Genetic Algorithm] Fitness of the Champion of Natural Selection over 67 generations is:185292.000000
+
+ 	best_val is 185292.000000
+
+----------------------------------------------------------------------------------------------
+Took 600.742172 seconds 
+
+	It is a tour!

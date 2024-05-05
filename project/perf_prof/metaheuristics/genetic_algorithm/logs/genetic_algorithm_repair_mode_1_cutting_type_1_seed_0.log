@@ -1,10 +1,10 @@
-../../tsp -generate_random 2000 -time_limit 600 -genetic_algorithm 1 1 -seed 0 
+../../tsp -generate_random 500 -time_limit 600 -genetic_algorithm 1 1 -seed 0 
 
 
 available parameters (vers. 21-Apr-2024) --------------------------------------------------
 -file <input_file> NULL
 -time_limit <timelimit> 600.000000
--generate_random <nnodes> 2000
+-generate_random <nnodes> 500
 -seed <random_seed> 0
 
 ALGORITHMS:
@@ -26,12 +26,57 @@ enter -help or --help for help
 _________________________________________________________
 Genetic Alghorithm:
 
-[Genetic Algorithm] Champion fitness of generation1 is:8576862.000000
-[Genetic Algorithm] Fitness of the Champion of Natural Selection over 1 generations is:359531.000000
+[Genetic Algorithm] Champion fitness of generation1 is:1810680.000000
+[Genetic Algorithm] Champion fitness of generation2 is:1574354.000000
+[Genetic Algorithm] Champion fitness of generation3 is:1229608.000000
+[Genetic Algorithm] Champion fitness of generation4 is:1229608.000000
+[Genetic Algorithm] Champion fitness of generation5 is:1027361.000000
+[Genetic Algorithm] Champion fitness of generation6 is:965817.000000
+[Genetic Algorithm] Champion fitness of generation7 is:963835.000000
+[Genetic Algorithm] Champion fitness of generation8 is:796724.000000
+[Genetic Algorithm] Champion fitness of generation9 is:767950.000000
+[Genetic Algorithm] Champion fitness of generation10 is:767950.000000
+[Genetic Algorithm] Champion fitness of generation11 is:725715.000000
+[Genetic Algorithm] Champion fitness of generation12 is:675638.000000
+[Genetic Algorithm] Champion fitness of generation13 is:656441.000000
+[Genetic Algorithm] Champion fitness of generation14 is:565116.000000
+[Genetic Algorithm] Champion fitness of generation15 is:565116.000000
+[Genetic Algorithm] Champion fitness of generation16 is:476015.000000
+[Genetic Algorithm] Champion fitness of generation17 is:443964.000000
+[Genetic Algorithm] Champion fitness of generation18 is:384912.000000
+[Genetic Algorithm] Champion fitness of generation19 is:384912.000000
+[Genetic Algorithm] Champion fitness of generation20 is:377905.000000
+[Genetic Algorithm] Champion fitness of generation21 is:377905.000000
+[Genetic Algorithm] Champion fitness of generation22 is:377905.000000
+[Genetic Algorithm] Champion fitness of generation23 is:349388.000000
+[Genetic Algorithm] Champion fitness of generation24 is:324338.000000
+[Genetic Algorithm] Champion fitness of generation25 is:324338.000000
+[Genetic Algorithm] Champion fitness of generation26 is:293250.000000
+[Genetic Algorithm] Champion fitness of generation27 is:293250.000000
+[Genetic Algorithm] Champion fitness of generation28 is:293250.000000
+[Genetic Algorithm] Champion fitness of generation29 is:276373.000000
+[Genetic Algorithm] Champion fitness of generation30 is:276373.000000
+[Genetic Algorithm] Champion fitness of generation31 is:266825.000000
+[Genetic Algorithm] Champion fitness of generation32 is:266825.000000
+[Genetic Algorithm] Champion fitness of generation33 is:246608.000000
+[Genetic Algorithm] Champion fitness of generation34 is:246608.000000
+[Genetic Algorithm] Champion fitness of generation35 is:239750.000000
+[Genetic Algorithm] Champion fitness of generation36 is:229585.000000
+[Genetic Algorithm] Champion fitness of generation37 is:229585.000000
+[Genetic Algorithm] Champion fitness of generation38 is:226428.000000
+[Genetic Algorithm] Champion fitness of generation39 is:226428.000000
+[Genetic Algorithm] Champion fitness of generation40 is:226428.000000
+[Genetic Algorithm] Champion fitness of generation41 is:226428.000000
+[Genetic Algorithm] Champion fitness of generation42 is:216860.000000
+[Genetic Algorithm] Champion fitness of generation43 is:216860.000000
+[Genetic Algorithm] Champion fitness of generation44 is:216860.000000
+[Genetic Algorithm] Champion fitness of generation45 is:216860.000000
+[Genetic Algorithm] Champion fitness of generation46 is:203665.000000
+[Genetic Algorithm] Fitness of the Champion of Natural Selection over 46 generations is:179511.000000
 
- 	best_val is 359531.000000
+ 	best_val is 179511.000000
 
 ----------------------------------------------------------------------------------------------
-Took 1088.562174 seconds 
+Took 614.643211 seconds 
 
 	It is a tour!
