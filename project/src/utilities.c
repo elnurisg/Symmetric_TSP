@@ -126,11 +126,6 @@ int random_node_with_time_seed(int length){
 
 int random_0_to_length(instance *inst, int length){
 
-	if (inst->random_seed !=0){
-		srand(2635623+abs(inst->random_seed));
-		for (size_t i = 0; i < 1000; i++) random();
-	}
-
 	int random_position = rand() % length;
 	if (random_position<0 && random_position>=length)
 	{
