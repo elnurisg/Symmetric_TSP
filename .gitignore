@@ -9,6 +9,7 @@ RO2_GuidaCplexMac.pdf
 gnu.dSYM/
 output/
 RO2_Cplex_TEMPLATE_2020/
+trace/
 
 ## executable files
 gnu
