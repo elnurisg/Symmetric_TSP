@@ -131,9 +131,38 @@ further_genetic() {
     python3 ./perfprof.py -D , -T 600 -M 1.12 -X "Cost Ratio" ./metaheuristics/genetic_algorithm/repair_analyze/GA_repair_mode_2.csv ./metaheuristics/genetic_algorithm/repair_analyze/GA_repair_mode_2.pdf -P "10 instances for GA with repairing the bad genes + two-opt refining"
 }
 
+create_csv_best_methods_heuristics() {
+
+    input_file1="./heuristics/extra_mileage/extra_mileage.csv"
+    input_file2="./heuristics/extra_mileage_two_opt/extra_mileage_two_opt.csv"
+    input_file3="./heuristics/greedy/greedy.csv"
+    input_file4="./heuristics/greedy_two_opt/greedy_two_opt.csv"
+
+    directory=./heuristics
+
+    # output file paths
+    output="$directory/best_methods.csv"
+
+    paste -d ',' \
+        <(cut -d, -f 1,4 "$input_file1") \
+        <(cut -d, -f 4 "$input_file2") \
+        <(cut -d, -f 6 "$input_file3") \
+        <(cut -d, -f 6 "$input_file4") | \
+    awk 'NR==1{$1=4}1' FS=',' OFS=',' > "$output"
+
+}
+
+best_methods_heuristics() {
+    create_csv_best_methods_heuristics
+
+    python3 ./perfprof.py -D , -T 300 -M 1.25 -X "Cost Ratio" ./heuristics/best_methods.csv ./heuristics/best_methods.pdf -P "50 instances for Best Heuristics"
+}
+
 # heuristics
 # metaheuristics_with_optimal
 # metaheuristics
 
 # further_tabu
-further_genetic
+# further_genetic
+
+best_methods_heuristics
