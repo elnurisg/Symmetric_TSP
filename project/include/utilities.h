@@ -68,6 +68,9 @@ typedef struct {
     int TSPopt_model;
     double hard_fixing_probability;
     int local_branching_constraint;
+
+    // flag to plot the solution 
+    int plot;
 } Config;
 
 
