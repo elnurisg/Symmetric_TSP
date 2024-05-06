@@ -160,31 +160,39 @@ best_methods_heuristics() {
 
 create_csv_best_methods_metaheuristics() {
 
-    input_file1="./heuristics/extra_mileage/extra_mileage.csv"
-    input_file2="./heuristics/extra_mileage_two_opt/extra_mileage_two_opt.csv"
-    input_file3="./heuristics/greedy/greedy.csv"
-    input_file4="./heuristics/greedy_two_opt/greedy_two_opt.csv"
+    input_file1="./metaheuristics/genetic_algorithm/genetic_algorithm.csv"
+    input_file2="./metaheuristics/simulated_annealing/simulated_annealing.csv"
+    input_file3="./metaheuristics/tabu_search/tabu_search.csv"
+    input_file4="./metaheuristics/VNS/VNS.csv"
 
-    directory=./heuristics
+    directory=./metaheuristics
 
     # output file paths
-    output="$directory/best_heur_methods.csv"
+    output="$directory/best_metaheur_methods.csv"
 
     paste -d ',' \
-        <(cut -d, -f 1,4 "$input_file1") \
-        <(cut -d, -f 4 "$input_file2") \
-        <(cut -d, -f 6 "$input_file3") \
-        <(cut -d, -f 6 "$input_file4") | \
-    awk 'NR==1{$1=4}1' FS=',' OFS=',' > "$output"
+        <(cut -d, -f 1-2,11 "$input_file1") \
+        <(cut -d, -f 5 "$input_file2") \
+        <(cut -d, -f 5 "$input_file3") \
+        <(cut -d, -f 3 "$input_file4") | \
+    awk 'NR==1{$1=5}1' FS=',' OFS=',' > "$output"
+
+}
+
+best_methods_metaheuristics() {
+    create_csv_best_methods_metaheuristics
+
+    python3 ./perfprof.py -D , -T 600 -M 1.12 -X "Cost Ratio" ./metaheuristics/best_metaheur_methods.csv ./metaheuristics/best_metaheur_methods.pdf -P "10 instances for Best Metaheuristics"
 
 }
 
 
 # heuristics
 # metaheuristics_with_optimal
-metaheuristics
+# metaheuristics
 
 # further_tabu
 # further_genetic
 
 # best_methods_heuristics
+best_methods_metaheuristics
