@@ -295,7 +295,7 @@ void combine_two_tours_from_pos(int *arr1, int *arr2, int size, int position, in
 }
 
 void write_cost_to_file(double cost, const char *filename, int append) {
-    const char *folder = "cost_plot";
+    const char *folder = "perf_prof/metaheuristics/VNS/cost_plot";
     struct stat st = {0};
     // Check if the folder exists
     if (stat(folder, &st) != 0){

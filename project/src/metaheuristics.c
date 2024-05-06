@@ -203,8 +203,8 @@ int variable_neighborhood_search(instance *inst, int kick_neighborhood){
 	if (kick_neighborhood == 0 || kick_neighborhood > (inst->nnodes/3)) print_error("Kick neighborhood can not be 0 or more than the one third of the number of nodes\n");
 	// 0-OPT kick is not meaningful
 	
-	// char filename[50];
-    // snprintf(filename, sizeof(filename), "cost_plot/costs_VNS_%d-OPT.txt", kick_neighborhood);
+	// char filename[100];
+    // snprintf(filename, sizeof(filename), "perf_prof/metaheuristics/VNS/cost_plot/costs_VNS_%d-OPT.txt", kick_neighborhood);
 
 	two_opt_refining_heuristic(inst, inst->best_sol, 0);
 	// write_cost_to_file(inst->best_val, filename, 1);
