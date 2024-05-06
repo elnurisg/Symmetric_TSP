@@ -259,7 +259,7 @@ void annealing_process(instance *inst, int scaler, int *tsp_sol){
 		{
 			a = random_0_to_length(inst, inst->nnodes);
 			b = random_0_to_length(inst, inst->nnodes);
-		} while ( a+1 > b );
+		} while ( a+1 < b );
 		
 		delta_cost = delta_cost_two_opt(a, b, inst, tsp_sol);
 
