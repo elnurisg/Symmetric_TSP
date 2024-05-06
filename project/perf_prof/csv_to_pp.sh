@@ -36,6 +36,35 @@ metaheuristics_with_optimal() {
     modify_csv_with_optimal ./metaheuristics/VNS/VNS.csv
 }
 
-heuristics
+tabu_more_csv() {
+
+    # Tabu input file path
+    input_file="./metaheuristics/tabu_search/tabu_search.csv"
+
+    # output file paths
+    output_aspiration_0="./metaheuristics/tabu_search/tabu_with_aspiration_0.csv"
+    output_aspiration_1="./metaheuristics/tabu_search/tabu_with_aspiration_1.csv"
+
+    cut -d, -f 1-2,3,5,7 $input_file > ./temp0.csv
+    cut -d, -f 1-2,4,6,8 $input_file > ./temp1.csv
+
+    sed '1 s/7/4/' ./temp0.csv > $output_aspiration_0
+    sed '1 s/7/4/' ./temp1.csv > $output_aspiration_1
+
+    rm ./temp0.csv
+    rm ./temp1.csv
+}
+
+# To perform the performance profile for the tabu search with aspiration 0 and 1
+further_tabu() {
+    tabu_more_csv
+
+    python3 ./perfprof.py -D , -T 600 -M 1.1 -X "Cost Ratio" ./metaheuristics/tabu_search/tabu_with_aspiration_0.csv ./metaheuristics/tabu_search/tabu_with_aspiration_0.pdf -P "10 instances for Tabu Search with aspiration criteria"
+    python3 ./perfprof.py -D , -T 600 -M 1.1 -X "Cost Ratio" ./metaheuristics/tabu_search/tabu_with_aspiration_1.csv ./metaheuristics/tabu_search/tabu_with_aspiration_1.pdf -P "10 instances for Tabu Search without aspiration criteria"
+}
+
+# heuristics
 # metaheuristics_with_optimal
 # metaheuristics
+
+further_tabu
