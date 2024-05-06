@@ -68,7 +68,7 @@ int main(int argc, char **argv)
 	printf("\n----------------------------------------------------------------------------------------------");
 	printf("\nTook %f seconds \n\n", t2 - inst.tstart);
 	if(verify_tour(&inst, inst.best_sol)==0) printf("\tIt is a tour!\n");
-	plot_tsp_tour(&inst, 1);
+	if(config.plot == 1) plot_tsp_tour(&inst, 1); // plot the sol and wait for user to close the window
 	
 	free_instance(&inst);
 	return 0; 
@@ -252,6 +252,7 @@ void parse_command_line(int argc, char** argv, instance *inst, Config *config)
 	inst->random_seed = 0; 
 	inst->timelimit = CPX_INFBOUND;
 	inst->heur_flag = 0;
+	config->plot = 0; // default is not to plot the solution
 	
 	// can give some optional values if needed
 	config->greedy_starting_mode = -1;
@@ -421,6 +422,10 @@ void parse_command_line(int argc, char** argv, instance *inst, Config *config)
 			continue;
 			}
 
+		if ( strcmp(argv[i],"-plot") == 0) { 
+			config->plot = 1;
+			continue;
+			}
 
 		if ( strcmp(argv[i],"-help") == 0 ) { help = 1; continue; } 									// help
 		if ( strcmp(argv[i],"--help") == 0 ) { help = 1; continue; } 									// help
