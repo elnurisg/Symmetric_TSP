@@ -3,4 +3,5 @@ This folder contains a Python script that reads cost values from text files, plo
 
 # Info
 USAGE: python3 plot_cost.py
+
 And after you should add the number of points which you want to visualize. As in our case the smallest file has slightly more than 400 point, internally has been decided to keep the range between 100-400. It will skip some points to equalize the number of points in graph so that comparison among methods can be fair. Having 500 or more points make the plot useless as points become unseperable.
