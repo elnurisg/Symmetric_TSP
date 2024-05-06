@@ -141,7 +141,7 @@ create_csv_best_methods_heuristics() {
     directory=./heuristics
 
     # output file paths
-    output="$directory/best_methods.csv"
+    output="$directory/best_heur_methods.csv"
 
     paste -d ',' \
         <(cut -d, -f 1,4 "$input_file1") \
@@ -155,7 +155,7 @@ create_csv_best_methods_heuristics() {
 best_methods_heuristics() {
     create_csv_best_methods_heuristics
 
-    python3 ./perfprof.py -D , -T 300 -M 1.25 -X "Cost Ratio" ./heuristics/best_methods.csv ./heuristics/best_methods.pdf -P "50 instances for Best Heuristics"
+    python3 ./perfprof.py -D , -T 300 -M 1.25 -X "Cost Ratio" ./heuristics/best_heur_methods.csv ./heuristics/best_heur_methods.pdf -P "50 instances for Best Heuristics"
 }
 
 # heuristics
