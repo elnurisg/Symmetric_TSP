@@ -14,7 +14,7 @@ metaheuristics(){
     # do not perfprof genetic algo bcz it has too many parameters so we do deeper analyze
     # python3 ./perfprof.py -D , -T 600 -M 1.1 -X "Cost Ratio" ./metaheuristics/genetic_algorithm/genetic_algorithm.csv ./metaheuristics/genetic_algorithm/genetic_algorithm.pdf -P "10 instances for Genetic algorithm"
 
-    python3 ./perfprof.py -D , -T 600 -M 1.1 -X "Cost Ratio" ./metaheuristics/simulated_annealing/simulated_annealing.csv ./metaheuristics/simulated_annealing/simulated_annealing.pdf -P "10 instances for Simulated Annealing"
+    python3 ./perfprof.py -D , -T 600 -M 1.11 -X "Cost Ratio" ./metaheuristics/simulated_annealing/simulated_annealing.csv ./metaheuristics/simulated_annealing/simulated_annealing.pdf -P "10 instances for Simulated Annealing"
 
     python3 ./perfprof.py -D , -T 600 -M 1.1 -X "Cost Ratio" ./metaheuristics/tabu_search/tabu_search.csv ./metaheuristics/tabu_search/tabu_search.pdf -P "10 instances for Tabu Search"
 
@@ -158,11 +158,33 @@ best_methods_heuristics() {
     python3 ./perfprof.py -D , -T 300 -M 1.25 -X "Cost Ratio" ./heuristics/best_heur_methods.csv ./heuristics/best_heur_methods.pdf -P "50 instances for Best Heuristics"
 }
 
+create_csv_best_methods_metaheuristics() {
+
+    input_file1="./heuristics/extra_mileage/extra_mileage.csv"
+    input_file2="./heuristics/extra_mileage_two_opt/extra_mileage_two_opt.csv"
+    input_file3="./heuristics/greedy/greedy.csv"
+    input_file4="./heuristics/greedy_two_opt/greedy_two_opt.csv"
+
+    directory=./heuristics
+
+    # output file paths
+    output="$directory/best_heur_methods.csv"
+
+    paste -d ',' \
+        <(cut -d, -f 1,4 "$input_file1") \
+        <(cut -d, -f 4 "$input_file2") \
+        <(cut -d, -f 6 "$input_file3") \
+        <(cut -d, -f 6 "$input_file4") | \
+    awk 'NR==1{$1=4}1' FS=',' OFS=',' > "$output"
+
+}
+
+
 # heuristics
 # metaheuristics_with_optimal
-# metaheuristics
+metaheuristics
 
 # further_tabu
 # further_genetic
 
-best_methods_heuristics
+# best_methods_heuristics
