@@ -6,7 +6,7 @@ double second();
 int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 {
 
-	printf("\n_________________________________________________________\nBenders loop:\n\n");
+	if(VERBOSE >= 110) printf("\n_________________________________________________________\nBenders loop:\n\n");
 
 	double *xstar = (double *) calloc(inst->ncols, sizeof(double));
 	int *succ = (int *) calloc(inst->nnodes, sizeof(int));
@@ -57,13 +57,15 @@ int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 		}	
 
 		iteration++;
-		printf("\nITERATION: %d\t", iteration);
-		printf("LB: %f\t",LB); printf("UB: %f\t",UB); (LB == UB) ? printf("||| Solution is Optimal\n") : printf("||| %f%% gap\n", (UB-LB)/LB*100);
+		if(VERBOSE >= 120){
+			printf("\nITERATION: %d\t", iteration);
+			printf("LB: %f\t",LB); printf("UB: %f\t",UB); (LB == UB) ? printf("||| Solution is Optimal\n") : printf("||| %f%% gap\n", (UB-LB)/LB*100);
+		}
 
 	} while ((LB < (1-EPSILON) * UB) && (!time_limit_expired(inst)));
 
 
-	if (VERBOSE >= 100){
+	if (VERBOSE >= 600){
 		for ( int i = 0; i < inst->nnodes; i++ )
 		{
 			for ( int j = i+1; j < inst->nnodes; j++ )
@@ -94,7 +96,7 @@ int benders_loop(instance *inst, CPXENVptr env, CPXLPptr lp)
 int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp)
 {
 
-	printf("\n_________________________________________________________\nBranch && Cut:\n\n");
+	if(VERBOSE >= 110) printf("\n_________________________________________________________\nBranch && Cut:\n\n");
 	
 	double *xstar = (double *) calloc(inst->ncols, sizeof(double));
 	int *succ = (int *) calloc(inst->nnodes, sizeof(int));
@@ -121,7 +123,7 @@ int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp)
 
 	CPXgetbestobjval(env, lp, &LB);
 	CPXgetobjval(env, lp, &UB);
-	if(VERBOSE >= 60) {
+	if(VERBOSE >= 120) {
 		printf("\nLB: %f\t",LB); 
 		printf("UB: %f\t",UB); 
 		(LB == UB) ? printf("||| Solution is Optimal\n") : printf("||| %f%% gap\n", (UB-LB)/LB*100);
@@ -132,6 +134,16 @@ int branch_and_cut(instance *inst, CPXENVptr env, CPXLPptr lp)
 		build_sol(xstar, inst, succ, comp, ncomp);
 		store_solution(inst, succ, inst->best_sol);
 		calculate_best_val(inst);
+	}
+
+	if (VERBOSE >= 600){
+		for ( int i = 0; i < inst->nnodes; i++ )
+		{
+			for ( int j = i+1; j < inst->nnodes; j++ )
+			{
+				if ( xstar[xpos(i,j,inst)] > 0.5 ) printf("  ... x(%3d,%3d) = 1\n", i+1,j+1);
+			}
+		}
 	}
 
 	free(xstar);
@@ -159,7 +171,7 @@ static int CPXPUBLIC my_cut_callback(CPXCALLBACKCONTEXTptr context, CPXLONG cont
 	int mythread = -1; CPXcallbackgetinfoint(context, CPXCALLBACKINFO_THREADID, &mythread);
 	int mynode = -1; CPXcallbackgetinfoint(context, CPXCALLBACKINFO_NODECOUNT, &mynode);
 	double incumbent = CPX_INFBOUND; CPXcallbackgetinfodbl(context, CPXCALLBACKINFO_BEST_SOL, &incumbent);
-	if(VERBOSE >= 100) printf(".. Thread %2d, Node %5d, Incumbent: %10.2lf, Candidate value: %10.2lf\n", mythread, mynode, incumbent, objval);
+	if(VERBOSE >= 130) printf(".. Thread %2d, Node %5d, Incumbent: %10.2lf, Candidate value: %10.2lf\n", mythread, mynode, incumbent, objval);
 
 	build_sol(xstar, inst, succ, comp, ncomp);
 	

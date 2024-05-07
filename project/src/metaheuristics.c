@@ -37,7 +37,7 @@ int tenure_length_update(instance *inst, int current_tenure, int iteration, int 
 
 int tabu_search(instance *inst, int tenure_mode, int aspiration_criteria){
 
-	printf("\n_________________________________________________________\nTabu Search:\n\n");
+	if(VERBOSE >= 20) printf("\n_________________________________________________________\nTabu Search:\n\n");
 	
 	if (inst->heur_flag == 0) print_error("Greedy or Insertion Heuristic should be applied before Metaheuristic (tabu search)\n");
 
@@ -94,10 +94,10 @@ int tabu_search(instance *inst, int tenure_mode, int aspiration_criteria){
 		{
 			copy_array(curr_solution, inst->nnodes, inst->best_sol);
 			inst->best_val = curr_value;
-			printf("[Tabu Search] Update in best_val curr value is %f, iteration is %d tenure %d\n", inst->best_val, iteration, tenure);
+			if(VERBOSE >= 50) printf("[Tabu Search] Update in best_val curr value is %f, iteration is %d tenure %d\n", inst->best_val, iteration, tenure);
 
 		}
-		printf("[Tabu Search] Current value is %f, iteration is %d tenure %d\n", curr_value, iteration, tenure);
+		if(VERBOSE >= 100) printf("[Tabu Search] Current value is %f, iteration is %d tenure %d\n", curr_value, iteration, tenure);
 		iteration++;
 	} while (!time_limit_expired(inst));
 	
@@ -197,7 +197,7 @@ void n_opt_kick(instance *inst, int n, int *current_solution){
 
 
 int variable_neighborhood_search(instance *inst, int kick_neighborhood){
-	printf("\n_________________________________________________________\nVariable Neighborhood Search:\n\n");
+	if(VERBOSE >= 20) printf("\n_________________________________________________________\nVariable Neighborhood Search:\n\n");
 	
 	if (inst->heur_flag == 0) print_error("Greedy or Insertion Heuristic should be applied before Metaheuristic (VNS)\n");
 	if (kick_neighborhood == 0 || kick_neighborhood > (inst->nnodes/3)) print_error("Kick neighborhood can not be 0 or more than the one third of the number of nodes\n");
@@ -216,19 +216,19 @@ int variable_neighborhood_search(instance *inst, int kick_neighborhood){
 	{	
 		n_opt_kick(inst, kick_neighborhood, current_solution);
 		current_value = calculate_total_cost(inst, current_solution);
-		printf("\n[%d-OPT kick] Total cost after kick is %f\n", kick_neighborhood, current_value);
+		if(VERBOSE >= 100) printf("\n[%d-OPT kick] Total cost after kick is %f\n", kick_neighborhood, current_value);
 		// write_cost_to_file(current_value, filename, 0);
 	
 		two_opt_refining_heuristic(inst, current_solution, 1);
 		current_value = calculate_total_cost(inst, current_solution);
-		printf("\n[2-OPT Refining] Total cost after refining is %f\n", current_value);
+		if(VERBOSE >= 100) printf("\n[2-OPT Refining] Total cost after refining is %f\n", current_value);
 		// write_cost_to_file(current_value, filename, 0);
 
 		if (current_value < inst->best_val)
 		{
 			copy_array(current_solution, inst->nnodes+1, inst->best_sol);
 			inst->best_val = current_value;
-			printf("\n \t[VNS] Update in best_val %f\n", inst->best_val);
+			if(VERBOSE >= 50) printf("\n \t[VNS] Update in best_val %f\n", inst->best_val);
 		}
 		
 	} while (!time_limit_expired(inst));
@@ -292,7 +292,7 @@ double average_delta_cost_between_two_edges(instance *inst, int *tsp_sol){
 
 int simulated_annealing(instance *inst, int annealing_iterations){
 	
-	printf("\n_________________________________________________________\nSimulated Annealing:\n\n");
+	if(VERBOSE >= 20) printf("\n_________________________________________________________\nSimulated Annealing:\n\n");
 	
 	if (inst->heur_flag == 0) print_error("Greedy or Insertion Heuristic should be applied before Metaheuristic (Simulated Annealing)\n");
 
@@ -311,13 +311,13 @@ int simulated_annealing(instance *inst, int annealing_iterations){
 
 		optimal_value = calculate_total_cost(inst, optimal_solution);
 
-		printf("[Simulated Annealing] Current value is %f\n", optimal_value);
+		if(VERBOSE >= 100) printf("[Simulated Annealing] Current value is %f\n", optimal_value);
 
 		if (optimal_value < inst->best_val)
 		{
 			copy_array(optimal_solution, inst->nnodes+1, inst->best_sol);
 			inst->best_val = optimal_value;
-			printf("[Simulated Annealing] Update in best_val %f\n", inst->best_val);
+			if(VERBOSE >= 50) printf("[Simulated Annealing] Update in best_val %f\n", inst->best_val);
 		}
 		
 	} while (!time_limit_expired(inst));
@@ -701,7 +701,7 @@ Individual * allocate_population(instance *inst, int population_size){
 
 int genetic_algorithm(instance *inst, int repair, int cutting_type){
 	
-	printf("\n_________________________________________________________\nGenetic Alghorithm:\n\n");
+	if(VERBOSE >= 20) printf("\n_________________________________________________________\nGenetic Alghorithm:\n\n");
 
 	int population_size = 1000; int children_size = population_size/2; int mutants_size = population_size/10;
 	Individual *champion = allocate_population(inst, 1); int count_generations = 0;
@@ -724,7 +724,7 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){
 		mutate_population(inst, population, population_size, mutations, mutants_size);
 		
 		elitism(inst, population, population_size, children, children_size, mutations, mutants_size, champion);
-		printf("[Genetic Algorithm] Champion fitness of generation%d is:%f\n", count_generations, champion->fitness);
+		if(VERBOSE >= 100) printf("[Genetic Algorithm] Champion fitness of generation%d is:%f\n", count_generations, champion->fitness);
 		
 		count_generations++;
 		
@@ -735,7 +735,7 @@ int genetic_algorithm(instance *inst, int repair, int cutting_type){
 	// even if repair (or it is on but without 2-OPT) is off, apply repairing with 2-OPT to champion
 	if(repair == 0 || repair == 1) repair_bad_genes(inst, champion, 1, 2);
 
-	printf("[Genetic Algorithm] Fitness of the Champion of Natural Selection over %d generations is:%f\n", --count_generations, champion->fitness);
+	if(VERBOSE >= 50) printf("[Genetic Algorithm] Fitness of the Champion of Natural Selection over %d generations is:%f\n", --count_generations, champion->fitness);
 	
 	// update the best_sol in case champion is better
 	if (champion->fitness < inst->best_val && verify_tour(inst, champion->genes)==0)

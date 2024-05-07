@@ -8,15 +8,27 @@
 #include <math.h>
 
 
-#define VERBOSE				    50		// printing level 
+#define VERBOSE	1000		
+    // 20 print the name of algorithm for METAHEURISTICS/MATHEURISTICS
+    // 50 print M-heuristics best value updates
+    // 100 print M-heuristics current solution info
+    // 110 print the name of algorithm for EXACT METHODS
+    // 120  UB, LB.. info of exact methods
+     // 130 Thread, Node, Incumbent, Candidate value for Branch and Cut
+    // 140 print the name of algorithm for HEURISTICS
+     // 150 print HEURISTICS starting positions
+    // 500  2-OPT name 
+    // 550  2-OPT  value update
+    // 600 print edges of the last Cplex solution
+    // 1000 print if 2-OPT possible improvement is found
+
+
 #define CPLEX_VERBOSE 0 // VERBOSE for cplex output 1 for CPX_ON, 0 for CPX_OFF
-//hard-wired parameters
 #define XSMALL		  		  1e-5 		// 1e-4*	// tolerance used to decide ingerality of 0-1 var.s
 #define EPSILON		  		  1e-5		// 1e-5		// very small numerical tolerance 
-// #define TICKS_PER_SECOND 	  1000.0  	// cplex's ticks on Intel Core i7 quadcore @2.3GHZ
 #define LARGE_INT_NUMBER		  1e+5		// 1e+5		// a large number                                 
-//data structures  
 
+//data structures  
 typedef struct {   
 	
 	//input data

@@ -120,7 +120,7 @@ int greedy_step(instance *inst, int current_node, int *uncovered_nodes, int curr
 
 int greedy_heuristic(instance *inst, int starting_mode, int grasp)
 {
-	printf("\n_________________________________________________________\nGreedy Heuristic:\n");
+	if(VERBOSE >= 140) printf("\n_________________________________________________________\nGreedy Heuristic:\n");
 	inst->heur_flag = 1;
 
 	int starting_pos;
@@ -132,12 +132,12 @@ int greedy_heuristic(instance *inst, int starting_mode, int grasp)
 	{
 	case 0:  // node 0
 		starting_pos = 0;
-		printf("\n [Greedy Heuristic] Starting position is node %d \n", starting_pos);
+		if(VERBOSE >= 150) printf("\n [Greedy Heuristic] Starting position is node %d \n", starting_pos);
 		calculate_greedy_steps(inst, starting_pos, grasp);
 		break;
 	case 1:  // random
 		random_node_with_time_seed_pos = random_node_with_time_seed(inst->nnodes);
-		printf("\n [Greedy Heuristic] Random starting position is node %d \n", random_node_with_time_seed_pos);
+		if(VERBOSE >= 150) printf("\n [Greedy Heuristic] Random starting position is node %d \n", random_node_with_time_seed_pos);
 		calculate_greedy_steps(inst, random_node_with_time_seed_pos, grasp);
 		break;
 	case 2: // try all
@@ -154,7 +154,7 @@ int greedy_heuristic(instance *inst, int starting_mode, int grasp)
 				best_starting_node = i;
 			}
 		}		 
-		printf("\n [Greedy Heuristic] The best starting position is node %d \n", best_starting_node);
+		if(VERBOSE >= 150) printf("\n [Greedy Heuristic] The best starting position is node %d \n", best_starting_node);
 		calculate_greedy_steps(inst, best_starting_node, grasp);
 		break;
 	default:
@@ -254,7 +254,7 @@ void calculate_extra_mileage_heuristics(instance *inst, int *nodes_hierarchy){
 }
 
 int extra_mileage_heuristic(instance *inst, int starting_mode){
-	printf("\n_________________________________________________________\nInsertion Heuristic:\n");
+	if(VERBOSE >= 140) printf("\n_________________________________________________________\nInsertion Heuristic:\n");
 	inst->heur_flag = 1;
 	
 	int *nodes_hierarchy = NULL;
@@ -269,7 +269,7 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 	case 0:  // distance A, B is max
 		nodes_hierarchy = find_nodes(inst, maximum_cost_pos(inst));
 
-		printf("\n [Insertion Heuristic] The starting nodes which have the max distance between them are %d and %d \n"
+		if(VERBOSE >= 150) printf("\n [Insertion Heuristic] The starting nodes which have the max distance between them are %d and %d \n"
 		, nodes_hierarchy[0]
 		, nodes_hierarchy[1]);
 
@@ -292,7 +292,7 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 			nodes_hierarchy = find_nodes(inst, random_node_with_time_seed_pos);
 		}
 
-		printf("\n [Insertion Heuristic] The starting nodes which have been chosen randomly are %d and %d \n"
+		if(VERBOSE >= 150) printf("\n [Insertion Heuristic] The starting nodes which have been chosen randomly are %d and %d \n"
 		, nodes_hierarchy[0]
 		, nodes_hierarchy[1]);
 		
@@ -339,7 +339,7 @@ int extra_mileage_heuristic(instance *inst, int starting_mode){
 			if(time_limit_expired(inst)) break;		
 		}
 		
-		printf("\n [Insertion Heuristic] The best starting nodes are %d and %d \n"
+		if(VERBOSE >= 150) printf("\n [Insertion Heuristic] The best starting nodes are %d and %d \n"
 		, best_starting_couple[0]
 		, best_starting_couple[1]);
 		
@@ -403,8 +403,8 @@ int update_tour(int a, int b, int *tsp_sol){
 // and then the edge will be a, its successor(a+1), b and its successor(b+1)
 
 int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance){
-	// if (is_instance == 0)	
-		// printf("\n_________________________________________________________\n2-OPT Refining Heuristic:\n");
+
+	if(VERBOSE >= 500) printf("\n_________________________________________________________\n2-OPT Refining Heuristic:\n");
 
 	double delta_cost;
 	int a_with_min_delta_cost; int b_with_min_delta_cost;
@@ -432,7 +432,7 @@ int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance){
 		}
 		if (update_switch == 1)
 		{
-			// printf("[2-OPT Refining] Possible update detected, delta_cost: %f\n",min_delta_cost);
+			if(VERBOSE >= 1000) printf("[2-OPT Refining] Possible update detected, delta_cost: %f\n",min_delta_cost);
 			update_tour(a_with_min_delta_cost, b_with_min_delta_cost, tsp_sol);
 		}
 		
@@ -440,9 +440,7 @@ int two_opt_refining_heuristic(instance *inst, int *tsp_sol, int is_instance){
 	
 	tsp_sol[inst->nnodes] = tsp_sol[0];
 
-	// if (is_instance == 0){
-		// calculate_best_val(inst);
-		// printf("\n \t[2-OPT Refining] update in best_val after 2-OPT refining is %f\n", inst->best_val);
-	// }
+	if(VERBOSE >= 550) printf("\n \t[2-OPT Refining] update in best_val after 2-OPT refining is %f\n", calculate_total_cost(inst, tsp_sol));
+	
 	return 0;
 }

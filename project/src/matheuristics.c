@@ -5,7 +5,7 @@
 
 int hard_fixing(instance *inst, double pfix){
 
-    printf("\n_________________________________________________________\nHard-fixing:\n\n");
+    if(VERBOSE >= 20) printf("\n_________________________________________________________\nHard-fixing:\n\n");
     if (inst->timelimit == CPX_INFBOUND)
         print_error("[Hard-fixing] Time limit not specified or invalid. \nFor Hard-fixing method you should specify the time limit as the goal is to minimize the primal integral in given time limit.\n");
 
@@ -30,7 +30,7 @@ int hard_fixing(instance *inst, double pfix){
         fixing(env, lp, inst, pfix);
         if (branch_and_cut(inst, env, lp)) print_error("[Hard-fixing] Error in branch_and_cut()");
         unfixing(env, lp, inst);
-        if(VERBOSE >= 100 && absolute_best_value > inst->best_val)    printf("Found better solution with value: %f\n", inst->best_val);
+        if(VERBOSE >= 50 && absolute_best_value > inst->best_val)    printf("Found better solution with value: %f\n", inst->best_val);
     }
     
 	// free and close cplex model   
@@ -85,7 +85,7 @@ void unfixing(CPXENVptr env, CPXLPptr lp, instance *inst){
 
 int local_branching(instance *inst, int k){
 
-	printf("\n_________________________________________________________\nLocal Branching:\n\n");
+	if(VERBOSE >= 20) printf("\n_________________________________________________________\nLocal Branching:\n\n");
 
     if (inst->timelimit == CPX_INFBOUND)
         print_error("[Local Branching] Time limit not specified or invalid. \nFor Local Branching method you should specify the time limit as the goal is to minimize the primal integral in given time limit.\n");
@@ -117,11 +117,13 @@ int local_branching(instance *inst, int k){
 
         if(absolute_best_value <= inst->best_val){
             k += k_initial; // if stuck in a local minimum, increase the size of the neighborhood
-            if(VERBOSE >= 100)    printf("Stuck in a local minimum with value: %f\n\t[!]So k is increased +%d (k=%d) for the next iteration\n", inst->best_val, k_initial, k);
+            if(VERBOSE >= 100)    
+                printf("Stuck in a local minimum with value: %f\n\t[!]So k is increased +%d (k=%d) for the next iteration\n", inst->best_val, k_initial, k);
         }
         else {
             k = k_initial; // if found a better solution, reset the size of the neighborhood
-            if(VERBOSE >= 100)    printf("Found better solution with value: %f\n", inst->best_val);
+            if(VERBOSE >= 100)    
+                printf("Found better solution with value: %f\n", inst->best_val);
             absolute_best_value = inst->best_val;
         }
     }
