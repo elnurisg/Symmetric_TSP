@@ -1,0 +1,54 @@
+../../tsp -generate_random 500 -tsp_opt 0 -seed 4 
+
+
+available parameters (vers. 21-Apr-2024) --------------------------------------------------
+-file <input_file> NULL
+-time_limit <timelimit> 100000000000000000000.000000
+-generate_random <nnodes> 500
+-seed <random_seed> 4
+
+ALGORITHMS:
+-greedy <starting_mode> -1 <grasp_mode> -1
+-extra_mileage <starting_mode> -1
+-two_opt
+-VNS <kick_neighborhood> -1
+-SA <iterations> -1
+-tabu_search <tenure_mode> -1 <aspiration> -1
+-genetic_algorithm <repair_mode> -1 <cutting_type> -1
+-tsp_opt <model_type> 0
+-hard_fixing <probability> -1.000000
+-local_branching <branching_constraint> -1
+
+enter -help or --help for help
+----------------------------------------------------------------------------------------------
+
+
+_________________________________________________________
+Greedy Heuristic:
+
+ [Greedy Heuristic] The best starting position is node 363 
+
+_________________________________________________________
+Benders loop:
+
+
+ITERATION: 1	LB: 158805.000000	UB: 172780.000000	||| 8.800101% gap
+
+ITERATION: 2	LB: 163559.000000	UB: 167071.000000	||| 2.147237% gap
+
+ITERATION: 3	LB: 164198.500000	UB: 165702.000000	||| 0.915660% gap
+
+ITERATION: 4	LB: 164612.718750	UB: 165702.000000	||| 0.661724% gap
+
+ITERATION: 5	LB: 164761.000000	UB: 165487.000000	||| 0.440638% gap
+
+ITERATION: 6	LB: 164803.250000	UB: 165421.000000	||| 0.374841% gap
+
+ITERATION: 7	LB: 164886.000000	UB: 164886.000000	||| Solution is Optimal
+
+ 	best_val is 164886.000000
+
+----------------------------------------------------------------------------------------------
+Took 73.542724 seconds 
+
+	It is a tour!

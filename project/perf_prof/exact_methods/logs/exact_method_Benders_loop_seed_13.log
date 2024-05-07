@@ -1,0 +1,78 @@
+../../tsp -generate_random 500 -tsp_opt 0 -seed 13 
+
+
+available parameters (vers. 21-Apr-2024) --------------------------------------------------
+-file <input_file> NULL
+-time_limit <timelimit> 100000000000000000000.000000
+-generate_random <nnodes> 500
+-seed <random_seed> 13
+
+ALGORITHMS:
+-greedy <starting_mode> -1 <grasp_mode> -1
+-extra_mileage <starting_mode> -1
+-two_opt
+-VNS <kick_neighborhood> -1
+-SA <iterations> -1
+-tabu_search <tenure_mode> -1 <aspiration> -1
+-genetic_algorithm <repair_mode> -1 <cutting_type> -1
+-tsp_opt <model_type> 0
+-hard_fixing <probability> -1.000000
+-local_branching <branching_constraint> -1
+
+enter -help or --help for help
+----------------------------------------------------------------------------------------------
+
+
+_________________________________________________________
+Greedy Heuristic:
+
+ [Greedy Heuristic] The best starting position is node 344 
+
+_________________________________________________________
+Benders loop:
+
+
+ITERATION: 1	LB: 156758.000000	UB: 172818.000000	||| 10.245091% gap
+
+ITERATION: 2	LB: 162697.000000	UB: 167953.000000	||| 3.230545% gap
+
+ITERATION: 3	LB: 163436.966667	UB: 167527.000000	||| 2.502514% gap
+
+ITERATION: 4	LB: 163847.000000	UB: 165808.000000	||| 1.196848% gap
+
+ITERATION: 5	LB: 163972.750000	UB: 165808.000000	||| 1.119241% gap
+
+ITERATION: 6	LB: 164387.812500	UB: 165705.000000	||| 0.801268% gap
+
+ITERATION: 7	LB: 164479.188823	UB: 165705.000000	||| 0.745268% gap
+
+ITERATION: 8	LB: 164479.188823	UB: 165422.000000	||| 0.573210% gap
+
+ITERATION: 9	LB: 164551.515523	UB: 165422.000000	||| 0.529004% gap
+
+ITERATION: 10	LB: 164551.515523	UB: 165422.000000	||| 0.529004% gap
+
+ITERATION: 11	LB: 164645.935564	UB: 165422.000000	||| 0.471354% gap
+
+ITERATION: 12	LB: 164645.935564	UB: 165422.000000	||| 0.471354% gap
+
+ITERATION: 13	LB: 164645.935564	UB: 165324.000000	||| 0.411832% gap
+
+ITERATION: 14	LB: 164645.935564	UB: 165283.000000	||| 0.386930% gap
+
+ITERATION: 15	LB: 164645.935564	UB: 165283.000000	||| 0.386930% gap
+
+ITERATION: 16	LB: 164645.935564	UB: 165283.000000	||| 0.386930% gap
+
+ITERATION: 17	LB: 164686.605053	UB: 165026.000000	||| 0.206085% gap
+
+ITERATION: 18	LB: 164686.605053	UB: 165026.000000	||| 0.206085% gap
+
+ITERATION: 19	LB: 164980.000000	UB: 164980.000000	||| Solution is Optimal
+
+ 	best_val is 164980.000000
+
+----------------------------------------------------------------------------------------------
+Took 539.322104 seconds 
+
+	It is a tour!

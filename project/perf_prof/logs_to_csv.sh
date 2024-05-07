@@ -54,7 +54,12 @@ optimal() {
     create_csv_for_algorithm "./optimal_500_10"
 }
 
+exact() {
+    create_csv_for_algorithm "./exact_methods" "time"
+}
 
 # heuristics
 # metaheuristics
 # optimal
+
+exact

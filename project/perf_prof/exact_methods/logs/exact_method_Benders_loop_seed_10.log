@@ -1,0 +1,66 @@
+../../tsp -generate_random 500 -tsp_opt 0 -seed 10 
+
+
+available parameters (vers. 21-Apr-2024) --------------------------------------------------
+-file <input_file> NULL
+-time_limit <timelimit> 100000000000000000000.000000
+-generate_random <nnodes> 500
+-seed <random_seed> 10
+
+ALGORITHMS:
+-greedy <starting_mode> -1 <grasp_mode> -1
+-extra_mileage <starting_mode> -1
+-two_opt
+-VNS <kick_neighborhood> -1
+-SA <iterations> -1
+-tabu_search <tenure_mode> -1 <aspiration> -1
+-genetic_algorithm <repair_mode> -1 <cutting_type> -1
+-tsp_opt <model_type> 0
+-hard_fixing <probability> -1.000000
+-local_branching <branching_constraint> -1
+
+enter -help or --help for help
+----------------------------------------------------------------------------------------------
+
+
+_________________________________________________________
+Greedy Heuristic:
+
+ [Greedy Heuristic] The best starting position is node 146 
+
+_________________________________________________________
+Benders loop:
+
+
+ITERATION: 1	LB: 160948.166667	UB: 174281.000000	||| 8.283930% gap
+
+ITERATION: 2	LB: 163882.000000	UB: 170596.000000	||| 4.096850% gap
+
+ITERATION: 3	LB: 165058.900000	UB: 168596.000000	||| 2.142932% gap
+
+ITERATION: 4	LB: 165579.000000	UB: 168596.000000	||| 1.822091% gap
+
+ITERATION: 5	LB: 165828.000000	UB: 166992.000000	||| 0.701932% gap
+
+ITERATION: 6	LB: 165979.432953	UB: 166992.000000	||| 0.610056% gap
+
+ITERATION: 7	LB: 166002.732143	UB: 166992.000000	||| 0.595935% gap
+
+ITERATION: 8	LB: 166002.732143	UB: 166992.000000	||| 0.595935% gap
+
+ITERATION: 9	LB: 166043.262758	UB: 166992.000000	||| 0.571380% gap
+
+ITERATION: 10	LB: 166065.175938	UB: 166612.000000	||| 0.329283% gap
+
+ITERATION: 11	LB: 166065.175938	UB: 166472.000000	||| 0.244979% gap
+
+ITERATION: 12	LB: 166065.175938	UB: 166348.000000	||| 0.170309% gap
+
+ITERATION: 13	LB: 166227.000000	UB: 166227.000000	||| Solution is Optimal
+
+ 	best_val is 166227.000000
+
+----------------------------------------------------------------------------------------------
+Took 238.729672 seconds 
+
+	It is a tour!

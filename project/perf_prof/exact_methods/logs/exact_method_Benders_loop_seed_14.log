@@ -1,0 +1,70 @@
+../../tsp -generate_random 500 -tsp_opt 0 -seed 14 
+
+
+available parameters (vers. 21-Apr-2024) --------------------------------------------------
+-file <input_file> NULL
+-time_limit <timelimit> 100000000000000000000.000000
+-generate_random <nnodes> 500
+-seed <random_seed> 14
+
+ALGORITHMS:
+-greedy <starting_mode> -1 <grasp_mode> -1
+-extra_mileage <starting_mode> -1
+-two_opt
+-VNS <kick_neighborhood> -1
+-SA <iterations> -1
+-tabu_search <tenure_mode> -1 <aspiration> -1
+-genetic_algorithm <repair_mode> -1 <cutting_type> -1
+-tsp_opt <model_type> 0
+-hard_fixing <probability> -1.000000
+-local_branching <branching_constraint> -1
+
+enter -help or --help for help
+----------------------------------------------------------------------------------------------
+
+
+_________________________________________________________
+Greedy Heuristic:
+
+ [Greedy Heuristic] The best starting position is node 92 
+
+_________________________________________________________
+Benders loop:
+
+
+ITERATION: 1	LB: 157107.000000	UB: 169872.000000	||| 8.125036% gap
+
+ITERATION: 2	LB: 161808.166667	UB: 169872.000000	||| 4.983576% gap
+
+ITERATION: 3	LB: 162650.454802	UB: 167427.000000	||| 2.936693% gap
+
+ITERATION: 4	LB: 162914.000000	UB: 164418.000000	||| 0.923186% gap
+
+ITERATION: 5	LB: 163238.414286	UB: 164043.000000	||| 0.492890% gap
+
+ITERATION: 6	LB: 163238.414286	UB: 164043.000000	||| 0.492890% gap
+
+ITERATION: 7	LB: 163335.739949	UB: 164043.000000	||| 0.433010% gap
+
+ITERATION: 8	LB: 163335.739949	UB: 164043.000000	||| 0.433010% gap
+
+ITERATION: 9	LB: 163335.739949	UB: 163559.000000	||| 0.136688% gap
+
+ITERATION: 10	LB: 163367.659691	UB: 163559.000000	||| 0.117123% gap
+
+ITERATION: 11	LB: 163401.087179	UB: 163559.000000	||| 0.096641% gap
+
+ITERATION: 12	LB: 163438.314103	UB: 163559.000000	||| 0.073842% gap
+
+ITERATION: 13	LB: 163484.750000	UB: 163559.000000	||| 0.045417% gap
+
+ITERATION: 14	LB: 163484.750000	UB: 163559.000000	||| 0.045417% gap
+
+ITERATION: 15	LB: 163559.000000	UB: 163559.000000	||| Solution is Optimal
+
+ 	best_val is 163559.000000
+
+----------------------------------------------------------------------------------------------
+Took 1615.475175 seconds 
+
+	It is a tour!

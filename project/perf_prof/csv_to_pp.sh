@@ -186,6 +186,14 @@ best_methods_metaheuristics() {
 
 }
 
+exact_method_with_optimal() {
+    modify_csv_with_optimal ./exact_methods/exact_methods.csv
+}
+
+exact_method() {
+    python3 ./perfprof.py -D , -M 10 -X "Time Ratio" ./exact_methods/exact_methods.csv ./exact_methods/exact_methods.pdf -P "20 instances for Exact methods"
+}
+
 
 # heuristics
 # metaheuristics_with_optimal
@@ -195,4 +203,7 @@ best_methods_metaheuristics() {
 # further_genetic
 
 # best_methods_heuristics
-best_methods_metaheuristics
+# best_methods_metaheuristics
+
+# exact_method_with_optimal
+exact_method
