@@ -58,8 +58,13 @@ exact() {
     create_csv_for_algorithm "./exact_methods" "time"
 }
 
+matheuristics() {
+    create_csv_for_algorithm "./matheuristics/hard_fixing"
+    create_csv_for_algorithm "./matheuristics/local_branching"
+}
+
 # heuristics
 # metaheuristics
 # optimal
-
-exact
+# exact
+# matheuristics

@@ -1,0 +1,215 @@
+../../tsp -generate_random 1000 -time_limit 60 -hard_fixing 0.8 -seed 5 
+
+
+available parameters (vers. 21-Apr-2024) --------------------------------------------------
+-file <input_file> NULL
+-time_limit <timelimit> 60.000000
+-generate_random <nnodes> 1000
+-seed <random_seed> 5
+
+ALGORITHMS:
+-greedy <starting_mode> -1 <grasp_mode> -1
+-extra_mileage <starting_mode> -1
+-two_opt
+-VNS <kick_neighborhood> -1
+-SA <iterations> -1
+-tabu_search <tenure_mode> -1 <aspiration> -1
+-genetic_algorithm <repair_mode> -1 <cutting_type> -1
+-tsp_opt <model_type> -1
+-hard_fixing <probability> 0.800000
+-local_branching <branching_constraint> -1
+
+enter -help or --help for help
+----------------------------------------------------------------------------------------------
+
+
+_________________________________________________________
+Hard-fixing:
+
+
+_________________________________________________________
+Greedy Heuristic:
+
+ [Greedy Heuristic] The best starting position is node 368 
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 238754.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 238726.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 237993.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 237787.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 237787.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 237756.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 237734.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 237734.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 237405.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 237217.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 236993.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 236993.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 236611.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 236611.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 236385.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 236145.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 236145.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 236073.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 236073.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 235624.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 235624.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 235573.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 235323.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 235137.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 235137.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 235137.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 234942.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 234942.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 234942.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 234629.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 234629.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 234629.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 234448.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 234448.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 234448.000000
+
+ 	best_val is 234448.000000
+
+----------------------------------------------------------------------------------------------
+Took 60.088644 seconds 
+
+	It is a tour!

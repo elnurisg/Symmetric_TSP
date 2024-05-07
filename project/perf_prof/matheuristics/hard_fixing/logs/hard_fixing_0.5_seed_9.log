@@ -1,0 +1,60 @@
+../../tsp -generate_random 1000 -time_limit 60 -hard_fixing 0.5 -seed 9 
+
+
+available parameters (vers. 21-Apr-2024) --------------------------------------------------
+-file <input_file> NULL
+-time_limit <timelimit> 60.000000
+-generate_random <nnodes> 1000
+-seed <random_seed> 9
+
+ALGORITHMS:
+-greedy <starting_mode> -1 <grasp_mode> -1
+-extra_mileage <starting_mode> -1
+-two_opt
+-VNS <kick_neighborhood> -1
+-SA <iterations> -1
+-tabu_search <tenure_mode> -1 <aspiration> -1
+-genetic_algorithm <repair_mode> -1 <cutting_type> -1
+-tsp_opt <model_type> -1
+-hard_fixing <probability> 0.500000
+-local_branching <branching_constraint> -1
+
+enter -help or --help for help
+----------------------------------------------------------------------------------------------
+
+
+_________________________________________________________
+Hard-fixing:
+
+
+_________________________________________________________
+Greedy Heuristic:
+
+ [Greedy Heuristic] The best starting position is node 980 
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 238173.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 236576.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 236037.000000
+
+_________________________________________________________
+Branch && Cut:
+
+Found better solution with value: 236037.000000
+
+ 	best_val is 236037.000000
+
+----------------------------------------------------------------------------------------------
+Took 60.308363 seconds 
+
+	It is a tour!

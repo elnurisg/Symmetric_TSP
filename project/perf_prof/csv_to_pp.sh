@@ -2,22 +2,16 @@
 
 heuristics(){
     python3 ./perfprof.py -D , -T 300 -M 1.75 -X "Cost Ratio" ./heuristics/greedy/greedy.csv ./heuristics/greedy/greedy.pdf -P "50 instances for Greedy Heuristic"
-
     python3 ./perfprof.py -D , -T 300 -M 1.076 -X "Cost Ratio" ./heuristics/greedy_two_opt/greedy_two_opt.csv ./heuristics/greedy_two_opt/greedy_two_opt.pdf -P "50 instances for Greedy Heuristic and 2-OPT"
-
     python3 ./perfprof.py -D , -T 300 -M 1.03 -X "Cost Ratio" ./heuristics/extra_mileage/extra_mileage.csv ./heuristics/extra_mileage/extra_mileage.pdf -P "50 instances for Extra Mileage Heuristic"
-
     python3 ./perfprof.py -D , -T 300 -M 1.022 -X "Cost Ratio" ./heuristics/extra_mileage_two_opt/extra_mileage_two_opt.csv ./heuristics/extra_mileage_two_opt/extra_mileage_two_opt.pdf -P "50 instances for Extra Mileage Heuristic and 2-OPT"
 }
 
 metaheuristics(){
-    # do not perfprof genetic algo bcz it has too many parameters so we do deeper analyze
+    # we do not perfprof genetic algo bcz it has too many parameters so we do deeper analyze
     # python3 ./perfprof.py -D , -T 600 -M 1.1 -X "Cost Ratio" ./metaheuristics/genetic_algorithm/genetic_algorithm.csv ./metaheuristics/genetic_algorithm/genetic_algorithm.pdf -P "10 instances for Genetic algorithm"
-
     python3 ./perfprof.py -D , -T 600 -M 1.11 -X "Cost Ratio" ./metaheuristics/simulated_annealing/simulated_annealing.csv ./metaheuristics/simulated_annealing/simulated_annealing.pdf -P "10 instances for Simulated Annealing"
-
     python3 ./perfprof.py -D , -T 600 -M 1.1 -X "Cost Ratio" ./metaheuristics/tabu_search/tabu_search.csv ./metaheuristics/tabu_search/tabu_search.pdf -P "10 instances for Tabu Search"
-
     python3 ./perfprof.py -D , -T 600 -M 1.1 -X "Cost Ratio" ./metaheuristics/VNS/VNS.csv ./metaheuristics/VNS/VNS.pdf -P "10 instances for Variable Neighborhood Search"
 }
 
@@ -194,16 +188,44 @@ exact_method() {
     python3 ./perfprof.py -D , -M 10 -X "Time Ratio" ./exact_methods/exact_methods.csv ./exact_methods/exact_methods.pdf -P "20 instances for Exact methods"
 }
 
+matheuristics() {
+    python3 ./perfprof.py -D , -T 60 -M 1.03 -X "Cost Ratio" ./matheuristics/hard_fixing/hard_fixing.csv ./matheuristics/hard_fixing/hard_fixing.pdf -P "10 instances for Hard Fixing"
+    python3 ./perfprof.py -D , -T 60 -M 1.01 -X "Cost Ratio" ./matheuristics/local_branching/local_branching.csv ./matheuristics/local_branching/local_branching.pdf -P "10 instances for Local Branching"
+}
+
+crete_csv_best_methods_matheur() {
+    input_file1="./matheuristics/hard_fixing/hard_fixing.csv"
+    input_file2="./matheuristics/local_branching/local_branching.csv"
+
+    directory=./matheuristics
+
+    # output file paths
+    output="$directory/best_matheur_methods.csv"
+
+    paste -d ',' \
+        <(cut -d, -f 1,5 "$input_file1") \
+        <(cut -d, -f 2 "$input_file2") | \
+    awk 'NR==1{$1=2}1' FS=',' OFS=',' > "$output"
+
+}
+
+best_methods_matheuristics() {
+    crete_csv_best_methods_matheur
+
+    python3 ./perfprof.py -D , -T 60 -M 1.02 -X "Cost Ratio" ./matheuristics/best_matheur_methods.csv ./matheuristics/best_matheur_methods.pdf -P "10 instances for Best Matheuristics"
+}
 
 # heuristics
+# best_methods_heuristics
+
 # metaheuristics_with_optimal
 # metaheuristics
-
 # further_tabu
 # further_genetic
-
-# best_methods_heuristics
 # best_methods_metaheuristics
 
 # exact_method_with_optimal
-exact_method
+# exact_method
+
+# matheuristics
+# best_methods_matheuristics
