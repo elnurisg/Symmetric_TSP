@@ -1,23 +1,59 @@
-This C project implements various algorithms and their performance analysis for solving the Traveling Salesman Problem (TSP), covering heuristics, metaheuristics, matheuristics, and constructive heuristics for efficient solutions.
+# Symmetric Traveling Salesman Problem Solver
 
-**Constructive Heuristics:**
+This C project implements various algorithms for solving the Symmetric Traveling Salesman Problem (TSP), along with performance analysis tools.
+
+## Objective
+
+The primary objective of this project is to explore various algorithms and methodologies for efficiently solving the Traveling Salesman Problem (TSP).
+
+## Implemented Algorithms
+
+### Constructive Heuristics:
 - Greedy heuristic with GRASP
 - Extra-mileage heuristic
 - 2-OPT refining heuristic
 
-**Metaheuristics:**
+### Metaheuristics:
 - Tabu Search
 - VNS (Variable Neighborhood Search)
 - Simulated Annealing
 - Genetic Algorithm
 
-**Matheuristics:**
+### Matheuristics:
 - Hard fixing
 - Local branching
 
-**Also implemented:**
-- Basic TSP model in CPLEX (without SECs)
-- Benders' "loop" method with SEC separation for integer solutions
-- Patching heuristic
-- Branch-and-Cut implementation in CPLEX through callbacks
-- Posting heuristic solutions and adding user cuts for fractional solutions
+### Exact methods using CPLEX:
+- Benders' loop
+- Callback method
+
+## Performance Analysis
+
+Performance profiles of the implemented methods are provided in the perf_prof folder. These profiles include computational performance metrics, solution quality, and convergence behavior.
+
+## Usage
+
+1. **Installation**: Clone the repository to your local machine.
+   
+git clone https://github.com/elnurisg/Symmetric_TSP
+
+
+2. **Compilation**: Use the provided Makefile to compile the project.
+
+./tsp <parameters>
+
+
+4. **Performance Profiling**: Explore performance profiles in the perf_prof folder for detailed analysis.
+
+## Dependencies
+
+- CPLEX Optimization Studio version 22.1.1
+- GNU Plot for visualization
+
+## Documentation
+
+Implemented algorithms are documented with Doxygen for easy reference and understanding.
+
+## Additional Information
+
+For more detailed information, please refer to the accompanying [paper.pdf] pdf file. The paper provides all the details about project and its analysis.
