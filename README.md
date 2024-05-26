@@ -1,6 +1,6 @@
 # Symmetric Traveling Salesman Problem Solver
 
-This C project implements various algorithms for solving the Symmetric Traveling Salesman Problem (TSP), along with performance analysis tools.
+This C project implements various algorithms for solving the Symmetric Traveling Salesman Problem (TSP), along with performance analysis tools. For more detailed information, please refer to the accompanying `[paper](./paper.pdf)` file in repository. The paper provides an in-depth explanation of the project and its analysis.
 
 ## Objective
 
@@ -34,14 +34,18 @@ Performance profiles of the implemented methods are provided in the perf_prof fo
 ## Usage
 
 1. **Installation**: Clone the repository to your local machine.
-   
-git clone https://github.com/elnurisg/Symmetric_TSP
-
+```sh   
+    git clone https://github.com/elnurisg/Symmetric_TSP
+```
 
 2. **Compilation**: Use the provided Makefile to compile the project.
-
-./tsp <parameters>
-
+```sh
+    make
+```
+3. **Execution**: Run the solver with the desired parameters.
+```sh
+    ./tsp <parameters>
+```
 
 4. **Performance Profiling**: Explore performance profiles in the perf_prof folder for detailed analysis.
 
@@ -54,6 +58,3 @@ git clone https://github.com/elnurisg/Symmetric_TSP
 
 Implemented algorithms are documented with Doxygen for easy reference and understanding.
 
-## Additional Information
-
-For more detailed information, please refer to the accompanying [paper.pdf] pdf file. The paper provides all the details about project and its analysis.
