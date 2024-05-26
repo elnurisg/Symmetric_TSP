@@ -29,7 +29,7 @@ The primary objective of this project is to explore various algorithms and metho
 
 ## Performance Analysis
 
-Performance profiles of the implemented methods are provided in the perf_prof folder. These profiles include computational performance metrics, solution quality, and convergence behavior.
+Performance profiles of the implemented methods are provided in the [perf_prof](./project/perf_prof) folder. These profiles include computational performance metrics, solution quality, and convergence behavior.
 
 ## Usage
 
