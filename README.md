@@ -1,6 +1,6 @@
 # Symmetric Traveling Salesman Problem Solver
 
-This C project implements various algorithms for solving the Symmetric Traveling Salesman Problem (TSP), along with performance analysis tools. For more detailed information, please refer to the accompanying [paper.pdf](./paper.pdf) file in repository. The paper provides an in-depth explanation of the project and its analysis.
+This C project implements various algorithms for solving the Symmetric Traveling Salesman Problem (TSP), along with performance analysis tools. For more detailed information, please refer to the accompanying [thesis](./thesis.pdf) file in repository. The paper provides an in-depth explanation of the project and its analysis.
 
 ## Objective
 
